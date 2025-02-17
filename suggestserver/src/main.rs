@@ -275,6 +275,51 @@ fn parse_unigram(config: &CsvConfig) -> Result<Vec<CsvRecord>, HttpResponse> {
     Ok(records)
 }
 
+// Function to calculate similarity between two words
+fn calculate_similarity(word1: &str, word2: &str) -> f64 {
+    // Count letters in the words
+    let counter1 = count_letters(word1);
+    let counter2 = count_letters(word2);
+
+    // Count common letters
+    let common_letters: Vec<_> = counter1.keys().filter(|&k| counter2.contains_key(k)).collect();
+    let similarity_score: f64 = common_letters.iter()
+        .map(|&letter| counter1[letter].min(counter2[letter]) as f64)
+        .sum();
+
+    // Adjust for word length
+    let length_factor = min(word1.len(), word2.len()) as f64 / max(word1.len(), word2.len()) as f64;
+
+    // Adjust for matching initial characters
+    let initial_match_bonus = word1.chars().zip(word2.chars())
+        .take_while(|(c1, c2)| c1 == c2).count() as f64;
+
+    // Total similarity
+    let total_similarity = (similarity_score * length_factor) + initial_match_bonus;
+
+    total_similarity
+}
+
+// Function to count letters in a word
+fn count_letters(word: &str) -> HashMap<char, usize> {
+    let mut counter = HashMap::new();
+    for letter in word.chars() {
+        *counter.entry(letter).or_insert(0) += 1;
+    }
+    counter
+}
+
+// Function to find the closest match from a word list
+fn did_you_mean(w: &str, word_list: &[&str]) -> &str {
+    // Calculate similarity for each word in the list
+    let similarities: HashMap<_, _> = word_list.iter()
+        .map(|&word| (word, calculate_similarity(w, word)))
+        .collect();
+
+    // Find the word with the highest similarity
+    similarities.iter().max_by(|a, b| a.1.partial_cmp(b.1).unwrap()).map(|(word, _)| *word).unwrap()
+}
+
 fn load_config() -> Result<Config, Box<dyn Error>> {
     let settings = ConfigLoader::builder()
         .add_source(ConfigFile::with_name("config")) // Load config.toml
