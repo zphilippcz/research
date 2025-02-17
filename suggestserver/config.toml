@@ -6,7 +6,8 @@ password = "iEzoDQe8OWWl133BTsyq"
 
 [csv]
 file_path = "/Users/zphilipp/git/research/suggestserver/data/mean_tfidf_unigram_normalize1.csv"
+typo_dict = "/Users/zphilipp/git/research/suggestserver/data/dict.csv"
 
 [server]
-#address = "127.0.0.1:8080"
-address = "10.137.48.11:8080"
+address = "127.0.0.1:8080"
+#address = "10.137.48.11:8080"

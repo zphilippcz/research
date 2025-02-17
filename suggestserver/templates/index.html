@@ -152,6 +152,30 @@
         const renderSuggestions = (suggestions) => {
             suggestionsBox.innerHTML = '';
             console.log(suggestions);
+
+            if (suggestions.didYouMean !== null &&
+                suggestions.didYouMean !== undefined &&
+                suggestions.didYouMean !== '') {           
+                
+                const div = document.createElement('div');
+                div.className = 'suggestion-label';
+                div.textContent = "Did you mean?";
+                suggestionsBox.appendChild(div);
+                
+                const div2 = document.createElement('div');
+                div2.className = 'suggestion-item';
+                div2.textContent = suggestions.didYouMean;
+
+                const div1 = document.createElement('img');
+                div1.src = 'static/query.png';
+                div2.appendChild(div1);
+                div.appendChild(div2);
+                
+                suggestionsBox.appendChild(div2);
+
+                div2.addEventListener('click', () => handleSelection(suggestions.didYouMean));
+            }
+
             if (suggestions.queries.length) {
                 const div = document.createElement('div');
                 div.className = 'suggestion-label';

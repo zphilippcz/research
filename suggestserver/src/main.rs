@@ -12,8 +12,10 @@ use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use config::{Config as ConfigLoader, File as ConfigFile};
 use std::error::Error;
-use std::io::{Read};
 use url::Url;
+use std::cmp::{min, max};
+use std::env;
+use std::io::{BufRead, Read};
 
 
 #[derive(Debug, Deserialize)]
@@ -27,6 +29,7 @@ struct ElasticsearchConfig {
 #[derive(Debug, Deserialize)]
 struct CsvConfig {
     file_path: String,
+    typo_dict: String,
 }
 
 #[derive(Debug, Deserialize)]
@@ -74,7 +77,6 @@ fn connect_to_sqlite() -> SqlResult<Connection> {
     let db_path = "/Users/zphilipp/notebooks/deals_db.db";
     Connection::open(db_path)
 }
-*/
 
 fn haversine(lat1: f64, lon1: f64, lat2: f64, lon2: f64) -> f64 {
     // degree to radian
@@ -96,6 +98,7 @@ fn haversine(lat1: f64, lon1: f64, lat2: f64, lon2: f64) -> f64 {
     let r = 6371.0;
     r * c
 }
+*/
 
 fn create_elasticsearch_client(config: &ElasticsearchConfig) -> Result<Elasticsearch, Box<dyn std::error::Error>> {
     let mut buf = Vec::new();
@@ -156,17 +159,21 @@ async fn query_elasticsearch(
 async fn suggest(
     query_param: web::Query<SuggestQuery>,
     unigrams_clone: web::Data<Arc<Mutex<CsvRecords>>>,
+    typo_vec_clone: web::Data<Arc<Mutex<Vec<String>>>>,
     app_state: web::Data<AppState>,
 ) -> HttpResponse {
 
     let query = query_param.q.clone().unwrap_or_default();
     let lat = query_param.lat; // Get latitude
     let lon = query_param.lon; // Get longitude
-    //println!("Query: {} Lat: {} Lon: {}", query,
-    //    lat.map_or("None".to_string(), |l| format!("{:.5}", l)),
-    //    lon.map_or("None".to_string(), |l| format!("{:.5}", l))
-    //);
-    
+
+    log::debug!(
+        "Query: {} Lat: {:.5?} Lon: {:.5?}", 
+        query, 
+        lat.unwrap_or_default(), 
+        lon.unwrap_or_default()
+    );
+
     if query.is_empty() {
         return HttpResponse::Ok().json(serde_json::json!({
             "deals": [],
@@ -174,10 +181,18 @@ async fn suggest(
             "queries": [],
         }));
     }
+
+    // If the input query length is greater than 2, suggest a correction
+    let suggestion = if query.len() > 2 {
+        did_you_mean(&query, typo_vec_clone).await
+    } else {
+        None
+    };
+
      // lock the CSV records
     let records = unigrams_clone.lock().unwrap();
 
-     // collect tuples of (text, tfidf)
+    // filter records that start with the query
     let mut matching_records: Vec<&CsvRecord> = records.iter()
          .filter(|r| r.text.starts_with(&query)) // Check if text starts with the query
          .collect();
@@ -199,12 +214,12 @@ async fn suggest(
             let mut deals: Vec<String> = Vec::new();
             
             let _categories: Vec<String> = documents.iter()
-                .filter(|doc| !doc.category.is_empty()) // filter ocuments with empty categories text
+                .filter(|doc| !doc.category.is_empty())
                 .take(10) // and take only the first 10
                 .map(|doc| {
                     deals.push(doc.title.clone());
                     let category = doc.category.clone();
-                    unique_categories.insert(category.clone()); // Insert category into the HashSet
+                    unique_categories.insert(category.clone());
                     category
                 })
                 .collect();
@@ -212,7 +227,8 @@ async fn suggest(
             let response = serde_json::json!({
                 "deals": deals.iter().take(5).collect::<Vec<_>>(),
                 "categories": unique_categories,
-                "queries": sorted_texts
+                "queries": sorted_texts,
+                "didYouMean": suggestion,
             });
 
             HttpResponse::Ok().json(response)
@@ -263,16 +279,31 @@ async fn top(unigrams_clone: web::Data<Arc<Mutex<Vec<CsvRecord>>>>) -> HttpRespo
     HttpResponse::Ok().json(response)
 }
 
-fn parse_unigram(config: &CsvConfig) -> Result<Vec<CsvRecord>, HttpResponse> {
+fn parse_unigram(config: &CsvConfig) -> Result<Vec<CsvRecord>, Box<dyn std::error::Error>> {
 
     let file = match StdFile::open(config.file_path.as_str()) {
         Ok(file) => file,
-        Err(err) => return Err(HttpResponse::InternalServerError().body(format!("Could not open file: {}", err))),
+        Err(err) => return Err(Box::new(err)),
     };
     let file = file;
     let mut rdr = ReaderBuilder::new().has_headers(true).from_reader(file);
     let records: Vec<CsvRecord> = rdr.deserialize().filter_map(Result::ok).collect();
     Ok(records)
+}
+
+fn parse_typo_dict(config: &CsvConfig) -> Result<Vec<String>, Box<dyn std::error::Error>> {
+    let mut vec = Vec::new();
+
+    let file = match StdFile::open(config.typo_dict.as_str()) {
+        Ok(file) => file,
+        Err(err) => return Err(Box::new(err)),
+    };
+    for line in std::io::BufReader::new(file).lines() {
+        let line = line.map_err(|err| format!("Error reading line: {}", err))?;
+        vec.push(line);
+    }
+
+    Ok(vec)
 }
 
 // Function to calculate similarity between two words
@@ -309,15 +340,31 @@ fn count_letters(word: &str) -> HashMap<char, usize> {
     counter
 }
 
-// Function to find the closest match from a word list
-fn did_you_mean(w: &str, word_list: &[&str]) -> &str {
-    // Calculate similarity for each word in the list
-    let similarities: HashMap<_, _> = word_list.iter()
-        .map(|&word| (word, calculate_similarity(w, word)))
-        .collect();
+async fn did_you_mean(
+    query: &str,
+    typo_vec_clone: web::Data<Arc<Mutex<Vec<String>>>>,
+) -> Option<String> {
+    // Lock the typo dictionary to access the words
+    let typo_records = typo_vec_clone.lock().unwrap(); 
 
-    // Find the word with the highest similarity
-    similarities.iter().max_by(|a, b| a.1.partial_cmp(b.1).unwrap()).map(|(word, _)| *word).unwrap()
+    let mut best_match: Option<(String, f64)> = None;
+
+    // Iterate through each word in the typo_records
+    for word in typo_records.iter() {
+        let similarity_score = calculate_similarity(query, word);
+        
+        // Update best match if this word is more similar than the current best
+        if let Some((_, best_score)) = &best_match {
+            if similarity_score > *best_score {
+                best_match = Some((word.clone(), similarity_score));
+            }
+        } else {
+            best_match = Some((word.clone(), similarity_score));
+        }
+    }
+
+    // Return the best matching word if found
+    best_match.map(|(word, _)| word)
 }
 
 fn load_config() -> Result<Config, Box<dyn Error>> {
@@ -330,6 +377,8 @@ fn load_config() -> Result<Config, Box<dyn Error>> {
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    env_logger::init(); // initialize the logger
+    env::set_var("RUST_LOG", "debug"); 
 
     let config: Config = load_config().expect("Failed to load configuration");
     
@@ -338,9 +387,22 @@ async fn main() -> std::io::Result<()> {
     
     let unigrams = match parse_unigram(csv_config) {
         Ok(records) => Arc::new(Mutex::new(records)),
-        Err(_err) => {
-            return Err(std::io::Error::new(std::io::ErrorKind::Other, "CSV parsing failed"));
-        },
+        Err(_e) => {
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::Other,
+                format!("CSV top words {} parsing failed", csv_config.file_path),
+            ));
+        }
+    };
+
+    let typo_records = match parse_typo_dict(csv_config) {
+        Ok(records) => Arc::new(Mutex::new(records)),
+        Err(_e) => {
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::Other,
+                format!("CSV top words {} parsing failed", csv_config.typo_dict),
+            ));
+        }
     };
 
     let es_client = create_elasticsearch_client(es_config).expect("Failed to create Elasticsearch client");
@@ -350,10 +412,12 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(move || {
         let unigrams_clone = Arc::clone(&unigrams);
+        let typo_vec_clone = Arc::clone(&typo_records);
         let app_state_clone = app_state.clone();
 
         App::new()
             .app_data(web::Data::new(unigrams_clone))
+            .app_data(web::Data::new(typo_vec_clone))
             .app_data(app_state_clone)
             .route("/", web::get().to(index))
             .route("/top", web::get().to(top))
