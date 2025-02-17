@@ -8,6 +8,7 @@ use elasticsearch::cert::CertificateValidation;
 use serde::{Serialize, Deserialize};
 use std::fs::File as StdFile;
 use std::collections::HashSet;
+use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use config::{Config as ConfigLoader, File as ConfigFile};
 use std::error::Error;
@@ -161,12 +162,10 @@ async fn suggest(
     let query = query_param.q.clone().unwrap_or_default();
     let lat = query_param.lat; // Get latitude
     let lon = query_param.lon; // Get longitude
-    println!(
-        "Query: {} Lat: {} Lon: {}",
-        query,
-        lat.map_or("None".to_string(), |l| format!("{:.5}", l)),
-        lon.map_or("None".to_string(), |l| format!("{:.5}", l))
-    );
+    //println!("Query: {} Lat: {} Lon: {}", query,
+    //    lat.map_or("None".to_string(), |l| format!("{:.5}", l)),
+    //    lon.map_or("None".to_string(), |l| format!("{:.5}", l))
+    //);
     
     if query.is_empty() {
         return HttpResponse::Ok().json(serde_json::json!({
@@ -234,12 +233,26 @@ async fn top(unigrams_clone: web::Data<Arc<Mutex<Vec<CsvRecord>>>>) -> HttpRespo
 
     let unigrams_clone = unigrams_clone.lock().unwrap(); // Handle the possibility of poisoning
 
-    // sort the records by the tfidf value in descending order
     let mut sorted_records: Vec<&CsvRecord> = unigrams_clone.iter().collect();
     sorted_records.sort_by(|a, b| b.tfidf.partial_cmp(&a.tfidf).unwrap());
 
-    // take the top 10 records
-    let top_records: Vec<String> = sorted_records.iter().take(10).map(|r| r.text.clone()).collect();
+    // Limits for the count of records with the same first two characters
+    let mut char_count: HashMap<String, usize> = HashMap::new(); // to count occurrences
+    let mut filtered_records: Vec<String> = Vec::new();
+
+    for record in sorted_records.iter() {
+        let first_two_chars = record.text.chars().take(2).collect::<String>();
+        // Let's count occurrences
+        let count = char_count.entry(first_two_chars.clone()).or_insert(0);
+        
+        if *count < 1 { // If current count for the first two chars is less than 2
+            filtered_records.push(record.text.clone());
+            *count += 1; // Increment the count
+        }
+    }
+
+    // Take only the top 10 records after filtering
+    let top_records = filtered_records.into_iter().take(10).collect::<Vec<_>>();
 
     let response = serde_json::json!({
         "queries": top_records,
