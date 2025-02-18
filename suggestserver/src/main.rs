@@ -422,7 +422,6 @@ async fn main() -> std::io::Result<()> {
             .route("/", web::get().to(index))
             .route("/top", web::get().to(top))
             .route("/suggest", web::get().to(suggest))
-            .route("/top", web::get().to(top))
             .service(Files::new("/static", "./static").show_files_listing())
     })
     .bind(config.server.address)?
