@@ -64,6 +64,7 @@ type CsvRecords = Vec<CsvRecord>;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Document {
+    deal_id: String,
     title: String,
     category: String,
 }
@@ -115,6 +116,34 @@ fn create_elasticsearch_client(config: &ElasticsearchConfig) -> Result<Elasticse
     Ok(Elasticsearch::new(transport))
 }
 
+async fn search(
+    query_param: web::Query<SuggestQuery>,
+    app_state: web::Data<AppState>,
+) -> HttpResponse {
+    let query = query_param.q.clone().unwrap_or_default();
+
+    if query.is_empty() {
+        return HttpResponse::Ok().json(serde_json::json!({
+            "deal_ids": [],
+        }));
+    }
+
+    match query_elasticsearch(&app_state.es_client, &query).await {
+        Ok(documents) => {
+            let deal_ids: Vec<String> = documents.iter()
+                .map(|doc| doc.deal_id.clone())
+                .collect();
+
+            let response = serde_json::json!({
+                "deal_ids": deal_ids,
+            });
+
+            HttpResponse::Ok().json(response)
+        },
+        Err(err) => HttpResponse::InternalServerError().body(format!("Elasticsearch query failed: {}", err)),
+    }
+}
+
 async fn query_elasticsearch(
     client: &Elasticsearch,
     query: &str
@@ -123,16 +152,17 @@ async fn query_elasticsearch(
     let index_name = "deals";
 
     let search_query = serde_json::json!({
+        "_source": ["deal_id", "title", "category"],
         "query": {
             "bool": {
                 "should": [
                     { "match": { "title": { "query": query, "boost": 2 } } },
                     { "match": { "title_general": { "query": query, "boost": 1 } } },
-                    { "match": { "highlights": { "query": query, "boost": 1 } } }
+                    { "match": { "highlights": { "query": query, "boost": 1 } } },
                 ]
             }
         },
-        "size": 10000
+        "size": 1000
     });
 
     let response = client
@@ -149,7 +179,8 @@ async fn query_elasticsearch(
             if let Some(source) = hit["_source"].as_object() {
                 let title = source.get("title").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
                 let category = source.get("category").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
-                documents.push(Document { title, category });
+                let deal_id = source.get("deal_id").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
+                documents.push(Document { deal_id, title, category });
             }
         }
     }
@@ -226,6 +257,7 @@ async fn suggest(
 
             let response = serde_json::json!({
                 "deals": deals.iter().take(5).collect::<Vec<_>>(),
+                //"deal_ids": deal_ids.iter().collect::<Vec<_>>(), 
                 "categories": unique_categories,
                 "queries": sorted_texts,
                 "didYouMean": suggestion,
@@ -422,6 +454,7 @@ async fn main() -> std::io::Result<()> {
             .route("/", web::get().to(index))
             .route("/top", web::get().to(top))
             .route("/suggest", web::get().to(suggest))
+            .route("/search", web::get().to(search))
             .service(Files::new("/static", "./static").show_files_listing())
     })
     .bind(config.server.address)?
