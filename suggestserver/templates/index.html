@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Suggest</title>
     <style>
+
+        html {
+            margin: 0;
+            padding: 0;
+            font-family: "__Nunito_Sans_280d78', sans-serif";
+            background-color: #f0f0f0;
+        }
         #suggestions {
             border: solid #000;
             border-width: 0px 1px 1px 1px;
@@ -89,7 +96,28 @@
         .result-item {
             border: 1px solid #ccc;
             padding: 10px;
-            text-align: center;
+            text-align: left;
+        }
+
+        .item-title {
+
+
+        }
+        
+        .item-title_general {
+            font-weight: bold;
+            text-align: left;
+            font-size: 17px;
+            line-height: 1.375rem;
+            margin: 0px;
+        }
+        
+        .item-merchant {
+            padding: 0px;
+            margin: 0px;
+            text-align: left;
+            font-size: .875rem;
+            line-height: 1.25rem;
         }
 
         .result-item img {
@@ -196,7 +224,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ ids: data.deal_ids }),
+                body: JSON.stringify({ ids: data.ids }),
                 mode: 'no-cors'
             })
             .then(response => response.json())
@@ -214,17 +242,18 @@
                     img.alt = item.title;
                     resultItem.appendChild(img);
 
-                    const title = document.createElement('h3');
-                    title.textContent = item.title;
-                    resultItem.appendChild(title);
-
-                    const highlights = document.createElement('p');
-                    highlights.textContent = item.highlights;
-                    resultItem.appendChild(highlights);
 
                     const merchant = document.createElement('p');
                     merchant.textContent = item.merchant_name;
+                    merchant.className = 'item-merchant';
                     resultItem.appendChild(merchant);
+
+
+                    const title_general = document.createElement('p');
+                    title_general.textContent = item.title_general;
+                    title_general.className = 'item-title_general';
+                    resultItem.appendChild(title_general);
+
 
                     resultsContainer.appendChild(resultItem);
                 });

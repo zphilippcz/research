@@ -1,4 +1,3 @@
-
 use actix_web::{web, App, HttpServer, HttpResponse};
 use actix_files::Files;
 use askama::Template;
@@ -53,6 +52,9 @@ struct SuggestQuery {
     q: Option<String>, // Existing query parameter for the search term
     lat: Option<f64>,  // Latitude
     lon: Option<f64>,  // Longitude
+    //zip: i32,          // Zip code
+    limit: Option<i32>, // Limit the number of results
+
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -67,6 +69,13 @@ struct Document {
     deal_id: String,
     title: String,
     category: String,
+    score: f64,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct DocumentSearch {
+    id: String,
+    score: f64,
 }
 
 #[derive(Template)]
@@ -124,20 +133,24 @@ async fn search(
 
     if query.is_empty() {
         return HttpResponse::Ok().json(serde_json::json!({
-            "deal_ids": [],
+            "ids": [],
         }));
     }
 
     match query_elasticsearch(&app_state.es_client, &query).await {
         Ok(documents) => {
-            let deal_ids: Vec<String> = documents.iter()
-                .map(|doc| doc.deal_id.clone())
+            let limit = query_param.limit.unwrap_or(999999) as usize; // Default to 10 if not provided
+            let deal_ids: Vec<DocumentSearch> = documents.iter()
+                .take(limit)
+                .map(|doc| DocumentSearch {
+                    id: doc.deal_id.clone(),
+                    score: doc.score,
+                })
                 .collect();
-
+            
             let response = serde_json::json!({
-                "deal_ids": deal_ids,
+                "ids": deal_ids,
             });
-
             HttpResponse::Ok().json(response)
         },
         Err(err) => HttpResponse::InternalServerError().body(format!("Elasticsearch query failed: {}", err)),
@@ -153,6 +166,7 @@ async fn query_elasticsearch(
 
     let search_query = serde_json::json!({
         "_source": ["deal_id", "title", "category"],
+        "track_scores": true,
         "query": {
             "bool": {
                 "should": [
@@ -180,7 +194,8 @@ async fn query_elasticsearch(
                 let title = source.get("title").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
                 let category = source.get("category").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
                 let deal_id = source.get("deal_id").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
-                documents.push(Document { deal_id, title, category });
+                let score = hit.get("_score").and_then(|v| v.as_f64()).unwrap_or(0.0);
+                documents.push(Document { deal_id, title, category, score });
             }
         }
     }

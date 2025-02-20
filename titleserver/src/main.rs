@@ -13,18 +13,29 @@ use futures::StreamExt;
 
 #[derive(Serialize, Debug)]
 struct TitleInfo {
+    id: String,
     title: String,
-    highlights: String,
     title_general: String,
-    small_image: String,
+    med_image: String,
+    value: f64,
+    price: f64,
+    discount_percent: f64,
+    rating_count: i32,
+    rating_value: f64,
     merchant_name: Option<String>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct DocumentSearch {
+    id: String,
+    score: f64,
 }
 
 type DbConnection = Arc<Mutex<Connection>>;
 
 #[derive(Serialize, Deserialize, Debug)]
 struct MyObj {
-    ids: Vec<String>,
+    ids: Vec<DocumentSearch>,
 }
 
 const MAX_SIZE: usize = 256*256; // max payload size is 256k
@@ -32,22 +43,21 @@ const MAX_SIZE: usize = 256*256; // max payload size is 256k
 
 async fn submit(db: web::Data<DbConnection>, mut payload: web::Payload) -> Result<HttpResponse, Error> {
     log::debug!("Received request");
+    
     // payload is a stream of Bytes objects
     let mut body = web::BytesMut::new();
     while let Some(chunk) = payload.next().await {
         let chunk = chunk?;
-        // limit max size of in-memory payload
+        
         if (body.len() + chunk.len()) > MAX_SIZE {
             return Err(error::ErrorBadRequest("overflow"));
         }
         body.extend_from_slice(&chunk);
     }
-
-    // body is loaded, now we can deserialize serde-json
     let obj = serde_json::from_slice::<MyObj>(&body)?;
-    let ids: Vec<String> = obj.ids;
+
+    let ids: Vec<String> = obj.ids.iter().map(|doc| doc.id.clone()).collect();
     let titles_info = get_titles_internal(ids, db).await?;
-    
     
     Ok(HttpResponse::Ok()
         .json(titles_info))
@@ -64,10 +74,15 @@ async fn get_titles_internal(ids: Vec<String>, db: web::Data<DbConnection>) -> R
         
         let query_str = format!(
             "SELECT
+                d.deal_id,
                 d.title,
-                d.highlights,
                 d.title_general, 
                 d.med_image,
+                d.value,
+                d.price,
+                d.discount_percent,
+                d.rating_count,
+                d.rating_value,
                 m.name
             FROM deals d
             LEFT JOIN merchant m
@@ -80,11 +95,16 @@ async fn get_titles_internal(ids: Vec<String>, db: web::Data<DbConnection>) -> R
             ids.iter().map(|id| id.to_string())
         ), |row| {
             Ok(TitleInfo {
-                title: row.get(0)?,
-                highlights: row.get(1)?,
+                id: row.get(0)?,
+                title: row.get(1)?,
                 title_general: row.get(2)?,
-                small_image: row.get(3)?,
-                merchant_name: row.get(4).ok(),
+                med_image: row.get(3)?,
+                value: row.get(4)?,
+                price: row.get(5)?,
+                discount_percent: row.get(6)?,
+                rating_count: row.get::<_, Option<i32>>(7)?.unwrap_or(0),
+                rating_value: row.get::<_, Option<f64>>(8)?.unwrap_or(0.0),
+                merchant_name: row.get(9)?,
             })
         }).unwrap();
 
