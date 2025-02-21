@@ -11,18 +11,19 @@ use std::sync::{Arc, Mutex};
 use std::env;
 use futures::StreamExt;
 
+
 #[derive(Serialize, Debug)]
 struct TitleInfo {
     id: String,
-    title: String,
     title_general: String,
     med_image: String,
-    value: f64,
-    price: f64,
-    discount_percent: f64,
     rating_count: i32,
     rating_value: f64,
-    merchant_name: Option<String>,
+    merchant_name: String,
+    title: String,
+    value: f64,
+    price: f64,
+    discount: i32,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -55,7 +56,6 @@ async fn submit(db: web::Data<DbConnection>, mut payload: web::Payload) -> Resul
         body.extend_from_slice(&chunk);
     }
     let obj = serde_json::from_slice::<MyObj>(&body)?;
-
     let ids: Vec<String> = obj.ids.iter().map(|doc| doc.id.clone()).collect();
     let titles_info = get_titles_internal(ids, db).await?;
     
@@ -64,23 +64,16 @@ async fn submit(db: web::Data<DbConnection>, mut payload: web::Payload) -> Resul
 }
 
 async fn get_titles_internal(ids: Vec<String>, db: web::Data<DbConnection>) -> Result<Vec<TitleInfo>, Error> {
-
-    let conn = db.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+    let conn = db.lock().unwrap();
     let mut titles_info: Vec<TitleInfo> = Vec::new();
-
 
     if !ids.is_empty() {
         let placeholders: Vec<String> = ids.iter().map(|_| "?".to_string()).collect();
-        
         let query_str = format!(
             "SELECT
                 d.deal_id,
-                d.title,
                 d.title_general, 
                 d.med_image,
-                d.value,
-                d.price,
-                d.discount_percent,
                 d.rating_count,
                 d.rating_value,
                 m.name
@@ -91,26 +84,22 @@ async fn get_titles_internal(ids: Vec<String>, db: web::Data<DbConnection>) -> R
         );
 
         let mut stmt = conn.prepare(&query_str).unwrap();
-        let title_iter = stmt.query_map(rusqlite::params_from_iter(
-            ids.iter().map(|id| id.to_string())
-        ), |row| {
+        let title_iter = stmt.query_map(rusqlite::params_from_iter(ids.iter()), |row| {
             Ok(TitleInfo {
                 id: row.get(0)?,
-                title: row.get(1)?,
-                title_general: row.get(2)?,
-                med_image: row.get(3)?,
-                value: row.get(4)?,
-                price: row.get(5)?,
-                discount_percent: row.get(6)?,
-                rating_count: row.get::<_, Option<i32>>(7)?.unwrap_or(0),
-                rating_value: row.get::<_, Option<f64>>(8)?.unwrap_or(0.0),
-                merchant_name: row.get(9)?,
+                title_general: row.get(1)?,
+                med_image: row.get(2)?,
+                rating_count: row.get(3)?,
+                rating_value: row.get(4)?,
+                merchant_name: row.get(5)?,
+                title: "".to_string(),
+                value: 0.0,
+                price: 0.0,
+                discount: 0,
             })
         }).unwrap();
 
-        for title_info in title_iter {
-            titles_info.push(title_info.unwrap());
-        }
+        titles_info = title_iter.filter_map(Result::ok).collect();
     }
     Ok(titles_info)
 }
@@ -120,7 +109,7 @@ async fn main() -> std::io::Result<()> {
     env::set_var("RUST_LOG", "debug");
     env_logger::init();
 
-    let connection = Connection::open("/Users/zphilipp/git/research/dealsdb/deals_db.db").unwrap();
+    let connection = Connection::open("/Users/zphilipp/git/research/dealsdb/deals_db1.db").unwrap();
     let db_connection = Arc::new(Mutex::new(connection));
 
     HttpServer::new(move || {

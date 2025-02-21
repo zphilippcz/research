@@ -165,14 +165,13 @@ async fn query_elasticsearch(
     let index_name = "deals";
 
     let search_query = serde_json::json!({
-        "_source": ["deal_id", "title", "category"],
+        "_source": ["deal_id", "title_general", "category"],
         "track_scores": true,
         "query": {
             "bool": {
                 "should": [
-                    { "match": { "title": { "query": query, "boost": 2 } } },
                     { "match": { "title_general": { "query": query, "boost": 1 } } },
-                    { "match": { "highlights": { "query": query, "boost": 1 } } },
+                    { "match": { "option_titles": { "query": query, "boost": 1 } } },
                 ]
             }
         },
@@ -191,7 +190,7 @@ async fn query_elasticsearch(
     if let Some(hits) = response_body["hits"]["hits"].as_array() {
         for hit in hits {
             if let Some(source) = hit["_source"].as_object() {
-                let title = source.get("title").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
+                let title = source.get("title_general").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
                 let category = source.get("category").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
                 let deal_id = source.get("deal_id").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
                 let score = hit.get("_score").and_then(|v| v.as_f64()).unwrap_or(0.0);
