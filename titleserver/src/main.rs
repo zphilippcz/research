@@ -3,14 +3,21 @@
  * curl -v -H 'Content-Type: application/json' -d \
       '{"ids":["tj-nail-spa-lounge","safas-salon-day-spa-6","donelle-lamar-co-llc","zhuzhu-beauty-and-nail-salon","studio-anew-6","sea-spa-nails-salon","beach-club-salon-and-spa-6","ivona-tint-salon-and-spa-1","hello-beyoutiful-spa-10","paradise-day-spa-2-5"]}' -X POST http://127.0.0.1:8081/
 */
-use actix_web::{web, App, HttpServer, Result, HttpResponse, Error, error};
+use actix_web::{web, App, HttpServer, Responder, Result, HttpResponse, Error, error};
 use serde::Deserialize;
 use serde::Serialize;
 use rusqlite::{Connection};
 use std::sync::{Arc, Mutex};
 use std::env;
 use futures::StreamExt;
+use prost::Message;
+use std::fs::File;
+use std::io::{self, Read, Seek, SeekFrom};
+use response::ResponseEntry;
 
+pub mod response {
+    include!(concat!(env!("OUT_DIR"), "/response.rs"));
+}
 
 #[derive(Serialize, Debug)]
 struct TitleInfo {
@@ -103,6 +110,7 @@ async fn get_titles_internal(ids: Vec<String>, db: web::Data<DbConnection>) -> R
     }
     Ok(titles_info)
 }
+
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
