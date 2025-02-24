@@ -67,7 +67,7 @@ type CsvRecords = Vec<CsvRecord>;
 #[derive(Debug, Deserialize, Serialize)]
 struct Document {
     id: i64,
-    title: String,
+    document: String,
     category: String,
     score: f64,
 }
@@ -165,13 +165,12 @@ async fn query_elasticsearch(
     let index_name = "deals";
 
     let search_query = serde_json::json!({
-        "_source": ["id", "title_general", "category"],
+        "_source": ["id", "document", "category"],
         "track_scores": true,
         "query": {
             "bool": {
                 "should": [
-                    { "match": { "title_general": { "query": query, "boost": 1 } } },
-                    { "match": { "option_titles": { "query": query, "boost": 1 } } },
+                    { "match": { "document": { "query": query, "boost": 1 } } },
                 ]
             }
         },
@@ -190,11 +189,11 @@ async fn query_elasticsearch(
     if let Some(hits) = response_body["hits"]["hits"].as_array() {
         for hit in hits {
             if let Some(source) = hit["_source"].as_object() {
-                let title = source.get("title_general").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
+                let document = source.get("document").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
                 let category = source.get("category").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
                 let id = source.get("id").and_then(|v| v.as_i64()).unwrap_or(0);
                 let score = hit.get("_score").and_then(|v| v.as_f64()).unwrap_or(0.0);
-                documents.push(Document { id, title, category, score });
+                documents.push(Document { id, document, category, score });
             }
         }
     }
@@ -262,7 +261,7 @@ async fn suggest(
                 .filter(|doc| !doc.category.is_empty())
                 .take(10) // and take only the first 10
                 .map(|doc| {
-                    deals.push(doc.title.clone());
+                    deals.push(doc.document.clone());
                     let category = doc.category.clone();
                     unique_categories.insert(category.clone());
                     category
