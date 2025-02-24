@@ -66,7 +66,7 @@ type CsvRecords = Vec<CsvRecord>;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Document {
-    deal_id: String,
+    id: i64,
     title: String,
     category: String,
     score: f64,
@@ -74,7 +74,7 @@ struct Document {
 
 #[derive(Debug, Deserialize, Serialize)]
 struct DocumentSearch {
-    id: String,
+    id:  i64,
     score: f64,
 }
 
@@ -140,16 +140,16 @@ async fn search(
     match query_elasticsearch(&app_state.es_client, &query).await {
         Ok(documents) => {
             let limit = query_param.limit.unwrap_or(999999) as usize; // Default to 10 if not provided
-            let deal_ids: Vec<DocumentSearch> = documents.iter()
+            let ids: Vec<DocumentSearch> = documents.iter()
                 .take(limit)
                 .map(|doc| DocumentSearch {
-                    id: doc.deal_id.clone(),
+                    id: doc.id.clone(),
                     score: doc.score,
                 })
                 .collect();
             
             let response = serde_json::json!({
-                "ids": deal_ids,
+                "ids": ids,
             });
             HttpResponse::Ok().json(response)
         },
@@ -165,7 +165,7 @@ async fn query_elasticsearch(
     let index_name = "deals";
 
     let search_query = serde_json::json!({
-        "_source": ["deal_id", "title_general", "category"],
+        "_source": ["id", "title_general", "category"],
         "track_scores": true,
         "query": {
             "bool": {
@@ -192,9 +192,9 @@ async fn query_elasticsearch(
             if let Some(source) = hit["_source"].as_object() {
                 let title = source.get("title_general").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
                 let category = source.get("category").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
-                let deal_id = source.get("deal_id").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
+                let id = source.get("id").and_then(|v| v.as_i64()).unwrap_or(0);
                 let score = hit.get("_score").and_then(|v| v.as_f64()).unwrap_or(0.0);
-                documents.push(Document { deal_id, title, category, score });
+                documents.push(Document { id, title, category, score });
             }
         }
     }
@@ -271,7 +271,7 @@ async fn suggest(
 
             let response = serde_json::json!({
                 "deals": deals.iter().take(5).collect::<Vec<_>>(),
-                //"deal_ids": deal_ids.iter().collect::<Vec<_>>(), 
+                //"ids": deal_ids.iter().collect::<Vec<_>>(), 
                 "categories": unique_categories,
                 "queries": sorted_texts,
                 "didYouMean": suggestion,

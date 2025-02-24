@@ -174,7 +174,7 @@
                 if (resultsContainer) {
                     resultsContainer.remove();
                 }
-                fetch('/search?q=' + searchInput.value) 
+                fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=100')  
                     .then(response => response.json())
                     .then(data => {
                         renderResult(data);
@@ -189,7 +189,7 @@
                 if (resultsContainer) {
                     resultsContainer.remove();
                 }
-            fetch('/search?q=' + searchInput.value) 
+            fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=100') 
                     .then(response => response.json())
                     .then(data => {
                         renderResult(data);
@@ -219,12 +219,13 @@
         };
         
         const renderResult = (data) => {
-            fetch('/title', {
-                method: 'POST',
+            console.log(data);
+            const ids = data.ids.map(item => item.id).join(',');
+            fetch(`/get_title_by_ids/${ids}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ ids: data.ids }),
                 mode: 'no-cors'
             })
             .then(response => response.json())
@@ -238,8 +239,8 @@
                     resultItem.className = 'result-item';
 
                     const img = document.createElement('img');
-                    img.src = item.small_image;
-                    img.alt = item.title;
+                    img.src = item.med_image;
+                    img.alt = item.title_general;
                     resultItem.appendChild(img);
 
 
