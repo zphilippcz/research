@@ -1,4 +1,4 @@
-,id,name,text,text_embeddings
+,id,name,text,embeddings
 0,1bf81df3-efc0-44f3-937f-8d19e12e1530,Nightlife,nearby things do nightlife,"[ 1.07192613e-01 -9.87331662e-03 -2.88610905e-03  4.01638895e-02
   2.57434808e-02 -5.53904474e-02  4.75523695e-02 -9.20685306e-02
   4.11218368e-02 -2.43874621e-02  6.07287064e-02 -4.86953557e-02
