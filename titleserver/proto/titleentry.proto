@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message TitleEntry {
+  string id = 1;
+  string deal_id = 2;
+  string deal_uuid = 3;
+  string title_general = 4;
+  string med_image = 5;
+  uint32 rating_count = 6;
+  float rating_value = 7;
+  string merchant_name = 8;
+  string small_image = 9;
+  string gallery_title = 10;
+  string currency = 11;
+  bool is_bookable = 12;
+  string start_at = 13;
+  string end_at = 14;
+}

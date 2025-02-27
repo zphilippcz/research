@@ -152,6 +152,7 @@
 
         searchInput.addEventListener('input', function () {
             const query = searchInput.value;
+
             fetch('/suggest?q=' + query + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude)
                 .then(response => response.json())
                 .then(data => {
@@ -169,31 +170,39 @@
                 selectedIndex--;
                 highlightSuggestion();
             } else if (e.key === 'Enter') {
-                removeSuggestions();
-                const resultsContainer = document.querySelector('.results-container');
-                if (resultsContainer) {
-                    resultsContainer.remove();
-                }
-                fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=100')  
-                    .then(response => response.json())
-                    .then(data => {
-                        renderResult(data);
-                });
+                clearTimeout(this.typingTimer);
+                this.typingTimer = setTimeout(() => {
+                    removeSuggestions();
+                    const resultsContainer = document.querySelector('.results-container');
+                    if (resultsContainer) {
+                        resultsContainer.remove();
+                    }
+
+                    fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=21')  
+                        .then(response => response.json())
+                        .then(data => {
+                            renderResult(data);
+                    });
+                }, 300);
             }
         });
 
         searchInput.addEventListener('input', function () {
             console.log('change');
-            removeSuggestions();
-                const resultsContainer = document.querySelector('.results-container');
-                if (resultsContainer) {
-                    resultsContainer.remove();
-                }
-            fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=100') 
-                    .then(response => response.json())
-                    .then(data => {
-                        renderResult(data);
-                });
+            clearTimeout(this.typingTimer);
+                this.typingTimer = setTimeout(() => {
+                    removeSuggestions();
+                    const resultsContainer = document.querySelector('.results-container');
+                    if (resultsContainer) {
+                        resultsContainer.remove();
+                    }
+
+                    fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=21')  
+                        .then(response => response.json())
+                        .then(data => {
+                            renderResult(data);
+                    });
+                }, 300);
         });
 
         searchInput.addEventListener('click', function () {
@@ -208,19 +217,28 @@
 
         const handleSelection = (selectedSuggestion) => {
             const selectedSuggestions = encodeURIComponent(selectedSuggestion);
-            fetch('/suggest?q=' + selectedSuggestions + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude)
-                .then(response => response.json())
-                .then(data => {
-                    suggestions = data;
-                    selectedIndex = -1;
-                    searchInput.value = selectedSuggestion;
-                    renderSuggestions(suggestions);
-                });
+
+            clearTimeout(this.typingTimer);
+            this.typingTimer = setTimeout(() => {
+                fetch('/suggest?q=' + selectedSuggestions + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude)
+                    .then(response => response.json())
+                    .then(data => {
+                        suggestions = data;
+                        selectedIndex = -1;
+                        searchInput.value = selectedSuggestion;
+                        renderSuggestions(suggestions);
+                    });
+            }, 300);
+
         };
         
         const renderResult = (data) => {
             console.log(data);
+            removeSearch
             const ids = data.ids.map(item => item.id).join(',');
+            if (ids.length === 0) {
+                return;
+            }
             fetch(`/get_title_by_ids/${ids}`, {
                 method: 'GET',
                 headers: {
@@ -233,6 +251,7 @@
 
                 const resultsContainer = document.createElement('div');
                 resultsContainer.className = 'results-container';
+                resultsContainer.id = 'resultscontainer';
 
                 data.forEach(item => {
                     const resultItem = document.createElement('div');
@@ -245,7 +264,7 @@
 
 
                     const merchant = document.createElement('p');
-                    merchant.textContent = item.merchant_name;
+                    merchant.textContent = item.merchant_name + ' [' + item.id + ']';
                     merchant.className = 'item-merchant';
                     resultItem.appendChild(merchant);
 
@@ -363,6 +382,11 @@
                     item.classList.remove('active');
                 }
             });
+        };
+        
+        const removeSearch = () => {
+            //const item = document.getElementById('resultscontainer');
+            //item.innerHTML = '';
         };
 
         const removeSuggestions = () => {

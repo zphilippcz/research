@@ -16,7 +16,8 @@ use std::sync::{Arc, Mutex};
 use std::env;
 
 pub mod response {
-    include!(concat!(env!("OUT_DIR"), "/response.rs"));
+    #[derive(Serialize, Debug)]
+    include!(concat!(env!("OUT_DIR"), "/titleentry.rs"));
 }
 
 struct AppState {
@@ -24,95 +25,6 @@ struct AppState {
     data_file: Mutex<File>,
 }
 
-#[derive(Serialize, Debug)]
-struct TitleInfo {
-    id: String,
-    title_general: String,
-    med_image: String,
-    rating_count: i32,
-    rating_value: f32,
-    merchant_name: String,
-    value: f32,
-    price: f32,
-    discount: i32,
-}
-
-#[derive(Debug, Deserialize, Serialize)]
-struct DocumentSearch {
-    id: String,
-    score: f64,
-}
-
-type DbConnection = Arc<Mutex<Connection>>;
-
-#[derive(Serialize, Deserialize, Debug)]
-struct MyObj {
-    ids: Vec<DocumentSearch>,
-}
-
-const MAX_SIZE: usize = 256*256; // max payload size is 256k
-
-
-async fn submit(db: web::Data<DbConnection>, mut payload: web::Payload) -> Result<HttpResponse, Error> {
-    log::debug!("Received request");
-    
-    // payload is a stream of Bytes objects
-    let mut body = web::BytesMut::new();
-    while let Some(chunk) = payload.next().await {
-        let chunk = chunk?;
-        
-        if (body.len() + chunk.len()) > MAX_SIZE {
-            return Err(error::ErrorBadRequest("overflow"));
-        }
-        body.extend_from_slice(&chunk);
-    }
-    let obj = serde_json::from_slice::<MyObj>(&body)?;
-    let ids: Vec<String> = obj.ids.iter().map(|doc| doc.id.clone()).collect();
-    let titles_info = get_titles_internal(ids, db).await?;
-    
-    Ok(HttpResponse::Ok()
-        .json(titles_info))
-}
-
-async fn get_titles_internal(ids: Vec<String>, db: web::Data<DbConnection>) -> Result<Vec<TitleInfo>, Error> {
-    let conn = db.lock().unwrap();
-    let mut titles_info: Vec<TitleInfo> = Vec::new();
-
-    if !ids.is_empty() {
-        let placeholders: Vec<String> = ids.iter().map(|_| "?".to_string()).collect();
-        let query_str = format!(
-            "SELECT
-                d.deal_id,
-                d.title_general, 
-                d.med_image,
-                d.rating_count,
-                d.rating_value,
-                m.name
-            FROM deals d
-            LEFT JOIN merchant m
-                ON d.merchant_id = m.id
-            WHERE deal_id IN ({})", placeholders.join(", ")
-        );
-
-        let mut stmt = conn.prepare(&query_str).unwrap();
-        let title_iter = stmt.query_map(rusqlite::params_from_iter(ids.iter()), |row| {
-            Ok(TitleInfo {
-                id: row.get(0)?,
-                title_general: row.get(1)?,
-                med_image: row.get(2)?,
-                rating_count: row.get(3)?,
-                rating_value: row.get(4)?,
-                merchant_name: row.get(5)?,
-                value: 0.0,
-                price: 0.0,
-                discount: 0,
-            })
-        }).unwrap();
-
-        titles_info = title_iter.filter_map(Result::ok).collect();
-    }
-    Ok(titles_info)
-}
 
 async fn reload_index(state: web::Data<AppState>) -> Result<(), Error> {
     let file_path = "/Users/zphilipp/git/research/titleserver/proto/index.bin";
@@ -126,18 +38,27 @@ async fn reload_index(state: web::Data<AppState>) -> Result<(), Error> {
     
     let chunk_size = std::mem::size_of::<(u32, u32)>();
 
-    let mut buffer = [0u8; 12]; // Buffer for three 32-bit values
+    /*
+     * Example for reading 3 32-bit values from a buffer
+     * let mut buffer = [0u8; 12]; // Buffer for three 32-bit values
+     * let id = u32::from_le_bytes([buffer[0], buffer[1], buffer[2], buffer[3]]);
+     * let position = u32::from_le_bytes([buffer[4], buffer[5], buffer[6], buffer[7]]);
+     * let length = u32::from_le_bytes([buffer[8], buffer[9], buffer[10], buffer[11]]);
+     * let info = (position, length);
+     */
+    let mut buffer = [0u8; 44]; // Buffer for 36B string and two 32-bit values
     while let Ok(read_bytes) = file.read(&mut buffer) {
         if read_bytes < chunk_size {
             break; // If we read less than 8 bytes, we end
         }
-        let id = u32::from_le_bytes([buffer[0], buffer[1], buffer[2], buffer[3]]);
-        let position = u32::from_le_bytes([buffer[4], buffer[5], buffer[6], buffer[7]]);
-        let length = u32::from_le_bytes([buffer[8], buffer[9], buffer[10], buffer[11]]);
+
+        let id_str = String::from_utf8_lossy(&buffer[..36]).to_string();
+        let position = u32::from_le_bytes([buffer[36], buffer[37], buffer[38], buffer[39]]);
+        let length = u32::from_le_bytes([buffer[40], buffer[41], buffer[42], buffer[43]]);
         let info = (position, length);
-        
+
         let mut index_map = state.index_map.lock().unwrap();
-        index_map.insert(id, info);
+        index_map.insert(id_str, info);
     }
     log::debug!("Index file successfully readed.");
 
@@ -198,8 +119,6 @@ async fn main() -> std::io::Result<()> {
     env::set_var("RUST_LOG", "debug");
     env_logger::init();
 
-    let connection = Connection::open("/Users/zphilipp/git/research/dealsdb/deals_db1.db").unwrap();
-    let db_connection = Arc::new(Mutex::new(connection));
 
     let file_path = "/Users/zphilipp/git/research/titleserver/proto/output.dat";
     let data_file = File::open(file_path)?;
@@ -215,7 +134,6 @@ async fn main() -> std::io::Result<()> {
         App::new()
             .app_data(web::Data::new(db_connection.clone()))
             .app_data(data.clone())
-            .route("/", web::post().to(submit))
             //.route("/reload_index", web::get().to(reload_index))
             .route("/get_title_by_ids/{id}", web::get().to(get_title_by_ids))
     })

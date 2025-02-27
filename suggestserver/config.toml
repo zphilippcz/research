@@ -2,7 +2,7 @@
 ca_cert = "/Users/zphilipp/http_ca.crt"
 url = "https://localhost:9200"
 username = "elastic"
-password = "iEzoDQe8OWWl133BTsyq"
+password = "M=kZVPINr+3A7GtTEpMx"
 
 [csv]
 file_path = "/Users/zphilipp/git/research/suggestserver/data/mean_tfidf_unigram_normalize1.csv"

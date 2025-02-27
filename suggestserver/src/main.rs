@@ -9,13 +9,18 @@ use std::fs::File as StdFile;
 use std::collections::HashSet;
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
+use std::cmp::{min, max};
+use std::env;
+use std::io::{BufRead, Read, Seek};
 use config::{Config as ConfigLoader, File as ConfigFile};
 use std::error::Error;
 use url::Url;
-use std::cmp::{min, max};
-use std::env;
-use std::io::{BufRead, Read};
+use prost::Message;
 
+pub mod idf {
+    include!(concat!(env!("OUT_DIR"), "/idf.rs"));
+    //use serde::{Serialize, Deserialize};
+}
 
 #[derive(Debug, Deserialize)]
 struct ElasticsearchConfig {
@@ -45,6 +50,8 @@ struct Config {
 
 struct AppState {
     es_client: Elasticsearch,
+    idf_index: Mutex<HashMap<u32, (u32, u32)>>,
+    idf_data: Mutex<StdFile>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -72,11 +79,29 @@ struct Document {
     score: f64,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize, Clone)]
 struct DocumentSearch {
     id:  i64,
     score: f64,
+    document: String,
+    idf: idf::IdfEntry,
+    features: Fetureres,
 }
+
+#[derive(Debug, Deserialize, Serialize, Clone)]
+struct Fetureres {
+    documentOccurences: i32,
+
+    unigramOcurrency: i32,
+    unigramWeight: f32,
+
+    bigramOccurences: i32,
+    bigramWeight: f32,
+
+    trigramOccurences: i32,
+    trigramWeight: f32,
+}
+
 
 #[derive(Template)]
 #[template(path = "index.html")]
@@ -125,6 +150,60 @@ fn create_elasticsearch_client(config: &ElasticsearchConfig) -> Result<Elasticse
     Ok(Elasticsearch::new(transport))
 }
 
+
+fn features_calculation(ids: &mut Vec<DocumentSearch>, query: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
+    let query_set: HashSet<_> = query.iter().collect();
+
+    for doc in ids.iter_mut() {
+        let mut unigram_weight = 0.0;
+        let mut unigram_count = 0;
+        let mut bigram_weight = 0.0;
+        let mut bigram_count = 0;
+        let mut trigram_weight = 0.0;
+        let mut trigram_count = 0;
+
+        for ngram in &doc.idf.unigram {
+            if query_set.contains(&ngram.word) {
+                unigram_weight += ngram.weight;
+                unigram_count += 1;
+            }
+        }
+
+        for ngram in &doc.idf.bigram {
+            if query_set.contains(&ngram.word) {
+                bigram_weight += ngram.weight;
+                bigram_count += 1;
+            }
+        }
+
+        for ngram in &doc.idf.trigram {
+            if query_set.contains(&ngram.word) {
+                trigram_weight += ngram.weight;
+                trigram_count += 1;
+            }
+        }
+
+        let count = query_set.iter().filter(|&&q| doc.document.contains(q)).count();
+        println!("Document ID: {}, Query occurrences: {}", doc.id, count);
+        println!("Document ID: {}, Unigram total weight: {}, Unigram count: {}", doc.id, unigram_weight, unigram_count);
+        println!("Document ID: {}, Bigram total weight: {}, Bigram count: {}", doc.id, bigram_weight, bigram_count);
+        println!("Document ID: {}, Trigram total weight: {}, Trigram count: {}", doc.id, trigram_weight, trigram_count);
+
+        let features = Fetureres {
+            documentOccurences: count as i32,
+            unigramOcurrency: unigram_count,
+            unigramWeight: unigram_weight,
+            bigramOccurences: bigram_count,
+            bigramWeight: bigram_weight,
+            trigramOccurences: trigram_count,
+            trigramWeight: trigram_weight,
+        };
+        doc.features = features;
+    }
+
+    Ok(())
+}
+
 async fn search(
     query_param: web::Query<SuggestQuery>,
     app_state: web::Data<AppState>,
@@ -139,15 +218,52 @@ async fn search(
 
     match query_elasticsearch(&app_state.es_client, &query).await {
         Ok(documents) => {
-            let limit = query_param.limit.unwrap_or(999999) as usize; // Default to 10 if not provided
-            let ids: Vec<DocumentSearch> = documents.iter()
+            let idf_index = app_state.idf_index.lock().unwrap();
+            let mut idf_data = app_state.idf_data.lock().unwrap();
+            let mut results = HashMap::new();
+
+            for doc in &documents {
+                //log::debug!("doc.id: {}", doc.id);
+                if let Some(&(position, length)) = idf_index.get(&(doc.id as u32)) {
+                    //log::debug!("position: {} length: {}", position, length);
+                    let mut buffer = vec![0; length as usize];
+                    if idf_data.seek(std::io::SeekFrom::Start(position as u64)).is_ok() {
+                        if idf_data.read_exact(&mut buffer).is_ok() {
+                            if let Ok(idf_entry) = idf::IdfEntry::decode(&*buffer) {
+                                results.insert(doc.id, idf_entry);
+                            }
+                        }
+                    }
+                }
+            }
+
+            let limit = query_param.limit.unwrap_or(999999) as usize; // Default to 999999 if not provided
+            let mut ids: Vec<DocumentSearch> = documents.iter()
                 .take(limit)
                 .map(|doc| DocumentSearch {
-                    id: doc.id.clone(),
+                    id: doc.id,
                     score: doc.score,
+                    document: doc.document.clone(),
+                    idf: results.get(&(doc.id as i64)).cloned().unwrap_or_default(),
+                    features: Fetureres {
+                        documentOccurences: 0,
+                        unigramOcurrency: 0,
+                        unigramWeight: 0.0,
+                        bigramOccurences: 0,
+                        bigramWeight: 0.0,
+                        trigramOccurences: 0,
+                        trigramWeight: 0.0,
+                    }
                 })
                 .collect();
             
+            let query_vect = vec![query.clone()];
+            let mut query_vect = vec![query.clone()];
+            query_vect.push("month spa".to_string());
+
+
+            features_calculation(&mut ids, query_vect).unwrap();
+
             let response = serde_json::json!({
                 "ids": ids,
             });
@@ -165,6 +281,7 @@ async fn query_elasticsearch(
     let index_name = "deals";
 
     let search_query = serde_json::json!({
+        //"_source": ["id", "document", "category", "auxiliary_data", "embeddings"],
         "_source": ["id", "document", "category"],
         "track_scores": true,
         "query": {
@@ -193,7 +310,8 @@ async fn query_elasticsearch(
                 let category = source.get("category").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
                 let id = source.get("id").and_then(|v| v.as_i64()).unwrap_or(0);
                 let score = hit.get("_score").and_then(|v| v.as_f64()).unwrap_or(0.0);
-                documents.push(Document { id, document, category, score });
+                documents.push(Document {
+                    id, document, category, score});
             }
         }
     }
@@ -236,9 +354,9 @@ async fn suggest(
      // lock the CSV records
     let records = unigrams_clone.lock().unwrap();
 
-    // filter records that start with the query
+    // filter records that contain the query
     let mut matching_records: Vec<&CsvRecord> = records.iter()
-         .filter(|r| r.text.starts_with(&query)) // Check if text starts with the query
+         .filter(|r| r.text.contains(&query)) // Check if text contains the query
          .collect();
  
      // sort matching records by tfidf value in desc. order
@@ -419,6 +537,37 @@ fn load_config() -> Result<Config, Box<dyn Error>> {
 
     settings.try_deserialize().map_err(|e| Box::new(e) as Box<dyn Error>)
 }
+    
+async fn reload_idf_index(state: web::Data<AppState>) -> Result<(), Box<dyn std::error::Error>> {
+    let file_path = "/Users/zphilipp/git/research/suggestserver/proto/idf.index";
+    log::debug!("Loading index from file: {}", file_path);
+
+    let mut file = StdFile::open(file_path).map_err(|err| {
+        log::error!("Error opening index file: {}", err);
+        Box::new(err) as Box<dyn std::error::Error>
+    })?;
+    log::debug!("Index file opened successfully");
+    
+    let chunk_size = std::mem::size_of::<(u32, u32)>();
+
+    let mut buffer = [0u8; 12]; // Buffer for three 32-bit values
+    while let Ok(read_bytes) = file.read(&mut buffer) {
+        if read_bytes < chunk_size {
+            break; // If we read less than 8 bytes, we end
+        }
+        let id = u32::from_le_bytes([buffer[0], buffer[1], buffer[2], buffer[3]]);
+        let position = u32::from_le_bytes([buffer[4], buffer[5], buffer[6], buffer[7]]);
+        let length = u32::from_le_bytes([buffer[8], buffer[9], buffer[10], buffer[11]]);
+        let info = (position, length);
+        
+        let mut index_map = state.idf_index.lock().unwrap();
+        index_map.insert(id, info);
+    }
+    log::debug!("Index file successfully readed.");
+
+    Ok(())
+}
+
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -450,10 +599,22 @@ async fn main() -> std::io::Result<()> {
         }
     };
 
+    // Load the IDF Data file
+    let idf_data = StdFile::open(
+        "/Users/zphilipp/git/research/suggestserver/proto/idf.dat"
+    )?;
+
+    // Create Elasticsearch client
     let es_client = create_elasticsearch_client(es_config).expect("Failed to create Elasticsearch client");
+
+    // Create the Actix Web App
     let app_state = web::Data::new(AppState {
         es_client,
+        idf_index: Mutex::new(HashMap::new()),
+        idf_data: Mutex::new(idf_data),
     });
+    // 
+    reload_idf_index(app_state.clone()).await.unwrap();
 
     HttpServer::new(move || {
         let unigrams_clone = Arc::clone(&unigrams);
