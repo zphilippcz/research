@@ -35,7 +35,14 @@ struct AppState {
     redis_con: Mutex<redis::aio::Connection>,
 }
 
-
+/**
+ * This function reads the index file and loads the IDs and their position and length into a HashMap.
+ * The HashMap is stored in memory as the AppState struct.
+ * Index is a binary file with the following format:
+ * - 36B string (ID) - deal_uuid
+ * - 4B u32 (position) - position in data file
+ * - 4B u32 (length) - length of message in data file
+ */
 async fn reload_index(state: web::Data<AppState>) -> Result<(), Error> {
     let file_path = "/Users/zphilipp/git/research/titleserver/proto/index.bin";
     log::debug!("Loading index from file: {}", file_path);
@@ -76,7 +83,12 @@ async fn reload_index(state: web::Data<AppState>) -> Result<(), Error> {
     Ok(())
 }
 
-
+/**
+ * This function reads the TitleEntry messages from the data file for the given IDs.
+ * The IDs are comma-separated and the function returns a JSON array of TitleEntry messages.
+ * If no valid IDs are found in the index file, the function returns a 404 response.
+ * Protocol Buffers messages are deserialized and returned as JSON.
+ */
 async fn get_title_by_ids(state: web::Data<AppState>, ids: web::Path<String>) -> Result<HttpResponse, Error> {
     let map = state.index_map.lock().unwrap();
     let ids_vec: Vec<String> = ids.split(',').map(|s| s.to_string()).collect();
@@ -118,6 +130,12 @@ async fn get_title_by_ids(state: web::Data<AppState>, ids: web::Path<String>) ->
     }
 }
 
+/**
+ * This function reads the TitleEntry messages from Redis for the given IDs.
+ * The IDs are comma-separated and the function returns a JSON array of TitleEntry messages.
+ * If no valid IDs are found in Redis, the function returns a 404 response.
+ * Protocol Buffers messages are deserialized and returned as JSON.
+ */
 async fn get_title_by_ids_redis(state: web::Data<AppState>, ids: web::Path<String>) -> Result<HttpResponse, Error> {
     let ids_vec: Vec<String> = ids.split(',').map(|s| s.to_string()).collect();
     log::debug!("Get response for ids from Redis: {:?}", ids_vec);
@@ -176,6 +194,14 @@ async fn main() -> std::io::Result<()> {
 
     reload_index(data.clone()).await.unwrap();
 
+    /**
+     * Start the HTTP server and bind the endpoints to the functions.
+     * The server has two endpoints:
+     * - /get_title_by_ids/{id} - This endpoint reads the data file and returns the TitleEntry messages
+     *   for the given IDs. The IDs are comma-separated.
+     * - /get_title_by_ids_redis/{id} - This endpoint reads the TitleEntry messages from Redis for the given IDs.
+     *   The IDs are comma-separated.
+     */
     HttpServer::new(move || {
         App::new()
             .app_data(data.clone())
