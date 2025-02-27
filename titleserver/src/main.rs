@@ -14,15 +14,17 @@ use std::io::{Read, Seek};
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use std::env;
+use redis::AsyncCommands;
 
 pub mod response {
-    #[derive(Serialize, Debug)]
     include!(concat!(env!("OUT_DIR"), "/titleentry.rs"));
 }
 
 struct AppState {
-    index_map: Mutex<HashMap<u32, (u32, u32)>>,
+    //index_map: Mutex<HashMap<u32, (u32, u32)>>,
+    index_map: Mutex<HashMap<String, (u32, u32)>>,
     data_file: Mutex<File>,
+    redis_con: Mutex<redis::aio::Connection>,
 }
 
 
@@ -56,6 +58,7 @@ async fn reload_index(state: web::Data<AppState>) -> Result<(), Error> {
         let position = u32::from_le_bytes([buffer[36], buffer[37], buffer[38], buffer[39]]);
         let length = u32::from_le_bytes([buffer[40], buffer[41], buffer[42], buffer[43]]);
         let info = (position, length);
+        //log::debug!("Read id: {}, position: {}, length: {}", id_str, position, length);
 
         let mut index_map = state.index_map.lock().unwrap();
         index_map.insert(id_str, info);
@@ -65,15 +68,19 @@ async fn reload_index(state: web::Data<AppState>) -> Result<(), Error> {
     Ok(())
 }
 
+
 async fn get_title_by_ids(state: web::Data<AppState>, ids: web::Path<String>) -> Result<HttpResponse, Error> {
     let map = state.index_map.lock().unwrap();
-    let ids_vec: Vec<u32> = ids.split(',').filter_map(|s| s.parse().ok()).collect();
-    log::debug!("Get response for ids: {:?}", ids_vec);
+    let ids_vec: Vec<String> = ids.split(',').map(|s| s.to_string()).collect();
+    log::debug!("Get response from data file for ids: {:?}", ids_vec);
 
     let mut results = Vec::new();
 
-    for id in ids_vec {
-        if let Some((position, length)) = map.get(&id).cloned() {
+    for id in &ids_vec {
+        log::debug!("Get title for id: {}", id);
+        if let Some((position, length)) = map.get(id).cloned() {
+            log::debug!("Found id: {}, position: {}, length: {}", id, position, length);
+
             if position != 0 && length != 0 {
                 let mut data_file = state.data_file.lock().unwrap();
 
@@ -86,20 +93,9 @@ async fn get_title_by_ids(state: web::Data<AppState>, ids: web::Path<String>) ->
                     return Err(error::ErrorBadRequest("Failed to read message"));
                 }
 
-                match response::ResponseEntry::decode(&buffer[..]) {
+                match response::TitleEntry::decode(&buffer[..]) {
                     Ok(entry) => {
-                        let title_info = TitleInfo {
-                            id: entry.id.to_string(),
-                            title_general: entry.title_general.clone(),
-                            med_image: entry.med_image.clone(),
-                            rating_count: entry.rating_count as i32,
-                            rating_value: entry.rating_value,
-                            merchant_name: entry.merchant_name.clone(),
-                            value: entry.value,
-                            price: entry.price,
-                            discount: entry.discount as i32,
-                        };
-                        results.push(title_info);
+                        results.push(entry);
                     }
                     Err(_) => return Err(error::ErrorInternalServerError("Error decoding message")),
                 }
@@ -114,6 +110,36 @@ async fn get_title_by_ids(state: web::Data<AppState>, ids: web::Path<String>) ->
     }
 }
 
+async fn get_title_by_ids_redis(state: web::Data<AppState>, ids: web::Path<String>) -> Result<HttpResponse, Error> {
+    let ids_vec: Vec<String> = ids.split(',').map(|s| s.to_string()).collect();
+    log::debug!("Get response for ids from Redis: {:?}", ids_vec);
+
+    let mut con = state.redis_con.lock().unwrap();
+    let mut results = Vec::new();
+    
+    for id in &ids_vec {
+        log::debug!("Get title for id: {}", id);
+        let title: Option<Vec<u8>> = con.get(id).await.map_err(|e| {
+            log::error!("Error getting title from Redis: {}", e);
+            error::ErrorInternalServerError("Error getting title from Redis")
+        })?;
+        if let Some(title) = title {
+            match response::TitleEntry::decode(&title[..]) {
+                Ok(entry) => {
+                    results.push(entry);
+                }
+                Err(_) => return Err(error::ErrorInternalServerError("Error decoding message from Redis")),
+            }
+        }
+    }
+
+    if results.is_empty() {
+        Ok(HttpResponse::NotFound().body("No valid IDs found in Redis"))
+    } else {
+        Ok(HttpResponse::Ok().json(results))
+    }
+}
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     env::set_var("RUST_LOG", "debug");
@@ -123,19 +149,31 @@ async fn main() -> std::io::Result<()> {
     let file_path = "/Users/zphilipp/git/research/titleserver/proto/output.dat";
     let data_file = File::open(file_path)?;
 
+
+    let redis_url = "redis://127.0.0.1:6379";
+    let client = redis::Client::open(redis_url).map_err(|e| {
+        log::error!("Error connecting to Redis: {}", e);
+        std::io::Error::new(std::io::ErrorKind::Other, "Error connecting to Redis")
+    })?;
+    let con = client.get_async_connection().await.map_err(|e| {
+        log::error!("Error getting Redis connection: {}", e);
+        std::io::Error::new(std::io::ErrorKind::Other, "Error getting Redis connection")
+    })?;
+    
     let data = web::Data::new(AppState {
         index_map: Mutex::new(HashMap::new()),
         data_file: Mutex::new(data_file),
+        redis_con: Mutex::new(con),
     });
 
     reload_index(data.clone()).await.unwrap();
 
     HttpServer::new(move || {
         App::new()
-            .app_data(web::Data::new(db_connection.clone()))
             .app_data(data.clone())
             //.route("/reload_index", web::get().to(reload_index))
             .route("/get_title_by_ids/{id}", web::get().to(get_title_by_ids))
+            .route("/get_title_by_ids_redis/{id}", web::get().to(get_title_by_ids_redis))
     })
     .bind("127.0.0.1:8081")?
     .run()
