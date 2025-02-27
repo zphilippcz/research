@@ -1,8 +1,16 @@
 /**
  *
- * curl -v -H 'Content-Type: application/json' -d \
-      '{"ids":["tj-nail-spa-lounge","safas-salon-day-spa-6","donelle-lamar-co-llc","zhuzhu-beauty-and-nail-salon","studio-anew-6","sea-spa-nails-salon","beach-club-salon-and-spa-6","ivona-tint-salon-and-spa-1","hello-beyoutiful-spa-10","paradise-day-spa-2-5"]}' -X POST http://127.0.0.1:8081/
-*/
+ * This is a simple server that reads a binary file containing a list of TitleEntry messages
+ * and serves them via HTTP. The server reads the index file and the data file on startup.
+ * The index file contains a list of IDs and their position and length in the data file.
+ * The data file contains the serialized TitleEntry messages.
+ *
+ * The server provides two endpoints:
+ * - /get_title_by_ids/{id} - This endpoint reads the data file and returns the TitleEntry messages
+ *   for the given IDs. The IDs are comma-separated.
+ * - /get_title_by_ids_redis/{id} - This endpoint reads the TitleEntry messages from Redis for the given IDs.
+ *   The IDs are comma-separated.
+ */
 use actix_web::{web, App, HttpServer, Result, HttpResponse, Error, error};
 use serde::Deserialize;
 use serde::Serialize;
