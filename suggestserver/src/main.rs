@@ -50,7 +50,7 @@ struct Config {
 
 struct AppState {
     es_client: Elasticsearch,
-    idf_index: Mutex<HashMap<u32, (u32, u32)>>,
+    idf_index: Mutex<HashMap<String, (u32, u32)>>,
     idf_data: Mutex<StdFile>,
 }
 
@@ -73,22 +73,22 @@ type CsvRecords = Vec<CsvRecord>;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Document {
-    id: i64,
+    id: String,
     document: String,
     category: String,
-    score: f64,
+    elastic_score: f64,
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone)]
 struct DocumentSearch {
-    id:  i64,
-    score: f64,
+    id:  String,
+    elastic_score: f64,
     document: String,
     idf: idf::IdfEntry,
     features: Fetureres,
 }
 
-#[derive(Debug, Deserialize, Serialize, Clone)]
+#[derive(Debug, Deserialize, Serialize, Clone, Default)]
 struct Fetureres {
     documentOccurences: i32,
 
@@ -184,10 +184,10 @@ fn features_calculation(ids: &mut Vec<DocumentSearch>, query: Vec<String>) -> Re
         }
 
         let count = query_set.iter().filter(|&&q| doc.document.contains(q)).count();
-        println!("Document ID: {}, Query occurrences: {}", doc.id, count);
-        println!("Document ID: {}, Unigram total weight: {}, Unigram count: {}", doc.id, unigram_weight, unigram_count);
-        println!("Document ID: {}, Bigram total weight: {}, Bigram count: {}", doc.id, bigram_weight, bigram_count);
-        println!("Document ID: {}, Trigram total weight: {}, Trigram count: {}", doc.id, trigram_weight, trigram_count);
+        //println!("Document ID: {}, Query occurrences: {}", doc.id, count);
+        //println!("Document ID: {}, Unigram total weight: {}, Unigram count: {}", doc.id, unigram_weight, unigram_count);
+        //println!("Document ID: {}, Bigram total weight: {}, Bigram count: {}", doc.id, bigram_weight, bigram_count);
+        //println!("Document ID: {}, Trigram total weight: {}, Trigram count: {}", doc.id, trigram_weight, trigram_count);
 
         let features = Fetureres {
             documentOccurences: count as i32,
@@ -208,7 +208,10 @@ async fn search(
     query_param: web::Query<SuggestQuery>,
     app_state: web::Data<AppState>,
 ) -> HttpResponse {
+
+    // query parameter can be sauna,spa, month spa session,spa sessions unlimited
     let query = query_param.q.clone().unwrap_or_default();
+    let query_vec: Vec<String> = query.split(',').map(|s| s.to_string()).collect();
 
     if query.is_empty() {
         return HttpResponse::Ok().json(serde_json::json!({
@@ -216,7 +219,8 @@ async fn search(
         }));
     }
 
-    match query_elasticsearch(&app_state.es_client, &query).await {
+    log::debug!("Query: {}", query);
+    match query_elasticsearch(&app_state.es_client, &query_vec[0]).await {
         Ok(documents) => {
             let idf_index = app_state.idf_index.lock().unwrap();
             let mut idf_data = app_state.idf_data.lock().unwrap();
@@ -224,13 +228,13 @@ async fn search(
 
             for doc in &documents {
                 //log::debug!("doc.id: {}", doc.id);
-                if let Some(&(position, length)) = idf_index.get(&(doc.id as u32)) {
+                if let Some(&(position, length)) = idf_index.get(&doc.id) {
                     //log::debug!("position: {} length: {}", position, length);
                     let mut buffer = vec![0; length as usize];
                     if idf_data.seek(std::io::SeekFrom::Start(position as u64)).is_ok() {
                         if idf_data.read_exact(&mut buffer).is_ok() {
                             if let Ok(idf_entry) = idf::IdfEntry::decode(&*buffer) {
-                                results.insert(doc.id, idf_entry);
+                                results.insert(doc.id.clone(), idf_entry);
                             }
                         }
                     }
@@ -241,28 +245,15 @@ async fn search(
             let mut ids: Vec<DocumentSearch> = documents.iter()
                 .take(limit)
                 .map(|doc| DocumentSearch {
-                    id: doc.id,
-                    score: doc.score,
+                    id: doc.id.clone(),
+                    elastic_score: doc.elastic_score,
                     document: doc.document.clone(),
-                    idf: results.get(&(doc.id as i64)).cloned().unwrap_or_default(),
-                    features: Fetureres {
-                        documentOccurences: 0,
-                        unigramOcurrency: 0,
-                        unigramWeight: 0.0,
-                        bigramOccurences: 0,
-                        bigramWeight: 0.0,
-                        trigramOccurences: 0,
-                        trigramWeight: 0.0,
-                    }
+                    idf: results.get(&doc.id).cloned().unwrap_or_default(),
+                    features: Default::default()
                 })
                 .collect();
-            
-            let query_vect = vec![query.clone()];
-            let mut query_vect = vec![query.clone()];
-            query_vect.push("month spa".to_string());
-
-
-            features_calculation(&mut ids, query_vect).unwrap();
+            log::debug!("Calculating features for {} documents", ids.len());
+            features_calculation(&mut ids, query_vec).unwrap();
 
             let response = serde_json::json!({
                 "ids": ids,
@@ -279,19 +270,19 @@ async fn query_elasticsearch(
 ) -> Result<Vec<Document>, Box<dyn std::error::Error>> {
 
     let index_name = "deals";
+    log::debug!("Query: {}", query);
 
     let search_query = serde_json::json!({
-        //"_source": ["id", "document", "category", "auxiliary_data", "embeddings"],
-        "_source": ["id", "document", "category"],
+        "_source": ["deal_uuid", "document", "category"],
         "track_scores": true,
         "query": {
             "bool": {
                 "should": [
-                    { "match": { "document": { "query": query, "boost": 1 } } },
+                    { "match": { "document": { "query": query } } },
                 ]
             }
         },
-        "size": 1000
+        "size": 10000
     });
 
     let response = client
@@ -308,10 +299,10 @@ async fn query_elasticsearch(
             if let Some(source) = hit["_source"].as_object() {
                 let document = source.get("document").and_then(|v| v.as_str()).unwrap_or("").chars().take(80).collect();
                 let category = source.get("category").and_then(|v| v.as_str()).unwrap_or("").trim().to_string();
-                let id = source.get("id").and_then(|v| v.as_i64()).unwrap_or(0);
-                let score = hit.get("_score").and_then(|v| v.as_f64()).unwrap_or(0.0);
+                let id = source.get("deal_uuid").and_then(|v| v.as_str()).unwrap_or("").to_string();
+                let elastic_score = hit.get("_score").and_then(|v| v.as_f64()).unwrap_or(0.0);
                 documents.push(Document {
-                    id, document, category, score});
+                    id, document, category, elastic_score});
             }
         }
     }
@@ -550,14 +541,19 @@ async fn reload_idf_index(state: web::Data<AppState>) -> Result<(), Box<dyn std:
     
     let chunk_size = std::mem::size_of::<(u32, u32)>();
 
-    let mut buffer = [0u8; 12]; // Buffer for three 32-bit values
+    let mut buffer = [0u8; 44]; // Buffer for 36B string and two 32-bit values
+    //let mut buffer = [0u8; 12]; // Buffer for three 32-bit values
     while let Ok(read_bytes) = file.read(&mut buffer) {
         if read_bytes < chunk_size {
             break; // If we read less than 8 bytes, we end
         }
-        let id = u32::from_le_bytes([buffer[0], buffer[1], buffer[2], buffer[3]]);
-        let position = u32::from_le_bytes([buffer[4], buffer[5], buffer[6], buffer[7]]);
-        let length = u32::from_le_bytes([buffer[8], buffer[9], buffer[10], buffer[11]]);
+        let id = String::from_utf8_lossy(&buffer[..36]).to_string();
+        let position = u32::from_le_bytes([buffer[36], buffer[37], buffer[38], buffer[39]]);
+        let length = u32::from_le_bytes([buffer[40], buffer[41], buffer[42], buffer[43]]);
+
+        //let id = u32::from_le_bytes([buffer[0], buffer[1], buffer[2], buffer[3]]);
+        //let position = u32::from_le_bytes([buffer[4], buffer[5], buffer[6], buffer[7]]);
+        //let length = u32::from_le_bytes([buffer[8], buffer[9], buffer[10], buffer[11]]);
         let info = (position, length);
         
         let mut index_map = state.idf_index.lock().unwrap();

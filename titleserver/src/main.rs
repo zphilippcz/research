@@ -171,10 +171,8 @@ async fn main() -> std::io::Result<()> {
     env::set_var("RUST_LOG", "debug");
     env_logger::init();
 
-
     let file_path = "/Users/zphilipp/git/research/titleserver/proto/output.dat";
     let data_file = File::open(file_path)?;
-
 
     let redis_url = "redis://127.0.0.1:6379";
     let client = redis::Client::open(redis_url).map_err(|e| {
