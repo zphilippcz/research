@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+message NGram {
+  string word = 1;
+  float weight = 2;
+}
+
+message IdfEntry {
+  string deal_uuid = 1;
+  repeated NGram unigram = 2;
+  repeated NGram bigram = 3;
+  repeated NGram trigram = 4;
+}
