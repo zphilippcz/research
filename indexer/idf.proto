@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package idf;
+
 message NGram {
   string word = 1;
   float weight = 2;
