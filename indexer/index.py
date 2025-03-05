@@ -62,7 +62,7 @@ with tqdm(total=len(documents), desc="indexing") as pbar:
         text = clean_text(text)
         deal_uuid = deal_uuid.encode('utf-8')
         words = text.lower().split()
-        print(f"Words: {words}")
+        #print(f"Words: {words}")
         words = [fnv1a_64(word.encode('utf-8')) for word in words]
         #print(f"Words: {words}")
         word_count = {word: words.count(word) for word in set(words)}

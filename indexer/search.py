@@ -48,12 +48,12 @@ if documents is not None:
         
 
         # Přečtení hodnoty z Redis pro daný UUID
-        #value = r.get(uuid)
-        print(f"Deal UUID: {uuid}, Count: {count}")
-        #if value:
-        #    print(f"Deal UUID: {uuid}, Count: {count}, Redis Value: {value}")
-        #else:
-        #    print(f"Deal UUID: {uuid}, Count: {count}, Redis Value: Not found")
+        value = r.get(uuid)
+        #print(f"Deal UUID: {uuid}, Count: {count}")
+        if value:
+            print(f"Deal UUID: {uuid}, Count: {count}, Redis Value: {value}")
+        else:
+            print(f"Deal UUID: {uuid}, Count: {count}, Redis Value: Not found")
         #print(f"Deal UUID: {uuid}, Count: {count}")
 else:
     print("Slovo nenalezeno.")

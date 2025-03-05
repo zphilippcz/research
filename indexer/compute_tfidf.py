@@ -95,7 +95,7 @@ def compute_tfidf():
             sql_query = """
                 INSERT OR REPLACE INTO idf (deal_uuid, unigram) VALUES (?, ?)
                 ON CONFLICT(deal_uuid) DO UPDATE SET unigram = ?"""
-            ngram = json.dumps(value)
+            ngram = json.dumps(value[:15])
             cursor.execute(sql_query, (id, ngram, ngram))
             conn.commit()
             pbar.update(1)
@@ -105,7 +105,7 @@ def compute_tfidf():
             sql_query = """
                 INSERT OR REPLACE INTO idf (deal_uuid, bigram) VALUES (?, ?)
                 ON CONFLICT(deal_uuid) DO UPDATE SET bigram = ?"""
-            ngram = json.dumps(value)
+            ngram = json.dumps(value[:15])
             cursor.execute(sql_query, (id, ngram, ngram))
             conn.commit()
             pbar.update(1)
@@ -115,7 +115,7 @@ def compute_tfidf():
             sql_query = """
                 INSERT INTO idf (deal_uuid, trigram) VALUES (?, ?)
                 ON CONFLICT(deal_uuid) DO UPDATE SET trigram = ?"""
-            ngram = json.dumps(value)
+            ngram = json.dumps(value[:15])
             cursor.execute(sql_query, (id, ngram, ngram))
             conn.commit()
             pbar.update(1)
