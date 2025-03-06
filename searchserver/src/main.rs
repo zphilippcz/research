@@ -31,22 +31,16 @@ struct Config {
     server: ServerConfig,
 }
 
-struct SearchData {
+struct IndexData {
     file: String,
     index: RwLock<HashMap<u64, (u32, u32)>>,
     data: RwLock<File>,
 }
 
-struct Data {
-    file: String,
-    index: RwLock<HashMap<String, (u32, u32)>>,
-    data: RwLock<File>,
-}
-
 struct AppState {
-    redemtion: Data,
-    idf: Data,
-    search: SearchData,
+    idf: IndexData,
+    search: IndexData,
+    redemtion: IndexData,
 }
 
 #[derive(Debug, Deserialize)]
@@ -283,7 +277,7 @@ fn load_config() -> Result<Config, Box<dyn Error>> {
     settings.try_deserialize().map_err(|e| Box::new(e) as Box<dyn Error>)
 }
 
-async fn load_index_idf(source: &Data) -> Result<(), Box<dyn std::error::Error>> {
+async fn load_index_idf(source: &IndexData) -> Result<(), Box<dyn std::error::Error>> {
     log::debug!("Loading index from file: {}", source.file);
 
     let file_path = source.file.clone();
@@ -314,7 +308,41 @@ async fn load_index_idf(source: &Data) -> Result<(), Box<dyn std::error::Error>>
     Ok(())
 }
 
-async fn load_index_search(source: &SearchData) -> Result<(), Box<dyn std::error::Error>> {
+async fn load_index_search(source: &IndexData) -> Result<(), Box<dyn std::error::Error>> {
+    log::debug!("Loading index from file: {}", source.file);
+
+    let file_path = source.file.clone();
+    let mut file = File::open(file_path).map_err(|err| {
+        log::error!("Error opening index file: {}", err);
+        Box::new(err) as Box<dyn std::error::Error>
+    })?;
+    log::debug!("Index file opened successfully");
+    
+    const CHUNK_SIZE: usize = std::mem::size_of::<(u64, u32, u32)>();
+
+    let mut buffer = vec![0u8; CHUNK_SIZE];
+    while let Ok(read_bytes) = file.read(&mut buffer) {
+        if read_bytes < CHUNK_SIZE {
+            break;
+        }
+        let kw = u64::from_le_bytes([
+            buffer[0], buffer[1], buffer[2], buffer[3],
+            buffer[4], buffer[5], buffer[6], buffer[7]
+        ]);
+        let position = u32::from_le_bytes([buffer[8], buffer[9], buffer[10], buffer[11]]);
+        let length = u32::from_le_bytes([buffer[12], buffer[13], buffer[14], buffer[15]]);
+
+        let info = (position, length);
+        
+        let mut index_map = source.index.write();
+        index_map.insert(kw, info);
+    }
+    log::debug!("Index file successfully read.");
+
+    Ok(())
+}
+
+async fn load_index_redemtion(source: &IndexData) -> Result<(), Box<dyn std::error::Error>> {
     log::debug!("Loading index from file: {}", source.file);
 
     let file_path = source.file.clone();
@@ -357,17 +385,17 @@ async fn main() -> std::io::Result<()> {
     log::debug!("Server address: {}", config.server.address);
 
     let app_state = web::Data::new(AppState {
-        redemtion: Data {
+        redemtion: IndexData {
             file: "/Users/zphilipp/git/research/indexer/redemption.index".to_string(),
             index: RwLock::new(HashMap::new()),
             data: RwLock::new(File::open("/Users/zphilipp/git/research/indexer/redemption.dat")?),
         },
-        idf: Data {
+        idf: IndexData {
             file: "/Users/zphilipp/git/research/indexer/idf.index".to_string(),
             index: RwLock::new(HashMap::new()),
             data: RwLock::new(File::open("/Users/zphilipp/git/research/indexer/idf.dat")?),
         },
-        search: SearchData {
+        search: IndexData {
             file: "/Users/zphilipp/git/research/indexer/search.index".to_string(),
             index: RwLock::new(HashMap::new()),
             data: RwLock::new(File::open("/Users/zphilipp/git/research/indexer/search.dat")?),
@@ -375,6 +403,7 @@ async fn main() -> std::io::Result<()> {
     });
     load_index_idf(&app_state.idf).await.unwrap();
     load_index_search(&app_state.search).await.unwrap();
+    load_index_redemtion(&app_state.redemtion).await.unwrap();
 
     HttpServer::new(move || {
         let app_state_clone = app_state.clone();
