@@ -31,16 +31,27 @@ struct Config {
     server: ServerConfig,
 }
 
-struct IndexData {
+struct SearchData {
     file: String,
     index: RwLock<HashMap<u64, (u32, u32)>>,
     data: RwLock<File>,
 }
 
+struct Data {
+    file: String,
+    index: RwLock<HashMap<String, (u32, u32)>>,
+    data: RwLock<File>,
+}
+
+struct RedemptionData {
+    file: String,
+    index: RwLock<HashMap<String, (f32, f32)>>,
+}
+
 struct AppState {
-    idf: IndexData,
-    search: IndexData,
-    redemtion: IndexData,
+    redemtion: RedemptionData,
+    idf: Data,
+    search: SearchData,
 }
 
 #[derive(Debug, Deserialize)]
@@ -48,6 +59,8 @@ struct SearchQuery {
     q: String, 
     lat: Option<f64>,  // Latitude
     lon: Option<f64>,  // Longitude
+    start: Option<i32>, // Start index
+    end: Option<i32>, // End index
     limit: Option<i32>, // Limit the number of results
 }
 
@@ -70,7 +83,7 @@ struct Results {
 struct SearchResults {
     id: String,
     features: Features,
-    
+    distance: f32,
 }
 
 #[derive(Debug, Deserialize, Serialize, Clone, Default)]
@@ -81,6 +94,7 @@ struct Features {
     bigram_weight: f32,
     trigram_occurences: i32,
     trigram_weight: f32,
+    distance: f32,
 }
 
 fn fnv1a_64(data: &[u8]) -> u64 {
@@ -96,8 +110,47 @@ fn fnv1a_64(data: &[u8]) -> u64 {
     hash_value
 }
 
-fn features_calculation(results: &mut Vec<Results>, unigrams: &[String], bigrams: &[String], trigrams: &[String]) {
+fn haversine(lat1: f32, lon1: f32, lat2: f32, lon2: f32) -> f32 {
+    // degree to radian
+    //log::debug!("lat1: {}, lon1: {}, lat2 {}, lon2 {} ", lat1, lon1, lat2, lon2);
+
+    let lat1 = lat1.to_radians();
+    let lon1 = lon1.to_radians();
+
+    let lat2 = lat2.to_radians();
+    let lon2 = lon2.to_radians();
+
+    // differences
+    let dlat = lat2 - lat1;
+    let dlon = lon2 - lon1;
+
+    //log::debug!("dlat: {}, dlon: {}", dlat, dlon);
+    //log::debug!("lat1: {}, lon1: {}", lat1, lon1);
+    //log::debug!("lat2: {}, lon2: {}", lat2, lon2);
+
+    // Haversine formula
+    let a = (dlat / 2.0).sin().powi(2)
+            + lat1.cos() * lat2.cos() * (dlon / 2.0).sin().powi(2);
+    let c = 2.0 * a.sqrt().atan2((1.0 - a).sqrt());
+
+    // Earth radius in km
+    let r = 6371.0;
+    r * c
+}
+
+fn features_calculation(
+    app_state: &web::Data<AppState>,
+    results: &mut Vec<Results>,
+    unigrams: &[String], bigrams: &[String], trigrams: &[String],
+    lat: f32, lon: f32) {
+
     results.par_iter_mut().for_each(|result| {
+        let mut distance = 0.0;
+
+        if let Some(&(lat2, lon2)) = app_state.redemtion.index.read().get(&result.id) {
+            distance = haversine(lat2, lon2, lat, lon);
+        }
+
         let mut unigram_weight = 0.0;
         let mut unigram_count = 0;
         let mut bigram_weight = 0.0;
@@ -133,6 +186,7 @@ fn features_calculation(results: &mut Vec<Results>, unigrams: &[String], bigrams
             bigram_weight: bigram_weight,
             trigram_occurences: trigram_count,
             trigram_weight: trigram_weight,
+            distance: distance,
         };
     });
 }
@@ -175,6 +229,9 @@ fn get_search_results(app_state: &web::Data<AppState>, hash: u64) -> Result<Vec<
     } else {
         println!("Hash: {} not found in index map", hash);
     }
+
+
+    
     Ok(results)
 }
 
@@ -206,9 +263,16 @@ async fn search(
 ) -> HttpResponse {
     let start_time = Instant::now();
 
-    let query = &query_param.q;
+    let query = &query_param.q.to_lowercase();
+    let lat = query_param.lat.unwrap_or(0.0) as f32;
+    let lon = query_param.lon.unwrap_or(0.0) as f32;
 
-    log::debug!("Query: {:?}", query);
+    let start = query_param.start.unwrap_or(0) as i32;
+    let limit = query_param.limit.unwrap_or(20) as i32;
+    let end = query_param.end.unwrap_or(start + limit) as i32;
+
+    log::debug!("Query: {}, Lat: {}, Lon: {}, Limit: {}", query, lat, lon, limit);
+
     let (unigrams, bigrams, trigrams) = generate_ngrams(query);
 
     log::debug!("Unigrams: {:?}", unigrams);
@@ -230,7 +294,7 @@ async fn search(
         }
     }
     
-    features_calculation(&mut results, &unigrams, &bigrams, &trigrams);
+    features_calculation(&app_state, &mut results, &unigrams, &bigrams, &trigrams, lat, lon);
 
     results.par_sort_unstable_by(|a, b| {
         let order_a = 
@@ -248,10 +312,14 @@ async fn search(
         order_b.partial_cmp(&order_a).unwrap_or(std::cmp::Ordering::Equal)
     });
 
-    let search_results: Vec<SearchResults> = results.iter().take(20).map(|result| {
+    let search_results: Vec<SearchResults> = results.iter()
+        .skip(start as usize)
+        .take(end as usize - start as usize)
+        .map(|result| {
         SearchResults {
             id: result.id.clone(),
             features: result.features.clone(),
+            distance: result.features.distance,
         }
     }).collect();
 
@@ -277,7 +345,7 @@ fn load_config() -> Result<Config, Box<dyn Error>> {
     settings.try_deserialize().map_err(|e| Box::new(e) as Box<dyn Error>)
 }
 
-async fn load_index_idf(source: &IndexData) -> Result<(), Box<dyn std::error::Error>> {
+async fn load_index_idf(source: &Data) -> Result<(), Box<dyn std::error::Error>> {
     log::debug!("Loading index from file: {}", source.file);
 
     let file_path = source.file.clone();
@@ -308,7 +376,7 @@ async fn load_index_idf(source: &IndexData) -> Result<(), Box<dyn std::error::Er
     Ok(())
 }
 
-async fn load_index_search(source: &IndexData) -> Result<(), Box<dyn std::error::Error>> {
+async fn load_index_redemption(source: &RedemptionData) -> Result<(), Box<dyn std::error::Error>> {
     log::debug!("Loading index from file: {}", source.file);
 
     let file_path = source.file.clone();
@@ -318,31 +386,28 @@ async fn load_index_search(source: &IndexData) -> Result<(), Box<dyn std::error:
     })?;
     log::debug!("Index file opened successfully");
     
-    const CHUNK_SIZE: usize = std::mem::size_of::<(u64, u32, u32)>();
+    const CHUNK_SIZE: usize = 44;
 
     let mut buffer = vec![0u8; CHUNK_SIZE];
     while let Ok(read_bytes) = file.read(&mut buffer) {
         if read_bytes < CHUNK_SIZE {
             break;
         }
-        let kw = u64::from_le_bytes([
-            buffer[0], buffer[1], buffer[2], buffer[3],
-            buffer[4], buffer[5], buffer[6], buffer[7]
-        ]);
-        let position = u32::from_le_bytes([buffer[8], buffer[9], buffer[10], buffer[11]]);
-        let length = u32::from_le_bytes([buffer[12], buffer[13], buffer[14], buffer[15]]);
+        let id = String::from_utf8_lossy(&buffer[..36]).to_string();
+        let lat = f32::from_le_bytes([buffer[36], buffer[37], buffer[38], buffer[39]]);
+        let lon = f32::from_le_bytes([buffer[40], buffer[41], buffer[42], buffer[43]]);
 
-        let info = (position, length);
-        
+        let info = (lat, lon);
+        //log::debug!("ID: {}, Lat: {}, Lon: {}", id, lat, lon);
         let mut index_map = source.index.write();
-        index_map.insert(kw, info);
+        index_map.insert(id, info);
     }
     log::debug!("Index file successfully read.");
 
     Ok(())
 }
 
-async fn load_index_redemtion(source: &IndexData) -> Result<(), Box<dyn std::error::Error>> {
+async fn load_index_search(source: &SearchData) -> Result<(), Box<dyn std::error::Error>> {
     log::debug!("Loading index from file: {}", source.file);
 
     let file_path = source.file.clone();
@@ -385,17 +450,17 @@ async fn main() -> std::io::Result<()> {
     log::debug!("Server address: {}", config.server.address);
 
     let app_state = web::Data::new(AppState {
-        redemtion: IndexData {
+        // redemtion location data in radians
+        redemtion: RedemptionData {
             file: "/Users/zphilipp/git/research/indexer/redemption.index".to_string(),
             index: RwLock::new(HashMap::new()),
-            data: RwLock::new(File::open("/Users/zphilipp/git/research/indexer/redemption.dat")?),
         },
-        idf: IndexData {
+        idf: Data {
             file: "/Users/zphilipp/git/research/indexer/idf.index".to_string(),
             index: RwLock::new(HashMap::new()),
             data: RwLock::new(File::open("/Users/zphilipp/git/research/indexer/idf.dat")?),
         },
-        search: IndexData {
+        search: SearchData {
             file: "/Users/zphilipp/git/research/indexer/search.index".to_string(),
             index: RwLock::new(HashMap::new()),
             data: RwLock::new(File::open("/Users/zphilipp/git/research/indexer/search.dat")?),
@@ -403,7 +468,7 @@ async fn main() -> std::io::Result<()> {
     });
     load_index_idf(&app_state.idf).await.unwrap();
     load_index_search(&app_state.search).await.unwrap();
-    load_index_redemtion(&app_state.redemtion).await.unwrap();
+    load_index_redemption(&app_state.redemtion).await.unwrap();
 
     HttpServer::new(move || {
         let app_state_clone = app_state.clone();

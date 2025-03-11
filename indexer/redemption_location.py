@@ -17,26 +17,20 @@ def compute_tfidf():
     cursor.execute(sql_query)
     redemptions = cursor.fetchall()
     with tqdm(total=len(redemptions)) as pbar:
-        with open('redemption.dat', 'wb') as data_file, open('redemption.index', 'wb') as index_file:
+        with open('redemption.index', 'wb') as index_file:
             for redemption in redemptions:
 
                 if redemption[1] is None or redemption[2] is None:
                     continue
 
                 deal_uuid = redemption[0]
-                lat = float(redemption[1])
-                lon = float(redemption[2])
-                #print(f"Deal UUID: {deal_uuid}, Lat: {lat}, Lon: {lon}")
-
-                # Write lat and lon to data file
-                position = data_file.tell()                
-                data_file.write(struct.pack('<ff', lat, lon))
+                lat = float(redemption[1])# * (3.141592653589793 / 180.0)
+                lon = float(redemption[2])# * (3.141592653589793 / 180.0)
 
                 # Write deal_uuid, position, and length to index file
                 deal_uuid_bytes = deal_uuid.encode('utf-8')
 
-                list_length = struct.calcsize('ff')
-                index_file.write(struct.pack('36sII', deal_uuid_bytes, position, list_length))
+                index_file.write(struct.pack('36sff', deal_uuid_bytes, lat, lon))
                 
                 pbar.update(1)
 

@@ -60,6 +60,24 @@
             font-size: 16px;
         }
 
+        .lat {
+            margin: 0;
+            padding: 9px;
+            width: 80px;
+            height: 10px;
+            font-family: system-ui;
+            font-size: 16px;
+        }
+
+        .lon {
+            margin: 0;
+            padding: 9px;
+            width: 80px;
+            height: 10px;
+            font-family: system-ui;
+            font-size: 16px;
+        }
+
         .suggestion-item {
             padding-top: 5px;
             padding-left: 10px;
@@ -122,6 +140,16 @@
             line-height: 1.25rem;
         }
 
+        .item-distance {
+            padding: 0px;
+            margin: 0px;
+            text-align: left;
+            font-size: .875rem;
+            line-height: 1.25rem;
+            color: green;
+            font-weight: bold;
+        }
+
         .result-item img {
             max-width: 100%;
             height: auto;
@@ -136,7 +164,9 @@
         </svg>
     </div>
     <div class="page">
-        <input class="searchbox" type="text" id="search" placeholder="..." autocomplete="off">
+        <input class="searchbox" type="text" id="search" value="old time photo" autocomplete="on">
+        Lat: <input class="lat" type="text" id="lat" value="35.7839964" autocomplete="off">
+        Lon: <input class="lon" type="text" id="lon" value="-83.5503959" autocomplete="off">
         <div class="box">
             <div id="suggestions"></div>
         </div>
@@ -180,7 +210,7 @@
                         resultsContainer.remove();
                     }
 
-                    fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=21')  
+                    fetch('/search?q=' + searchInput.value + '&lat=' + document.getElementById('lat').value + '&lon=' + document.getElementById('lon').value + '&limit=21')
                         .then(response => response.json())
                         .then(data => {
                             renderResult(data);
@@ -199,7 +229,7 @@
                         resultsContainer.remove();
                     }
 
-                    fetch('/search?q=' + searchInput.value + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude + '&limit=21')  
+                    fetch('/search?q=' + searchInput.value + '&lat=' + document.getElementById('lat').value + '&lon=' + document.getElementById('lon').value + '&limit=21')  
                         .then(response => response.json())
                         .then(data => {
                             renderResult(data);
@@ -208,7 +238,7 @@
         });
 
         searchInput.addEventListener('click', function () {
-            fetch('/top?lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude)
+            fetch('/top?lat=' + document.getElementById('lat').value + '&lon=' + document.getElementById('lon').value)
                 .then(response => response.json())
                 .then(data => {
                     suggestions = data;
@@ -234,14 +264,16 @@
 
         };
         
-        const renderResult = (data) => {
-            console.log(data);
-            removeSearch
-            const ids = data.ids.map(item => item.id).join(',');
+        const renderResult = (searchdata) => {
+            //removeSearch();
+            console.log(searchdata);
+
+            const ids = searchdata.results.map(item => item.id).join(',');
             if (ids.length === 0) {
                 return;
             }
-            fetch(`/get_title_by_ids/${ids}`, {
+
+            fetch(`/get_title_by_ids_redis/${ids}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -250,11 +282,13 @@
             })
             .then(response => response.json())
             .then(data => {
-
+                console.log(searchdata);
+                console.log(data);
                 const resultsContainer = document.createElement('div');
                 resultsContainer.className = 'results-container';
                 resultsContainer.id = 'resultscontainer';
 
+                let i = 0;
                 data.forEach(item => {
                     const resultItem = document.createElement('div');
                     resultItem.className = 'result-item';
@@ -264,20 +298,23 @@
                     img.alt = item.title_general;
                     resultItem.appendChild(img);
 
-
                     const merchant = document.createElement('p');
                     merchant.textContent = item.merchant_name + ' [' + item.id + ']';
                     merchant.className = 'item-merchant';
                     resultItem.appendChild(merchant);
-
 
                     const title_general = document.createElement('p');
                     title_general.textContent = item.title_general;
                     title_general.className = 'item-title_general';
                     resultItem.appendChild(title_general);
 
+                    const title_distance = document.createElement('p');
+                    title_distance.textContent = ' [' + searchdata.results[i].distance + ' km]';
+                    title_distance.className = 'item-distance';
+                    resultItem.appendChild(title_distance);
 
                     resultsContainer.appendChild(resultItem);
+                    i++;
                 });
 
                 document.body.appendChild(resultsContainer);
