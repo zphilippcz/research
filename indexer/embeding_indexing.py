@@ -10,45 +10,15 @@ def main():
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
 
-    with open('idf.dat', 'wb') as data_file, open('idf.index', 'wb') as index_file:
+    with open('embeddings.index', 'wb') as index_file:
         cursor.execute("""
             SELECT
-                deal_id,
-                unigram, bigram, trigram
-            FROM idf """)
-        
-        embedings = model.encode(document)
+                deal_id, embedings
+            FROM embedings""")
 
         for row in cursor.fetchall():
-            my_data = IdfEntry()
-            my_data.deal_id = row[0]
-            print (row)
-            if row[1] is not None:
-                for item in json.loads(row[1]):
-                    ngram = my_data.unigram.add()
-                    ngram.word = item[0]
-                    ngram.weight = item[1]
-
-            if row[2] is not None:
-                for item in json.loads(row[2]):
-                    ngram = my_data.bigram.add()
-                    ngram.word = item[0]
-                    ngram.weight = item[1]
-
-            if row[3] is not None:
-                for item in json.loads(row[3]):
-                    ngram = my_data.trigram.add()
-                    ngram.word = item[0]
-                    ngram.weight = item[1]
-
-            serialized_data = my_data.SerializeToString()
-            serialized_length = len(serialized_data)
-
-            position = data_file.tell()
-            data_file.write(serialized_data)
-
-            # Pack as (id, position, length)
-            index_entry = struct.pack('<III', my_data.deal_id, position, serialized_length)
+            embedings = json.loads(row[1])
+            index_entry = struct.pack('<36s384d', row[0].encode('utf-8'), *embedings)
             index_file.write(index_entry)
 
     cursor.close()

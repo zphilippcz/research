@@ -37,7 +37,7 @@ cursor.execute("""
     FROM deals d
         LEFT JOIN merchant m ON (d.merchant_id=m.id)
         LEFT JOIN options o ON (o.deal_id=d.id)
-      -- WHERE d.deal_uuid ='b1e49042-ac0d-4c55-afb5-f2d95ffe6308'
+      --WHERE d.deal_uuid ='00009bea-7546-431c-bee3-05650f9e7ff8' or d.deal_uuid ='0001d669-8196-4057-a776-bcc60e765bc5'
     GROUP BY d.deal_uuid
             --limit 2
 """)

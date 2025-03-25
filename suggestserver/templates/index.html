@@ -10,20 +10,22 @@
         html {
             margin: 0;
             padding: 0;
-            font-family: "__Nunito_Sans_280d78', sans-serif";
+            font-family: system-ui;
             background-color: #f0f0f0;
         }
+
         #suggestions {
             border: solid #000;
-            border-width: 0px 1px 1px 1px;
-            width: 509px;
-            height: auto;
+            border-width: 1px 1px 1px 1px;
+            width: 400px;
+            height: fit-content;
             margin: 0 auto;
             text-align: left;
             font-family: system-ui;
-            overflow: hidden;
             background-color: white;
-            z-index: 10;
+            margin-top: 24px;
+            margin-right: 5px;
+            overflow: hidden;
         }
 
         #suggestions img {
@@ -39,6 +41,7 @@
         .page {
             width: 100%;
             text-align: center;
+            display: inline-block;
         }
 
         .box {
@@ -48,7 +51,7 @@
 
         .logo {
             text-align: center;
-            margin-top: 120px;
+            margin-top: 20px;
         }
 
         .searchbox {
@@ -82,7 +85,7 @@
             padding-top: 5px;
             padding-left: 10px;
             padding-bottom: 5px;
-            width: 498px;
+            width: 400px;
             white-space: nowrap;
             display: inline-block;
         }
@@ -103,12 +106,22 @@
             background-color: #f0f0f0;
         }
 
+        .container {
+            width: 100%;
+            display: inline-flex;
+        }
+
+        .searchResults {
+            margin: auto;
+            width:75%;
+        }
+
         .results-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-top: 20px;
-            width: 380px;
+            width: 300px;
             z-index: 1;
         }
 
@@ -150,49 +163,378 @@
             font-weight: bold;
         }
 
+        .item-weights {
+            padding: 0px;
+            margin: 0px;
+            text-align: left;
+            font-size: .75rem;
+            line-height: 1.2rem;
+            color: rgb(21, 0, 248);
+            font-weight: bold;
+        }
+
         .result-item img {
             max-width: 100%;
             height: auto;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            width: 80px;
+            height: 10px;
+            font-family: system-ui;
+            font-size: 16px;
+            padding-top: 6px;
+            padding-bottom: 26px;
         }
     </style>
 </head>
 
 <body>
-    <div class="logo"></div>
+    <div class="logo">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" fill="none" viewBox="0 0 123 24" class="w-[90px] text-primary md:w-[123px]"></svg>
             <path fill="currentColor" d="M19.634 10.78c.027.433.055.865.055 1.271 0 2.162-.54 3.999-1.647 5.62a9.955 9.955 0 0 1-8.184 4.295c-2.836 0-5.24-1.053-7.13-3.053C.917 16.995 0 14.617 0 11.78c0-2.648 1.026-5.079 2.916-6.944C4.807 2.972 7.184 2 9.911 2c4.106 0 7.697 2.513 9.237 6.62H13.8c-1.188-1.242-2.431-1.864-3.943-1.864-2.808 0-5.023 2.296-5.023 5.051 0 3.053 2.376 5.403 5.023 5.403 1.783 0 3.376-.918 4.321-2.594H8.696V10.78h10.938Zm10.724 4.215 4.699 6.592H29.25L25.577 15.4v6.187l-4.699.001V2.378h6.374c2.025 0 3.565.135 4.861 1.055 1.702 1.188 2.593 2.999 2.593 5.376.001 3.107-1.62 5.429-4.348 6.186Zm-.406-6.078c0-1.594-.999-2.243-3.079-2.243h-1.296v4.566h.918c2.323 0 3.457-.595 3.457-2.323Zm88.326-6.539V13.05l-7.05-10.672h-4.239v19.21h4.698V10.89l7.157 10.699h4.132V2.378h-4.698Zm-15.181 2.487c1.945 1.918 2.972 4.377 2.972 6.998 0 2.755-.973 5.214-2.782 7.079-1.864 1.945-4.404 2.999-7.077 2.999-2.836 0-5.267-1.026-7.157-3.026-1.81-1.918-2.729-4.295-2.729-7.133 0-2.649 1.026-5.081 2.916-6.945 1.891-1.864 4.267-2.809 6.996-2.809 2.568 0 4.998 1 6.861 2.837Zm-1.89 6.97c0-2.81-2.242-5.052-4.943-5.052-2.863 0-5.105 2.242-5.105 5.052 0 3.026 2.404 5.349 5.052 5.349 2.754 0 4.996-2.216 4.996-5.349Zm-48.999-6.97c1.945 1.918 2.972 4.377 2.972 6.998 0 2.755-.973 5.214-2.782 7.079-1.864 1.945-4.403 2.999-7.077 2.999-2.836 0-5.267-1.026-7.157-3.026-1.81-1.918-2.728-4.295-2.728-7.133 0-2.649 1.026-5.081 2.917-6.945 1.891-1.864 4.267-2.809 6.996-2.809 2.565 0 4.995 1 6.859 2.837Zm-1.891 6.97c0-2.81-2.242-5.052-4.943-5.052-2.863 0-5.105 2.242-5.105 5.052 0 3.026 2.404 5.349 5.051 5.349 2.756 0 4.997-2.216 4.997-5.349Zm35.388-2.999c0 2.486-1.135 4.539-3.052 5.7-1.216.729-2.729.864-4.728.864h-1.351v6.187l-4.699.001V2.378h6.374c2.024 0 3.564.135 4.861 1.055 1.703 1.188 2.595 2.999 2.595 5.403Zm-4.755.081c0-1.594-.999-2.243-3.079-2.243h-1.242v4.566h.863c2.324 0 3.458-.595 3.458-2.323Zm-15.129 5.295c0 2.188-.783 3.269-2.431 3.269-1.593 0-2.269-1.108-2.269-3.269V2.378h-4.727v12.023c0 4.81 2.619 7.483 6.968 7.483 4.294 0 7.157-2.782 7.157-7.483V2.378h-4.698v11.834Z"></path>
         </svg>
     </div>
-    <div class="page">
-        <input class="searchbox" type="text" id="search" value="old time photo" autocomplete="on">
-        Lat: <input class="lat" type="text" id="lat" value="35.7839964" autocomplete="off">
-        Lon: <input class="lon" type="text" id="lon" value="-83.5503959" autocomplete="off">
+    <div class="page" id="page">
         <div class="box">
+            <input class="searchbox" type="text" id="search" value="old time photo" autocomplete="on">
+            Lat: <input class="lat" type="text" id="lat" value="35.7839964" autocomplete="off">
+            Lon: <input class="lon" type="text" id="lon" value="-83.5503959" autocomplete="off">
+            Divisions: <select>
+                <option value="abbotsford">abbotsford</option>
+                <option value="abilene">abilene</option>
+                <option value="akron-canton">akron-canton</option>
+                <option value="albany-capital-region">albany-capital-region</option>
+                <option value="albany-ga">albany-ga</option>
+                <option value="albuquerque">albuquerque</option>
+                <option value="allentown-reading">allentown-reading</option>
+                <option value="amarillo">amarillo</option>
+                <option value="anchorage">anchorage</option>
+                <option value="ann-arbor">ann-arbor</option>
+                <option value="appleton">appleton</option>
+                <option value="asheville">asheville</option>
+                <option value="athens-ga">athens-ga</option>
+                <option value="atlanta">atlanta</option>
+                <option value="augusta">augusta</option>
+                <option value="austin">austin</option>
+                <option value="bakersfield">bakersfield</option>
+                <option value="baltimore">baltimore</option>
+                <option value="barrie">barrie</option>
+                <option value="baton-rouge">baton-rouge</option>
+                <option value="beaumont">beaumont</option>
+                <option value="billings">billings</option>
+                <option value="birmingham">birmingham</option>
+                <option value="bloomington-in">bloomington-in</option>
+                <option value="boise">boise</option>
+                <option value="boston">boston</option>
+                <option value="buffalo">buffalo</option>
+                <option value="calgary">calgary</option>
+                <option value="cape-breton">cape-breton</option>
+                <option value="cedar-rapids-iowa-city">cedar-rapids-iowa-city</option>
+                <option value="central-jersey">central-jersey</option>
+                <option value="charleston">charleston</option>
+                <option value="charleston-wv">charleston-wv</option>
+                <option value="charlotte">charlotte</option>
+                <option value="chattanooga">chattanooga</option>
+                <option value="chicago">chicago</option>
+                <option value="cincinnati">cincinnati</option>
+                <option value="cleveland">cleveland</option>
+                <option value="colorado-springs">colorado-springs</option>
+                <option value="columbia">columbia</option>
+                <option value="columbia-mo">columbia-mo</option>
+                <option value="columbus">columbus</option>
+                <option value="columbus-ga">columbus-ga</option>
+                <option value="corpus-christi">corpus-christi</option>
+                <option value="dallas">dallas</option>
+                <option value="daytona-beach">daytona-beach</option>
+                <option value="denver">denver</option>
+                <option value="des-moines">des-moines</option>
+                <option value="detroit">detroit</option>
+                <option value="edmonton">edmonton</option>
+                <option value="el-paso">el-paso</option>
+                <option value="erie">erie</option>
+                <option value="eugene">eugene</option>
+                <option value="evansville">evansville</option>
+                <option value="everett">everett</option>
+                <option value="fairfield-county">fairfield-county</option>
+                <option value="fort-worth">fort worth</option>
+                <option value="fort-lauderdale">fort-lauderdale</option>
+                <option value="fort-myers-cape-coral">fort-myers-cape-coral</option>
+                <option value="fort-wayne">fort-wayne</option>
+                <option value="fort-worth">fort-worth</option>
+                <option value="fresno">fresno</option>
+                <option value="gainesville">gainesville</option>
+                <option value="grand-rapids">grand-rapids</option>
+                <option value="greater-toronto-area">greater-toronto-area</option>
+                <option value="green-bay">green-bay</option>
+                <option value="greenville">greenville</option>
+                <option value="halifax">halifax</option>
+                <option value="hampton-roads">hampton-roads</option>
+                <option value="harrisburg">harrisburg</option>
+                <option value="hartford">hartford</option>
+                <option value="honolulu">honolulu</option>
+                <option value="houston">houston</option>
+                <option value="huntsville">huntsville</option>
+                <option value="indianapolis">indianapolis</option>
+                <option value="inland-empire">inland-empire</option>
+                <option value="jackson">jackson</option>
+                <option value="jacksonville">jacksonville</option>
+                <option value="joliet">joliet</option>
+                <option value="kalamazoo">kalamazoo</option>
+                <option value="kansas-city">kansas-city</option>
+                <option value="kelowna">kelowna</option>
+                <option value="kingston">kingston</option>
+                <option value="kitchener-waterloo">kitchener-waterloo</option>
+                <option value="knoxville">knoxville</option>
+                <option value="lakeland">lakeland</option>
+                <option value="lakewood-nj">lakewood-nj</option>
+                <option value="lansing">lansing</option>
+                <option value="las-vegas">las-vegas</option>
+                <option value="lexington">lexington</option>
+                <option value="lincoln">lincoln</option>
+                <option value="little-rock">little-rock</option>
+                <option value="london">london</option>
+                <option value="long-island">long-island</option>
+                <option value="los-angeles">los-angeles</option>
+                <option value="louisville">louisville</option>
+                <option value="lubbock">lubbock</option>
+                <option value="macon">macon</option>
+                <option value="madison">madison</option>
+                <option value="manchester-ct">manchester-ct</option>
+                <option value="masonboro-nc">masonboro-nc</option>
+                <option value="memphis">memphis</option>
+                <option value="miami">miami</option>
+                <option value="midland-odessa">midland-odessa</option>
+                <option value="milwaukee">milwaukee</option>
+                <option value="minneapolis-stpaul">minneapolis-stpaul</option>
+                <option value="mobile-baldwin-county">mobile-baldwin-county</option>
+                <option value="modesto">modesto</option>
+                <option value="montgomery">montgomery</option>
+                <option value="multimarket">multimarket</option>
+                <option value="murfreesboro">murfreesboro</option>
+                <option value="napa-sonoma">napa-sonoma</option>
+                <option value="naples">naples</option>
+                <option value="nashville">nashville</option>
+                <option value="new-orleans">new-orleans</option>
+                <option value="new-york">new-york</option>
+                <option value="north-jersey">north-jersey</option>
+                <option value="ocala">ocala</option>
+                <option value="ogden">ogden</option>
+                <option value="oklahoma-city">oklahoma-city</option>
+                <option value="omaha">omaha</option>
+                <option value="orange-county">orange-county</option>
+                <option value="orlando">orlando</option>
+                <option value="ottawa">ottawa</option>
+                <option value="palm-beach">palm-beach</option>
+                <option value="paradise">paradise</option>
+                <option value="pensacola">pensacola</option>
+                <option value="pensacolas">pensacolas</option>
+                <option value="philadelphia">philadelphia</option>
+                <option value="phoenix">phoenix</option>
+                <option value="piedmont-triad">piedmont-triad</option>
+                <option value="pittsburgh">pittsburgh</option>
+                <option value="plattsburgh-ny">plattsburgh-ny</option>
+                <option value="portland">portland</option>
+                <option value="portland-me">portland-me</option>
+                <option value="providence">providence</option>
+                <option value="raleigh-durham">raleigh-durham</option>
+                <option value="regina">regina</option>
+                <option value="reno">reno</option>
+                <option value="richmond">richmond</option>
+                <option value="rio-grande-valley">rio-grande-valley</option>
+                <option value="roanoke">roanoke</option>
+                <option value="rochester">rochester</option>
+                <option value="rockford">rockford</option>
+                <option value="sacramento">sacramento</option>
+                <option value="salem-or">salem-or</option>
+                <option value="salt-lake-city">salt-lake-city</option>
+                <option value="san-angelo">san-angelo</option>
+                <option value="san-antonio">san-antonio</option>
+                <option value="san-diego">san-diego</option>
+                <option value="san-francisco">san-francisco</option>
+                <option value="san-jose">san-jose</option>
+                <option value="santa-barbara">santa-barbara</option>
+                <option value="santa-clarita">santa-clarita</option>
+                <option value="santa-cruz">santa-cruz</option>
+                <option value="saskatoon">saskatoon</option>
+                <option value="savannah-hilton-head">savannah-hilton-head</option>
+                <option value="seattle">seattle</option>
+                <option value="shreveport-bossier">shreveport-bossier</option>
+                <option value="sioux-falls">sioux-falls</option>
+                <option value="south-bend">south-bend</option>
+                <option value="spokane-coeur-dalene">spokane-coeur-dalene</option>
+                <option value="springfield-ma">springfield-ma</option>
+                <option value="springfield-mo">springfield-mo</option>
+                <option value="st-johns">st-johns</option>
+                <option value="stcatharines-niagara">stcatharines-niagara</option>
+                <option value="stlouis">stlouis</option>
+                <option value="stockton">stockton</option>
+                <option value="sudbury">sudbury</option>
+                <option value="syracuse">syracuse</option>
+                <option value="tallahassee">tallahassee</option>
+                <option value="tampa-bay-area">tampa-bay-area</option>
+                <option value="toledo">toledo</option>
+                <option value="topeka-lawrence">topeka-lawrence</option>
+                <option value="tucson">tucson</option>
+                <option value="tulsa">tulsa</option>
+                <option value="undefined">undefined</option>
+                <option value="vancouver">vancouver</option>
+                <option value="ventura-county">ventura-county</option>
+                <option value="victoria">victoria</option>
+                <option value="washington-dc">washington-dc</option>
+                <option value="westchester-county">westchester-county</option>
+                <option value="wichita">wichita</option>
+                <option value="wilmington-newark">wilmington-newark</option>
+                <option value="windsor">windsor</option>
+                <option value="winnipeg">winnipeg</option>
+                <option value="worcester">worcester</option>
+                <option value="youngstown">youngstown</option>
+            </select>
+        </div>
+        <div class="container">
+            <div class="searchResults" id="searchResults"></div>    
             <div id="suggestions"></div>
         </div>
     </div>
+    <div class="btn-container">
+        <input type="button" class="btn" id="previousBtn" value="Previous" onclick="previous()">
+        <input type="button" class="btn" value="Next" onclick="pageNext()">
+        <input type="button" class="btn" value="Send annotate" onclick="sendAnnotate()">
+    </div>
+    
     <script>
         const searchInput = document.getElementById('search');
         const suggestionsBox = document.getElementById('suggestions');
 
         let selectedIndex = -1;
+        //let searchdata = [];
         let suggestions = [];
         let lastPosition = {
                 latitude: 0,
                 longitude: 0
         };
+        window.pageStart = 0;
+        window.pageLimit = 21;
 
-        searchInput.addEventListener('input', function () {
-            const query = searchInput.value;
+        sendAnnotate = () => {
+            searchdata = window.searchdata;
+            const annotations = [];
+            const resultsContainer = document.querySelectorAll('.result-item');
 
-            fetch('/suggest?q=' + query + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude)
+            resultsContainer.forEach((item, index) => {
+                const id = searchdata.results[index].id;
+                const vectorDistance = searchdata.results[index].features.vector_distance;
+                const unigramWeight = searchdata.results[index].features.unigram_weight;
+                const unigram_ocurrency = searchdata.results[index].features.unigram_ocurrency;
+                const bigramWeight = searchdata.results[index].features.bigram_weight;
+                const bigram_ocurrency = searchdata.results[index].features.bigram_ocurrency;
+                const trigramWeight = searchdata.results[index].features.trigram_weight;
+                const trigram_ocurrency = searchdata.results[index].features.trigram_ocurrency;
+                const vector_distance = searchdata.results[index].features.vector_distance;
+                const distance = searchdata.results[index].features.distance;
+                const annotation = item.querySelector(`select[name="annotate-${id}"]`).value;
+
+                annotations.push({
+                    id: id,
+                    unigramWeight: unigramWeight,
+                    unigramOcurrency: unigram_ocurrency,
+                    bigramWeight: bigramWeight,
+                    bigramOcurrency: bigram_ocurrency,
+                    trigramWeight: trigramWeight,
+                    trigramOcurrency: trigram_ocurrency,
+                    vectorDistance: vector_distance,
+                    distance: distance,
+                    annotation: annotation
+                });
+            });
+
+            //console.log("anno:"+ JSON.stringify(annotations));
+            
+            fetch('/annotate', {
+            method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    annotations : annotations,
+                    q: searchInput.value,
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Annotations saved:', data);
+            })
+            .catch(error => {
+                console.error('Error saving annotations:', error);
+            });
+        }
+
+        previous = () => {
+            const resultsContainer = document.querySelector('.results-container');
+            if (resultsContainer) {
+                resultsContainer.remove();
+            }
+
+            window.pageStart--;
+            if (window.pageStart < 0) {
+                window.pageStart = 0;
+            }
+            let u = '/search?q=' + searchInput.value + '&lat=' + document.getElementById('lat').value + '&lon=' + document.getElementById('lon').value + '&limit=' + window.pageLimit + '&' + 'start='+ window.pageStart * window.pageLimit;
+            console.log(u);
+            fetch(u)  
                 .then(response => response.json())
                 .then(data => {
-                    suggestions = data;
-                    selectedIndex = -1;
-                    renderSuggestions(suggestions);
-                });
-        });
+                    renderResult(data);
+            });
+        };
+
+        pageNext = () => {
+            const resultsContainer = document.querySelector('.results-container');
+            if (resultsContainer) {
+                resultsContainer.remove();
+            }
+
+            window.pageStart++;
+            let u = '/search?q=' + searchInput.value + '&lat=' + document.getElementById('lat').value + '&lon=' + document.getElementById('lon').value + '&limit=' + window.pageLimit + '&' + 'start='+ window.pageStart * window.pageLimit;
+            console.log(u);
+            fetch(u)  
+                .then(response => response.json())
+                .then(data => {
+                    renderResult(data);
+            });
+        };
+
+        suggest = function () {
+            const query = searchInput.value;
+
+            clearTimeout(this.typingTimer);
+            this.typingTimer = setTimeout(() => {
+                fetch('/suggest', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: query,
+                        lat: lastPosition.latitude,
+                        lon: lastPosition.longitude,
+                        division: document.querySelector('select').value
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        suggestions = data;
+                        //selectedIndex = -1;
+                        //searchInput.value = selectedSuggestion;
+                        renderSuggestions(suggestions);
+                    });
+            }, 300);
+        };
 
         searchInput.addEventListener('keydown', function (e) {
             if (e.key === 'ArrowDown') {
@@ -215,6 +557,8 @@
                         .then(data => {
                             renderResult(data);
                     });
+                    window.pageStart = 0;
+
                 }, 300);
             }
         });
@@ -234,16 +578,21 @@
                         .then(data => {
                             renderResult(data);
                     });
+
+                    suggest();
+
                 }, 300);
         });
 
         searchInput.addEventListener('click', function () {
+            console.log('click');
+            clearTimeout(this.typingTimer);
             fetch('/top?lat=' + document.getElementById('lat').value + '&lon=' + document.getElementById('lon').value)
                 .then(response => response.json())
                 .then(data => {
                     suggestions = data;
                     selectedIndex = -1;
-                    renderSuggestions(suggestions);
+                    //renderSuggestions(suggestions);
                 });
         });
 
@@ -252,7 +601,18 @@
 
             clearTimeout(this.typingTimer);
             this.typingTimer = setTimeout(() => {
-                fetch('/suggest?q=' + selectedSuggestions + '&lat=' + lastPosition.latitude + '&lon=' + lastPosition.longitude)
+                fetch('/suggest', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: selectedSuggestions,
+                        lat: lastPosition.latitude,
+                        lon: lastPosition.longitude,
+                        division: document.querySelector('select').value
+                    })
+                })
                     .then(response => response.json())
                     .then(data => {
                         suggestions = data;
@@ -264,60 +624,99 @@
 
         };
         
-        const renderResult = (searchdata) => {
+        window.renderResult = (searchdata) => {
             //removeSearch();
+            window.searchdata = searchdata;
             console.log(searchdata);
 
             const ids = searchdata.results.map(item => item.id).join(',');
             if (ids.length === 0) {
-                return;
+            return;
             }
 
             fetch(`/get_title_by_ids_redis/${ids}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                mode: 'no-cors'
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
             })
             .then(response => response.json())
             .then(data => {
-                console.log(searchdata);
-                console.log(data);
-                const resultsContainer = document.createElement('div');
-                resultsContainer.className = 'results-container';
-                resultsContainer.id = 'resultscontainer';
+            //console.log(searchdata);
+            
+            const resultsContainer = document.createElement('div');
+            resultsContainer.className = 'results-container';
+            resultsContainer.id = 'resultscontainer';
 
-                let i = 0;
-                data.forEach(item => {
-                    const resultItem = document.createElement('div');
-                    resultItem.className = 'result-item';
+            let i = 0;
+            data.forEach(item => {
 
-                    const img = document.createElement('img');
-                    img.src = item.med_image;
-                    img.alt = item.title_general;
-                    resultItem.appendChild(img);
+                const resultItem = document.createElement('div');
+                resultItem.className = 'result-item';
 
-                    const merchant = document.createElement('p');
-                    merchant.textContent = item.merchant_name + ' [' + item.id + ']';
-                    merchant.className = 'item-merchant';
-                    resultItem.appendChild(merchant);
+                const img = document.createElement('img');
+                img.src = item.med_image;
+                img.alt = item.title_general;
+                resultItem.appendChild(img);
 
-                    const title_general = document.createElement('p');
-                    title_general.textContent = item.title_general;
-                    title_general.className = 'item-title_general';
-                    resultItem.appendChild(title_general);
+                const merchant = document.createElement('p');
+                merchant.textContent = item.merchant_name + ' [' + item.id + ']';
+                merchant.className = 'item-merchant';
+                resultItem.appendChild(merchant);
 
-                    const title_distance = document.createElement('p');
-                    title_distance.textContent = ' [' + searchdata.results[i].distance + ' km]';
-                    title_distance.className = 'item-distance';
-                    resultItem.appendChild(title_distance);
+                const title_general = document.createElement('p');
+                title_general.textContent = item.title_general;
+                title_general.className = 'item-title_general';
+                resultItem.appendChild(title_general);
 
-                    resultsContainer.appendChild(resultItem);
-                    i++;
-                });
+                const title_distance = document.createElement('p');
+                title_distance.textContent = ' [' + searchdata.results[i].features.distance + ' km]' + ' Vector dist.: ' + searchdata.results[i].features.vector_distance;
+                title_distance.className = 'item-distance';
+                resultItem.appendChild(title_distance);
 
-                document.body.appendChild(resultsContainer);
+                const weights = document.createElement('p');
+                weights.className = 'item-weights';
+                weights.textContent =
+                searchdata.results[i].features.unigram_weight + '[' + searchdata.results[i].features.unigram_ocurrency + '] ' +
+                searchdata.results[i].features.bigram_weight + '[' + searchdata.results[i].features.bigram_ocurrency + '] ' +
+                searchdata.results[i].features.trigram_weight + '[' + searchdata.results[i].features.trigram_ocurrency + '] ' 
+                ;
+
+                const select = document.createElement('select');
+                select.name = `annotate-${item.id}`;
+
+                const optionYes = document.createElement('option');
+                optionYes.value = 'yes';
+                optionYes.textContent = 'yes';
+                select.appendChild(optionYes);
+
+                const optionSim = document.createElement('option');
+                optionSim.value = 'sim';
+                optionSim.textContent = 'sim';
+                select.appendChild(optionSim);
+
+                const optionNo = document.createElement('option');
+                optionNo.value = 'no';
+                optionNo.textContent = 'no';
+                select.appendChild(optionNo);
+
+                weights.appendChild(select);
+
+
+                resultItem.appendChild(weights);
+
+                resultsContainer.appendChild(resultItem);
+                i++;
+            });
+
+            document.getElementById('searchResults').appendChild(resultsContainer);
+            console.log(window.pageStart);
+            if (window.pageStart == 0) {
+                document.getElementById('previousBtn').disabled = true;
+            } else {
+                document.getElementById('previousBtn').disabled = false;
+            }
+            //document.body.appendChild(resultsContainer);
             });
         };
 
@@ -326,9 +725,9 @@
             suggestionsBox.innerHTML = '';
             console.log(suggestions);
 
-            if (suggestions.didYouMean !== null &&
-                suggestions.didYouMean !== undefined &&
-                suggestions.didYouMean !== '') {           
+            if (suggestions.did_you_mean !== null &&
+                suggestions.did_you_mean !== undefined &&
+                suggestions.did_you_mean !== '') {           
                 
                 const div = document.createElement('div');
                 div.className = 'suggestion-label';
@@ -337,7 +736,7 @@
                 
                 const div2 = document.createElement('div');
                 div2.className = 'suggestion-item';
-                div2.textContent = suggestions.didYouMean;
+                div2.textContent = suggestions.did_you_mean;
 
                 const div1 = document.createElement('img');
                 div1.src = 'static/query.png';
@@ -346,17 +745,25 @@
                 
                 suggestionsBox.appendChild(div2);
 
-                div2.addEventListener('click', () => handleSelection(suggestions.didYouMean));
+                div2.addEventListener('click', () => handleSelection(suggestions.did_you_mean));
             }
 
-            if (suggestions.queries.length) {
+            if (suggestions.cleaned_query) {
+                const div = document.createElement('div');
+                div.className = 'suggestion-item';
+                div.textContent = "Cleaned query:" + suggestions.cleaned_query;
+
+                suggestionsBox.appendChild(div);
+            }
+
+            if (suggestions.suggested_query.length) {
                 const div = document.createElement('div');
                 div.className = 'suggestion-label';
                 div.textContent = "Queries";
                 suggestionsBox.appendChild(div);
             }
 
-            suggestions.queries.forEach((item, index) => {
+            suggestions.suggested_query.forEach((item, index) => {
                 const div = document.createElement('div');
                 div.className = 'suggestion-item';
                 div.textContent = item;
@@ -374,42 +781,8 @@
                 suggestionsBox.appendChild(div);
             });
 
-            if (suggestions.categories.length) {
-                const divC = document.createElement('div');
-                divC.className = 'suggestion-label';
-                divC.textContent = "Categories";
-                suggestionsBox.appendChild(divC);
-            }
 
-            suggestions.categories.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'suggestion-item';
-                div.textContent = item;
-
-                const divI = document.createElement('img');
-                divI.src = 'static/category.png';
-                div.appendChild(divI);
-
-                div.addEventListener('click', () => handleSelection(item));
-
-                suggestionsBox.appendChild(div);
-            });
-
-            if (suggestions.deals.length) {
-                const divD = document.createElement('div');
-                divD.className = 'suggestion-label';
-                divD.textContent = "Deals";
-                suggestionsBox.appendChild(divD);
-            }
-
-            suggestions.deals.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = 'suggestion-item';
-                div.textContent = item;
-                div.addEventListener('click', () => handleSelection(item));
-
-                suggestionsBox.appendChild(div);
-            });
+            
         };
 
         const highlightSuggestion = () => {
