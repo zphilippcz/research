@@ -1,0 +1,28 @@
+<services version="1.0">
+  <container id="container" version="1.0">
+    <search />
+    <document-api />
+    <http>
+      <server id="default" port="8080" />
+    </http>
+    <nodes>
+      <node hostalias="node1"/>
+    </nodes>
+  </container>
+
+  <content id="content" version="1.0">
+    <redundancy>1</redundancy>
+    <documents>
+      <document type="deal" mode="index"/>
+    </documents>
+    <engine><proton/></engine>
+    <nodes>
+      <node hostalias="node1" distribution-key="0"/>
+    </nodes>
+  </content>
+
+  <admin version="2.0">
+    <adminserver hostalias="node1"/>
+  </admin>
+
+</services>
