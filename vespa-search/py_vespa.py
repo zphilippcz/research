@@ -261,6 +261,38 @@ def search_embedding(text: str, k: int = 100, limit: int = 10,
     r.raise_for_status()
 
     
+def search_hybrid(text: str, k: int = 100, limit: int = 10, exact: bool = False) -> None:
+    """Hybrid search combining full-text (BM25) and ANN on embeddings.
+
+    Uses rank-profile 'hybrid' defined in schema which blends normalized BM25
+    with vector closeness. Recall is the union of text and ANN matches.
+    """
+    qvec = compute_embedding(text)
+
+    ann_opts = "approximate:false," if exact else ""
+    yql = (
+        f"select * from {DOC_TYPE} where "
+        f"(userQuery() or ([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb)))"
+    )
+
+    body = {
+        "yql": yql,
+        "query": text,
+        "hits": limit,
+        "timeout": "5s",
+        "ranking.profile": "hybrid",
+        "ranking.features.query(qemb)": _tensor_spec(qvec),
+    }
+
+    r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body, timeout=30)
+    if not r.ok:
+        try:
+            print("[HYB-ERR]", r.status_code, r.json())
+        except Exception:
+            print("[HYB-ERR]", r.status_code, r.text)
+        r.raise_for_status()
+    _print_hits(r.json())
+
 def run_yql(yql: str, limit: int = 10, query_text: Optional[str] = None) -> None:
     params = {"yql": yql, "hits": limit, "timeout": "5s"}
     if query_text is not None:
@@ -284,6 +316,7 @@ def parse_args():
                       help="Delete all documents before feeding new data, then feed.")
     mode.add_argument("--search-text", type=str, help="Full-text query over 'document'.")
     mode.add_argument("--search-embed", type=str, help="ANN query using 'embedding'.")
+    mode.add_argument("--search-hybrid", type=str, help="Hybrid query: text + ANN.")
     mode.add_argument("--yql", type=str, help="Raw YQL query (use with --yql-query if it contains userQuery()).")
 
     p.add_argument("--limit", type=int, default=10, help="Number of hits to return.")
@@ -301,7 +334,7 @@ def main():
 
     if args.delete_all:
         print(f"[WIPE] Deleting all documents of {NAMESPACE}:{DOC_TYPE} via selection DELETE")
-        delete_all_documents_fast()
+        #delete_all_documents_fast()
         return
 
     if args.search_text:
@@ -313,13 +346,18 @@ def main():
         search_embedding(args.search_embed, k=args.k, limit=args.limit)
         return
 
+    if args.search_hybrid:
+        USE_EMBEDDER = True  # ensure embedder is used
+        search_hybrid(args.search_hybrid, k=args.k, limit=args.limit, exact=args.ann_exact)
+        return
+
     if args.yql:
         run_yql(args.yql, limit=args.limit, query_text=args.yql_query)
         return
 
     if args.wipe_before_feed:
         print(f"[WIPE] Deleting all documents of {NAMESPACE}:{DOC_TYPE} via selection DELETE")
-        delete_all_documents_fast()
+        #delete_all_documents_fast()
 
     feed_all()
 
