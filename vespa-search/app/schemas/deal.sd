@@ -10,7 +10,9 @@ schema deal {
     field category_id  type string  { indexing: attribute | summary }
     field price        type double  { indexing: attribute | summary }
     field is_active    type bool    { indexing: attribute }
-    field geo          type position{ indexing: attribute | summary }
+    field geo type position {
+      indexing: attribute | summary
+    }
 
     # Vector for ANN (MiniLM → cosine/Angular)
     field embedding type tensor<float>(d0[384]) {

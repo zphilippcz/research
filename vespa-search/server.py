@@ -11,14 +11,25 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import uvicorn
 
-from py_vespa import (
-    VESPA_ENDPOINT,
-    DOC_TYPE,
-    _tensor_spec,
-    compute_embedding,
-    SESSION,
-    search_fulltext as _search_fulltext_cli,
-)
+from vespa_client import create_vespa_client, VespaConfig
+import math
+
+def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Vypočítá vzdálenost mezi dvěma GPS souřadnicemi v kilometrech."""
+    R = 6371  # Poloměr Země v km
+    
+    lat1_rad = math.radians(lat1)
+    lon1_rad = math.radians(lon1)
+    lat2_rad = math.radians(lat2)
+    lon2_rad = math.radians(lon2)
+    
+    dlat = lat2_rad - lat1_rad
+    dlon = lon2_rad - lon1_rad
+    
+    a = math.sin(dlat/2)**2 + math.cos(lat1_rad) * math.cos(lat2_rad) * math.sin(dlon/2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    
+    return R * c
 
 app = FastAPI(title="Vespa Search Server", version="0.1.0")
 
@@ -26,139 +37,204 @@ app = FastAPI(title="Vespa Search Server", version="0.1.0")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
+# Vytvoření Vespa klienta
+vespa_config = VespaConfig(
+    endpoint=os.getenv("VESPA_ENDPOINT", "http://localhost:8080"),
+    namespace=os.getenv("VESPA_NAMESPACE", "mycompany"),
+    doc_type=os.getenv("VESPA_DOC_TYPE", "deal"),
+    cluster=os.getenv("VESPA_CLUSTER", "content")
+)
+
+# Inicializace klienta s embeddings
+vespa_client = create_vespa_client(
+    endpoint=vespa_config.endpoint,
+    namespace=vespa_config.namespace,
+    doc_type=vespa_config.doc_type,
+    enable_embeddings=True,
+    embedding_model=os.getenv("EMBEDDER_MODEL", "all-MiniLM-L6-v2")
+)
+
+
+
 
 def _perform_fulltext(query_text: str, limit: int, lat: Optional[float] = None, lon: Optional[float] = None, radius: Optional[float] = None) -> dict:
     print(f"Fulltext search: q='{query_text}', limit={limit}, lat={lat}, lon={lon}, radius={radius}")
     
-    # Základní YQL
-    yql = f"select * from {DOC_TYPE} where userQuery()"
-    
-    # Přidáme GPS filtr, pokud jsou parametry
-    if lat is not None and lon is not None and radius is not None:
-        # Převod km na stupně (přibližně 1 stupeň = 111 km)
-        radius_degrees = radius / 111.0
-        yql = f"select * from {DOC_TYPE} where userQuery() and geo within circle({lat}, {lon}, {radius_degrees})"
-    
-    print(f"Fulltext YQL: {yql}")
-    
-    params = {
-        "yql": yql,
-        "query": query_text,
-        "hits": limit,
-        "timeout": "5s",
-        "ranking": "default",
-    }
-    
     try:
-        r = SESSION.get(f"{VESPA_ENDPOINT}/search/", params=params, timeout=15)
-        if not r.ok:
-            try:
-                err = r.json()
-            except Exception:
-                err = r.text
-            print(f"Fulltext search failed: {r.status_code} - {err}")
-            # Fallback na jednodušší dotaz bez GPS
-            if lat is not None and lon is not None and radius is not None:
-                print("Trying fulltext fallback without GPS filter...")
-                fallback_params = {
-                    "yql": f"select * from {DOC_TYPE} where userQuery()",
-                    "query": query_text,
-                    "hits": limit,
-                    "timeout": "5s",
-                    "ranking": "default",
-                }
-                r = SESSION.get(f"{VESPA_ENDPOINT}/search/", params=fallback_params, timeout=15)
-                if not r.ok:
-                    raise HTTPException(status_code=r.status_code, detail={"error": r.text})
-            else:
-                raise HTTPException(status_code=r.status_code, detail={"error": err})
+        # Použijeme vespa_client pro vyhledávání
+        if lat is not None and lon is not None and radius is not None:
+            # GPS filtr - použijeme post-processing přístup
+            print(f"Fulltext search with GPS post-processing: lat={lat}, lon={lon}, radius={radius}")
+            results = vespa_client.search_text(query_text, limit=limit * 2)  # Získáme více výsledků pro filtrování
+            
+            # Filtrujeme výsledky podle GPS vzdálenosti
+            filtered_results = []
+            for result in results.results:
+                geo = result.fields.get('geo', {})
+                if 'lat' in geo and 'lng' in geo:
+                    distance = haversine_distance(lat, lon, geo['lat'], geo['lng'])
+                    if distance <= radius:
+                        filtered_results.append(result)
+                        if len(filtered_results) >= limit:
+                            break
+            
+            # Vytvoříme nový SearchResponse s filtrovanými výsledky
+            from vespa_client import SearchResponse, SearchResult
+            filtered_response = SearchResponse(
+                total_count=len(filtered_results),
+                results=filtered_results[:limit]
+            )
+            results = filtered_response
+        else:
+            # Bez GPS filtru
+            print(f"Fulltext search without GPS")
+            results = vespa_client.search_text(query_text, limit=limit)
         
-        return r.json()
+        # Převod na původní formát odpovědi
+        response_data = {
+            "root": {
+                "children": [
+                    {
+                        "id": f"{vespa_config.namespace}::{result.doc_id}",
+                        "relevance": result.score,
+                        "fields": result.fields
+                    }
+                    for result in results.results
+                ],
+                "fields": {"totalCount": results.total_hits}
+            }
+        }
+        
+        if results.coverage:
+            response_data["coverage"] = results.coverage
+        if results.timing:
+            response_data["timing"] = results.timing
+        
+        return response_data
+        
     except Exception as e:
         print(f"Fulltext search exception: {e}")
-        raise HTTPException(status_code=500, detail={"error": str(e)})
+        # Fallback na jednodušší dotaz bez GPS
+        if lat is not None and lon is not None and radius is not None:
+            print("Trying fulltext fallback without GPS filter...")
+            try:
+                results = vespa_client.search_text(query_text, limit=limit)
+                response_data = {
+                    "root": {
+                        "children": [
+                            {
+                                "id": f"{vespa_config.namespace}::{result.doc_id}",
+                                "relevance": result.score,
+                                "fields": result.fields
+                            }
+                            for result in results.results
+                        ],
+                        "fields": {"totalCount": results.total_hits}
+                    }
+                }
+                return response_data
+            except Exception as fallback_e:
+                print(f"Fallback also failed: {fallback_e}")
+                raise HTTPException(status_code=500, detail={"error": str(fallback_e)})
+        else:
+            raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 def _perform_embedding(query_text: str, k: int, limit: int, exact: bool, lat: Optional[float] = None, lon: Optional[float] = None, radius: Optional[float] = None) -> dict:
     print(f"Embedding search: q='{query_text}', k={k}, limit={limit}, exact={exact}, lat={lat}, lon={lon}, radius={radius}")
-    qvec = compute_embedding(query_text)
-    ann_opts = "approximate:false," if exact else ""
-    
-    # Základní YQL
-    yql = f"select * from {DOC_TYPE} where ([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb))"
-    
-    # Přidáme GPS filtr, pokud jsou parametry
-    if lat is not None and lon is not None and radius is not None:
-        radius_degrees = radius / 111.0
-        yql = f"select * from {DOC_TYPE} where ([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb)) and geo within circle({lat}, {lon}, {radius_degrees})"
-    
-    print(f"Embedding YQL: {yql}")
-    
-    body = {
-        "yql": yql,
-        "hits": limit,
-        "timeout": "5s",
-        "ranking.profile": "vector",
-        "ranking.features.query(qemb)": _tensor_spec(qvec),
-    }
     
     try:
-        r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body, timeout=30)
-        if not r.ok:
-            try:
-                err = r.json()
-            except Exception:
-                err = r.text
-            print(f"Embedding search failed: {r.status_code} - {err}")
-            # Fallback na jednodušší dotaz bez GPS
-            if lat is not None and lon is not None and radius is not None:
-                print("Trying embedding fallback without GPS filter...")
-                fallback_body = {
-                    "yql": f"select * from {DOC_TYPE} where ([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb))",
-                    "hits": limit,
-                    "timeout": "5s",
-                    "ranking.profile": "vector",
-                    "ranking.features.query(qemb)": _tensor_spec(qvec),
-                }
-                r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=fallback_body, timeout=30)
-                if not r.ok:
-                    raise HTTPException(status_code=r.status_code, detail={"error": r.text})
-            else:
-                raise HTTPException(status_code=r.status_code, detail={"error": err})
+        # Použijeme vespa_client pro vektorové vyhledávání
+        if lat is not None and lon is not None and radius is not None:
+            # GPS filtr - použijeme post-processing přístup
+            print(f"Embedding search with GPS post-processing: lat={lat}, lon={lon}, radius={radius}")
+            
+            # Použijeme vektorové vyhledávání bez GPS filtru a pak filtrujeme
+            results = vespa_client.search_vector(query_text, k=k, limit=limit * 2, exact=exact)  # Získáme více výsledků pro filtrování
+            
+            # Filtrujeme výsledky podle GPS vzdálenosti
+            filtered_results = []
+            for result in results.results:
+                geo = result.fields.get('geo', {})
+                if 'lat' in geo and 'lng' in geo:
+                    distance = haversine_distance(lat, lon, geo['lat'], geo['lng'])
+                    if distance <= radius:
+                        filtered_results.append(result)
+                        if len(filtered_results) >= limit:
+                            break
+            
+            # Vytvoříme nový SearchResponse s filtrovanými výsledky
+            from vespa_client import SearchResponse, SearchResult
+            filtered_response = SearchResponse(
+                total_hits=len(filtered_results),
+                results=filtered_results[:limit]
+            )
+            results = filtered_response
+        else:
+            # Bez GPS filtru
+            print(f"Embedding search without GPS")
+            results = vespa_client.search_vector(query_text, k=k, limit=limit, exact=exact)
         
-        return r.json()
+        # Převod na původní formát odpovědi
+        response_data = {
+            "root": {
+                "children": [
+                    {
+                        "id": f"{vespa_config.namespace}::{result.doc_id}",
+                        "relevance": result.score,
+                        "fields": result.fields
+                    }
+                    for result in results.results
+                ],
+                "fields": {"totalCount": results.total_hits}
+            }
+        }
+        
+        if results.coverage:
+            response_data["coverage"] = results.coverage
+        if results.timing:
+            response_data["timing"] = results.timing
+        
+        return response_data
+        
     except Exception as e:
         print(f"Embedding search exception: {e}")
-        raise HTTPException(status_code=500, detail={"error": str(e)})
+        # Fallback na jednodušší dotaz bez GPS
+        if lat is not None and lon is not None and radius is not None:
+            print("Trying embedding fallback without GPS filter...")
+            try:
+                results = vespa_client.search_vector(query_text, k=k, limit=limit, exact=exact)
+                response_data = {
+                    "root": {
+                        "children": [
+                            {
+                                "id": f"{vespa_config.namespace}::{result.doc_id}",
+                                "relevance": result.score,
+                                "fields": result.fields
+                            }
+                            for result in results.results
+                        ],
+                        "fields": {"totalCount": results.total_hits}
+                    }
+                }
+                return response_data
+            except Exception as fallback_e:
+                print(f"Fallback also failed: {fallback_e}")
+                raise HTTPException(status_code=500, detail={"error": str(fallback_e)})
+        else:
+            raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optional[float] = None, lon: Optional[float] = None, radius: Optional[float] = None) -> dict:
     print(f"Hybrid search: q='{query_text}', k={k}, limit={limit}, lat={lat}, lon={lon}, radius={radius}")
-    qvec = compute_embedding(query_text)
-    ann_opts = "approximate:false," if exact else ""
     
     # Vytvoříme dva separátní dotazy pro identifikaci zdroje (bez GPS filtru)
     # 1. Textový dotaz
     yql_text = f"select * from sources * where userQuery()"
     
-    body_text = {
-        "yql": yql_text,
-        "query": query_text,
-        "hits": k * 2,  # Více hitů pro lepší pokrytí
-        "timeout": "5s",
-        "ranking": "default",
-    }
-    
     # 2. Vektorový dotaz
+    ann_opts = "approximate:false," if exact else ""
     yql_vector = f"select * from sources * where ([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb))"
-    
-    body_vector = {
-        "yql": yql_vector,
-        "hits": k * 2,
-        "timeout": "5s",
-        "ranking": "vector",
-        "ranking.features.query(qemb)": _tensor_spec(qvec),
-    }
     
     print(f"Text YQL: {yql_text}")
     print(f"Vector YQL: {yql_vector}")
@@ -169,22 +245,38 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
     
     def run_text_search():
         try:
-            r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body_text, timeout=30)
-            if not r.ok:
-                print(f"Text search failed: {r.status_code} - {r.text}")
-                return {"root": {"children": []}}  # Prázdný výsledek místo chyby
-            return r.json()
+            results = vespa_client.search_yql(yql_text, limit=k*2, query_text=query_text)
+            return {
+                "root": {
+                    "children": [
+                        {
+                            "id": f"{vespa_config.namespace}::{result.doc_id}",
+                            "relevance": result.score,
+                            "fields": result.fields
+                        }
+                        for result in results.results
+                    ]
+                }
+            }
         except Exception as e:
             print(f"Text search exception: {e}")
             return {"root": {"children": []}}
     
     def run_vector_search():
         try:
-            r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body_vector, timeout=30)
-            if not r.ok:
-                print(f"Vector search failed: {r.status_code} - {r.text}")
-                return {"root": {"children": []}}  # Prázdný výsledek místo chyby
-            return r.json()
+            results = vespa_client.search_yql(yql_vector, limit=k*2)
+            return {
+                "root": {
+                    "children": [
+                        {
+                            "id": f"{vespa_config.namespace}::{result.doc_id}",
+                            "relevance": result.score,
+                            "fields": result.fields
+                        }
+                        for result in results.results
+                    ]
+                }
+            }
         except Exception as e:
             print(f"Vector search exception: {e}")
             return {"root": {"children": []}}
@@ -220,76 +312,92 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
         f")"
     )
     if lat is not None and lon is not None and radius is not None:
-        radius_degrees = radius / 111.0
-        yql_hybrid = (
-            f"select * from sources * where ("
-            f"([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb))"
-            f" OR "
-            f"userQuery()"
-            f") and geo within circle({lat}, {lon}, {radius_degrees})"
+        # GPS filtr - použijeme post-processing přístup
+        print(f"Hybrid search with GPS post-processing: lat={lat}, lon={lon}, radius={radius}")
+        
+        # Použijeme hybridní vyhledávání bez GPS filtru a pak filtrujeme
+        results = vespa_client.search_hybrid(query_text, k=k, limit=limit * 2, exact=exact)  # Získáme více výsledků pro filtrování
+        
+        # Filtrujeme výsledky podle GPS vzdálenosti
+        filtered_results = []
+        for result in results.results:
+            geo = result.fields.get('geo', {})
+            if 'lat' in geo and 'lng' in geo:
+                distance = haversine_distance(lat, lon, geo['lat'], geo['lng'])
+                if distance <= radius:
+                    filtered_results.append(result)
+                    if len(filtered_results) >= limit:
+                        break
+        
+        # Vytvoříme nový SearchResponse s filtrovanými výsledky
+        from vespa_client import SearchResponse, SearchResult
+        filtered_response = SearchResponse(
+            total_hits=len(filtered_results),
+            results=filtered_results[:limit]
         )
-    body_hybrid = {
-        "yql": yql_hybrid,
-        "query": query_text,
-        "hits": limit,
-        "timeout": "5s",
-        "ranking": "hybrid",
-        "ranking.features.query(qemb)": _tensor_spec(qvec),
-    }
+        results = filtered_response
+    else:
+        print(f"Hybrid search without GPS")
     
     try:
-        r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body_hybrid, timeout=30)
-        if not r.ok:
-            try:
-                err = r.json()
-            except Exception:
-                err = r.text
-            print(f"Hybrid search failed: {r.status_code} - {err}")
-            # Fallback na jednodušší dotaz bez GPS
-            if lat is not None and lon is not None and radius is not None:
-                print("Trying fallback without GPS filter...")
-                body_hybrid_fallback = {
-                    "yql": f"select * from sources * where (([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb)) OR userQuery())",
-                    "query": query_text,
-                    "hits": limit,
-                    "timeout": "5s",
-                    "ranking": "hybrid",
-                    "ranking.features.query(qemb)": _tensor_spec(qvec),
-                }
-                r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body_hybrid_fallback, timeout=30)
-                if not r.ok:
-                    raise HTTPException(status_code=r.status_code, detail={"error": r.text})
-            else:
-                raise HTTPException(status_code=r.status_code, detail={"error": err})
+        results = vespa_client.search_hybrid(query_text, k=k, limit=limit, exact=exact)
         
-        hybrid_results = r.json()
+        # Převod na původní formát odpovědi
+        response_data = {
+            "root": {
+                "children": [
+                    {
+                        "id": f"{vespa_config.namespace}::{result.doc_id}",
+                        "relevance": result.score,
+                        "fields": result.fields
+                    }
+                    for result in results.results
+                ],
+                "fields": {"totalCount": results.total_hits}
+            }
+        }
+        
+        # Pro hybridní vyhledávání nemůžeme přesně určit zdroj, protože Vespa kombinuje výsledky
+        # Přidáme informaci o zdroji ke každému výsledku
+        for hit in response_data.get("root", {}).get("children", []):
+            # Pro hybridní vyhledávání označíme všechny výsledky jako "hybrid"
+            if "fields" not in hit:
+                hit["fields"] = {}
+            hit["fields"]["_source"] = "hybrid"
+        
+        if results.coverage:
+            response_data["coverage"] = results.coverage
+        if results.timing:
+            response_data["timing"] = results.timing
+        
+        return response_data
+        
     except Exception as e:
         print(f"Hybrid search exception: {e}")
-        raise HTTPException(status_code=500, detail={"error": str(e)})
-    
-    # Přidáme informaci o zdroji ke každému výsledku
-    for hit in hybrid_results.get("root", {}).get("children", []):
-        doc_id = hit.get("id", "")
-        
-        # Určíme zdroj - stejná logika pro GPS i běžné vyhledávání
-        if doc_id in text_ids and doc_id in vector_ids:
-            source = "both"
-        elif doc_id in text_ids:
-            source = "text"
-        elif doc_id in vector_ids:
-            source = "vector"
+        # Fallback na jednodušší dotaz bez GPS
+        if lat is not None and lon is not None and radius is not None:
+            print("Trying fallback without GPS filter...")
+            try:
+                results = vespa_client.search_hybrid(query_text, k=k, limit=limit, exact=exact)
+                response_data = {
+                    "root": {
+                        "children": [
+                            {
+                                "id": f"{vespa_config.namespace}::{result.doc_id}",
+                                "relevance": result.score,
+                                "fields": result.fields
+                            }
+                            for result in results.results
+                        ],
+                        "fields": {"totalCount": results.total_hits}
+                    }
+                }
+                return response_data
+            except Exception as fallback_e:
+                print(f"Fallback also failed: {fallback_e}")
+                raise HTTPException(status_code=500, detail={"error": str(fallback_e)})
         else:
-            source = "unknown"
-        
-        # Přidáme informaci o zdroji do fields
-        if "fields" not in hit:
-            hit["fields"] = {}
-        hit["fields"]["_source"] = source
-        
-        # Debug log
-        print(f"Doc ID: {doc_id}, Source: {source}, Text IDs: {doc_id in text_ids}, Vector IDs: {doc_id in vector_ids}")
-    
-    return hybrid_results
+            raise HTTPException(status_code=500, detail={"error": str(e)})
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -337,90 +445,43 @@ def api_search_hybrid(
 @app.get("/diagnostics")
 def diagnostics():
     """Basic diagnostics to help when no results are returned."""
-    # Try multiple approaches to count documents
     info = {
-        "vespa_endpoint": VESPA_ENDPOINT, 
-        "doc_type": DOC_TYPE,
-        "namespace": "mycompany"  # Add namespace info
+        "vespa_endpoint": vespa_config.endpoint, 
+        "doc_type": vespa_config.doc_type,
+        "namespace": vespa_config.namespace
     }
     
-    # Method 1: Direct count query
-    yql1 = f"select count() as num from {DOC_TYPE} where true;"
-    r1 = SESSION.get(f"{VESPA_ENDPOINT}/search/", params={"yql": yql1, "hits": 0, "timeout": "5s"}, timeout=10)
-    
-    if r1.ok:
-        try:
-            data = r1.json()
-            # Check for totalCount in root.fields (Vespa count response format)
-            root_fields = (data or {}).get("root", {}).get("fields", {})
-            if "totalCount" in root_fields:
-                info["doc_count"] = root_fields["totalCount"]
-                info["method"] = "direct_count"
-            else:
-                # Fallback to looking for num field in children
-                fields = ((data or {}).get("root", {}).get("children", []) or [{}])[0].get("fields", {})
-                info["doc_count"] = fields.get("num", 0)
-                info["method"] = "direct_count_fallback"
-            info["response"] = data
-        except Exception as e:
-            info["doc_count"] = None
-            info["error"] = f"Parse error: {e}"
-            info["raw"] = r1.text
+    # Kontrola zdraví Vespa
+    if vespa_client.health_check():
+        info["vespa_health"] = "healthy"
     else:
-        # Method 2: Try with sources
-        yql2 = f"select count() as num from sources * where true;"
-        r2 = SESSION.get(f"{VESPA_ENDPOINT}/search/", params={"yql": yql2, "hits": 0, "timeout": "5s"}, timeout=10)
-        
-        if r2.ok:
+        info["vespa_health"] = "unhealthy"
+    
+    # Počet dokumentů
+    try:
+        yql = f"select count() as num from {vespa_config.doc_type} where true;"
+        results = vespa_client.search_yql(yql, limit=0)
+        info["doc_count"] = results.total_hits
+        info["method"] = "direct_count"
+    except Exception as e:
+        try:
+            # Fallback na sources
+            yql = f"select count() as num from sources * where true;"
+            results = vespa_client.search_yql(yql, limit=0)
+            info["doc_count"] = results.total_hits
+            info["method"] = "sources_count"
+        except Exception as e2:
             try:
-                data = r2.json()
-                # Check for totalCount in root.fields (Vespa count response format)
-                root_fields = (data or {}).get("root", {}).get("fields", {})
-                if "totalCount" in root_fields:
-                    info["doc_count"] = root_fields["totalCount"]
-                    info["method"] = "sources_count"
-                else:
-                    # Fallback to looking for num field in children
-                    fields = ((data or {}).get("root", {}).get("children", []) or [{}])[0].get("fields", {})
-                    info["doc_count"] = fields.get("num", 0)
-                    info["method"] = "sources_count_fallback"
-                info["response"] = data
-            except Exception as e:
+                # Fallback na vzorek dokumentu
+                yql = f"select * from {vespa_config.doc_type} where true limit 1;"
+                results = vespa_client.search_yql(yql, limit=1)
+                info["doc_count"] = "unknown_but_docs_exist" if results.results else 0
+                info["method"] = "sample_doc"
+                if results.results:
+                    info["sample_hit"] = results.results[0].fields
+            except Exception as e3:
                 info["doc_count"] = None
-                info["error"] = f"Parse error: {e}"
-                info["raw"] = r2.text
-        else:
-            # Method 3: Try to get a sample document
-            yql3 = f"select * from {DOC_TYPE} where true limit 1;"
-            r3 = SESSION.get(f"{VESPA_ENDPOINT}/search/", params={"yql": yql3, "hits": 1, "timeout": "5s"}, timeout=10)
-            
-            if r3.ok:
-                try:
-                    data = r3.json()
-                    hits = (data or {}).get("root", {}).get("children", []) or []
-                    info["doc_count"] = "unknown_but_docs_exist" if hits else 0
-                    info["method"] = "sample_doc"
-                    info["sample_hit"] = hits[0] if hits else None
-                    info["response"] = data
-                except Exception as e:
-                    info["doc_count"] = None
-                    info["error"] = f"Parse error: {e}"
-                    info["raw"] = r3.text
-            else:
-                # Method 4: Check if Vespa is responding at all
-                try:
-                    health_r = SESSION.get(f"{VESPA_ENDPOINT}/ApplicationStatus", timeout=5)
-                    info["vespa_health"] = health_r.status_code
-                    if health_r.ok:
-                        info["vespa_health_data"] = health_r.json()
-                except Exception as e:
-                    info["vespa_health_error"] = str(e)
-                
-                try:
-                    info["error"] = r3.json()
-                except Exception:
-                    info["error"] = r3.text
-                info["doc_count"] = None
+                info["error"] = f"All methods failed: {e}, {e2}, {e3}"
                 info["method"] = "failed"
     
     return JSONResponse(info)
@@ -429,28 +490,21 @@ def diagnostics():
 @app.get("/test-doc")
 def test_doc():
     """Test direct document access via Document API."""
-    # Try to get a document directly via Document API
     test_doc_id = "test123"
-    url = f"{VESPA_ENDPOINT}/document/v1/mycompany/deal/docid/{test_doc_id}"
     
     info = {
         "test_doc_id": test_doc_id,
-        "url": url,
-        "vespa_endpoint": VESPA_ENDPOINT
+        "vespa_endpoint": vespa_config.endpoint
     }
     
     try:
-        r = SESSION.get(url, timeout=10)
-        info["status_code"] = r.status_code
-        if r.ok:
+        doc = vespa_client.get_document(test_doc_id)
+        if doc:
             info["found"] = True
-            info["doc"] = r.json()
+            info["doc"] = doc
         else:
             info["found"] = False
-            try:
-                info["error"] = r.json()
-            except Exception:
-                info["error"] = r.text
+            info["error"] = "Document not found"
     except Exception as e:
         info["exception"] = str(e)
     

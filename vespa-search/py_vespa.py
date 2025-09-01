@@ -4,11 +4,10 @@
 from __future__ import annotations
 import os, json, sqlite3, unicodedata, argparse
 from typing import Optional, List
-import requests
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
-from urllib.parse import quote
 from tqdm import tqdm
+
+# Import nové knihovny
+from vespa_client import create_vespa_client, Document
 
 # --- Config -----------------------------------------------------------------
 DB_PATH = os.getenv("DB_PATH", "/Users/zphilipp/git/research/dealsdb/deals_db1.db")
@@ -23,82 +22,37 @@ VESPA_CLUSTER = os.getenv("VESPA_CLUSTER", "content")  # for bulk delete selecti
 USE_EMBEDDER = True
 EMBEDDER_MODEL = "all-MiniLM-L6-v2"  # 384-dim
 
-# --- Optional embedder ------------------------------------------------------
-if USE_EMBEDDER:
-    try:
-        from sentence_transformers import SentenceTransformer
-        _embedder = SentenceTransformer(EMBEDDER_MODEL)
-        try:
-            # silence HF warning about future default flip
-            _embedder.tokenizer.clean_up_tokenization_spaces = False
-        except Exception:
-            pass
-        EMBED_DIM = len(_embedder.encode("test"))
-        if EMBED_DIM != 384:
-            raise ValueError(f"Schema expects 384 dims, but model outputs {EMBED_DIM}. "
-                             f"Either change schema or model.")
-    except Exception as e:
-        raise RuntimeError(f"Failed to init embedder: {e}")
+# Vytvoření Vespa klienta
+vespa_client = create_vespa_client(
+    endpoint=VESPA_ENDPOINT,
+    namespace=NAMESPACE,
+    doc_type=DOC_TYPE,
+    enable_embeddings=USE_EMBEDDER,
+    embedding_model=EMBEDDER_MODEL
+)
 
 def compute_embedding(text: str) -> list[float]:
+    """Vytvoří embedding pro text pomocí Vespa klienta."""
     if not USE_EMBEDDER:
         raise RuntimeError("Embedding disabled; set USE_EMBEDDER=True or replace this function.")
-    return _embedder.encode(text, normalize_embeddings=False).tolist()
-
-# --- HTTP client with retries ----------------------------------------------
-def make_session(max_retries: int = 5, backoff: float = 0.5) -> requests.Session:
-    s = requests.Session()
-    retry = Retry(
-        total=max_retries,
-        backoff_factor=backoff,
-        status_forcelist=(429, 500, 502, 503, 504),
-        allowed_methods=frozenset(["GET", "POST", "DELETE"]),
-        raise_on_status=False,
-        respect_retry_after_header=True,
-    )
-    adapter = HTTPAdapter(max_retries=retry, pool_connections=100, pool_maxsize=100)
-    s.mount("http://", adapter)
-    s.mount("https://", adapter)
-    s.headers.update({"Content-Type": "application/json"})
-    return s
-
-SESSION = make_session()
+    return vespa_client.embedder.encode(text, normalize_embeddings=False)
 
 # --- Document API helpers ---------------------------------------------------
 def put_doc(doc_id: str, fields: dict) -> bool:
-    url = f"{VESPA_ENDPOINT}/document/v1/{NAMESPACE}/{DOC_TYPE}/docid/{quote(doc_id, safe='')}"
-    r = SESSION.post(url, data=json.dumps({"fields": fields}), timeout=10)
-    if not r.ok:
-        try:
-            err = r.json()
-        except Exception:
-            err = r.text
-        print(f"[PUT-ERR] id={doc_id} status={r.status_code} msg={err}")
-    return r.ok
+    """Vloží dokument do Vespa pomocí nové knihovny."""
+    return vespa_client.put_document(doc_id, fields)
 
 def delete_doc(doc_id: str) -> bool:
-    url = f"{VESPA_ENDPOINT}/document/v1/{NAMESPACE}/{DOC_TYPE}/docid/{quote(doc_id, safe='')}"
-    r = SESSION.delete(url, timeout=10)
-    if not r.ok:
-        try:
-            err = r.json()
-        except Exception:
-            err = r.text
-        print(f"[DEL-ERR] id={doc_id} status={r.status_code} msg={err}")
-    return r.ok
+    """Smaže dokument z Vespa pomocí nové knihovny."""
+    return vespa_client.delete_document(doc_id)
 
 def delete_all_documents_fast() -> None:
-    """Bulk delete all docs of this type via Document API selection=TRUE."""
-    url = f"{VESPA_ENDPOINT}/document/v1/{NAMESPACE}/{DOC_TYPE}/docid/"
-    params = {"selection": "true", "cluster": VESPA_CLUSTER}
-    r = SESSION.delete(url, params=params, timeout=120)
-    if r.ok:
-        print("[WIPE] Bulk delete accepted:", r.text)
+    """Smaže všechny dokumenty pomocí nové knihovny."""
+    success = vespa_client.delete_all_documents()
+    if success:
+        print("[WIPE] Bulk delete successful")
     else:
-        try:
-            print("[WIPE-ERR]", r.status_code, r.json())
-        except Exception:
-            print("[WIPE-ERR]", r.status_code, r.text)
+        print("[WIPE-ERR] Bulk delete failed")
 
 # --- Helpers ----------------------------------------------------------------
 def normalize_text(s: str) -> str:
@@ -202,109 +156,94 @@ def _print_hits(data: dict, max_snippet: int = 120) -> None:
         print(f"{i:>3}. score={score:.6f} id={deal_id} cat={cat}  text='{doc}…'")
 
 def search_fulltext(text: str, limit: int = 10) -> None:
-    params = {
-        "yql": f"select * from {DOC_TYPE} where userQuery()",
-        "query": text,
-        "hits": limit,
-        "timeout": "5s",
-        "ranking": "default",
+    """Textové vyhledávání pomocí nové knihovny."""
+    results = vespa_client.search_text(text, limit=limit)
+    
+    # Převod na původní formát pro kompatibilitu
+    data = {
+        "root": {
+            "children": [
+                {
+                    "id": f"{NAMESPACE}::{result.doc_id}",
+                    "relevance": result.score,
+                    "fields": result.fields
+                }
+                for result in results.results
+            ]
+        }
     }
-    r = SESSION.get(f"{VESPA_ENDPOINT}/search/", params=params, timeout=15)
-    if not r.ok:
-        try:
-            print("[SEARCH-ERR]", r.status_code, r.json())
-        except Exception:
-            print("[SEARCH-ERR]", r.status_code, r.text)
-        r.raise_for_status()
-    _print_hits(r.json())
-
-def _tensor_spec(vec: List[float]) -> str:
-    # Vespa tensor literal string: tensor<float>(d0[384]):[...]
-    return "tensor<float>(d0[384]):[" + ",".join(f"{x:.6g}" for x in vec) + "]"
+    
+    _print_hits(data)
 
 def search_embedding(text: str, k: int = 100, limit: int = 10,
                      prefer_rank_profile: str = "vector", exact: bool = False) -> None:
-    qvec = compute_embedding(text)
+    """Vektorové vyhledávání pomocí nové knihovny."""
+    try:
+        results = vespa_client.search_vector(text, k=k, limit=limit, exact=exact)
+        
+        # Převod na původní formát pro kompatibilitu
+        data = {
+            "root": {
+                "children": [
+                    {
+                        "id": f"{NAMESPACE}::{result.doc_id}",
+                        "relevance": result.score,
+                        "fields": result.fields
+                    }
+                    for result in results.results
+                ]
+            }
+        }
+        
+        _print_hits(data)
+    except Exception as e:
+        print(f"[ANN-ERR] {e}")
 
-    def _tensor_spec(vec):
-        return "tensor<float>(d0[384]):[" + ",".join(f"{x:.6g}" for x in vec) + "]"
-
-    ann_opts = "approximate:false," if exact else ""
-    yql = (
-        f"select * from {DOC_TYPE} where "
-        f"([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb))"
-    )
-
-    body = {
-        "yql": yql,
-        "hits": limit,
-        "timeout": "5s",
-        "ranking.features.query(qemb)": _tensor_spec(qvec)
-    }
-    # Try preferred rank profile first, then fallback
-    for prof in ([prefer_rank_profile] if prefer_rank_profile else []) + [None]:
-        if prof:
-            body["ranking.profile"] = prof
-        else:
-            body.pop("ranking.profile", None)
-
-        r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body, timeout=30)
-        if r.ok:
-            _print_hits(r.json())
-            return
-        # print server error to see the actual reason
-        try:
-            print("[ANN-ERR]", r.status_code, r.json())
-        except Exception:
-            print("[ANN-ERR]", r.status_code, r.text)
-
-    r.raise_for_status()
-
-    
 def search_hybrid(text: str, k: int = 100, limit: int = 10, exact: bool = False) -> None:
-    """Hybrid search combining full-text (BM25) and ANN on embeddings.
-
-    Uses rank-profile 'hybrid' defined in schema which blends normalized BM25
-    with vector closeness. Recall is the union of text and ANN matches.
-    """
-    qvec = compute_embedding(text)
-
-    ann_opts = "approximate:false," if exact else ""
-    yql = (
-        f"select * from {DOC_TYPE} where "
-        f"(userQuery() or ([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb)))"
-    )
-
-    body = {
-        "yql": yql,
-        "query": text,
-        "hits": limit,
-        "timeout": "5s",
-        "ranking.profile": "hybrid",
-        "ranking.features.query(qemb)": _tensor_spec(qvec),
-    }
-
-    r = SESSION.post(f"{VESPA_ENDPOINT}/search/", json=body, timeout=30)
-    if not r.ok:
-        try:
-            print("[HYB-ERR]", r.status_code, r.json())
-        except Exception:
-            print("[HYB-ERR]", r.status_code, r.text)
-        r.raise_for_status()
-    _print_hits(r.json())
+    """Hybridní vyhledávání pomocí nové knihovny."""
+    try:
+        results = vespa_client.search_hybrid(text, k=k, limit=limit, exact=exact)
+        
+        # Převod na původní formát pro kompatibilitu
+        data = {
+            "root": {
+                "children": [
+                    {
+                        "id": f"{NAMESPACE}::{result.doc_id}",
+                        "relevance": result.score,
+                        "fields": result.fields
+                    }
+                    for result in results.results
+                ]
+            }
+        }
+        
+        _print_hits(data)
+    except Exception as e:
+        print(f"[HYB-ERR] {e}")
 
 def run_yql(yql: str, limit: int = 10, query_text: Optional[str] = None) -> None:
-    params = {"yql": yql, "hits": limit, "timeout": "5s"}
-    if query_text is not None:
-        params["query"] = query_text  # used if yql includes userQuery()
-    r = SESSION.get(f"{VESPA_ENDPOINT}/search/", params=params, timeout=20)
-    if not r.ok:
-        try:
-            print("[YQL-ERR]", r.status_code, r.json())
-        except Exception:
-            print("[YQL-ERR]", r.status_code, r.text)
-        r.raise_for_status()
-    _print_hits(r.json())
+    """Spustí YQL dotaz pomocí nové knihovny."""
+    try:
+        results = vespa_client.search_yql(yql, limit=limit, query_text=query_text)
+        
+        # Převod na původní formát pro kompatibilitu
+        data = {
+            "root": {
+                "children": [
+                    {
+                        "id": f"{NAMESPACE}::{result.doc_id}",
+                        "relevance": result.score,
+                        "fields": result.fields
+                    }
+                    for result in results.results
+                ]
+            }
+        }
+        
+        _print_hits(data)
+    except Exception as e:
+        print(f"[YQL-ERR] {e}")
 
 # --- Main -------------------------------------------------------------------
 def parse_args():
@@ -329,12 +268,11 @@ def parse_args():
     return p.parse_args()
 
 def main():
-    USE_EMBEDDER = False
     args = parse_args()
 
     if args.delete_all:
         print(f"[WIPE] Deleting all documents of {NAMESPACE}:{DOC_TYPE} via selection DELETE")
-        #delete_all_documents_fast()
+        delete_all_documents_fast()
         return
 
     if args.search_text:
@@ -342,12 +280,10 @@ def main():
         return
 
     if args.search_embed:
-        USE_EMBEDDER = True  # ensure embedder is used
-        search_embedding(args.search_embed, k=args.k, limit=args.limit)
+        search_embedding(args.search_embed, k=args.k, limit=args.limit, exact=args.ann_exact)
         return
 
     if args.search_hybrid:
-        USE_EMBEDDER = True  # ensure embedder is used
         search_hybrid(args.search_hybrid, k=args.k, limit=args.limit, exact=args.ann_exact)
         return
 
@@ -357,7 +293,7 @@ def main():
 
     if args.wipe_before_feed:
         print(f"[WIPE] Deleting all documents of {NAMESPACE}:{DOC_TYPE} via selection DELETE")
-        #delete_all_documents_fast()
+        delete_all_documents_fast()
 
     feed_all()
 
