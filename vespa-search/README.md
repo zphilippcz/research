@@ -1,51 +1,51 @@
 # Vespa Client Library for Python
 
-Kompletní knihovna pro práci s Vespa search engine v Pythonu. Podporuje operace s dokumenty, vyhledávání a vektorové embeddings.
+Complete library for working with Vespa search engine in Python. Supports document operations, search, and vector embeddings.
 
-## Instalace
+## Installation
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Integrace s existujícími soubory
+## Integration with existing files
 
-Knihovna je plně integrována s vašimi existujícími soubory:
+The library is fully integrated with your existing files:
 
 ### server.py
-- Používá `vespa_client.py` místo původních funkcí z `py_vespa.py`
-- Zachovává stejné API endpointy a funkcionalitu
-- Lepší error handling a logging
+- Uses `vespa_client.py` instead of original functions from `py_vespa.py`
+- Maintains the same API endpoints and functionality
+- Better error handling and logging
 
 ### py_vespa.py  
-- Refaktorován pro použití nové knihovny
-- Zachovává stejné command-line rozhraní
-- Všechny původní funkce fungují stejně
+- Refactored to use the new library
+- Maintains the same command-line interface
+- All original functions work the same way
 
-### Spuštění integračních testů
+### Running integration tests
 
 ```bash
-# Test, že vše funguje správně
+# Test that everything works correctly
 python test_integration.py
 
-# Test GPS vyhledávání
+# Test GPS search
 python test_gps_search.py
 
-# Spuštění serveru
+# Start server
 python server.py
 
-# Použití py_vespa.py
+# Use py_vespa.py
 python py_vespa.py --search-text "test"
 ```
 
-### GPS vyhledávání
+### GPS search
 
-Knihovna podporuje geografické vyhledávání pomocí GPS souřadnic s post-processing přístupem:
+The library supports geographic search using GPS coordinates with post-processing approach:
 
 ```python
-# Textové vyhledávání s GPS filtrem
-results = client.search_text("restaurace", limit=20)
-# Filtrujeme výsledky podle GPS vzdálenosti v Pythonu
+# Text search with GPS filter
+results = client.search_text("restaurant", limit=20)
+# Filter results by GPS distance in Python
 filtered_results = []
 for result in results.results:
     geo = result.fields.get('geo', {})
@@ -54,34 +54,34 @@ for result in results.results:
         if distance <= 5:  # 5km
             filtered_results.append(result)
 
-# Vektorové vyhledávání s GPS filtrem  
+# Vector search with GPS filter  
 yql = "select * from deal where ([{targetHits:10}]nearestNeighbor(embedding, qemb))"
 results = client.search_yql(yql, limit=10)
-# Filtrujeme výsledky podle GPS vzdálenosti v Pythonu
+# Filter results by GPS distance in Python
 
-# Hybridní vyhledávání s GPS filtrem
+# Hybrid search with GPS filter
 yql = "select * from sources * where (([{targetHits:10}]nearestNeighbor(embedding, qemb)) OR userQuery())"
-results = client.search_yql(yql, limit=10, query_text="restaurace")
-# Filtrujeme výsledky podle GPS vzdálenosti v Pythonu
+results = client.search_yql(yql, limit=10, query_text="restaurant")
+# Filter results by GPS distance in Python
 ```
 
-**Poznámka:** Používá se post-processing přístup s Haversine formulí pro výpočet vzdálenosti. Vespa schéma má `type position` s `indexing: attribute | summary`. Nativní YQL geografické funkce nejsou podporovány v této verzi Vespa.
+**Note:** Uses post-processing approach with Haversine formula for distance calculation. Vespa schema has `type position` with `indexing: attribute | summary`. Native YQL geographic functions are not supported in this version of Vespa.
 
-## Základní použití
+## Basic usage
 
-### Vytvoření klienta
+### Creating a client
 
 ```python
 from vespa_client import create_vespa_client
 
-# Základní klient
+# Basic client
 client = create_vespa_client(
     endpoint="http://localhost:8080",
     namespace="mycompany",
     doc_type="deal"
 )
 
-# Klient s podporou embeddings
+# Client with embedding support
 client = create_vespa_client(
     endpoint="http://localhost:8080",
     namespace="mycompany", 
@@ -91,24 +91,24 @@ client = create_vespa_client(
 )
 ```
 
-### Kontrola zdraví
+### Health check
 
 ```python
 if client.health_check():
-    print("Vespa běží správně!")
+    print("Vespa is running correctly!")
 else:
-    print("Vespa neodpovídá")
+    print("Vespa is not responding")
 ```
 
-## Operace s dokumenty
+## Document operations
 
-### Vložení dokumentu
+### Inserting a document
 
 ```python
-# Jednoduchý dokument
+# Simple document
 doc_fields = {
     "deal_id": "deal-123",
-    "document": "Tento dokument popisuje skvělou nabídku",
+    "document": "This document describes a great offer",
     "category_id": "electronics",
     "price": 99.99,
     "is_active": True
@@ -116,15 +116,15 @@ doc_fields = {
 
 success = client.put_document("deal-123", doc_fields)
 if success:
-    print("Dokument byl úspěšně vložen")
+    print("Document was successfully inserted")
 ```
 
-### Dokument s geolokací
+### Document with geolocation
 
 ```python
 doc_fields = {
     "deal_id": "deal-456",
-    "document": "Nabídka v Praze",
+    "document": "Offer in Prague",
     "category_id": "restaurants",
     "geo": {"lat": 50.0755, "lng": 14.4378}
 }
@@ -132,7 +132,7 @@ doc_fields = {
 client.put_document("deal-456", doc_fields)
 ```
 
-### Dokument s embeddingem
+### Document with embedding
 
 ```python
 from vespa_client import VespaClient, VespaConfig
@@ -146,8 +146,8 @@ config = VespaConfig(
 client = VespaClient(config)
 client.enable_embeddings()
 
-# Vytvoření embeddingu
-text = "Tento dokument popisuje skvělou nabídku"
+# Create embedding
+text = "This document describes a great offer"
 embedding = client.embedder.encode(text)
 
 doc_fields = {
@@ -160,69 +160,69 @@ doc_fields = {
 client.put_document("deal-789", doc_fields)
 ```
 
-### Hromadné vkládání
+### Batch insertion
 
 ```python
 from vespa_client import Document
 
 documents = [
-    Document("doc-1", {"deal_id": "1", "document": "První dokument"}),
-    Document("doc-2", {"deal_id": "2", "document": "Druhý dokument"}),
-    Document("doc-3", {"deal_id": "3", "document": "Třetí dokument"})
+    Document("doc-1", {"deal_id": "1", "document": "First document"}),
+    Document("doc-2", {"deal_id": "2", "document": "Second document"}),
+    Document("doc-3", {"deal_id": "3", "document": "Third document"})
 ]
 
 successful, failed = client.batch_put_documents(documents, batch_size=100)
-print(f"Úspěšně vloženo: {successful}, selhalo: {failed}")
+print(f"Successfully inserted: {successful}, failed: {failed}")
 ```
 
-### Získání dokumentu
+### Getting a document
 
 ```python
 doc = client.get_document("deal-123")
 if doc:
-    print(f"Dokument: {doc}")
+    print(f"Document: {doc}")
 else:
-    print("Dokument nebyl nalezen")
+    print("Document not found")
 ```
 
-### Smazání dokumentu
+### Deleting a document
 
 ```python
 success = client.delete_document("deal-123")
 if success:
-    print("Dokument byl smazán")
+    print("Document was deleted")
 ```
 
-### Smazání všech dokumentů
+### Deleting all documents
 
 ```python
 success = client.delete_all_documents()
 if success:
-    print("Všechny dokumenty byly smazány")
+    print("All documents were deleted")
 ```
 
-## Vyhledávání
+## Search
 
-### Textové vyhledávání
+### Text search
 
 ```python
-results = client.search_text("skvělá nabídka", limit=10)
-print(f"Nalezeno {len(results.results)} výsledků")
+results = client.search_text("great offer", limit=10)
+print(f"Found {len(results.results)} results")
 
 for result in results.results:
     print(f"- {result.doc_id}: {result.score}")
     print(f"  Text: {result.fields.get('document', '')[:100]}...")
 ```
 
-### Vektorové vyhledávání
+### Vector search
 
 ```python
-# Musí být povoleno embeddings
+# Must have embeddings enabled
 client.enable_embeddings()
 
 results = client.search_vector(
-    query="skvělá nabídka",
-    k=100,  # targetHits pro nearest neighbor
+    query="great offer",
+    k=100,  # targetHits for nearest neighbor
     limit=10,
     rank_profile="vector"
 )
@@ -231,11 +231,11 @@ for result in results.results:
     print(f"- {result.doc_id}: {result.score}")
 ```
 
-### Hybridní vyhledávání
+### Hybrid search
 
 ```python
 results = client.search_hybrid(
-    query="skvělá nabídka",
+    query="great offer",
     k=100,
     limit=10,
     rank_profile="hybrid"
@@ -245,7 +245,7 @@ for result in results.results:
     print(f"- {result.doc_id}: {result.score}")
 ```
 
-### Vlastní YQL dotaz
+### Custom YQL query
 
 ```python
 yql = "select * from deal where category_id contains 'electronics'"
@@ -255,7 +255,7 @@ for result in results.results:
     print(f"- {result.doc_id}: {result.fields.get('category_id')}")
 ```
 
-### Filtrování podle ceny
+### Filtering by price
 
 ```python
 yql = "select * from deal where price < 100 and is_active = true"
@@ -263,12 +263,12 @@ results = client.search_yql(yql, limit=10)
 
 for result in results.results:
     price = result.fields.get('price', 0)
-    print(f"- {result.doc_id}: {price} Kč")
+    print(f"- {result.doc_id}: {price} CZK")
 ```
 
-## Pokročilé funkce
+## Advanced features
 
-### Vlastní konfigurace
+### Custom configuration
 
 ```python
 from vespa_client import VespaConfig, VespaClient
@@ -285,31 +285,31 @@ config = VespaConfig(
 client = VespaClient(config)
 ```
 
-### Statistiky
+### Statistics
 
 ```python
 stats = client.get_statistics()
 if stats:
-    print("Vespa statistiky:", stats)
+    print("Vespa statistics:", stats)
 ```
 
 ### Embedding model
 
 ```python
-# Vlastní embedding model
+# Custom embedding model
 client.enable_embeddings(
-    model_name="all-mpnet-base-v2",  # 768 dimenzí
+    model_name="all-mpnet-base-v2",  # 768 dimensions
     dimension=768
 )
 
 # Batch encoding
-texts = ["První text", "Druhý text", "Třetí text"]
+texts = ["First text", "Second text", "Third text"]
 embeddings = client.embedder.encode_batch(texts)
 ```
 
-## Příklady použití
+## Usage examples
 
-### Indexování dat z databáze
+### Indexing data from database
 
 ```python
 import sqlite3
@@ -317,7 +317,7 @@ from vespa_client import create_vespa_client, Document
 
 client = create_vespa_client(enable_embeddings=True)
 
-# Připojení k databázi
+# Connect to database
 conn = sqlite3.connect("deals.db")
 cursor = conn.cursor()
 
@@ -328,7 +328,7 @@ documents = []
 for row in rows:
     deal_id, title, description, category = row
     
-    # Vytvoření embeddingu
+    # Create embedding
     text = f"{title}. {description}"
     embedding = client.embedder.encode(text)
     
@@ -343,14 +343,14 @@ for row in rows:
     )
     documents.append(doc)
 
-# Hromadné vložení
+# Batch insertion
 successful, failed = client.batch_put_documents(documents)
-print(f"Indexováno {successful} dokumentů, {failed} selhalo")
+print(f"Indexed {successful} documents, {failed} failed")
 
 conn.close()
 ```
 
-### Vyhledávací API
+### Search API
 
 ```python
 from flask import Flask, request, jsonify
@@ -390,48 +390,48 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-## Struktura dokumentu
+## Document structure
 
-Podle schématu `deal.sd`:
+According to `deal.sd` schema:
 
 ```python
 {
-    "deal_id": "string",           # ID nabídky
-    "document": "string",          # Text dokumentu (indexovaný)
-    "category_id": "string",       # Kategorie
-    "price": 99.99,               # Cena (double)
-    "is_active": True,            # Aktivní nabídka (boolean)
-    "geo": {"lat": 50.0, "lng": 14.0},  # Geopozice
-    "embedding": [0.1, 0.2, ...]  # Vektor (384 dimenzí)
+    "deal_id": "string",           # Deal ID
+    "document": "string",          # Document text (indexed)
+    "category_id": "string",       # Category
+    "price": 99.99,               # Price (double)
+    "is_active": True,            # Active deal (boolean)
+    "geo": {"lat": 50.0, "lng": 14.0},  # Geoposition
+    "embedding": [0.1, 0.2, ...]  # Vector (384 dimensions)
 }
 ```
 
-## Ranking profily
+## Ranking profiles
 
-- `default` - Textové vyhledávání (BM25)
-- `vector` - Vektorové vyhledávání (cosine similarity)
-- `hybrid` - Kombinace textu a vektoru
+- `default` - Text search (BM25)
+- `vector` - Vector search (cosine similarity)
+- `hybrid` - Combination of text and vector
 
-## Chybové stavy
+## Error states
 
-Knihovna loguje chyby a vrací informace o selhání:
+The library logs errors and returns failure information:
 
 ```python
 results = client.search_text("query")
 if results.errors:
-    print("Chyby:", results.errors)
+    print("Errors:", results.errors)
 ```
 
-## Logování
+## Logging
 
 ```python
 import logging
 
-# Nastavení logování
+# Set up logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('vespa_client')
 ```
 
-## Licence
+## License
 
 MIT License

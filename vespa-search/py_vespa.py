@@ -6,7 +6,7 @@ import os, json, sqlite3, unicodedata, argparse
 from typing import Optional, List
 from tqdm import tqdm
 
-# Import nové knihovny
+# Import new library
 from vespa_client import create_vespa_client, Document
 
 # --- Config -----------------------------------------------------------------
@@ -22,7 +22,7 @@ VESPA_CLUSTER = os.getenv("VESPA_CLUSTER", "content")  # for bulk delete selecti
 USE_EMBEDDER = True
 EMBEDDER_MODEL = "all-MiniLM-L6-v2"  # 384-dim
 
-# Vytvoření Vespa klienta
+# Create Vespa client
 vespa_client = create_vespa_client(
     endpoint=VESPA_ENDPOINT,
     namespace=NAMESPACE,
@@ -32,22 +32,22 @@ vespa_client = create_vespa_client(
 )
 
 def compute_embedding(text: str) -> list[float]:
-    """Vytvoří embedding pro text pomocí Vespa klienta."""
+    """Create embedding for text using Vespa client."""
     if not USE_EMBEDDER:
         raise RuntimeError("Embedding disabled; set USE_EMBEDDER=True or replace this function.")
     return vespa_client.embedder.encode(text, normalize_embeddings=False)
 
 # --- Document API helpers ---------------------------------------------------
 def put_doc(doc_id: str, fields: dict) -> bool:
-    """Vloží dokument do Vespa pomocí nové knihovny."""
+    """Insert document into Vespa using new library."""
     return vespa_client.put_document(doc_id, fields)
 
 def delete_doc(doc_id: str) -> bool:
-    """Smaže dokument z Vespa pomocí nové knihovny."""
+    """Delete document from Vespa using new library."""
     return vespa_client.delete_document(doc_id)
 
 def delete_all_documents_fast() -> None:
-    """Smaže všechny dokumenty pomocí nové knihovny."""
+    """Delete all documents using new library."""
     success = vespa_client.delete_all_documents()
     if success:
         print("[WIPE] Bulk delete successful")
@@ -156,10 +156,10 @@ def _print_hits(data: dict, max_snippet: int = 120) -> None:
         print(f"{i:>3}. score={score:.6f} id={deal_id} cat={cat}  text='{doc}…'")
 
 def search_fulltext(text: str, limit: int = 10) -> None:
-    """Textové vyhledávání pomocí nové knihovny."""
+    """Text search using new library."""
     results = vespa_client.search_text(text, limit=limit)
     
-    # Převod na původní formát pro kompatibilitu
+    # Convert to original format for compatibility
     data = {
         "root": {
             "children": [
@@ -177,11 +177,11 @@ def search_fulltext(text: str, limit: int = 10) -> None:
 
 def search_embedding(text: str, k: int = 100, limit: int = 10,
                      prefer_rank_profile: str = "vector", exact: bool = False) -> None:
-    """Vektorové vyhledávání pomocí nové knihovny."""
+    """Vector search using new library."""
     try:
         results = vespa_client.search_vector(text, k=k, limit=limit, exact=exact)
         
-        # Převod na původní formát pro kompatibilitu
+        # Convert to original format for compatibility
         data = {
             "root": {
                 "children": [
@@ -200,11 +200,11 @@ def search_embedding(text: str, k: int = 100, limit: int = 10,
         print(f"[ANN-ERR] {e}")
 
 def search_hybrid(text: str, k: int = 100, limit: int = 10, exact: bool = False) -> None:
-    """Hybridní vyhledávání pomocí nové knihovny."""
+    """Hybrid search using new library."""
     try:
         results = vespa_client.search_hybrid(text, k=k, limit=limit, exact=exact)
         
-        # Převod na původní formát pro kompatibilitu
+        # Convert to original format for compatibility
         data = {
             "root": {
                 "children": [
@@ -223,11 +223,11 @@ def search_hybrid(text: str, k: int = 100, limit: int = 10, exact: bool = False)
         print(f"[HYB-ERR] {e}")
 
 def run_yql(yql: str, limit: int = 10, query_text: Optional[str] = None) -> None:
-    """Spustí YQL dotaz pomocí nové knihovny."""
+    """Execute YQL query using new library."""
     try:
         results = vespa_client.search_yql(yql, limit=limit, query_text=query_text)
         
-        # Převod na původní formát pro kompatibilitu
+        # Convert to original format for compatibility
         data = {
             "root": {
                 "children": [

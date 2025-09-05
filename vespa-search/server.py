@@ -15,8 +15,8 @@ from vespa_client import create_vespa_client, VespaConfig
 import math
 
 def haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Vypočítá vzdálenost mezi dvěma GPS souřadnicemi v kilometrech."""
-    R = 6371  # Poloměr Země v km
+    """Calculate distance between two GPS coordinates in kilometers."""
+    R = 6371  # Earth radius in km
     
     lat1_rad = math.radians(lat1)
     lon1_rad = math.radians(lon1)
@@ -37,7 +37,7 @@ app = FastAPI(title="Vespa Search Server", version="0.1.0")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Vytvoření Vespa klienta
+# Create Vespa client
 vespa_config = VespaConfig(
     endpoint=os.getenv("VESPA_ENDPOINT", "http://localhost:8080"),
     namespace=os.getenv("VESPA_NAMESPACE", "mycompany"),
@@ -45,7 +45,7 @@ vespa_config = VespaConfig(
     cluster=os.getenv("VESPA_CLUSTER", "content")
 )
 
-# Inicializace klienta s embeddings
+# Initialize client with embeddings
 vespa_client = create_vespa_client(
     endpoint=vespa_config.endpoint,
     namespace=vespa_config.namespace,
@@ -61,13 +61,13 @@ def _perform_fulltext(query_text: str, limit: int, lat: Optional[float] = None, 
     print(f"Fulltext search: q='{query_text}', limit={limit}, lat={lat}, lon={lon}, radius={radius}")
     
     try:
-        # Použijeme vespa_client pro vyhledávání
+        # Use vespa_client for search
         if lat is not None and lon is not None and radius is not None:
-            # GPS filtr - použijeme post-processing přístup
+            # GPS filter - use post-processing approach
             print(f"Fulltext search with GPS post-processing: lat={lat}, lon={lon}, radius={radius}")
-            results = vespa_client.search_text(query_text, limit=limit * 2)  # Získáme více výsledků pro filtrování
+            results = vespa_client.search_text(query_text, limit=limit * 2)  # Get more results for filtering
             
-            # Filtrujeme výsledky podle GPS vzdálenosti
+            # Filter results by GPS distance
             filtered_results = []
             for result in results.results:
                 geo = result.fields.get('geo', {})
@@ -78,7 +78,7 @@ def _perform_fulltext(query_text: str, limit: int, lat: Optional[float] = None, 
                         if len(filtered_results) >= limit:
                             break
             
-            # Vytvoříme nový SearchResponse s filtrovanými výsledky
+            # Create new SearchResponse with filtered results
             from vespa_client import SearchResponse, SearchResult
             filtered_response = SearchResponse(
                 total_count=len(filtered_results),
@@ -86,11 +86,11 @@ def _perform_fulltext(query_text: str, limit: int, lat: Optional[float] = None, 
             )
             results = filtered_response
         else:
-            # Bez GPS filtru
+            # Without GPS filter
             print(f"Fulltext search without GPS")
             results = vespa_client.search_text(query_text, limit=limit)
         
-        # Převod na původní formát odpovědi
+        # Convert to original response format
         response_data = {
             "root": {
                 "children": [
@@ -114,7 +114,7 @@ def _perform_fulltext(query_text: str, limit: int, lat: Optional[float] = None, 
         
     except Exception as e:
         print(f"Fulltext search exception: {e}")
-        # Fallback na jednodušší dotaz bez GPS
+        # Fallback to simpler query without GPS
         if lat is not None and lon is not None and radius is not None:
             print("Trying fulltext fallback without GPS filter...")
             try:
@@ -144,15 +144,15 @@ def _perform_embedding(query_text: str, k: int, limit: int, exact: bool, lat: Op
     print(f"Embedding search: q='{query_text}', k={k}, limit={limit}, exact={exact}, lat={lat}, lon={lon}, radius={radius}")
     
     try:
-        # Použijeme vespa_client pro vektorové vyhledávání
+        # Use vespa_client for vector search
         if lat is not None and lon is not None and radius is not None:
-            # GPS filtr - použijeme post-processing přístup
+            # GPS filter - use post-processing approach
             print(f"Embedding search with GPS post-processing: lat={lat}, lon={lon}, radius={radius}")
             
-            # Použijeme vektorové vyhledávání bez GPS filtru a pak filtrujeme
-            results = vespa_client.search_vector(query_text, k=k, limit=limit * 2, exact=exact)  # Získáme více výsledků pro filtrování
+            # Use vector search without GPS filter and then filter
+            results = vespa_client.search_vector(query_text, k=k, limit=limit * 2, exact=exact)  # Get more results for filtering
             
-            # Filtrujeme výsledky podle GPS vzdálenosti
+            # Filter results by GPS distance
             filtered_results = []
             for result in results.results:
                 geo = result.fields.get('geo', {})
@@ -163,7 +163,7 @@ def _perform_embedding(query_text: str, k: int, limit: int, exact: bool, lat: Op
                         if len(filtered_results) >= limit:
                             break
             
-            # Vytvoříme nový SearchResponse s filtrovanými výsledky
+            # Create new SearchResponse with filtered results
             from vespa_client import SearchResponse, SearchResult
             filtered_response = SearchResponse(
                 total_hits=len(filtered_results),
@@ -171,11 +171,11 @@ def _perform_embedding(query_text: str, k: int, limit: int, exact: bool, lat: Op
             )
             results = filtered_response
         else:
-            # Bez GPS filtru
+            # Without GPS filter
             print(f"Embedding search without GPS")
             results = vespa_client.search_vector(query_text, k=k, limit=limit, exact=exact)
         
-        # Převod na původní formát odpovědi
+        # Convert to original response format
         response_data = {
             "root": {
                 "children": [
@@ -199,7 +199,7 @@ def _perform_embedding(query_text: str, k: int, limit: int, exact: bool, lat: Op
         
     except Exception as e:
         print(f"Embedding search exception: {e}")
-        # Fallback na jednodušší dotaz bez GPS
+        # Fallback to simpler query without GPS
         if lat is not None and lon is not None and radius is not None:
             print("Trying embedding fallback without GPS filter...")
             try:
@@ -228,18 +228,18 @@ def _perform_embedding(query_text: str, k: int, limit: int, exact: bool, lat: Op
 def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optional[float] = None, lon: Optional[float] = None, radius: Optional[float] = None) -> dict:
     print(f"Hybrid search: q='{query_text}', k={k}, limit={limit}, lat={lat}, lon={lon}, radius={radius}")
     
-    # Vytvoříme dva separátní dotazy pro identifikaci zdroje (bez GPS filtru)
-    # 1. Textový dotaz
+    # Create two separate queries for source identification (without GPS filter)
+    # 1. Text query
     yql_text = f"select * from sources * where userQuery()"
     
-    # 2. Vektorový dotaz
+    # 2. Vector query
     ann_opts = "approximate:false," if exact else ""
     yql_vector = f"select * from sources * where ([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb))"
     
     print(f"Text YQL: {yql_text}")
     print(f"Vector YQL: {yql_vector}")
     
-    # Spustíme oba dotazy paralelně
+    # Run both queries in parallel
     import asyncio
     import concurrent.futures
     
@@ -288,7 +288,7 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
         text_results = future_text.result()
         vector_results = future_vector.result()
     
-    # Získáme ID dokumentů z každého zdroje
+    # Get document IDs from each source
     text_ids = set()
     vector_ids = set()
     
@@ -303,7 +303,7 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
     print(f"Text IDs sample: {list(text_ids)[:3] if text_ids else 'None'}")
     print(f"Vector IDs sample: {list(vector_ids)[:3] if vector_ids else 'None'}")
     
-    # Spustíme hybrid dotaz pro finální výsledky
+    # Run hybrid query for final results
     yql_hybrid = (
         f"select * from sources * where ("
         f"([{{{ann_opts}targetHits:{k}}}]nearestNeighbor(embedding, qemb))"
@@ -315,8 +315,8 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
         # GPS filtr - použijeme post-processing přístup
         print(f"Hybrid search with GPS post-processing: lat={lat}, lon={lon}, radius={radius}")
         
-        # Použijeme hybridní vyhledávání bez GPS filtru a pak filtrujeme
-        results = vespa_client.search_hybrid(query_text, k=k, limit=limit * 2, exact=exact)  # Získáme více výsledků pro filtrování
+        # Use hybrid search without GPS filter and then filter
+        results = vespa_client.search_hybrid(query_text, k=k, limit=limit * 2, exact=exact)  # Get more results for filtering
         
         # Filtrujeme výsledky podle GPS vzdálenosti
         filtered_results = []
@@ -342,7 +342,7 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
     try:
         results = vespa_client.search_hybrid(query_text, k=k, limit=limit, exact=exact)
         
-        # Převod na původní formát odpovědi
+        # Convert to original response format
         response_data = {
             "root": {
                 "children": [
@@ -357,10 +357,10 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
             }
         }
         
-        # Pro hybridní vyhledávání nemůžeme přesně určit zdroj, protože Vespa kombinuje výsledky
-        # Přidáme informaci o zdroji ke každému výsledku
+        # For hybrid search we cannot precisely determine source, because Vespa combines results
+        # Add source information to each result
         for hit in response_data.get("root", {}).get("children", []):
-            # Pro hybridní vyhledávání označíme všechny výsledky jako "hybrid"
+            # For hybrid search mark all results as "hybrid"
             if "fields" not in hit:
                 hit["fields"] = {}
             hit["fields"]["_source"] = "hybrid"
@@ -374,7 +374,7 @@ def _perform_hybrid(query_text: str, k: int, limit: int, exact: bool, lat: Optio
         
     except Exception as e:
         print(f"Hybrid search exception: {e}")
-        # Fallback na jednodušší dotaz bez GPS
+        # Fallback to simpler query without GPS
         if lat is not None and lon is not None and radius is not None:
             print("Trying fallback without GPS filter...")
             try:
@@ -451,13 +451,13 @@ def diagnostics():
         "namespace": vespa_config.namespace
     }
     
-    # Kontrola zdraví Vespa
+    # Check Vespa health
     if vespa_client.health_check():
         info["vespa_health"] = "healthy"
     else:
         info["vespa_health"] = "unhealthy"
     
-    # Počet dokumentů
+    # Document count
     try:
         yql = f"select count() as num from {vespa_config.doc_type} where true;"
         results = vespa_client.search_yql(yql, limit=0)
@@ -465,14 +465,14 @@ def diagnostics():
         info["method"] = "direct_count"
     except Exception as e:
         try:
-            # Fallback na sources
+            # Fallback to sources
             yql = f"select count() as num from sources * where true;"
             results = vespa_client.search_yql(yql, limit=0)
             info["doc_count"] = results.total_hits
             info["method"] = "sources_count"
         except Exception as e2:
             try:
-                # Fallback na vzorek dokumentu
+                # Fallback to document sample
                 yql = f"select * from {vespa_config.doc_type} where true limit 1;"
                 results = vespa_client.search_yql(yql, limit=1)
                 info["doc_count"] = "unknown_but_docs_exist" if results.results else 0
