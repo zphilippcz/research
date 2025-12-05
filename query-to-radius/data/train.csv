@@ -1,0 +1,3462 @@
+query_text,user_region_res5,user_region_res4,radius_bucket_3,total_orders
+amc,8544a103fffffff,8444a11ffffffff,2,500
+amc,8526e38bfffffff,8426e39ffffffff,2,500
+amc,8526ee2ffffffff,8426ee3ffffffff,1,500
+amc,8544e5affffffff,8444e5bffffffff,1,500
+amc,852a1273fffffff,842a127ffffffff,1,500
+amc,852aacb3fffffff,842aacbffffffff,1,500
+amc,8528d5cbfffffff,8428d5dffffffff,0,500
+amc,8528d553fffffff,8428d5dffffffff,1,500
+amc,8544d84ffffffff,8444d85ffffffff,2,500
+amc,85265333fffffff,8426533ffffffff,2,500
+amc,8548b173fffffff,8448b17ffffffff,1,500
+amc,85489a2bfffffff,84489a7ffffffff,1,500
+amc,852aaa87fffffff,842aaa9ffffffff,0,500
+amc,852a304ffffffff,842a305ffffffff,1,500
+amc,852ab38ffffffff,842ab39ffffffff,1,500
+amc,85274daffffffff,84274dbffffffff,1,500
+amc,8544e157fffffff,8444e15ffffffff,1,500
+amc,8526aa53fffffff,8426aa5ffffffff,1,500
+amc,85441abbfffffff,84441abffffffff,1,500
+amc,8544e533fffffff,8444e53ffffffff,1,500
+amc,8544a823fffffff,8444a83ffffffff,1,500
+amc,85260177fffffff,8426017ffffffff,1,500
+amc,8528b2abfffffff,8428b2bffffffff,1,500
+amc,85266647fffffff,8426665ffffffff,1,500
+amc,85275b3bfffffff,84275b3ffffffff,1,500
+amc,852662cbfffffff,842662dffffffff,1,500
+amc,852a9657fffffff,842a965ffffffff,1,500
+amc,852ab603fffffff,842ab61ffffffff,1,500
+amc,85274ed7fffffff,84274edffffffff,1,500
+amc,85274dd3fffffff,84274ddffffffff,1,500
+amc,8527418ffffffff,8427419ffffffff,2,500
+amc,852650cbfffffff,842650dffffffff,1,500
+amc,85289853fffffff,8428985ffffffff,1,500
+amc,852ad677fffffff,842ad67ffffffff,1,500
+amc,852ad543fffffff,842ad55ffffffff,1,500
+amc,852ad6d7fffffff,842ad6dffffffff,2,500
+amc,8548d897fffffff,8448dd5ffffffff,1,500
+amc,852aae93fffffff,842aae9ffffffff,2,500
+amc,85446867fffffff,8444687ffffffff,1,500
+amc,85446bc7fffffff,84446bdffffffff,1,500
+amc,852a8a97fffffff,842a8a9ffffffff,1,500
+amc,85268c57fffffff,84268c5ffffffff,1,500
+amc,852758a3fffffff,842758bffffffff,1,500
+amc,852640b7fffffff,8426457ffffffff,1,500
+amc,85265dd3fffffff,84265ddffffffff,1,500
+amc,852a92affffffff,842a92bffffffff,1,500
+amc,85274b47fffffff,84274b7ffffffff,1,500
+amc,852663a7fffffff,842663bffffffff,1,500
+amc,852681a7fffffff,842681bffffffff,0,500
+amc,8526c117fffffff,8426c11ffffffff,1,500
+amc,85446c17fffffff,84446c1ffffffff,0,500
+amc,8544a1bbfffffff,8444a19ffffffff,1,500
+amc,8544f4cbfffffff,8444f4dffffffff,1,500
+amc,852af637fffffff,842af63ffffffff,1,500
+amc,852af60ffffffff,842af61ffffffff,1,500
+amc,8544a1abfffffff,8444a1bffffffff,0,500
+amc,852aacbbfffffff,842aacbffffffff,0,500
+amc,8528f017fffffff,8428f01ffffffff,0,500
+amc,8528f00bfffffff,8428f01ffffffff,0,500
+amc,852aa803fffffff,842aa81ffffffff,1,500
+amc,8526c1c7fffffff,8426c1dffffffff,1,500
+amc,8526ee23fffffff,8426ee3ffffffff,1,500
+amc,852a3393fffffff,842a339ffffffff,0,500
+amc,8528d50bfffffff,8428d51ffffffff,1,500
+amc,852a300ffffffff,842a301ffffffff,1,500
+amc,85274843fffffff,8427485ffffffff,1,500
+amc,8544eeb7fffffff,8444eebffffffff,2,500
+amc,8529b6d7fffffff,8429b69ffffffff,0,500
+amc,8544cc27fffffff,8444cc3ffffffff,1,500
+amc,8544d5d7fffffff,8444d5dffffffff,1,500
+amc,8526e423fffffff,8426e43ffffffff,1,500
+amc,85279e37fffffff,84279e3ffffffff,1,500
+amc,8544d983fffffff,8444d99ffffffff,2,500
+amc,852ad55bfffffff,842ad55ffffffff,1,500
+amc,852aac9bfffffff,842aac9ffffffff,1,500
+amc,852aa11bfffffff,842aa11ffffffff,1,500
+amc,8544dc4bfffffff,8444dc5ffffffff,1,500
+amc,852ad31bfffffff,842ad31ffffffff,1,500
+amc,8544c91bfffffff,8444c91ffffffff,1,500
+amc,8544caa3fffffff,8444cabffffffff,1,500
+amc,852a8dd7fffffff,842a8d9ffffffff,2,500
+amc,852758dbfffffff,842758dffffffff,2,500
+amc,852664bbfffffff,842664bffffffff,1,500
+amc,85266253fffffff,842662dffffffff,1,500
+amc,852681a7fffffff,842681bffffffff,0,500
+amc,852759abfffffff,842759bffffffff,1,500
+amc,85441e0bfffffff,84441e1ffffffff,1,500
+amc,852a953bfffffff,842a953ffffffff,1,500
+amc,8544eeb7fffffff,8444eebffffffff,2,500
+amc,854440cbfffffff,844440dffffffff,2,500
+amc,852ad6d3fffffff,842ad6dffffffff,1,500
+amc,85444667fffffff,8444467ffffffff,1,500
+amc,8544a81bfffffff,8444a81ffffffff,2,500
+amc,852aacd3fffffff,842aacdffffffff,1,500
+amc,8512db77fffffff,8412db7ffffffff,2,500
+amc,8528f00bfffffff,8428f01ffffffff,0,500
+amc,8526caaffffffff,8426cabffffffff,1,500
+amc,85269683fffffff,8426969ffffffff,1,500
+amc,852a1467fffffff,842a147ffffffff,1,500
+amc,852a3047fffffff,842a305ffffffff,1,500
+amc,8548e847fffffff,8448e85ffffffff,1,500
+amc,85445057fffffff,8444505ffffffff,1,500
+amc,85445003fffffff,8444501ffffffff,1,500
+amc,8544a117fffffff,8444a11ffffffff,1,500
+amc,85445293fffffff,8444529ffffffff,1,500
+amc,8544ad73fffffff,8444ad7ffffffff,1,500
+amc,8544cc77fffffff,8444cc7ffffffff,1,500
+amc,8544d5a7fffffff,8444d5bffffffff,1,500
+amc,852663d3fffffff,8426607ffffffff,1,500
+amc,852a940bfffffff,842a941ffffffff,1,500
+amc,852a8623fffffff,842a863ffffffff,1,500
+amc,8526ea97fffffff,8426ea9ffffffff,2,500
+amc,8528f5dbfffffff,8428f4bffffffff,1,500
+amc,852a847bfffffff,842a847ffffffff,0,500
+amc,852a841bfffffff,842a841ffffffff,1,500
+amc,85264d03fffffff,84264d1ffffffff,2,500
+amc,85264d17fffffff,84264d1ffffffff,2,500
+amc,85264d1bfffffff,84264d1ffffffff,1,500
+amc,8526c937fffffff,8426c93ffffffff,1,500
+amc,852640d3fffffff,842640dffffffff,1,500
+amc,852643dbfffffff,842642bffffffff,1,500
+amc,8527580ffffffff,8427581ffffffff,2,500
+amc,852665a7fffffff,842665bffffffff,1,500
+amc,852a92c7fffffff,842a92dffffffff,1,500
+amc,8527594ffffffff,8427595ffffffff,1,500
+amc,85441a13fffffff,84441a1ffffffff,1,500
+amc,85441ad7fffffff,84441adffffffff,1,500
+amc,8544f047fffffff,8444f05ffffffff,1,500
+amc,8544d84bfffffff,8444d85ffffffff,0,500
+amc,8544f063fffffff,8444f07ffffffff,1,500
+amc,852a896ffffffff,842ad6dffffffff,2,500
+amc,852a9b27fffffff,842a9b3ffffffff,1,500
+amc,8548c613fffffff,8448c61ffffffff,1,500
+amc,852a8017fffffff,842a801ffffffff,1,500
+amc,8544a18ffffffff,8444a19ffffffff,2,500
+amc,85444683fffffff,8444469ffffffff,1,500
+amc,8526c95bfffffff,8426c95ffffffff,1,500
+amc,852a924ffffffff,842a925ffffffff,2,500
+amc,8528d5d7fffffff,8428d5dffffffff,1,500
+amc,8526e957fffffff,8426e95ffffffff,1,500
+amc,8544c5b7fffffff,8444c5bffffffff,1,500
+amc,85267537fffffff,8426753ffffffff,1,500
+amc,85266cc7fffffff,84266cdffffffff,1,500
+amc,85266a1bfffffff,84266a1ffffffff,1,500
+amc,85446dd3fffffff,84446ddffffffff,1,500
+amc,852aac97fffffff,842aac9ffffffff,0,500
+amc,85445293fffffff,8444529ffffffff,1,500
+amc,8544cc53fffffff,8444cc5ffffffff,1,500
+amc,852666bbfffffff,842666bffffffff,1,500
+amc,852ad5c7fffffff,842ad5dffffffff,1,500
+amc,852a843bfffffff,842a843ffffffff,1,500
+amc,852aae93fffffff,842aae9ffffffff,2,500
+amc,8544cd5bfffffff,8444cc3ffffffff,2,500
+amc,85269627fffffff,8426963ffffffff,1,500
+amc,852681a7fffffff,842681bffffffff,0,500
+amc,85265647fffffff,8426565ffffffff,2,500
+amc,8526cb93fffffff,8426cb9ffffffff,0,500
+amc,85441377fffffff,8444133ffffffff,1,500
+amc,85265b4bfffffff,84265b5ffffffff,1,500
+amc,854440cbfffffff,844440dffffffff,2,500
+amc,8544e04bfffffff,8444e05ffffffff,1,500
+amc,8544f01bfffffff,8444f01ffffffff,1,500
+amc,8544a103fffffff,8444a11ffffffff,2,500
+amc,852aac97fffffff,842aac9ffffffff,0,500
+amc,852a1433fffffff,842a143ffffffff,2,500
+amc,8526628ffffffff,8426629ffffffff,1,500
+amc,8526e0cbfffffff,8426e0dffffffff,1,500
+amc,8526ec83fffffff,8426ec9ffffffff,1,500
+amc,85489c3bfffffff,84489c3ffffffff,1,500
+amc,852759affffffff,842759bffffffff,0,500
+amc,852ab313fffffff,842ab39ffffffff,1,500
+amc,852a33a3fffffff,842a33bffffffff,1,500
+amc,8528d153fffffff,8428d15ffffffff,1,500
+amc,852a14abfffffff,842a141ffffffff,1,500
+amc,852aa94bfffffff,842aa95ffffffff,1,500
+amc,8544ee77fffffff,8444ee7ffffffff,1,500
+amc,8526492bfffffff,8426493ffffffff,1,500
+amc,8544e143fffffff,8444e15ffffffff,1,500
+amc,8544ee77fffffff,8444ee7ffffffff,1,500
+amc,85445637fffffff,8444563ffffffff,1,500
+amc,8544ec63fffffff,8444ec7ffffffff,1,500
+amc,85268c63fffffff,84268c7ffffffff,1,500
+amc,852a3363fffffff,842a337ffffffff,1,500
+amc,8544f01bfffffff,8444f0dffffffff,1,500
+amc,8544a82ffffffff,8444a83ffffffff,1,500
+amc,8544f6d3fffffff,8444f6dffffffff,1,500
+amc,8544a8c3fffffff,8444a8dffffffff,2,500
+amc,85441a1bfffffff,84441a1ffffffff,1,500
+amc,8544c5b7fffffff,8444c5bffffffff,1,500
+amc,8544c103fffffff,8444c11ffffffff,1,500
+amc,8544eac3fffffff,8444eadffffffff,2,500
+amc,8544c03bfffffff,8444c03ffffffff,1,500
+amc,8526622ffffffff,8426623ffffffff,1,500
+amc,8527596ffffffff,8427597ffffffff,1,500
+amc,852661c7fffffff,842661dffffffff,1,500
+amc,8527905bfffffff,8427905ffffffff,1,500
+amc,852ad48ffffffff,842ad49ffffffff,2,500
+amc,8544db83fffffff,8444db9ffffffff,1,500
+amc,8544d80ffffffff,8444d81ffffffff,1,500
+amc,852ad4cbfffffff,842ad4dffffffff,1,500
+amc,8544db4ffffffff,8444db5ffffffff,1,500
+amc,8527a8a7fffffff,8427a8bffffffff,1,500
+amc,852a3043fffffff,842a305ffffffff,1,500
+amc,8526ceb7fffffff,8426cebffffffff,1,500
+amc,8526c5affffffff,8426c5bffffffff,1,500
+amc,852a120ffffffff,842a127ffffffff,1,500
+amc,852aa377fffffff,842aa37ffffffff,1,500
+amc,852aa183fffffff,842aa19ffffffff,1,500
+amc,852a847bfffffff,842a847ffffffff,0,500
+amc,85261653fffffff,8426165ffffffff,1,500
+amc,8544c88bfffffff,8444c89ffffffff,1,500
+amc,8544d92ffffffff,8444d93ffffffff,1,500
+amc,85264d77fffffff,84264d7ffffffff,1,500
+amc,85264daffffffff,84264dbffffffff,2,500
+amc,85444d93fffffff,84444d9ffffffff,1,500
+amc,852a8a83fffffff,842a8a9ffffffff,1,500
+amc,852aaacffffffff,842aaadffffffff,1,500
+amc,852888a3fffffff,842888bffffffff,1,500
+amc,85264153fffffff,8426415ffffffff,1,500
+amc,85267573fffffff,8426757ffffffff,1,500
+amc,852a93cffffffff,842a93dffffffff,1,500
+amc,85266523fffffff,8426653ffffffff,1,500
+amc,85275943fffffff,8427595ffffffff,1,500
+amc,85266e73fffffff,84266e7ffffffff,1,500
+amc,85441ac7fffffff,84441adffffffff,0,500
+amc,8526ed7bfffffff,8426ed7ffffffff,1,500
+amc,8526f517fffffff,8426f51ffffffff,1,500
+amc,85275d77fffffff,84275d7ffffffff,0,500
+amc,852a8473fffffff,842a847ffffffff,1,500
+amc,852748cffffffff,842748dffffffff,2,500
+amc,8526494ffffffff,8426495ffffffff,1,500
+amc,85441e63fffffff,84441e7ffffffff,1,500
+amc,8544e34ffffffff,8444e35ffffffff,1,500
+amc,85266d4bfffffff,84266d5ffffffff,2,500
+amc,85279e37fffffff,842798dffffffff,1,500
+amc,852898cbfffffff,842898dffffffff,1,500
+amc,852a8b7bfffffff,842a8b7ffffffff,1,500
+amc,8526c3affffffff,8426c3bffffffff,1,500
+amc,8526ea4ffffffff,8426ea5ffffffff,1,500
+amc,852a1277fffffff,842a127ffffffff,1,500
+amc,852aacd3fffffff,842aacdffffffff,1,500
+amc,8544cd5bfffffff,8444cd5ffffffff,2,500
+amc,85264caffffffff,84264cbffffffff,1,500
+amc,8544cd5bfffffff,8444cd5ffffffff,2,500
+amc,8544ca6ffffffff,8444ca7ffffffff,1,500
+amc,85264daffffffff,84264dbffffffff,2,500
+amc,8548b387fffffff,8448b39ffffffff,1,500
+amc,8526ddb3fffffff,8426ddbffffffff,1,500
+amc,85274377fffffff,8427437ffffffff,1,500
+amc,85266e97fffffff,84266c5ffffffff,1,500
+amc,8526aa6bfffffff,8426aa7ffffffff,1,500
+amc,85275a2bfffffff,84275a3ffffffff,1,500
+amc,8527590ffffffff,8427591ffffffff,1,500
+amc,852641cffffffff,842641dffffffff,1,500
+amc,8526630ffffffff,8426631ffffffff,1,500
+amc,85266697fffffff,8426669ffffffff,1,500
+amc,852673bbfffffff,842673bffffffff,1,500
+amc,852644c3fffffff,842644dffffffff,1,500
+amc,852644d7fffffff,842644dffffffff,1,500
+amc,852608cbfffffff,84260e3ffffffff,1,500
+amc,85260e27fffffff,84260e3ffffffff,1,500
+amc,85262cd3fffffff,84262cdffffffff,0,500
+amc,85262cd3fffffff,84262cdffffffff,0,500
+amc,85264623fffffff,8426463ffffffff,1,500
+amc,85264627fffffff,8426463ffffffff,1,500
+amc,85264623fffffff,8426463ffffffff,1,500
+amc,8526561bfffffff,8426561ffffffff,1,500
+amc,85265607fffffff,8426561ffffffff,1,500
+amc,85265663fffffff,8426567ffffffff,0,500
+amc,8526567bfffffff,8426567ffffffff,1,500
+amc,85265673fffffff,8426567ffffffff,0,500
+amc,85265663fffffff,8426567ffffffff,0,500
+amc,852661abfffffff,842661bffffffff,1,500
+amc,852661a3fffffff,842661bffffffff,2,500
+amc,852661b7fffffff,842661bffffffff,2,500
+amc,85266187fffffff,842661bffffffff,1,500
+amc,8526640bfffffff,8426641ffffffff,1,500
+amc,8526640bfffffff,8426641ffffffff,1,500
+amc,8526640ffffffff,8426641ffffffff,1,500
+amc,85266457fffffff,8426645ffffffff,0,500
+amc,8526644ffffffff,8426645ffffffff,1,500
+amc,85266453fffffff,8426645ffffffff,0,500
+amc,85266453fffffff,8426645ffffffff,0,500
+amc,85266453fffffff,8426645ffffffff,0,500
+amc,852664c3fffffff,842664dffffffff,2,500
+amc,852664cbfffffff,842664dffffffff,0,500
+amc,852664cbfffffff,842664dffffffff,0,500
+amc,852664c3fffffff,842664dffffffff,2,500
+amc,852664dbfffffff,842664dffffffff,1,500
+amc,852664c3fffffff,842664dffffffff,2,500
+amc,852664cbfffffff,842664dffffffff,0,500
+amc,852664dbfffffff,842664dffffffff,1,500
+amc,852664c3fffffff,842664dffffffff,2,500
+amc,85268ccbfffffff,84268cdffffffff,1,500
+amc,85268cd3fffffff,84268cdffffffff,0,500
+amc,85268cc7fffffff,84268cdffffffff,0,500
+amc,85268ccbfffffff,84268cdffffffff,1,500
+amc,85268cc7fffffff,84268cdffffffff,0,500
+amc,85268cc7fffffff,84268cdffffffff,0,500
+amc,85268cc3fffffff,84268cdffffffff,0,500
+amc,8526c18bfffffff,8426c19ffffffff,2,500
+amc,8526c19bfffffff,8426c19ffffffff,2,500
+amc,8526c82bfffffff,8426c83ffffffff,0,500
+amc,8526c87bfffffff,8426c87ffffffff,1,500
+amc,8526c863fffffff,8426c87ffffffff,1,500
+amc,8526c867fffffff,8426c87ffffffff,1,500
+amc,8526c867fffffff,8426c87ffffffff,1,500
+amc,8526c877fffffff,8426c87ffffffff,1,500
+amc,8526c86ffffffff,8426c87ffffffff,1,500
+amc,8526cbd7fffffff,8426cbdffffffff,0,500
+amc,8526cbd3fffffff,8426cbdffffffff,0,500
+amc,8526cbdbfffffff,8426cbdffffffff,1,500
+amc,8526cbdbfffffff,8426cbdffffffff,1,500
+amc,8526cbdbfffffff,8426cbdffffffff,1,500
+amc,8526cbcbfffffff,8426cbdffffffff,1,500
+amc,8527527bfffffff,8427527ffffffff,0,500
+amc,85262c9bfffffff,8427527ffffffff,1,500
+amc,85275263fffffff,8427527ffffffff,0,500
+amc,85275263fffffff,8427527ffffffff,0,500
+amc,85275927fffffff,8427593ffffffff,0,500
+amc,85275937fffffff,8427593ffffffff,1,500
+amc,85275927fffffff,8427593ffffffff,0,500
+amc,85275937fffffff,8427593ffffffff,1,500
+amc,85275933fffffff,8427593ffffffff,0,500
+amc,85275937fffffff,8427593ffffffff,1,500
+amc,8528d55bfffffff,8428d55ffffffff,1,500
+amc,8528d543fffffff,8428d55ffffffff,0,500
+amc,8528d547fffffff,8428d55ffffffff,2,500
+amc,8528d543fffffff,8428d55ffffffff,0,500
+amc,8528d54bfffffff,8428d55ffffffff,0,500
+amc,8528d54ffffffff,8428d55ffffffff,0,500
+amc,852986bbfffffff,842986bffffffff,0,500
+amc,852986a3fffffff,842986bffffffff,0,500
+amc,8529b6d7fffffff,8429b6dffffffff,0,500
+amc,8529b6d7fffffff,8429b6dffffffff,0,500
+amc,8529b6d3fffffff,8429b6dffffffff,0,500
+amc,8529b6cbfffffff,8429b6dffffffff,0,500
+amc,8529b6d3fffffff,8429b6dffffffff,0,500
+amc,8529b6c3fffffff,8429b6dffffffff,0,500
+amc,852a1093fffffff,842a109ffffffff,1,500
+amc,852a108bfffffff,842a109ffffffff,1,500
+amc,852a1083fffffff,842a109ffffffff,1,500
+amc,852a1083fffffff,842a109ffffffff,1,500
+amc,852a108bfffffff,842a109ffffffff,1,500
+amc,852a1343fffffff,842a135ffffffff,0,500
+amc,852a134ffffffff,842a135ffffffff,0,500
+amc,852a1343fffffff,842a135ffffffff,0,500
+amc,852a1353fffffff,842a135ffffffff,2,500
+amc,852a1347fffffff,842a135ffffffff,1,500
+amc,852a134bfffffff,842a135ffffffff,1,500
+amc,852a3067fffffff,842a307ffffffff,0,500
+amc,852a3067fffffff,842a307ffffffff,0,500
+amc,852a306ffffffff,842a307ffffffff,0,500
+amc,852a3063fffffff,842a307ffffffff,1,500
+amc,852a3067fffffff,842a307ffffffff,0,500
+amc,852a3067fffffff,842a307ffffffff,0,500
+amc,852a9307fffffff,842a931ffffffff,2,500
+amc,852a9313fffffff,842a931ffffffff,1,500
+amc,852a956ffffffff,842a957ffffffff,1,500
+amc,852a957bfffffff,842a957ffffffff,2,500
+amc,852a956bfffffff,842a957ffffffff,2,500
+amc,852a9563fffffff,842a957ffffffff,2,500
+amc,852aa857fffffff,842aa85ffffffff,0,500
+amc,852aa843fffffff,842aa85ffffffff,0,500
+amc,852aa843fffffff,842aa85ffffffff,0,500
+amc,852aa847fffffff,842aa85ffffffff,2,500
+amc,852aa84ffffffff,842aa85ffffffff,0,500
+amc,852aa847fffffff,842aa85ffffffff,2,500
+amc,852aa84ffffffff,842aa85ffffffff,0,500
+amc,852aa84ffffffff,842aa85ffffffff,0,500
+amc,852aa863fffffff,842aa87ffffffff,1,500
+amc,852aa87bfffffff,842aa87ffffffff,1,500
+amc,852aa87bfffffff,842aa87ffffffff,1,500
+amc,852aa87bfffffff,842aa87ffffffff,1,500
+amc,852aa8cffffffff,842aa8dffffffff,1,500
+amc,852aa8dbfffffff,842aa8dffffffff,1,500
+amc,852aa8d7fffffff,842aa8dffffffff,1,500
+amc,852aa8c3fffffff,842aa8dffffffff,1,500
+amc,852aaab3fffffff,842aaabffffffff,0,500
+amc,852aaaa7fffffff,842aaabffffffff,1,500
+amc,852ab2d3fffffff,842ab2dffffffff,1,500
+amc,852ab2c3fffffff,842ab2dffffffff,0,500
+amc,852ab2d7fffffff,842ab2dffffffff,0,500
+amc,852ab2cbfffffff,842ab2dffffffff,0,500
+amc,85441a8bfffffff,84441a9ffffffff,1,500
+amc,85441a83fffffff,84441a9ffffffff,1,500
+amc,85441abbfffffff,84441a9ffffffff,1,500
+amc,85444657fffffff,8444465ffffffff,1,500
+amc,85444657fffffff,8444465ffffffff,1,500
+amc,85444653fffffff,8444465ffffffff,2,500
+amc,85446c27fffffff,84446c3ffffffff,1,500
+amc,85446c37fffffff,84446c3ffffffff,0,500
+amc,85446c23fffffff,84446c3ffffffff,1,500
+amc,85446c27fffffff,84446c3ffffffff,1,500
+amc,85446ca3fffffff,84446cbffffffff,1,500
+amc,85446cabfffffff,84446cbffffffff,0,500
+amc,85446ca3fffffff,84446cbffffffff,1,500
+amc,8544a13bfffffff,8444a13ffffffff,1,500
+amc,8544a133fffffff,8444a13ffffffff,0,500
+amc,8544a133fffffff,8444a13ffffffff,0,500
+amc,8544a12bfffffff,8444a13ffffffff,1,500
+amc,8544a93bfffffff,8444a91ffffffff,1,500
+amc,8544a907fffffff,8444a91ffffffff,2,500
+amc,8544a917fffffff,8444a91ffffffff,2,500
+amc,8544c12ffffffff,8444c13ffffffff,1,500
+amc,8544c123fffffff,8444c13ffffffff,1,500
+amc,8544c133fffffff,8444c13ffffffff,1,500
+amc,8544c177fffffff,8444c13ffffffff,1,500
+amc,8544c107fffffff,8444c13ffffffff,2,500
+amc,8544c17bfffffff,8444c17ffffffff,1,500
+amc,8544c177fffffff,8444c17ffffffff,1,500
+amc,8544c177fffffff,8444c17ffffffff,1,500
+amc,8544c10ffffffff,8444c17ffffffff,1,500
+amc,8544c1a3fffffff,8444c1bffffffff,1,500
+amc,8544c1bbfffffff,8444c1bffffffff,1,500
+amc,8544c1abfffffff,8444c1bffffffff,1,500
+amc,8544c1affffffff,8444c1bffffffff,0,500
+amc,8544ccc7fffffff,8444ccdffffffff,1,500
+amc,8544ccd3fffffff,8444ccdffffffff,1,500
+amc,8544ccdbfffffff,8444ccdffffffff,1,500
+amc,8544dab7fffffff,8444dabffffffff,1,500
+amc,8544daa3fffffff,8444dabffffffff,2,500
+amc,8544e837fffffff,8444e83ffffffff,2,500
+amc,8544e8affffffff,8444e83ffffffff,1,500
+amc,8544e833fffffff,8444e83ffffffff,1,500
+amc,8544e837fffffff,8444e83ffffffff,2,500
+amc,85489c1bfffffff,84489c1ffffffff,1,500
+amc,85489e27fffffff,84489e3ffffffff,1,500
+amc,85489e27fffffff,84489e3ffffffff,1,500
+amc,85489e37fffffff,84489e3ffffffff,1,500
+amc,8548ebb7fffffff,8448ebbffffffff,0,500
+amc,8548eba7fffffff,8448ebbffffffff,0,500
+amc,8548ebabfffffff,8448ebbffffffff,1,500
+amc,8548eba3fffffff,8448ebbffffffff,0,500
+costco,8528d437fffffff,8428d43ffffffff,1,500
+costco,852a924ffffffff,842a925ffffffff,2,500
+costco,852a924bfffffff,842a925ffffffff,1,500
+costco,8529ac93fffffff,8429ac9ffffffff,1,500
+costco,85283007fffffff,8428301ffffffff,1,500
+costco,852a100ffffffff,842a101ffffffff,0,500
+costco,8526251bfffffff,842625dffffffff,1,500
+costco,852a104bfffffff,842a105ffffffff,1,500
+costco,852a8cdbfffffff,842a8cdffffffff,1,500
+costco,8546494bfffffff,8446495ffffffff,1,500
+costco,8544dd57fffffff,8444dd5ffffffff,1,500
+costco,852a15d7fffffff,842a15dffffffff,1,500
+costco,852a101bfffffff,842a101ffffffff,0,500
+costco,85283477fffffff,8428347ffffffff,1,500
+costco,8512db0ffffffff,8412db1ffffffff,2,500
+costco,8544c3b7fffffff,8444c3bffffffff,1,500
+costco,85283623fffffff,8428363ffffffff,1,500
+costco,85288437fffffff,8428843ffffffff,1,500
+costco,852814b7fffffff,842814bffffffff,1,500
+costco,8544f057fffffff,8444f05ffffffff,1,500
+costco,8529a1c7fffffff,8429a1dffffffff,0,500
+costco,852834dbfffffff,842834dffffffff,1,500
+costco,852a10b3fffffff,842a10bffffffff,1,500
+costco,8528308ffffffff,8428309ffffffff,0,500
+costco,852830cffffffff,842830dffffffff,1,500
+costco,8544c18ffffffff,8444c19ffffffff,1,500
+costco,8526219bfffffff,8426219ffffffff,1,500
+costco,8528d5c3fffffff,8428d5dffffffff,1,500
+costco,85283003fffffff,8428301ffffffff,1,500
+costco,8529a08ffffffff,8429a09ffffffff,1,500
+costco,8544a103fffffff,8444a11ffffffff,2,500
+costco,8528316bfffffff,8428317ffffffff,1,500
+costco,85298687fffffff,8429869ffffffff,2,500
+costco,8529a003fffffff,8429a01ffffffff,0,500
+costco,8527481bfffffff,8427481ffffffff,2,500
+costco,852a3393fffffff,842a339ffffffff,0,500
+costco,8529a473fffffff,8429a47ffffffff,1,500
+costco,8548d887fffffff,8448d89ffffffff,1,500
+costco,85283447fffffff,8428345ffffffff,1,500
+costco,852a9393fffffff,842a939ffffffff,1,500
+costco,8526405bfffffff,8426405ffffffff,2,500
+costco,8512db77fffffff,8412db7ffffffff,2,500
+costco,852a12affffffff,842a12bffffffff,1,500
+costco,852a10abfffffff,842a10bffffffff,1,500
+costco,8544f01bfffffff,8444f01ffffffff,1,500
+costco,8529a18ffffffff,8429a19ffffffff,0,500
+costco,8528346ffffffff,8428347ffffffff,1,500
+costco,8528d5d3fffffff,8428d5dffffffff,1,500
+costco,8527538ffffffff,8427539ffffffff,1,500
+costco,85489ea3fffffff,84489ebffffffff,1,500
+costco,8544d84ffffffff,8444d85ffffffff,2,500
+costco,85274857fffffff,8427485ffffffff,1,500
+costco,8544ea4bfffffff,8444ea5ffffffff,1,500
+costco,8544aebbfffffff,8444aebffffffff,1,500
+costco,85275d63fffffff,84275d7ffffffff,1,500
+costco,8529adc7fffffff,8429addffffffff,1,500
+costco,852832b7fffffff,842832bffffffff,1,500
+costco,852a1073fffffff,842a107ffffffff,0,500
+costco,852662cbfffffff,842662dffffffff,1,500
+costco,85441a03fffffff,84441a1ffffffff,0,500
+costco,852626c7fffffff,842626dffffffff,1,500
+costco,8529b69bfffffff,8429b69ffffffff,1,500
+costco,8529ab83fffffff,8429ab9ffffffff,1,500
+costco,8528d5dbfffffff,8428d4bffffffff,1,500
+costco,85283287fffffff,8428329ffffffff,1,500
+costco,85289853fffffff,8428985ffffffff,1,500
+costco,8526838ffffffff,8426839ffffffff,1,500
+costco,852889bbfffffff,842889bffffffff,1,500
+costco,8529a1d3fffffff,8429a1dffffffff,0,500
+costco,85266697fffffff,8426669ffffffff,1,500
+costco,85265b4bfffffff,84265b5ffffffff,1,500
+costco,8529a03bfffffff,8429a03ffffffff,1,500
+costco,85275cb3fffffff,84275cbffffffff,1,500
+costco,85445003fffffff,8444501ffffffff,1,500
+costco,8548b387fffffff,8448b39ffffffff,1,500
+costco,8544dc4bfffffff,8444dc5ffffffff,1,500
+costco,8529a847fffffff,8429a85ffffffff,1,500
+costco,85268c63fffffff,84268c7ffffffff,1,500
+costco,85485ba7fffffff,84485bbffffffff,1,500
+costco,85283093fffffff,8428309ffffffff,1,500
+costco,850d5a93fffffff,840d5a9ffffffff,1,500
+costco,852832bbfffffff,842832bffffffff,1,500
+costco,852a10a3fffffff,842a10bffffffff,1,500
+costco,85274daffffffff,84274dbffffffff,1,500
+costco,852aacbbfffffff,842aacbffffffff,0,500
+costco,8526aa53fffffff,8426aa5ffffffff,1,500
+costco,852a9373fffffff,842a937ffffffff,1,500
+costco,852830bbfffffff,842830bffffffff,1,500
+costco,852b9923fffffff,842b993ffffffff,1,500
+costco,8529a623fffffff,8429a63ffffffff,2,500
+costco,8548e96ffffffff,8448e97ffffffff,0,500
+costco,8529a00ffffffff,8429a01ffffffff,1,500
+costco,852836d3fffffff,842836dffffffff,1,500
+costco,852a107bfffffff,842a107ffffffff,1,500
+costco,8529ab9bfffffff,8429ab9ffffffff,2,500
+costco,8529a067fffffff,8429a39ffffffff,1,500
+costco,8544ae83fffffff,8444ae9ffffffff,2,500
+costco,855d144ffffffff,845d145ffffffff,1,500
+costco,852a339bfffffff,842a339ffffffff,1,500
+costco,855d107bfffffff,845d107ffffffff,1,500
+costco,8544f0cbfffffff,8444f0dffffffff,1,500
+costco,85446ca7fffffff,84446ddffffffff,1,500
+costco,8528f077fffffff,8428f07ffffffff,1,500
+costco,85274867fffffff,8427487ffffffff,1,500
+costco,85262ddbfffffff,84262ddffffffff,1,500
+costco,852a90b7fffffff,842a90bffffffff,1,500
+costco,8548e80bfffffff,8448e81ffffffff,1,500
+costco,8529aeb3fffffff,8429aebffffffff,2,500
+costco,85266a13fffffff,84266a1ffffffff,1,500
+costco,852681a3fffffff,842681bffffffff,1,500
+costco,852a13d3fffffff,842a13dffffffff,1,500
+costco,85283093fffffff,8428309ffffffff,1,500
+costco,8528f433fffffff,8428f43ffffffff,1,500
+costco,8544a1abfffffff,8444a1bffffffff,0,500
+costco,8544a82ffffffff,8444a83ffffffff,1,500
+costco,8526c80ffffffff,8426c81ffffffff,1,500
+costco,8528843bfffffff,8428843ffffffff,2,500
+costco,85289b7bfffffff,84289b7ffffffff,1,500
+costco,85269607fffffff,8426961ffffffff,1,500
+costco,8529ab83fffffff,8429ab9ffffffff,1,500
+costco,852668b3fffffff,842668bffffffff,1,500
+costco,8529b68bfffffff,8429b69ffffffff,1,500
+costco,8528309bfffffff,8428347ffffffff,0,500
+costco,8528f017fffffff,8428f01ffffffff,0,500
+costco,85274b0bfffffff,84274b5ffffffff,2,500
+costco,852aab53fffffff,842aab5ffffffff,1,500
+costco,85266d4bfffffff,84266d5ffffffff,2,500
+costco,8528d17bfffffff,8428d17ffffffff,1,500
+costco,85288ad3fffffff,84288e7ffffffff,1,500
+costco,8528362bfffffff,8428363ffffffff,1,500
+costco,8528a903fffffff,8428a91ffffffff,1,500
+costco,8528b657fffffff,8428b61ffffffff,1,500
+costco,85283473fffffff,8428347ffffffff,0,500
+costco,8526caa7fffffff,8426cabffffffff,1,500
+costco,8529a4c7fffffff,8429a4dffffffff,1,500
+costco,8528b2abfffffff,8428b2bffffffff,1,500
+costco,85299577fffffff,8429957ffffffff,2,500
+costco,8526c80ffffffff,8426c81ffffffff,1,500
+costco,852aac9bfffffff,842aac9ffffffff,1,500
+costco,852a1067fffffff,842a107ffffffff,1,500
+costco,85260e27fffffff,84260e3ffffffff,1,500
+costco,85260e2ffffffff,84260e3ffffffff,1,500
+costco,85262cdbfffffff,84262cdffffffff,1,500
+costco,8526462ffffffff,8426463ffffffff,1,500
+costco,8526463bfffffff,8426463ffffffff,2,500
+costco,8526561bfffffff,8426561ffffffff,1,500
+costco,85265607fffffff,8426561ffffffff,1,500
+costco,85265673fffffff,8426567ffffffff,0,500
+costco,852661b3fffffff,842661bffffffff,2,500
+costco,8526640ffffffff,8426641ffffffff,1,500
+costco,85266453fffffff,8426645ffffffff,0,500
+costco,852664cbfffffff,842664dffffffff,0,500
+costco,852664dbfffffff,842664dffffffff,1,500
+costco,85268cdbfffffff,84268cdffffffff,0,500
+costco,85268ccbfffffff,84268cdffffffff,1,500
+costco,85268cc3fffffff,84268cdffffffff,0,500
+costco,85268cd3fffffff,84268cdffffffff,0,500
+costco,8526c19bfffffff,8426c19ffffffff,2,500
+costco,8526c823fffffff,8426c83ffffffff,1,500
+costco,8526c83bfffffff,8426c83ffffffff,1,500
+costco,8526c867fffffff,8426c87ffffffff,1,500
+costco,8526c877fffffff,8426c87ffffffff,1,500
+costco,8526cbdbfffffff,8426cbdffffffff,1,500
+costco,85275267fffffff,8427527ffffffff,1,500
+costco,85275923fffffff,8427593ffffffff,1,500
+costco,8527592bfffffff,8427593ffffffff,1,500
+costco,85275937fffffff,8427593ffffffff,1,500
+costco,8528d54ffffffff,8428d55ffffffff,0,500
+costco,8528d55bfffffff,8428d55ffffffff,1,500
+costco,8528d55bfffffff,8428d55ffffffff,1,500
+costco,8528d557fffffff,8428d55ffffffff,1,500
+costco,8528d54ffffffff,8428d55ffffffff,0,500
+costco,852986abfffffff,842986bffffffff,2,500
+costco,8529a0affffffff,8429a0bffffffff,1,500
+costco,8529a0a3fffffff,8429a0bffffffff,0,500
+costco,8529a0b7fffffff,8429a0bffffffff,1,500
+costco,8529a54ffffffff,8429a0bffffffff,1,500
+costco,8529a563fffffff,8429a57ffffffff,1,500
+costco,8529a56bfffffff,8429a57ffffffff,0,500
+costco,8529a56bfffffff,8429a57ffffffff,0,500
+costco,8529a56ffffffff,8429a57ffffffff,1,500
+costco,8529b6c3fffffff,8429b6dffffffff,0,500
+costco,852a1083fffffff,842a109ffffffff,1,500
+costco,852a300ffffffff,842a307ffffffff,1,500
+costco,852a9313fffffff,842a931ffffffff,1,500
+costco,852a9563fffffff,842a957ffffffff,2,500
+costco,852aa87bfffffff,842aa85ffffffff,1,500
+costco,852aa87bfffffff,842aa87ffffffff,1,500
+costco,852aa8d7fffffff,842aa8dffffffff,1,500
+costco,852aaaa7fffffff,842aaabffffffff,1,500
+costco,852aaab3fffffff,842aaabffffffff,0,500
+costco,852aaab3fffffff,842aaabffffffff,0,500
+costco,852aaaa3fffffff,842aaabffffffff,1,500
+costco,852ab2cbfffffff,842ab2dffffffff,0,500
+costco,852ab2c3fffffff,842ab2dffffffff,0,500
+costco,852ab2c3fffffff,842ab2dffffffff,0,500
+costco,852ab2dbfffffff,842ab2dffffffff,1,500
+costco,85444657fffffff,8444465ffffffff,1,500
+costco,85446c23fffffff,84446c3ffffffff,1,500
+costco,85446ca3fffffff,84446cbffffffff,1,500
+costco,8544a133fffffff,8444a13ffffffff,0,500
+costco,8544a12bfffffff,8444a13ffffffff,1,500
+costco,8544a90ffffffff,8444a91ffffffff,1,500
+costco,8544a907fffffff,8444a91ffffffff,2,500
+costco,8544c133fffffff,8444c13ffffffff,1,500
+costco,8544ccdbfffffff,8444ccdffffffff,1,500
+costco,8544dab3fffffff,8444dabffffffff,1,500
+costco,85489c17fffffff,84489c1ffffffff,2,500
+costco,85489e2ffffffff,84489e3ffffffff,1,500
+costco,8548eba3fffffff,8448ebbffffffff,0,500
+costco,8548ebb7fffffff,8448ebbffffffff,0,500
+sams,852a82dbfffffff,842a82dffffffff,1,500
+sams,852a9c7bfffffff,842a9c7ffffffff,1,500
+sams,852aaa87fffffff,842aaa9ffffffff,0,500
+sams,8526a2b3fffffff,8426a2bffffffff,1,500
+sams,85260d97fffffff,84260d9ffffffff,2,500
+sams,85274da7fffffff,84274dbffffffff,1,500
+sams,852ab253fffffff,842ab25ffffffff,1,500
+sams,85274d17fffffff,84274d1ffffffff,1,500
+sams,8526ddb3fffffff,8426ddbffffffff,1,500
+sams,8544f427fffffff,8444f43ffffffff,2,500
+sams,8527481bfffffff,8427481ffffffff,2,500
+sams,852748cffffffff,842748dffffffff,2,500
+sams,852ad40ffffffff,842ad41ffffffff,1,500
+sams,8544dd8bfffffff,8444dd9ffffffff,1,500
+sams,852aa38ffffffff,842aa39ffffffff,1,500
+sams,85446867fffffff,8444687ffffffff,1,500
+sams,8526494ffffffff,8426495ffffffff,1,500
+sams,852663a7fffffff,842663bffffffff,1,500
+sams,8526656bfffffff,8426657ffffffff,1,500
+sams,8529a0d7fffffff,8429a09ffffffff,1,500
+sams,852749c7fffffff,842749dffffffff,1,500
+sams,8529a147fffffff,8429a15ffffffff,1,500
+sams,85441a43fffffff,84441a5ffffffff,1,500
+sams,85275837fffffff,8427583ffffffff,1,500
+sams,852659affffffff,842659bffffffff,1,500
+sams,85264b6bfffffff,84264b7ffffffff,1,500
+sams,8548d6dbfffffff,8448d6dffffffff,1,500
+sams,85275317fffffff,8427531ffffffff,1,500
+sams,8526412bfffffff,8426413ffffffff,1,500
+sams,8544460bfffffff,8444461ffffffff,1,500
+sams,8544f413fffffff,8444f41ffffffff,1,500
+sams,8544a95bfffffff,8444a95ffffffff,1,500
+sams,8544a823fffffff,8444a83ffffffff,1,500
+sams,8544ae87fffffff,8444ae9ffffffff,1,500
+sams,852a8b73fffffff,842a8b7ffffffff,1,500
+sams,852a840ffffffff,842a841ffffffff,0,500
+sams,852b1a6bfffffff,842b1a7ffffffff,1,500
+sams,852a3447fffffff,842a345ffffffff,1,500
+sams,852a8ba7fffffff,842a8bbffffffff,1,500
+sams,852ad037fffffff,842ad03ffffffff,1,500
+sams,8548b3d3fffffff,8448b3dffffffff,1,500
+sams,852a88c7fffffff,842a88dffffffff,1,500
+sams,85444d6bfffffff,84444d7ffffffff,1,500
+sams,85260177fffffff,8426017ffffffff,1,500
+sams,85265333fffffff,8426533ffffffff,2,500
+sams,8526622ffffffff,8426623ffffffff,1,500
+sams,8526405bfffffff,8426405ffffffff,2,500
+sams,8544e24ffffffff,8444e25ffffffff,1,500
+sams,85441aabfffffff,84441abffffffff,1,500
+sams,8526ee2ffffffff,8426ee3ffffffff,1,500
+sams,8526de6bfffffff,8426de7ffffffff,1,500
+sams,852a8017fffffff,842a801ffffffff,1,500
+sams,85266a13fffffff,84266a1ffffffff,1,500
+sams,852673b3fffffff,842673bffffffff,1,500
+sams,8529b157fffffff,8429b15ffffffff,1,500
+sams,8526d94ffffffff,8426d95ffffffff,1,500
+sams,852a86dbfffffff,842a86dffffffff,2,500
+sams,852b8913fffffff,842b891ffffffff,2,500
+sams,852b8c8ffffffff,842b8c9ffffffff,1,500
+sams,852aacd3fffffff,842aacdffffffff,1,500
+sams,852ab24bfffffff,842ab25ffffffff,1,500
+sams,8544d983fffffff,8444d99ffffffff,2,500
+sams,8544c22bfffffff,8444c23ffffffff,1,500
+sams,85489aa3fffffff,84489abffffffff,1,500
+sams,8529ac4ffffffff,8429ac5ffffffff,1,500
+sams,852a304ffffffff,842a305ffffffff,1,500
+sams,8544d077fffffff,8444d07ffffffff,1,500
+sams,8544dbd3fffffff,8444dbdffffffff,1,500
+sams,8544cd5bfffffff,8444cc3ffffffff,2,500
+sams,85275907fffffff,8427591ffffffff,1,500
+sams,8544f68bfffffff,8444f69ffffffff,1,500
+sams,852a939bfffffff,842a939ffffffff,1,500
+sams,85446d3bfffffff,84446d3ffffffff,1,500
+sams,852ab3affffffff,842ab3bffffffff,1,500
+sams,8548d887fffffff,8448d89ffffffff,1,500
+sams,85489eb7fffffff,84489ebffffffff,1,500
+sams,85489a17fffffff,84489a1ffffffff,1,500
+sams,8544ed77fffffff,8444ed7ffffffff,1,500
+sams,8544d84bfffffff,8444d85ffffffff,0,500
+sams,852a9103fffffff,842a911ffffffff,1,500
+sams,852a90d3fffffff,842a90dffffffff,1,500
+sams,8526aa4ffffffff,8426aa5ffffffff,1,500
+sams,8526aa43fffffff,8426aa5ffffffff,1,500
+sams,852ab60ffffffff,842ab61ffffffff,1,500
+sams,8548c6c7fffffff,8448c6dffffffff,1,500
+sams,8544a1abfffffff,8444a1bffffffff,0,500
+sams,8544dd57fffffff,8444dd5ffffffff,1,500
+sams,852af60ffffffff,842af61ffffffff,1,500
+sams,852af623fffffff,842af63ffffffff,2,500
+sams,85446c13fffffff,84446c1ffffffff,2,500
+sams,85446ddbfffffff,84446ddffffffff,1,500
+sams,852ad55bfffffff,842ad55ffffffff,1,500
+sams,8527482ffffffff,8427483ffffffff,1,500
+sams,8529a1dbfffffff,8429a1dffffffff,1,500
+sams,852618a7fffffff,842618bffffffff,1,500
+sams,85444b03fffffff,84444b1ffffffff,1,500
+sams,85266897fffffff,8426689ffffffff,1,500
+sams,85266837fffffff,8426683ffffffff,1,500
+sams,85266d4bfffffff,84266d5ffffffff,2,500
+sams,85275e4bfffffff,84275e5ffffffff,1,500
+sams,85488b23fffffff,84488b3ffffffff,1,500
+sams,8544c91bfffffff,8444c91ffffffff,1,500
+sams,85264daffffffff,84264dbffffffff,2,500
+sams,85264d17fffffff,84264d1ffffffff,2,500
+sams,8544a907fffffff,8444a93ffffffff,2,500
+sams,85445293fffffff,8444529ffffffff,1,500
+sams,8548e96ffffffff,8448e97ffffffff,0,500
+sams,85485bcffffffff,84485bdffffffff,1,500
+sams,852ad677fffffff,842ad67ffffffff,1,500
+sams,852a8977fffffff,842a897ffffffff,1,500
+sams,8548b387fffffff,8448b39ffffffff,1,500
+sams,852a8a93fffffff,842a8a9ffffffff,1,500
+sams,85283047fffffff,8428305ffffffff,1,500
+sams,85269633fffffff,8426963ffffffff,0,500
+sams,8528b657fffffff,8428b65ffffffff,1,500
+sams,8526905bfffffff,8426905ffffffff,1,500
+sams,852830c7fffffff,842830dffffffff,1,500
+sams,8544d513fffffff,8444d51ffffffff,1,500
+sams,85274b0bfffffff,84274b5ffffffff,2,500
+sams,852640c7fffffff,842640dffffffff,1,500
+sams,8544e34ffffffff,8444e35ffffffff,1,500
+sams,85441a3bfffffff,84441a3ffffffff,1,500
+sams,852a94dbfffffff,842a94dffffffff,1,500
+sams,8526e513fffffff,8426e51ffffffff,1,500
+sams,8526ee23fffffff,8426ee3ffffffff,1,500
+sams,85489a67fffffff,84489a7ffffffff,1,500
+sams,8527484bfffffff,8427485ffffffff,2,500
+sams,8527418ffffffff,8427419ffffffff,2,500
+sams,85274e23fffffff,84274e3ffffffff,1,500
+sams,85274353fffffff,8427435ffffffff,1,500
+sams,8544dd4bfffffff,8444dd5ffffffff,1,500
+sams,852af62bfffffff,842af63ffffffff,1,500
+sams,85446d5bfffffff,84446d5ffffffff,1,500
+sams,8544eb27fffffff,8444eb3ffffffff,1,500
+sams,85266c1bfffffff,84266cdffffffff,1,500
+sams,85266523fffffff,8426653ffffffff,1,500
+sams,85264a87fffffff,84264a9ffffffff,1,500
+sams,85445c3bfffffff,84445c3ffffffff,1,500
+sams,85298687fffffff,8429869ffffffff,2,500
+sams,85265d6bfffffff,84265d7ffffffff,1,500
+sams,852659b7fffffff,842659bffffffff,2,500
+sams,852621b7fffffff,842621bffffffff,0,500
+sams,852719cbfffffff,842719dffffffff,1,500
+sams,85262eb3fffffff,84262ebffffffff,1,500
+sams,8526219bfffffff,8426219ffffffff,1,500
+sams,8544131bfffffff,8444131ffffffff,2,500
+sams,854455a3fffffff,844455bffffffff,1,500
+sams,85444683fffffff,8444469ffffffff,1,500
+sams,852a1063fffffff,842a107ffffffff,0,500
+sams,8526c117fffffff,8426c11ffffffff,1,500
+sams,8544d543fffffff,8444d55ffffffff,1,500
+sams,8526ed47fffffff,8426ed5ffffffff,2,500
+sams,852a9d13fffffff,842a9d1ffffffff,1,500
+sams,8544a8c3fffffff,8444a8dffffffff,2,500
+sams,852a1363fffffff,842a137ffffffff,1,500
+sams,8529b68bfffffff,8429b69ffffffff,1,500
+sams,8529b25bfffffff,8429b25ffffffff,1,500
+sams,852a8b9bfffffff,842a887ffffffff,1,500
+sams,852a84cbfffffff,842a84dffffffff,1,500
+sams,852a840bfffffff,842a841ffffffff,0,500
+sams,852aa377fffffff,842aa37ffffffff,1,500
+sams,852a847bfffffff,842a845ffffffff,0,500
+sams,852a8473fffffff,842a847ffffffff,1,500
+sams,852a802bfffffff,842a803ffffffff,1,500
+sams,852ad69bfffffff,842ad69ffffffff,2,500
+sams,8528328ffffffff,8428321ffffffff,1,500
+sams,852696abfffffff,842696bffffffff,0,500
+sams,8544d5c3fffffff,8444d5dffffffff,1,500
+sams,852643bbfffffff,842643bffffffff,1,500
+sams,852641cffffffff,842641dffffffff,1,500
+sams,852644c3fffffff,842644dffffffff,1,500
+sams,852aa5d7fffffff,842aa5dffffffff,2,500
+sams,852b8a9bfffffff,842b8a9ffffffff,1,500
+sams,8544e543fffffff,8444e55ffffffff,1,500
+sams,85441a03fffffff,84441a1ffffffff,0,500
+sams,85441a13fffffff,84441a1ffffffff,1,500
+sams,85441ac7fffffff,84441adffffffff,0,500
+sams,8529124ffffffff,8429125ffffffff,1,500
+sams,852aad53fffffff,842aad5ffffffff,1,500
+sams,8526c86bfffffff,8426cabffffffff,1,500
+sams,852aaebbfffffff,842aaebffffffff,1,500
+sams,852a9caffffffff,842a9cbffffffff,1,500
+sams,85446eabfffffff,84446ebffffffff,1,500
+sams,8529a113fffffff,8429a11ffffffff,1,500
+sams,8526f02bfffffff,8426f07ffffffff,1,500
+sams,8526ed57fffffff,8426ed5ffffffff,1,500
+sams,8548d883fffffff,8448d89ffffffff,1,500
+sams,8544dd67fffffff,8444dd7ffffffff,1,500
+sams,8544d92ffffffff,8444d93ffffffff,1,500
+sams,8544ea4bfffffff,8444ea5ffffffff,1,500
+sams,85265a27fffffff,84265a3ffffffff,1,500
+sams,85266697fffffff,8426669ffffffff,1,500
+sams,8548d887fffffff,8448d89ffffffff,1,500
+sams,854440cbfffffff,844440dffffffff,2,500
+sams,852ab38ffffffff,842ab39ffffffff,1,500
+sams,852655cffffffff,842655dffffffff,1,500
+sams,852a95d3fffffff,842a95dffffffff,1,500
+sams,85269c1bfffffff,84269c1ffffffff,1,500
+sams,85260d83fffffff,84260d9ffffffff,2,500
+sams,85275cb3fffffff,84275cbffffffff,1,500
+sams,8546482ffffffff,8446483ffffffff,1,500
+sams,85446c17fffffff,84446c1ffffffff,0,500
+sams,8529a00ffffffff,8429a01ffffffff,1,500
+sams,8544f047fffffff,8444f05ffffffff,1,500
+sams,85265647fffffff,8426565ffffffff,2,500
+sams,85266d37fffffff,84266d3ffffffff,2,500
+sams,85266daffffffff,84266dbffffffff,1,500
+sams,8544eeb7fffffff,8444eebffffffff,2,500
+sams,8544550bfffffff,8444551ffffffff,1,500
+sams,85269683fffffff,8426969ffffffff,1,500
+sams,8544a92bfffffff,8444a93ffffffff,1,500
+sams,8544a8dbfffffff,8444a8dffffffff,1,500
+sams,852a132ffffffff,842aad9ffffffff,2,500
+sams,85441ad7fffffff,84441adffffffff,1,500
+sams,852ab173fffffff,842ab17ffffffff,1,500
+sams,8544f31bfffffff,8444f31ffffffff,1,500
+sams,852a8207fffffff,842a821ffffffff,1,500
+sams,8526cb93fffffff,8426cb9ffffffff,0,500
+sams,8544a107fffffff,8444a11ffffffff,1,500
+sams,852751a3fffffff,842751bffffffff,1,500
+sams,852a9973fffffff,842a997ffffffff,1,500
+sams,8526d153fffffff,8426d15ffffffff,1,500
+sams,8544c18ffffffff,8444c19ffffffff,1,500
+sams,8544cc8ffffffff,8444cc9ffffffff,1,500
+sams,8544c26ffffffff,8444c27ffffffff,1,500
+sams,852aa803fffffff,842aa81ffffffff,1,500
+sams,852aa98bfffffff,842aa99ffffffff,1,500
+sams,854440cbfffffff,8444463ffffffff,2,500
+sams,854445b3fffffff,84446e5ffffffff,1,500
+sams,8544ebdbfffffff,8444eabffffffff,1,500
+sams,852b9b33fffffff,842b9b3ffffffff,2,500
+sams,8526290ffffffff,8426291ffffffff,1,500
+sams,85267453fffffff,8426745ffffffff,2,500
+sams,852ad30bfffffff,842ad35ffffffff,1,500
+sams,8544d853fffffff,8444d85ffffffff,1,500
+sams,8544db83fffffff,8444db9ffffffff,1,500
+sams,8526628ffffffff,8426629ffffffff,1,500
+sams,852ab3bbfffffff,842ab3bffffffff,1,500
+sams,85268c63fffffff,84268c7ffffffff,1,500
+sams,852ad26bfffffff,842ad27ffffffff,1,500
+sams,8544ee77fffffff,8444ee7ffffffff,1,500
+sams,8526c807fffffff,8426c81ffffffff,1,500
+sams,8526c937fffffff,8426c93ffffffff,1,500
+sams,852aae7bfffffff,842aae7ffffffff,1,500
+sams,8526ae7bfffffff,8426ae7ffffffff,1,500
+sams,852ab257fffffff,842ab25ffffffff,0,500
+sams,85274d27fffffff,84274d3ffffffff,1,500
+sams,8548c623fffffff,8448c63ffffffff,1,500
+sams,85441e5bfffffff,84441e5ffffffff,2,500
+sams,85444427fffffff,8444443ffffffff,1,500
+sams,852a3623fffffff,842a363ffffffff,1,500
+sams,852a138bfffffff,842a139ffffffff,1,500
+sams,8544d873fffffff,8444d87ffffffff,1,500
+sams,852759abfffffff,842759bffffffff,1,500
+sams,8544dc4bfffffff,8444dc5ffffffff,1,500
+sams,8526c847fffffff,8426c85ffffffff,1,500
+sams,8526c88bfffffff,8426c89ffffffff,1,500
+sams,8526cb9bfffffff,8426cb9ffffffff,1,500
+sams,852a902bfffffff,842a907ffffffff,1,500
+sams,8526aa57fffffff,8426aa1ffffffff,1,500
+sams,85262b3bfffffff,84262b3ffffffff,1,500
+sams,8544133bfffffff,8444133ffffffff,2,500
+sams,8544dd1bfffffff,8444dd1ffffffff,1,500
+sams,852af637fffffff,842af63ffffffff,1,500
+sams,852aac4bfffffff,842aac5ffffffff,1,500
+sams,852a14abfffffff,842a14bffffffff,1,500
+sams,8529a623fffffff,8429a63ffffffff,2,500
+sams,8544f073fffffff,8444f07ffffffff,1,500
+sams,8544ca37fffffff,8444ca3ffffffff,2,500
+sams,85441a5bfffffff,84441a5ffffffff,1,500
+sams,85274d7bfffffff,84274d7ffffffff,1,500
+sams,852a154ffffffff,842a10bffffffff,1,500
+sams,85275987fffffff,8427599ffffffff,1,500
+sams,85263683fffffff,8426369ffffffff,1,500
+sams,85262ddbfffffff,84262ddffffffff,1,500
+sams,85445057fffffff,8444505ffffffff,1,500
+sams,8544e143fffffff,8444e15ffffffff,1,500
+sams,85266b07fffffff,84266b1ffffffff,1,500
+sams,85264d03fffffff,84264d1ffffffff,2,500
+sams,85264caffffffff,84264cbffffffff,1,500
+sams,85264d83fffffff,84264d9ffffffff,1,500
+sams,852a1633fffffff,842a163ffffffff,1,500
+sams,852a100bfffffff,842a101ffffffff,1,500
+sams,8526c117fffffff,8426c11ffffffff,1,500
+sams,852608cbfffffff,842608dffffffff,1,500
+sams,852a8b4bfffffff,842a8b5ffffffff,1,500
+sams,852a8447fffffff,842a845ffffffff,1,500
+sams,8526ed7bfffffff,8426ed7ffffffff,1,500
+sams,852ad4dbfffffff,842a89bffffffff,1,500
+sams,852ad447fffffff,842ad45ffffffff,1,500
+sams,852a8967fffffff,842a897ffffffff,2,500
+sams,85444c23fffffff,84444c3ffffffff,1,500
+sams,85444d93fffffff,84444d9ffffffff,1,500
+sams,852600b3fffffff,842600bffffffff,1,500
+sams,8526ecabfffffff,8426ecbffffffff,1,500
+sams,85264677fffffff,8426467ffffffff,2,500
+sams,8544e297fffffff,8444e29ffffffff,1,500
+sams,85441e73fffffff,84441e7ffffffff,1,500
+sams,852a10c7fffffff,842a10dffffffff,1,500
+sams,8526e3c7fffffff,8426e3dffffffff,1,500
+sams,8526e38bfffffff,8426e39ffffffff,2,500
+sams,8526e0cbfffffff,8426e0dffffffff,1,500
+sams,85266e97fffffff,84266c5ffffffff,1,500
+sams,852675dbfffffff,842675dffffffff,1,500
+sams,8544c3b7fffffff,8444c3bffffffff,1,500
+sams,852ab3abfffffff,842ab3bffffffff,1,500
+sams,8548d027fffffff,8448d03ffffffff,1,500
+sams,85269babfffffff,84269bbffffffff,1,500
+sams,8548d873fffffff,8448d81ffffffff,1,500
+sams,852a120ffffffff,842a121ffffffff,1,500
+sams,852aa527fffffff,842aa53ffffffff,1,500
+sams,8544ce9bfffffff,8444ce9ffffffff,1,500
+sams,8544418bfffffff,8444419ffffffff,1,500
+sams,852798dbfffffff,842798dffffffff,1,500
+sams,8527905bfffffff,8427905ffffffff,1,500
+sams,852aa6cbfffffff,842aa6dffffffff,1,500
+sams,85275a2bfffffff,84275a3ffffffff,1,500
+sams,85267537fffffff,8426753ffffffff,1,500
+sams,85268813fffffff,8426881ffffffff,1,500
+sams,85268c6ffffffff,84268c7ffffffff,1,500
+sams,852759bbfffffff,842759bffffffff,1,500
+sams,852a9373fffffff,842a937ffffffff,1,500
+sams,852ab02ffffffff,842ab03ffffffff,1,500
+sams,852ab31bfffffff,842ab31ffffffff,1,500
+sams,8544de83fffffff,8444de9ffffffff,1,500
+sams,8544c5b7fffffff,8444c5bffffffff,1,500
+sams,85489557fffffff,8448955ffffffff,2,500
+sams,8526cb93fffffff,8426cb9ffffffff,0,500
+sams,852a9063fffffff,842a907ffffffff,1,500
+sams,852aae2bfffffff,842aae3ffffffff,1,500
+sams,8526aa53fffffff,8426aa5ffffffff,1,500
+sams,85274dabfffffff,84274dbffffffff,1,500
+sams,8548c6c7fffffff,8448c6dffffffff,1,500
+sams,85266aabfffffff,84266abffffffff,1,500
+sams,8544130ffffffff,8444131ffffffff,1,500
+sams,852a96cffffffff,842a96dffffffff,1,500
+sams,852aae9bfffffff,842aae9ffffffff,2,500
+sams,852aa1d3fffffff,842aa1dffffffff,1,500
+sams,852aa12ffffffff,842aa13ffffffff,1,500
+sams,85446cc7fffffff,84446cdffffffff,1,500
+sams,852649affffffff,842649bffffffff,1,500
+sams,8529a003fffffff,8429a01ffffffff,0,500
+sams,854451bbfffffff,844451bffffffff,1,500
+sams,8544f01bfffffff,8444f01ffffffff,1,500
+sams,85274b9bfffffff,84274b9ffffffff,1,500
+sams,85260ba7fffffff,84260bbffffffff,1,500
+sams,8529a1dbfffffff,8429a1dffffffff,1,500
+sams,85274c07fffffff,84274c3ffffffff,1,500
+sams,85274dd3fffffff,84274ddffffffff,1,500
+sams,85260a13fffffff,84260a1ffffffff,1,500
+sams,85265b43fffffff,84265b5ffffffff,1,500
+sams,852668b3fffffff,842668bffffffff,1,500
+sams,8544c0b3fffffff,8444c0bffffffff,1,500
+sams,85275d63fffffff,84275d7ffffffff,1,500
+sams,85275d2bfffffff,84275d3ffffffff,1,500
+sams,85275683fffffff,8427569ffffffff,1,500
+sams,85445003fffffff,8444501ffffffff,1,500
+sams,8544466bfffffff,8444467ffffffff,1,500
+sams,85269683fffffff,8426969ffffffff,1,500
+sams,8544a81bfffffff,8444a81ffffffff,2,500
+sams,852a843bfffffff,842a843ffffffff,1,500
+sams,852a8623fffffff,842a863ffffffff,1,500
+sams,852b1a83fffffff,842b1a9ffffffff,1,500
+sams,85298903fffffff,8429891ffffffff,1,500
+sams,8548b3c7fffffff,8448b3dffffffff,1,500
+sams,854880dbfffffff,844880dffffffff,1,500
+sams,852a9d2ffffffff,842a9d3ffffffff,1,500
+sams,8528949bfffffff,8428949ffffffff,2,500
+sams,85269607fffffff,8426963ffffffff,1,500
+sams,85488a67fffffff,84488a7ffffffff,1,500
+sams,8529a41bfffffff,8429a41ffffffff,1,500
+sams,85444e1bfffffff,84444e1ffffffff,1,500
+sams,852640d3fffffff,842640dffffffff,1,500
+sams,85441e63fffffff,84441e7ffffffff,1,500
+sams,852ab35bfffffff,842ab35ffffffff,2,500
+sams,8548e857fffffff,8448e85ffffffff,2,500
+sams,8526ea97fffffff,8426e85ffffffff,2,500
+sams,852a16a7fffffff,842a16bffffffff,1,500
+sams,8526e3c7fffffff,8426e3dffffffff,1,500
+sams,852ab12bfffffff,842ab17ffffffff,1,500
+sams,852a924ffffffff,842a925ffffffff,2,500
+sams,85275d0ffffffff,84275d7ffffffff,1,500
+sams,8526ea97fffffff,8426ea9ffffffff,2,500
+sams,852a1697fffffff,842a169ffffffff,1,500
+sams,852a120ffffffff,842a127ffffffff,1,500
+sams,8526d153fffffff,8426d15ffffffff,1,500
+sams,852a106bfffffff,842a107ffffffff,1,500
+sams,852663d3fffffff,8426607ffffffff,1,500
+sams,85265573fffffff,8426557ffffffff,1,500
+sams,8544de8ffffffff,8444de9ffffffff,1,500
+sams,8548c613fffffff,8448c61ffffffff,1,500
+sams,852ab577fffffff,842ab57ffffffff,1,500
+sams,8529ab83fffffff,8429ab9ffffffff,1,500
+sams,85464b97fffffff,84464b9ffffffff,0,500
+sams,85445c07fffffff,84445c1ffffffff,2,500
+sams,85445e1bfffffff,84445e1ffffffff,1,500
+sams,8544caa7fffffff,8444cabffffffff,1,500
+sams,85260a13fffffff,84260a1ffffffff,1,500
+sams,85265b4bfffffff,84265b5ffffffff,1,500
+sams,852659a7fffffff,842659bffffffff,1,500
+sams,852659b7fffffff,842659bffffffff,2,500
+sams,8544a1bbfffffff,8444a19ffffffff,1,500
+sams,8544f4c3fffffff,8444f4dffffffff,1,500
+sams,8526c3affffffff,8426c3bffffffff,1,500
+sams,854452dbfffffff,844452dffffffff,1,500
+sams,8548e96ffffffff,8448e97ffffffff,0,500
+sams,852a846bfffffff,842a847ffffffff,1,500
+sams,852a8dd7fffffff,842a8ddffffffff,2,500
+sams,852a8d8ffffffff,842a8d9ffffffff,1,500
+sams,8548b387fffffff,8448b39ffffffff,1,500
+sams,8527594ffffffff,8427595ffffffff,1,500
+sams,852832bbfffffff,842832bffffffff,1,500
+sams,85283227fffffff,8428323ffffffff,1,500
+sams,852832abfffffff,842832bffffffff,0,500
+sams,85283287fffffff,8428329ffffffff,1,500
+sams,85269607fffffff,8426961ffffffff,1,500
+sams,85444c33fffffff,84444c3ffffffff,2,500
+sams,85265333fffffff,8426533ffffffff,2,500
+sams,852aa42bfffffff,842aa43ffffffff,1,500
+sams,8526e957fffffff,8426e95ffffffff,1,500
+sams,852aa5affffffff,842aa5bffffffff,2,500
+sams,85489eaffffffff,84489ebffffffff,1,500
+sams,852681a7fffffff,842681bffffffff,0,500
+sams,8548c613fffffff,8448c61ffffffff,1,500
+sams,8529a033fffffff,8429a03ffffffff,1,500
+sams,8544db4ffffffff,8444db5ffffffff,1,500
+sams,852aab6ffffffff,842aab7ffffffff,1,500
+sams,852a8c13fffffff,842a8c1ffffffff,1,500
+sams,85489143fffffff,8448915ffffffff,1,500
+sams,85261653fffffff,8426165ffffffff,1,500
+sams,85260e2ffffffff,84260e3ffffffff,1,500
+sams,85260e27fffffff,84260e3ffffffff,1,500
+sams,85262cd7fffffff,84262cdffffffff,1,500
+sams,85262cd7fffffff,84262cdffffffff,1,500
+sams,85262cc3fffffff,84262cdffffffff,1,500
+sams,85262cd3fffffff,84262cdffffffff,0,500
+sams,8526462ffffffff,8426463ffffffff,1,500
+sams,8526462bfffffff,8426463ffffffff,2,500
+sams,85264627fffffff,8426463ffffffff,1,500
+sams,85264627fffffff,8426463ffffffff,1,500
+sams,85264637fffffff,8426463ffffffff,1,500
+sams,85264623fffffff,8426463ffffffff,1,500
+sams,8526560ffffffff,8426561ffffffff,2,500
+sams,8526560bfffffff,8426561ffffffff,1,500
+sams,85265603fffffff,8426561ffffffff,2,500
+sams,85265673fffffff,8426567ffffffff,0,500
+sams,85265667fffffff,8426567ffffffff,1,500
+sams,85265663fffffff,8426567ffffffff,0,500
+sams,852661a7fffffff,842661bffffffff,1,500
+sams,852661a3fffffff,842661bffffffff,2,500
+sams,8526640bfffffff,8426641ffffffff,1,500
+sams,85266407fffffff,8426641ffffffff,1,500
+sams,85266443fffffff,8426645ffffffff,1,500
+sams,8526644bfffffff,8426645ffffffff,1,500
+sams,852664cffffffff,8426645ffffffff,0,500
+sams,85266453fffffff,8426645ffffffff,0,500
+sams,852664cbfffffff,842664dffffffff,0,500
+sams,852664dbfffffff,842664dffffffff,1,500
+sams,85268cc7fffffff,84268cdffffffff,0,500
+sams,85268cdbfffffff,84268cdffffffff,0,500
+sams,85268ccbfffffff,84268cdffffffff,1,500
+sams,85268ccffffffff,84268cdffffffff,0,500
+sams,85268cd3fffffff,84268cdffffffff,0,500
+sams,85268cdbfffffff,84268cdffffffff,0,500
+sams,85268cc3fffffff,84268cdffffffff,0,500
+sams,85268ccffffffff,84268cdffffffff,0,500
+sams,8526c18bfffffff,8426c19ffffffff,2,500
+sams,8526c183fffffff,8426c19ffffffff,1,500
+sams,8526c19bfffffff,8426c19ffffffff,2,500
+sams,8526c18ffffffff,8426c19ffffffff,2,500
+sams,8526c18bfffffff,8426c19ffffffff,2,500
+sams,8526c18bfffffff,8426c19ffffffff,2,500
+sams,8526c83bfffffff,8426c83ffffffff,1,500
+sams,8526c82bfffffff,8426c83ffffffff,0,500
+sams,8526c82bfffffff,8426c83ffffffff,0,500
+sams,8526c867fffffff,8426c87ffffffff,1,500
+sams,8526c863fffffff,8426c87ffffffff,1,500
+sams,8526c86bfffffff,8426c87ffffffff,1,500
+sams,8526c877fffffff,8426c87ffffffff,1,500
+sams,8526c867fffffff,8426c87ffffffff,1,500
+sams,8526c877fffffff,8426c87ffffffff,1,500
+sams,8526c863fffffff,8426c87ffffffff,1,500
+sams,8526c867fffffff,8426c87ffffffff,1,500
+sams,8526cbdbfffffff,8426cbdffffffff,1,500
+sams,8526cbc3fffffff,8426cbdffffffff,1,500
+sams,8526cbd7fffffff,8426cbdffffffff,0,500
+sams,8526cbcbfffffff,8426cbdffffffff,1,500
+sams,8526cbd3fffffff,8426cbdffffffff,0,500
+sams,8526cbdbfffffff,8426cbdffffffff,1,500
+sams,8526cbd3fffffff,8426cbdffffffff,0,500
+sams,85275263fffffff,8427527ffffffff,0,500
+sams,8527527bfffffff,8427527ffffffff,0,500
+sams,85275267fffffff,8427527ffffffff,1,500
+sams,85275927fffffff,8427593ffffffff,0,500
+sams,8527592bfffffff,8427593ffffffff,1,500
+sams,85275937fffffff,8427593ffffffff,1,500
+sams,85275923fffffff,8427593ffffffff,1,500
+sams,852986abfffffff,842986bffffffff,2,500
+sams,852986bbfffffff,842986bffffffff,0,500
+sams,852986bbfffffff,842986bffffffff,0,500
+sams,852986abfffffff,842986bffffffff,2,500
+sams,852986bbfffffff,842986bffffffff,0,500
+sams,8529a0affffffff,8429a0bffffffff,1,500
+sams,8529a0bbfffffff,8429a0bffffffff,0,500
+sams,8529a0a7fffffff,8429a0bffffffff,0,500
+sams,8529a0b7fffffff,8429a0bffffffff,1,500
+sams,8529a0b7fffffff,8429a0bffffffff,1,500
+sams,8529a56ffffffff,8429a57ffffffff,1,500
+sams,8529a56ffffffff,8429a57ffffffff,1,500
+sams,8529a563fffffff,8429a57ffffffff,1,500
+sams,8529a56ffffffff,8429a57ffffffff,1,500
+sams,8529a56bfffffff,8429a57ffffffff,0,500
+sams,8529b6c3fffffff,8429b6dffffffff,0,500
+sams,8529b6d7fffffff,8429b6dffffffff,0,500
+sams,852a135bfffffff,842a135ffffffff,1,500
+sams,852a134ffffffff,842a135ffffffff,0,500
+sams,852a1353fffffff,842a135ffffffff,2,500
+sams,852a1343fffffff,842a135ffffffff,0,500
+sams,852a1343fffffff,842a135ffffffff,0,500
+sams,852a930bfffffff,842a931ffffffff,1,500
+sams,852a9303fffffff,842a931ffffffff,2,500
+sams,852a9307fffffff,842a931ffffffff,2,500
+sams,852a931bfffffff,842a931ffffffff,1,500
+sams,852a9563fffffff,842a957ffffffff,2,500
+sams,852a956bfffffff,842a957ffffffff,2,500
+sams,852a9567fffffff,842a957ffffffff,0,500
+sams,852a957bfffffff,842a957ffffffff,2,500
+sams,852aa857fffffff,842aa85ffffffff,0,500
+sams,852aa85bfffffff,842aa85ffffffff,1,500
+sams,852aa863fffffff,842aa87ffffffff,1,500
+sams,852aa8d7fffffff,842aa8dffffffff,1,500
+sams,852aa8c3fffffff,842aa8dffffffff,1,500
+sams,852aa8d3fffffff,842aa8dffffffff,1,500
+sams,852aa81bfffffff,842aa8dffffffff,1,500
+sams,852aaaa7fffffff,842aaabffffffff,1,500
+sams,852ab2d3fffffff,842ab2dffffffff,1,500
+sams,852ab2cbfffffff,842ab2dffffffff,0,500
+sams,852ab2c3fffffff,842ab2dffffffff,0,500
+sams,852ab2d7fffffff,842ab2dffffffff,0,500
+sams,85441a83fffffff,84441a9ffffffff,1,500
+sams,85441a87fffffff,84441a9ffffffff,1,500
+sams,85441a83fffffff,84441a9ffffffff,1,500
+sams,85444657fffffff,8444465ffffffff,1,500
+sams,85444653fffffff,8444465ffffffff,2,500
+sams,85446c07fffffff,84446c3ffffffff,1,500
+sams,85446c27fffffff,84446c3ffffffff,1,500
+sams,85446c23fffffff,84446c3ffffffff,1,500
+sams,85446c37fffffff,84446c3ffffffff,0,500
+sams,85446c23fffffff,84446c3ffffffff,1,500
+sams,85446ca3fffffff,84446cbffffffff,1,500
+sams,85446ca7fffffff,84446cbffffffff,1,500
+sams,85446cbbfffffff,84446cbffffffff,1,500
+sams,85446ca7fffffff,84446cbffffffff,1,500
+sams,85446caffffffff,84446cbffffffff,0,500
+sams,85446ca3fffffff,84446cbffffffff,1,500
+sams,85446cabfffffff,84446cbffffffff,0,500
+sams,8544a133fffffff,8444a13ffffffff,0,500
+sams,8544a123fffffff,8444a13ffffffff,1,500
+sams,8544a91bfffffff,8444a91ffffffff,1,500
+sams,8544a913fffffff,8444a91ffffffff,1,500
+sams,8544a90ffffffff,8444a91ffffffff,1,500
+sams,8544a907fffffff,8444a91ffffffff,2,500
+sams,8544a903fffffff,8444a91ffffffff,1,500
+sams,8544c137fffffff,8444c13ffffffff,1,500
+sams,8544c133fffffff,8444c13ffffffff,1,500
+sams,8544c123fffffff,8444c13ffffffff,1,500
+sams,8544c107fffffff,8444c13ffffffff,2,500
+sams,8544c13bfffffff,8444c13ffffffff,1,500
+sams,8544c177fffffff,8444c17ffffffff,1,500
+sams,8544c167fffffff,8444c17ffffffff,1,500
+sams,8544ea6bfffffff,8444c1bffffffff,1,500
+sams,8544c1bbfffffff,8444c1bffffffff,1,500
+sams,8544ccd3fffffff,8444ccdffffffff,1,500
+sams,8544cccbfffffff,8444ccdffffffff,1,500
+sams,8544daaffffffff,8444dabffffffff,1,500
+sams,8544dab3fffffff,8444dabffffffff,1,500
+sams,8544dab7fffffff,8444dabffffffff,1,500
+sams,8544e82ffffffff,8444e83ffffffff,1,500
+sams,8544e837fffffff,8444e83ffffffff,2,500
+sams,8544e837fffffff,8444e83ffffffff,2,500
+sams,85489c0bfffffff,84489c1ffffffff,2,500
+sams,85489c0ffffffff,84489c1ffffffff,1,500
+sams,85489cc7fffffff,84489c1ffffffff,1,500
+sams,85489c13fffffff,84489c1ffffffff,2,500
+sams,85489c03fffffff,84489c1ffffffff,2,500
+sams,85489c03fffffff,84489c1ffffffff,2,500
+sams,85489e37fffffff,84489e3ffffffff,1,500
+sams,85489e27fffffff,84489e3ffffffff,1,500
+sams,85489e27fffffff,84489e3ffffffff,1,500
+sams,85489e27fffffff,84489e3ffffffff,1,500
+sams,8548eba3fffffff,8448ebbffffffff,0,500
+sams,8548eba3fffffff,8448ebbffffffff,0,500
+sams,8548ebb7fffffff,8448ebbffffffff,0,500
+sams,8548eba7fffffff,8448ebbffffffff,0,500
+brazilian wax,852aa84ffffffff,842aa85ffffffff,0,23
+dinner cruise,852a1073fffffff,842a107ffffffff,1,78
+dutch wonderland,852aac57fffffff,842aac5ffffffff,1,52
+dysport,8544a13bfffffff,8444a13ffffffff,1,21
+head spa,8529a033fffffff,8429a03ffffffff,1,65
+holiday boutique,85265673fffffff,8426567ffffffff,1,81
+houston interactive aquarium,85446c23fffffff,84446c3ffffffff,1,87
+laser hair removal,85268cdbfffffff,84268cdffffffff,1,47
+laser hair removal,8528340bfffffff,8428341ffffffff,0,42
+massage,8527526ffffffff,8427527ffffffff,0,87
+massage,8528f013fffffff,8428f01ffffffff,0,50
+oil change,85275d73fffffff,84275d7ffffffff,1,75
+oil change,8529a56bfffffff,8429a57ffffffff,0,25
+oil change,852a137bfffffff,842a137ffffffff,1,130
+oil change,852a94d3fffffff,842a94dffffffff,2,36
+old time photo,8544ca07fffffff,8444ca1ffffffff,2,46
+parking seatac,8528d553fffffff,8428d55ffffffff,1,40
+prp microneedling,8529a1d7fffffff,8429a1dffffffff,1,24
+rage room,8548eba7fffffff,8448ebbffffffff,0,32
+skyzone,8529a0b3fffffff,8429a0bffffffff,0,21
+skyzone,852ab2d3fffffff,842ab2dffffffff,1,48
+smog check,85283463fffffff,8428347ffffffff,0,24
+sparkles,8544c177fffffff,8444c17ffffffff,1,21
+state inspection,8526c83bfffffff,8426c83ffffffff,0,25
+victory casino cruise,8544ab97fffffff,8444ab9ffffffff,1,65
+water park,852a132ffffffff,842a133ffffffff,2,39
+botox,852a134bfffffff,842a135ffffffff,1,74
+car wash,85446caffffffff,84446cbffffffff,0,20
+foot smile spa,852664c3fffffff,842664dffffffff,0,28
+hanger 18,8529a033fffffff,8429a03ffffffff,1,41
+howl o scream,8544a917fffffff,8444a91ffffffff,1,38
+ice skating,8526cbd7fffffff,8426cbdffffffff,0,41
+intrepid,852a1073fffffff,842a107ffffffff,0,45
+kawaii claws,8529a0b7fffffff,8429a0bffffffff,0,55
+massage,8528843bfffffff,8428843ffffffff,2,40
+massage,8529a403fffffff,8429a41ffffffff,2,155
+massage,852a101bfffffff,842a101ffffffff,0,131
+massage,85441abbfffffff,84441abffffffff,0,62
+massage,85446c37fffffff,84446c3ffffffff,0,39
+massage,8544a13bfffffff,8444a13ffffffff,1,110
+raging waters,8529a0affffffff,8429a0bffffffff,1,39
+renaissance fair,85262ccbfffffff,84262cdffffffff,1,111
+screemers,852b9bc3fffffff,842b9bdffffffff,1,39
+sky zone,85268c63fffffff,84268c7ffffffff,1,21
+smog,8529a563fffffff,8429a57ffffffff,0,20
+thai massage,852a100ffffffff,842a101ffffffff,0,42
+thai spice,8544a13bfffffff,8444a13ffffffff,0,20
+trampoline,85489e27fffffff,84489e3ffffffff,1,22
+valvoline oil change,8544a9a3fffffff,8444a9bffffffff,1,199
+water park,852a12c7fffffff,842a12dffffffff,2,25
+winery,8529a0d7fffffff,8429a0dffffffff,1,86
+botox,8544a13bfffffff,8444a13ffffffff,0,55
+couples massage,85275927fffffff,8427593ffffffff,0,42
+couples massage,8544c13bfffffff,8444c13ffffffff,2,21
+downtown aquarium,85446cabfffffff,84446cbffffffff,0,25
+ez gel,8529a19bfffffff,8429a19ffffffff,1,20
+full synthetic oil change,852986bbfffffff,842986bffffffff,0,64
+ice,8526c863fffffff,8426c87ffffffff,1,123
+laser hair removal,85489eaffffffff,84489ebffffffff,2,20
+lymphatic massage,8529a41bfffffff,8429a41ffffffff,0,21
+massage,852a956bfffffff,842a957ffffffff,1,25
+massage,852ab2cbfffffff,842ab2dffffffff,0,116
+massage,8548eba7fffffff,8448ebbffffffff,0,80
+oil change,8544a12bfffffff,8444a13ffffffff,1,33
+trampoline,85446dd3fffffff,84446ddffffffff,1,26
+valvoline oil change,852ab397fffffff,842ab39ffffffff,1,33
+airborne x,85444653fffffff,8444465ffffffff,2,34
+altitude trampoline park,8526c86bfffffff,8426c87ffffffff,1,57
+blue zoo,85260d8ffffffff,84260d9ffffffff,2,52
+botox,85283083fffffff,8428309ffffffff,1,88
+botox,852a93c7fffffff,842a93dffffffff,1,20
+couples massage,852a107bfffffff,842a107ffffffff,0,51
+desert fall festival,8529b68bfffffff,8429b69ffffffff,1,24
+escape room,8544ca07fffffff,8444ca1ffffffff,2,27
+facial,8529a0b7fffffff,8429a0bffffffff,0,28
+facial,8529a403fffffff,8429a41ffffffff,1,34
+jumping world,85446caffffffff,84446cbffffffff,0,50
+kawaii klaws,8529a57bfffffff,8429a57ffffffff,1,26
+kayak,8529a403fffffff,8429a41ffffffff,1,23
+laser hair removal,85268cc3fffffff,84268cdffffffff,0,32
+legoland,852a1637fffffff,842a163ffffffff,1,83
+massage,8526c83bfffffff,8426c83ffffffff,1,35
+massage,852aaab7fffffff,842aaabffffffff,0,58
+oil change,852ab26bfffffff,842ab27ffffffff,2,26
+parking,852aacb3fffffff,842aacbffffffff,1,129
+pottery,8528d54ffffffff,8428d55ffffffff,0,21
+smog check,852986bbfffffff,842986bffffffff,0,30
+smog check,8529a477fffffff,8429a47ffffffff,1,36
+spa logic,852aa84ffffffff,842aa85ffffffff,2,38
+valvoline oil change,852661b7fffffff,842661bffffffff,2,44
+valvoline oil change,8544cd67fffffff,8444cd7ffffffff,2,38
+wilderness,8544ca3bfffffff,8444ca3ffffffff,2,30
+zoo,8544eacffffffff,8444eadffffffff,1,31
+airport parking,852aa8cffffffff,842aa8dffffffff,2,23
+botox,852a1073fffffff,842a107ffffffff,0,50
+couples massage,8544ae93fffffff,8444ae9ffffffff,1,20
+drunk shakespeare,85446cabfffffff,84446cbffffffff,1,21
+facial,8529a033fffffff,8429a03ffffffff,0,27
+full synthetic oil change,8544c137fffffff,8444c13ffffffff,1,24
+game time,8544a9bbfffffff,8444a9bffffffff,2,177
+go kart,8529a563fffffff,8429a57ffffffff,0,40
+great wolf lodge,8526c863fffffff,8426c87ffffffff,2,123
+great wolf lodge,852a32a3fffffff,842a32bffffffff,1,97
+head spa,8529a1c3fffffff,8429a1dffffffff,0,58
+lloyd family farm,852aab6bfffffff,842aab7ffffffff,1,20
+massage,8526c863fffffff,8426c87ffffffff,0,44
+massage,8528d5d3fffffff,8428d5dffffffff,1,38
+massage,8528f01bfffffff,8428f01ffffffff,0,38
+massage,8529a477fffffff,8429a47ffffffff,1,63
+natural bridge caverns,85489c73fffffff,84489c7ffffffff,2,43
+oil change,8526c83bfffffff,8426c83ffffffff,0,29
+oil change,8526c86ffffffff,8426c87ffffffff,0,71
+oil change,8529a117fffffff,8429a11ffffffff,1,49
+oil change,8529a18bfffffff,8429a19ffffffff,0,77
+oil change,8529a19bfffffff,8429a19ffffffff,0,22
+parking,8528d553fffffff,8428d55ffffffff,1,50
+sky zone,8526ea97fffffff,8426ea9ffffffff,2,29
+statue of liberty,852a1073fffffff,842a107ffffffff,2,160
+valvoline,852a8097fffffff,842a809ffffffff,1,47
+aquarium,85446cabfffffff,84446cbffffffff,1,45
+atlanta airport parking,8544c1abfffffff,8444c1bffffffff,1,71
+botox,8548eba7fffffff,8448ebbffffffff,0,25
+heavenly massage,85275937fffffff,8427593ffffffff,1,117
+hibachi,8544a903fffffff,8444a91ffffffff,1,44
+laser hair removal,852a3383fffffff,842a339ffffffff,0,33
+massage,852621b7fffffff,842621bffffffff,0,32
+massage,852a339bfffffff,842a339ffffffff,0,24
+massage,852af60ffffffff,842af61ffffffff,1,45
+massage,8544a103fffffff,8444a11ffffffff,2,46
+microneedling,85268cc3fffffff,84268cdffffffff,1,28
+oil change,85268803fffffff,8426881ffffffff,2,74
+oil change,85268cd3fffffff,84268cdffffffff,0,79
+princess,8529b6dbfffffff,8429b6dffffffff,1,309
+showboat waterpark,852a132ffffffff,842a133ffffffff,2,90
+skyzone,852aae93fffffff,842aae9ffffffff,2,51
+smog check,852832b3fffffff,842832bffffffff,0,29
+bowling,8544d853fffffff,8444d85ffffffff,1,42
+brazilian wax,85441a13fffffff,84441a1ffffffff,0,23
+cactus salon,852a10bbfffffff,842a10bffffffff,1,24
+catalina,8529a54ffffffff,8429a55ffffffff,1,246
+full synthetic oil change,852a1343fffffff,842a135ffffffff,1,32
+head spa,852a100ffffffff,842a101ffffffff,0,141
+head spa,852a1073fffffff,842a107ffffffff,0,23
+jiffy lube,852a896bfffffff,842a897ffffffff,2,34
+laser hair removal,8526c877fffffff,8426c87ffffffff,1,66
+lymphatic drainage massage,852a100ffffffff,842a101ffffffff,0,37
+massage,852aae9bfffffff,842aae9ffffffff,2,21
+massage,8544a12bfffffff,8444a13ffffffff,1,40
+massage,8544c187fffffff,8444c19ffffffff,1,32
+massage luxe,852ab2cbfffffff,842ab2dffffffff,2,25
+microneedling,85489e37fffffff,84489e3ffffffff,0,30
+oil change,852ab257fffffff,842ab25ffffffff,0,22
+oil change,85441acffffffff,84441adffffffff,1,286
+oil change,8544c137fffffff,8444c13ffffffff,1,202
+oil change,8544cd67fffffff,8444cd7ffffffff,1,81
+oil change,8544d84ffffffff,8444d85ffffffff,2,51
+paddle board,8529a54ffffffff,8429a55ffffffff,1,26
+smog check,85283473fffffff,8428347ffffffff,0,137
+smog check,8529a56ffffffff,8429a57ffffffff,0,26
+spa club,852a100ffffffff,842a101ffffffff,1,78
+acupuncture,852a101bfffffff,842a101ffffffff,0,20
+adventure landing,8544f043fffffff,8444f05ffffffff,2,91
+candeeland,8529a0b7fffffff,8429a0bffffffff,1,106
+devo,8529a1d7fffffff,8429a1dffffffff,1,24
+full synthetic oil change,852a10cffffffff,842a10dffffffff,1,26
+hangar 18,8529a033fffffff,8429a03ffffffff,1,104
+head spa,8529a19bfffffff,8429a19ffffffff,1,48
+head spa,852a10b3fffffff,842a10bffffffff,0,20
+laser hair removal,852830d3fffffff,842830dffffffff,1,28
+massage,852664dbfffffff,842664dffffffff,0,91
+massage,852a939bfffffff,842a939ffffffff,1,39
+massage,852aa85bfffffff,842aa85ffffffff,0,33
+massage,8544a113fffffff,8444a11ffffffff,2,31
+microneedling,8529a1d7fffffff,8429a1dffffffff,1,31
+mini golf,8544a1abfffffff,8444a1bffffffff,0,20
+oil change,85264d13fffffff,84264d1ffffffff,2,66
+oil change,8526c18ffffffff,8426c19ffffffff,2,29
+oil change,852748cffffffff,842748dffffffff,2,34
+oil change,85283217fffffff,8428321ffffffff,1,70
+oil change,8544d067fffffff,8444d07ffffffff,2,50
+once upon a cowboy,85446c27fffffff,84446c3ffffffff,1,51
+pure medical spa,852664cbfffffff,842664dffffffff,0,25
+rage room,852664c3fffffff,842664dffffffff,1,39
+rush,85489c03fffffff,84489c1ffffffff,2,96
+san francisco,85283083fffffff,8428309ffffffff,1,57
+sky zone,852ab397fffffff,842ab39ffffffff,1,78
+sky zone,8548eba3fffffff,8448ebbffffffff,1,107
+spa,852aaaa3fffffff,842aaabffffffff,1,139
+yankee peddler,852ab337fffffff,842ab33ffffffff,1,68
+botox,8528d543fffffff,8428d55ffffffff,0,51
+eggs works,85298687fffffff,8429869ffffffff,0,25
+escape room,8548eba7fffffff,8448ebbffffffff,0,98
+great wolf lodge,85262cd7fffffff,84262cdffffffff,1,144
+laser ops,85441a8ffffffff,84441a9ffffffff,0,22
+massage,85265677fffffff,8426567ffffffff,0,30
+massage,8526cb93fffffff,8426cb9ffffffff,0,46
+massage,852aaab3fffffff,842aaabffffffff,0,35
+massage,8544d993fffffff,8444d99ffffffff,2,25
+mountain coaster,8544ca03fffffff,8444ca1ffffffff,2,67
+oil change,8526560ffffffff,8426561ffffffff,2,90
+oil change,8528d5c3fffffff,8428d5dffffffff,1,203
+oil change,852a33d3fffffff,842a33dffffffff,1,26
+oil change,8544a90ffffffff,8444a91ffffffff,0,29
+sky zone,8528f01bfffffff,8428f01ffffffff,0,81
+sky zone,8529a56bfffffff,8429a57ffffffff,0,28
+skyzone,8526640bfffffff,8426641ffffffff,1,51
+valvoline,8544cd67fffffff,8444cd7ffffffff,2,47
+atlantic city hotels,852a132ffffffff,842a133ffffffff,2,67
+brazilian wax,852664c3fffffff,842664dffffffff,0,25
+demon house,852a8467fffffff,842a847ffffffff,1,99
+flight adventure,852a10b3fffffff,842a10bffffffff,1,43
+full synthetic oil change,8526c82bfffffff,8426c83ffffffff,0,55
+hotel,852b9b33fffffff,842b9b3ffffffff,2,24
+jfk parking,852a103bfffffff,842a103ffffffff,1,90
+launch trampoline park,8544a90bfffffff,8444a91ffffffff,0,21
+massage,8529ab9bfffffff,8429ab9ffffffff,2,46
+octoberfest,8529a0affffffff,8429a0bffffffff,1,50
+oil change,8526c113fffffff,8426c11ffffffff,2,100
+oil change,8527526ffffffff,8427527ffffffff,0,22
+q spa,8528d54ffffffff,8428d55ffffffff,1,41
+queen mary,8529a563fffffff,8429a57ffffffff,1,97
+sky zone,8526640bfffffff,8426641ffffffff,1,120
+slick city,8529b6d7fffffff,8429b6dffffffff,0,158
+valvoline,852aaab7fffffff,842aaabffffffff,0,54
+whale watching,8529a563fffffff,8429a57ffffffff,1,40
+wildflower spa,852a100ffffffff,842a101ffffffff,0,127
+ball factory,85275937fffffff,8427593ffffffff,1,26
+couples massage,8529a19bfffffff,8429a19ffffffff,1,23
+couples massage,852a931bfffffff,842a931ffffffff,1,22
+full synthetic oil change,85441a87fffffff,84441a9ffffffff,1,33
+haircut,852a3067fffffff,842a307ffffffff,0,23
+ice,852aa87bfffffff,842aa87ffffffff,1,138
+ipl,85268cc3fffffff,84268cdffffffff,1,23
+korean spa,852aaaa3fffffff,842aaabffffffff,1,40
+kume spa,85283083fffffff,8428309ffffffff,0,56
+massage,85269633fffffff,8426963ffffffff,0,65
+massage,8526c80ffffffff,8426c81ffffffff,1,51
+massage,852a86dbfffffff,842a86dffffffff,2,33
+massage,852aa8d7fffffff,842aa8dffffffff,1,79
+oil change,85266697fffffff,8426669ffffffff,1,26
+oil change,852a106bfffffff,842a107ffffffff,1,222
+oil change,852aacb7fffffff,842aacbffffffff,0,21
+sev laser,85283083fffffff,8428309ffffffff,1,43
+valvoline,852a1343fffffff,842a135ffffffff,0,79
+zoo,8548eba7fffffff,8448ebbffffffff,0,68
+bloodview,852ab317fffffff,842ab31ffffffff,0,21
+boat,8544a113fffffff,8444a11ffffffff,2,35
+botox,852a3067fffffff,842a307ffffffff,1,41
+bowling,8529b6d7fffffff,8429b6dffffffff,0,41
+camelback,852a12c7fffffff,842a12dffffffff,1,48
+couples massage,852a10abfffffff,842a10bffffffff,0,21
+facials,8529a1d7fffffff,8429a1dffffffff,1,45
+funtopia,8527592ffffffff,8427593ffffffff,1,48
+golf n stuff,8548e857fffffff,8448e85ffffffff,2,65
+hotels,852a1073fffffff,842a107ffffffff,2,28
+ice skating,8529a0b7fffffff,8429a0bffffffff,0,25
+laser hair removal,8526c80ffffffff,8426c81ffffffff,1,47
+laser hair removal,852aaab3fffffff,842aaabffffffff,0,37
+massage,852681a7fffffff,842681bffffffff,1,46
+massage,8529a54ffffffff,8429a55ffffffff,1,117
+midnight terror,85266457fffffff,8426645ffffffff,0,27
+oil change,8526c867fffffff,8426c87ffffffff,0,128
+oil change,852a14affffffff,842a14bffffffff,0,31
+oil change,852ab177fffffff,842ab17ffffffff,2,26
+oil change,852af63bfffffff,842af63ffffffff,2,44
+oil change,85489e2ffffffff,84489e3ffffffff,1,48
+rush fun park,8529b6d7fffffff,8429b6dffffffff,0,92
+sky zone,85445c07fffffff,84445c1ffffffff,2,44
+skydiving,85266487fffffff,8426649ffffffff,1,26
+skyzone,8529a56bfffffff,8429a57ffffffff,0,23
+smog,8529a09bfffffff,8429a09ffffffff,1,41
+spa world,85446ca7fffffff,84446cbffffffff,1,325
+strikers,8544d853fffffff,8444d85ffffffff,1,20
+trampoline,8548ebb7fffffff,8448ebbffffffff,0,36
+adventure rock,85275d77fffffff,84275d7ffffffff,0,80
+couples massage,8526c867fffffff,8426c87ffffffff,0,53
+emissions test,85269607fffffff,8426961ffffffff,0,23
+escape room,8526c86ffffffff,8426c87ffffffff,1,39
+escape room,8529a477fffffff,8429a47ffffffff,1,22
+full synthetic oil change,85266d37fffffff,84266d3ffffffff,2,24
+full synthetic oil change,852aa84ffffffff,842aa85ffffffff,1,24
+great wolf lodge,852a12c7fffffff,842a12dffffffff,1,147
+laser hair removal,8544a113fffffff,8444a11ffffffff,1,29
+massage,8512db77fffffff,8412db7ffffffff,2,24
+massage,852aacd3fffffff,842aacdffffffff,1,28
+oil change,8529a00ffffffff,8429a01ffffffff,1,76
+oil change,852a8967fffffff,842a897ffffffff,1,41
+oil change,852af637fffffff,842af63ffffffff,2,56
+parking,8529a19bfffffff,8429a19ffffffff,1,22
+total med solutions,8526c867fffffff,8426c87ffffffff,1,130
+trampoline,852a896ffffffff,842a897ffffffff,1,22
+trampoline,8544dab7fffffff,8444dabffffffff,1,56
+trampoline,85489c03fffffff,84489c1ffffffff,1,20
+valvoline oil change,85266d4bfffffff,84266d5ffffffff,1,38
+wild florida,8544a9d7fffffff,8444a9dffffffff,1,88
+womens haircut,852a100ffffffff,842a101ffffffff,0,23
+airport parking,8528f003fffffff,8428f01ffffffff,1,36
+couples massage,852681a7fffffff,842681bffffffff,0,57
+couples massage,852a9563fffffff,842a957ffffffff,2,32
+facial,852a100ffffffff,842a101ffffffff,0,163
+full synthetic oil change,8548eba7fffffff,8448ebbffffffff,0,21
+gator mikes,8544133bfffffff,8444133ffffffff,1,22
+jiffy lube,852aa8d7fffffff,842aa8dffffffff,1,25
+king richard’s faire,852a314ffffffff,842a315ffffffff,1,30
+laser hair removal,8529a0b3fffffff,8429a0bffffffff,0,40
+laser hair removal,852a100bfffffff,842a101ffffffff,0,137
+massage,852832b3fffffff,842832bffffffff,1,90
+massage,852a957bfffffff,842a957ffffffff,2,49
+massage,852af627fffffff,842af63ffffffff,1,21
+massage,8544c10ffffffff,8444c11ffffffff,1,30
+oil change,85283613fffffff,8428361ffffffff,1,25
+oil change,852aa8c3fffffff,842aa8dffffffff,1,199
+relache,8526c863fffffff,8426c87ffffffff,0,41
+skyzone,852a8bb7fffffff,842a8bbffffffff,2,39
+slick city,8526462bfffffff,8426463ffffffff,2,72
+unlimited biking,852a100ffffffff,842a101ffffffff,0,22
+urban air,85446c23fffffff,84446c3ffffffff,1,20
+valvoline,852a1093fffffff,842a109ffffffff,1,83
+airport parking,852a107bfffffff,842a107ffffffff,1,51
+alpine coaster,8544ca07fffffff,8444ca1ffffffff,2,162
+boat,8529a54ffffffff,8429a55ffffffff,1,22
+body heat tanning,852986abfffffff,842986bffffffff,2,20
+bowling,8544d873fffffff,8444d87ffffffff,1,25
+deep tissue massage,852a100ffffffff,842a101ffffffff,0,75
+escape room,852a1047fffffff,842a105ffffffff,1,21
+ferox ninja park,852a100ffffffff,842a101ffffffff,0,44
+head spa,8529a0a7fffffff,8429a0bffffffff,0,23
+howl o scream,85441a13fffffff,84441a1ffffffff,1,50
+it escape room,852986bbfffffff,842986bffffffff,2,27
+jumping world,8526c83bfffffff,8426c83ffffffff,1,43
+laser hair removal,85446c13fffffff,84446c1ffffffff,0,22
+liquivida,8544a1abfffffff,8444a1bffffffff,0,38
+massage,852a8b0bfffffff,842a8b1ffffffff,1,47
+massage,8544c133fffffff,8444c13ffffffff,1,183
+oil change,85441a13fffffff,84441a1ffffffff,0,22
+plantation palms,85441a03fffffff,84441a1ffffffff,0,21
+pottery class,8529a54ffffffff,8429a55ffffffff,1,34
+rush extreme,8548ebb7fffffff,8448ebbffffffff,2,22
+smog check,8529a18bfffffff,8429a19ffffffff,0,118
+swan boats,8544a907fffffff,8444a91ffffffff,2,41
+valvoline oil change,8526caa7fffffff,8426cabffffffff,1,33
+waterpark,852a132ffffffff,842a133ffffffff,2,27
+adventureland,85260d97fffffff,84260d9ffffffff,2,31
+blink fitness,852a1003fffffff,842a101ffffffff,0,43
+boomers,8544ae93fffffff,8444ae9ffffffff,1,51
+christmas show,85268cd3fffffff,84268cdffffffff,0,32
+couples massage,852aa843fffffff,842aa85ffffffff,1,54
+kate skate,8544da87fffffff,8444da9ffffffff,1,31
+lymphatic massage,852a100ffffffff,842a101ffffffff,0,149
+massage,8526c877fffffff,8426c87ffffffff,0,69
+massage,8529a19bfffffff,8429a19ffffffff,0,142
+massage,852a3057fffffff,842a305ffffffff,1,20
+massage,8544de97fffffff,8444de9ffffffff,1,32
+sky view,8544c1abfffffff,8444c1bffffffff,0,22
+skydiving,8544a197fffffff,8444a19ffffffff,1,21
+skydiving,8544ad2bfffffff,8444ad3ffffffff,2,51
+spaworld,852aaaa3fffffff,842aaabffffffff,1,50
+statue of liberty cruise,852a1073fffffff,842a107ffffffff,0,31
+we play loud,8529a54bfffffff,8429a55ffffffff,0,80
+airport parking,8528d553fffffff,8428d55ffffffff,1,275
+area 53,852a100ffffffff,842a101ffffffff,0,296
+big air,85446c23fffffff,84446c3ffffffff,1,29
+brazilian wax,85446cabfffffff,84446cbffffffff,0,24
+busch gardens,852af657fffffff,842af65ffffffff,2,326
+chiropractor,8544a917fffffff,8444a91ffffffff,1,30
+couples massage,8544a18ffffffff,8444a19ffffffff,2,36
+full synthetic oil change,8529a0a7fffffff,8429a0bffffffff,0,58
+get air,852a9077fffffff,842a907ffffffff,1,40
+head spa,85446ddbfffffff,84446ddffffffff,0,24
+ice,85264d13fffffff,84264d1ffffffff,2,125
+massage,8526c87bfffffff,8426c87ffffffff,1,32
+massage,8529a1d3fffffff,8429a1dffffffff,1,68
+massage,8544a903fffffff,8444a91ffffffff,1,29
+massage,8544dbd3fffffff,8444dbdffffffff,1,32
+oil change,852664cbfffffff,842664dffffffff,0,20
+pedicure,85266697fffffff,8426669ffffffff,1,22
+sky zone,85275d63fffffff,84275d7ffffffff,1,45
+sky zone,8548e96bfffffff,8448e97ffffffff,1,29
+skyzone,85445c07fffffff,84445c1ffffffff,2,21
+valvoline,8529a567fffffff,8429a57ffffffff,0,120
+valvoline,852a10cffffffff,842a10dffffffff,1,89
+airport parking,8529a19bfffffff,8429a19ffffffff,1,32
+altitude,852a338bfffffff,842a339ffffffff,0,21
+apple picking,852a1627fffffff,842a163ffffffff,1,26
+botox,852681b7fffffff,842681bffffffff,0,21
+couples massage,852a134ffffffff,842a135ffffffff,0,79
+great wolf lodge,852a3363fffffff,842a337ffffffff,1,254
+haunted hills,85266407fffffff,8426641ffffffff,1,40
+head spa,85268ccffffffff,84268cdffffffff,1,72
+kentucky down under,85266bb3fffffff,84266bbffffffff,2,149
+knotts,8529a0b7fffffff,8429a0bffffffff,2,31
+korean spa,85446ddbfffffff,84446ddffffffff,2,29
+lake compounce,852a1407fffffff,842a141ffffffff,1,53
+massage,8527526bfffffff,8427527ffffffff,0,54
+massage,8529a033fffffff,8429a03ffffffff,1,126
+massage,852a1347fffffff,842a135ffffffff,1,43
+massage,852a16affffffff,842a16bffffffff,2,22
+massage,852aa8c3fffffff,842aa8dffffffff,1,20
+massage heights,85489c03fffffff,84489c1ffffffff,1,20
+national museum of african american music,85264d13fffffff,84264d1ffffffff,2,23
+oil change,852a108bfffffff,842a109ffffffff,1,49
+sev laser,85283217fffffff,8428321ffffffff,1,22
+spa,852aa843fffffff,842aa85ffffffff,1,22
+valvoline oil change,85275963fffffff,8427597ffffffff,1,61
+emission,852696abfffffff,842696bffffffff,0,22
+escape room,85265e4bfffffff,84265e5ffffffff,2,22
+go kart world,8529a563fffffff,8429a57ffffffff,0,64
+great wolf,852a3363fffffff,842a337ffffffff,2,38
+in the game,852a300ffffffff,842a301ffffffff,1,44
+jumping world,8526cb93fffffff,8426cb9ffffffff,0,62
+kangaroo zoo,852696bbfffffff,842696bffffffff,1,28
+kume,85283083fffffff,8428309ffffffff,0,64
+massage,85268cc3fffffff,84268cdffffffff,0,126
+massage,852a9303fffffff,842a931ffffffff,2,23
+massage,8544d983fffffff,8444d99ffffffff,2,53
+oil change,8529a1d7fffffff,8429a1dffffffff,0,23
+oil change,8529a54ffffffff,8429a55ffffffff,1,203
+oil change,8544aebbfffffff,8444aebffffffff,1,708
+oil change,85489ea3fffffff,84489ebffffffff,1,25
+sky zone,8544ab97fffffff,8444ab9ffffffff,1,27
+skyzone,85264daffffffff,84264dbffffffff,1,24
+valvoline,85446ddbfffffff,84446ddffffffff,0,50
+angel island,852a896bfffffff,842a897ffffffff,2,32
+botox,85441a8ffffffff,84441a9ffffffff,2,25
+brazilian wax,8544f00bfffffff,8444f01ffffffff,2,27
+deep tissue massage,85268cc3fffffff,84268cdffffffff,0,23
+deep tissue massage,8529a54ffffffff,8429a55ffffffff,1,20
+escape room,8529a0b3fffffff,8429a0bffffffff,1,42
+gun range,852aa873fffffff,842aa87ffffffff,1,31
+head spa,8526c877fffffff,8426c87ffffffff,1,59
+in the game,8544a133fffffff,8444a13ffffffff,2,40
+interskate,8526c863fffffff,8426c87ffffffff,1,22
+laser hair removal,8529a033fffffff,8429a03ffffffff,1,22
+long beach aquarium,8529a563fffffff,8429a57ffffffff,1,32
+massage,852a1013fffffff,842a101ffffffff,1,28
+massage,852a13d3fffffff,842a13dffffffff,1,25
+massage,852aa87bfffffff,842aa87ffffffff,1,93
+massage,85441ac7fffffff,84441adffffffff,0,49
+massage,8544a98ffffffff,8444a99ffffffff,0,20
+ninja warrior,8529a0b7fffffff,8429a0bffffffff,1,24
+queen mary dark harbor,8529a563fffffff,8429a57ffffffff,1,66
+spa,852a1073fffffff,842a107ffffffff,0,22
+sugar factory,852a1073fffffff,842a107ffffffff,1,35
+valvoline,85489c03fffffff,84489c1ffffffff,2,50
+wildlife learning center,8529a113fffffff,8429a11ffffffff,1,23
+airport parking,85264d13fffffff,84264d1ffffffff,2,51
+atlanta aquarium,8544c1abfffffff,8444c1bffffffff,2,93
+couples massage,852a101bfffffff,842a101ffffffff,0,36
+drunk shakespeare,8529b6d3fffffff,8429b6dffffffff,0,29
+escape room,8544c1affffffff,8444c1bffffffff,0,57
+jump time,85288423fffffff,8428843ffffffff,2,94
+massage,85265663fffffff,8426567ffffffff,0,22
+microneedling,852a100ffffffff,842a101ffffffff,0,91
+opportunity village,852986bbfffffff,842986bffffffff,0,40
+pottery,8529a54ffffffff,8429a55ffffffff,1,68
+rock climbing,8529a033fffffff,8429a03ffffffff,1,28
+smog check,8529a19bfffffff,8429a19ffffffff,0,56
+spray tan,85489e37fffffff,84489e3ffffffff,0,20
+trampoline,8526c83bfffffff,8426c83ffffffff,1,23
+trampoline,8544a90bfffffff,8444a91ffffffff,0,21
+valvoline oil change,85264623fffffff,8426463ffffffff,1,78
+wheel alignment,8529a54ffffffff,8429a55ffffffff,0,42
+austin aquarium,85489e27fffffff,84489e3ffffffff,1,77
+botox,85269623fffffff,8426963ffffffff,1,23
+botox,852a1057fffffff,842a105ffffffff,0,68
+botox,85446caffffffff,84446cbffffffff,1,40
+emsculpt,852a100ffffffff,842a101ffffffff,0,32
+fly high,8528843bfffffff,8428843ffffffff,1,21
+gametime,8544a9bbfffffff,8444a9bffffffff,2,161
+great wolf lodge,8528f33bfffffff,8428f33ffffffff,2,141
+great wolf lodge,8544daa3fffffff,8444dabffffffff,2,80
+laser hair removal,8529a54ffffffff,8429a55ffffffff,1,53
+massage,852664c3fffffff,842664dffffffff,0,333
+massage,8529a0b3fffffff,8429a0bffffffff,0,23
+mercer labs,852a1073fffffff,842a107ffffffff,1,85
+ninja city,852a957bfffffff,842a957ffffffff,2,49
+oil change,85264daffffffff,84264dbffffffff,2,35
+oil change,8526ed47fffffff,8426ed5ffffffff,2,34
+skyzone,852aa8d7fffffff,842aa8dffffffff,1,122
+skyzone,852ab253fffffff,842ab25ffffffff,0,33
+spa,852a134ffffffff,842a135ffffffff,1,23
+valvoline oil change,8544c137fffffff,8444c13ffffffff,1,70
+banya,85283083fffffff,8428309ffffffff,1,28
+couples massage,852a100ffffffff,842a101ffffffff,0,272
+driving lessons,852a100ffffffff,842a101ffffffff,0,34
+dysport,8544e837fffffff,8444e83ffffffff,2,20
+get air,852a9567fffffff,842a957ffffffff,0,56
+get air,852a956bfffffff,842a957ffffffff,2,62
+hydrafacial,852a1073fffffff,842a107ffffffff,0,24
+massage,8526c867fffffff,8426c87ffffffff,1,162
+massage,8529a457fffffff,8429a45ffffffff,0,23
+massage,8529a563fffffff,8429a57ffffffff,0,43
+massage,852a90b7fffffff,842a90bffffffff,1,25
+massage,85441ad7fffffff,84441adffffffff,1,37
+oil change,85275963fffffff,8427597ffffffff,1,263
+oil change,85489c17fffffff,84489c1ffffffff,1,96
+pedicure,8526cbd7fffffff,8426cbdffffffff,0,21
+sahara sams,852a137bfffffff,842a137ffffffff,1,52
+sky zone,852a120ffffffff,842a121ffffffff,1,94
+skyzone,8527580ffffffff,8427581ffffffff,2,29
+space golf,85266443fffffff,8426645ffffffff,0,35
+chimis,8526462bfffffff,8426463ffffffff,0,30
+couples massage,852aa8d7fffffff,842aa8dffffffff,1,41
+couples massage,852ab2c3fffffff,842ab2dffffffff,1,58
+couples massage,8544c1abfffffff,8444c1bffffffff,1,25
+facial,8528d543fffffff,8428d55ffffffff,0,26
+jiffy lube,85268cd3fffffff,84268cdffffffff,0,26
+lagoon,85441a0bfffffff,84441a1ffffffff,1,34
+lashes,852a1007fffffff,842a101ffffffff,0,20
+mani pedi,852a100bfffffff,842a101ffffffff,0,22
+massage,85299577fffffff,8429957ffffffff,2,38
+miami seaquarium,8544a113fffffff,8444a11ffffffff,1,44
+oil change,85269607fffffff,8426961ffffffff,1,37
+oil change,8529a0affffffff,8429a0bffffffff,1,31
+oil change,852ab2c3fffffff,842ab2dffffffff,0,54
+oil change,8544a9a3fffffff,8444a9bffffffff,1,562
+oil change,8544d85bfffffff,8444d85ffffffff,1,21
+oil change,8548e857fffffff,8448e85ffffffff,2,52
+san diego airport parking,8529a413fffffff,8429a41ffffffff,2,44
+six flags,85264293fffffff,8426429ffffffff,2,43
+sky zone,85264627fffffff,8426463ffffffff,0,106
+state inspection,8526c863fffffff,8426c87ffffffff,0,25
+valvoline oil change,8529a54ffffffff,8429a55ffffffff,1,33
+valvoline oil change,852a8d8bfffffff,842a8d9ffffffff,1,70
+weight loss md,85268cdbfffffff,84268cdffffffff,1,41
+bare monkey,852a100ffffffff,842a101ffffffff,0,21
+bush gardens,852af657fffffff,842af65ffffffff,2,61
+catalina express,8529a54ffffffff,8429a55ffffffff,1,32
+catapult,85441a97fffffff,84441a9ffffffff,1,60
+chimis,8526463bfffffff,8426463ffffffff,1,20
+egg works,85298687fffffff,8429869ffffffff,2,85
+fun station,85267453fffffff,8426745ffffffff,2,50
+head spa,852aac87fffffff,842aac9ffffffff,0,27
+ipl,852664c3fffffff,842664dffffffff,0,21
+jiffy lube oil change,852aa8c3fffffff,842aa8dffffffff,1,31
+kids,8544dab7fffffff,8444dabffffffff,0,26
+kings spa,852664dbfffffff,842664dffffffff,1,66
+laser hair removal,8526c867fffffff,8426c87ffffffff,0,38
+laser hair removal,85283083fffffff,8428309ffffffff,1,70
+lloyd family farms,852aab6bfffffff,842aab7ffffffff,2,34
+massage,852aacabfffffff,842aacbffffffff,1,29
+massage,85441a13fffffff,84441a1ffffffff,1,55
+massage,85441a87fffffff,84441a9ffffffff,1,75
+massage,85489c03fffffff,84489c1ffffffff,1,139
+oil change,852661b7fffffff,842661bffffffff,2,158
+oil change,852986b3fffffff,842986bffffffff,0,54
+oil change,8529a0d7fffffff,8429a0dffffffff,1,75
+oil change,852aae57fffffff,842aae5ffffffff,2,91
+rage room,8529a0b3fffffff,8429a0bffffffff,1,49
+science world,8528de8ffffffff,8428de9ffffffff,2,97
+showboat,852a132ffffffff,842a133ffffffff,2,38
+showcase of citrus,8544a9bbfffffff,8444a9bffffffff,2,42
+sky zone,852664dbfffffff,842664dffffffff,0,20
+sky zone,8544c18ffffffff,8444c19ffffffff,1,90
+totsville,852aa8c7fffffff,842aa8dffffffff,1,20
+ultracon,8544ae87fffffff,8444ae9ffffffff,1,32
+valvoline oil change,852986bbfffffff,842986bffffffff,0,57
+valvoline oil change,852a1093fffffff,842a109ffffffff,1,84
+view boston,852a3067fffffff,842a307ffffffff,0,31
+wonderverse,85275927fffffff,8427593ffffffff,0,105
+ace hardware,852aacbbfffffff,842aacbffffffff,0,33
+botox,8529a0a7fffffff,8429a0bffffffff,1,62
+bowling,8544dbd3fffffff,8444dbdffffffff,2,23
+car wash,8544ae87fffffff,8444ae9ffffffff,1,49
+catapult,8526cbd3fffffff,8426cbdffffffff,1,61
+drunk dracula,8529b6d3fffffff,8429b6dffffffff,1,33
+halloween,8544a917fffffff,8444a91ffffffff,2,26
+island spa,852a106bfffffff,842a107ffffffff,1,75
+johns incredible pizza,8529a003fffffff,8429a01ffffffff,0,38
+laser hair removal,8529a57bfffffff,8429a57ffffffff,0,34
+legoland,852a100bfffffff,842a101ffffffff,1,21
+massage,85268ccffffffff,84268cdffffffff,0,24
+massage,8529a0affffffff,8429a0bffffffff,1,34
+massage,85441a03fffffff,84441a1ffffffff,2,28
+massage,8544a8c3fffffff,8444a8dffffffff,2,32
+moonshine mountain coaster,8544ca03fffffff,8444ca1ffffffff,2,73
+oil change,852659b3fffffff,842659bffffffff,2,48
+oil change,85283603fffffff,8428361ffffffff,1,28
+pure med spa,852664cbfffffff,842664dffffffff,0,73
+real estate course,852a10abfffffff,842a10bffffffff,1,32
+skyzone,852ab313fffffff,842ab31ffffffff,1,40
+slick city,8548ebb7fffffff,8448ebbffffffff,0,196
+universal,8529a1d7fffffff,8429a1dffffffff,2,81
+valvoline oil change,852a10cffffffff,842a10dffffffff,1,67
+wheel alignment,8526c863fffffff,8426c87ffffffff,0,20
+altitude trampoline park,8544e8affffffff,8444e8bffffffff,1,40
+brazilian wax,8544c107fffffff,8444c11ffffffff,0,23
+escape room,8529a1d7fffffff,8429a1dffffffff,0,41
+escape room,852b9937fffffff,842b993ffffffff,1,26
+facial,852a10abfffffff,842a10bffffffff,0,32
+gangnam spa,85446ddbfffffff,84446ddffffffff,1,255
+head spa,852664c3fffffff,842664dffffffff,1,34
+head spa,852a3393fffffff,842a339ffffffff,0,36
+head spa,8548eba3fffffff,8448ebbffffffff,1,46
+jumping world,85446c13fffffff,84446c1ffffffff,1,55
+kalahari sandusky ohio,852ab35bfffffff,842ab35ffffffff,1,31
+maize,852aac7bfffffff,842aac7ffffffff,1,22
+massage,8526640bfffffff,8426641ffffffff,1,31
+massage,85446ca3fffffff,84446cbffffffff,1,45
+massage,8544ae87fffffff,8444ae9ffffffff,1,29
+oil change,85298b93fffffff,84298b9ffffffff,2,34
+oil change,852ab317fffffff,842ab31ffffffff,2,53
+oil change,8544ae83fffffff,8444ae9ffffffff,1,24
+osaka,8527527bfffffff,8427527ffffffff,0,47
+pangea,8529b6dbfffffff,8429b6dffffffff,1,55
+slick city,8526c847fffffff,8426c85ffffffff,1,62
+temecula,8529a0d7fffffff,8429a0dffffffff,1,20
+valvoline,852a1687fffffff,842a169ffffffff,2,22
+airport parking,8548eba7fffffff,8448ebbffffffff,1,144
+aquarium of the pacific,8529a563fffffff,8429a57ffffffff,1,76
+botox,85275267fffffff,8427527ffffffff,1,28
+botox,8529a40ffffffff,8429a41ffffffff,2,32
+climb zone,852aa857fffffff,842aa85ffffffff,0,48
+couples massage,85262cd3fffffff,84262cdffffffff,0,44
+couples massage,852aa8cffffffff,842aa8dffffffff,1,27
+full synthetic oil change,85446c23fffffff,84446c3ffffffff,1,46
+full synthetic oil change,85446ddbfffffff,84446ddffffffff,1,38
+gaylord ice,85264d13fffffff,84264d1ffffffff,2,128
+gilroy garden,85283453fffffff,8428345ffffffff,1,30
+kpot,85489c03fffffff,84489c1ffffffff,1,21
+laser hair removal,852a3067fffffff,842a307ffffffff,0,76
+laser hair removal,85446cabfffffff,84446cbffffffff,0,87
+massage,852986a3fffffff,842986bffffffff,2,44
+massage,852a1093fffffff,842a109ffffffff,1,22
+massage,852aa847fffffff,842aa85ffffffff,0,38
+parking,85446c23fffffff,84446c3ffffffff,1,23
+pottery class,8528d54ffffffff,8428d55ffffffff,0,20
+seaworld,85489c17fffffff,84489c1ffffffff,2,229
+sky zone,8544c1affffffff,8444c1bffffffff,0,153
+smog check,852986b3fffffff,842986bffffffff,0,21
+smog test,8529a18bfffffff,8429a19ffffffff,0,24
+ultherapy,852a100ffffffff,842a101ffffffff,0,24
+urban air,85274da3fffffff,84274dbffffffff,1,41
+valvoline,8528d5c3fffffff,8428d5dffffffff,1,51
+valvoline,8529a0a7fffffff,8429a0bffffffff,1,49
+whatz up,8526cbb7fffffff,8426cbbffffffff,2,25
+wildlife world zoo,8529b69bfffffff,8429b69ffffffff,1,299
+andretti,8544a82bfffffff,8444a83ffffffff,1,71
+botox,85441a8bfffffff,84441a9ffffffff,0,22
+botox,8544a1abfffffff,8444a1bffffffff,0,26
+cj barrymores,852ab66ffffffff,842ab67ffffffff,1,157
+couple massage,852a100ffffffff,842a101ffffffff,0,30
+couples massage,8529868ffffffff,8429869ffffffff,2,23
+couples massage,852aa87bfffffff,842aa87ffffffff,1,35
+couples massage,85441a87fffffff,84441a9ffffffff,1,21
+deluxe med spa,8529a1d7fffffff,8429a1dffffffff,1,42
+escape room,8528d54ffffffff,8428d55ffffffff,0,26
+massage,85260e27fffffff,84260e3ffffffff,1,43
+massage,852986b3fffffff,842986bffffffff,0,23
+massage,852a896ffffffff,842a897ffffffff,2,53
+massage,852b9bcffffffff,842b9bdffffffff,0,27
+medical marijuana doctor,8544ae83fffffff,8444ae9ffffffff,2,20
+nelly,8544daa3fffffff,8444dabffffffff,0,26
+oil change,8526cb8bfffffff,8426cb9ffffffff,1,108
+oil change,8527593bfffffff,8427593ffffffff,1,41
+oil change,8528d5d3fffffff,8428d5dffffffff,1,31
+oil change,852a1007fffffff,842a101ffffffff,0,112
+oil change,852aaab3fffffff,842aaabffffffff,0,70
+oil change,852aacb3fffffff,842aacbffffffff,0,20
+sky zone,852ab313fffffff,842ab31ffffffff,0,52
+valvoline,8544a9a3fffffff,8444a9bffffffff,1,173
+wine room,8544a90ffffffff,8444a91ffffffff,1,57
+bingo,85441abbfffffff,84441abffffffff,1,46
+blue zoo,8526c19bfffffff,8426c19ffffffff,2,50
+bowling,852a1007fffffff,842a101ffffffff,0,33
+couples massage,8529a033fffffff,8429a03ffffffff,1,21
+couples massage,852aa84ffffffff,842aa85ffffffff,1,47
+couples massage,8544a90ffffffff,8444a91ffffffff,1,36
+cruise,852664c3fffffff,842664dffffffff,2,30
+enterrium,85275933fffffff,8427593ffffffff,0,34
+eyelash extensions,852a1007fffffff,842a101ffffffff,0,22
+fun spot,8544c187fffffff,8444c19ffffffff,1,55
+halloween horror nights,8529a1d7fffffff,8429a1dffffffff,1,231
+ky down under,85266bb3fffffff,84266bbffffffff,2,23
+lloyd,852aab6bfffffff,842aab7ffffffff,2,24
+massage,852aac97fffffff,842aac9ffffffff,0,29
+massage,852ab313fffffff,842ab31ffffffff,0,39
+oil change,8529a41bfffffff,8429a41ffffffff,0,29
+oil change,8529a457fffffff,8429a45ffffffff,0,66
+san antonio,85489c03fffffff,84489c1ffffffff,2,64
+san diego zoo,8529a41bfffffff,8429a41ffffffff,2,70
+skyzone,8528f01bfffffff,8428f01ffffffff,1,91
+uptown jungle,8548eba3fffffff,8448ebbffffffff,0,102
+valvoline oil change,852a1407fffffff,842a141ffffffff,1,68
+atlantic city,852a132ffffffff,842a133ffffffff,2,35
+big air,8544dab7fffffff,8444dabffffffff,1,221
+big bus tour,85283083fffffff,8428309ffffffff,1,31
+california academy of sciences,85283097fffffff,8428309ffffffff,1,38
+car wash,85441a13fffffff,84441a1ffffffff,0,27
+couples massage,8544a917fffffff,8444a91ffffffff,2,54
+dorney park,852a1277fffffff,842a127ffffffff,1,44
+full synthetic oil change,8526c86ffffffff,8426c87ffffffff,0,21
+glittering lights,85298617fffffff,8429861ffffffff,0,119
+green dog dental,8529a18bfffffff,8429a19ffffffff,0,51
+laser hair removal,852a1007fffffff,842a101ffffffff,0,35
+massage,852a100ffffffff,842a101ffffffff,0,637
+massage,852ab3a3fffffff,842ab3bffffffff,1,31
+massage,85446c23fffffff,84446c3ffffffff,1,32
+massage,8544ae93fffffff,8444ae9ffffffff,1,50
+ninja factory,8529a477fffffff,8429a47ffffffff,1,71
+oil change,852ab2d7fffffff,842ab2dffffffff,0,76
+oil change,8544d847fffffff,8444d85ffffffff,1,104
+paintball,8529a0abfffffff,8429a0bffffffff,1,54
+pilates,8529a41bfffffff,8429a41ffffffff,1,20
+pinballz,85489e27fffffff,84489e3ffffffff,2,38
+skyland ranch,8544ca07fffffff,8444ca1ffffffff,2,33
+skyzone,8527481bfffffff,8427481ffffffff,2,45
+skyzone,852b8913fffffff,842b891ffffffff,2,21
+smiley,85274b0bfffffff,84274b1ffffffff,2,27
+spa,8544131bfffffff,8444131ffffffff,2,24
+teeth whitening,852664c3fffffff,842664dffffffff,0,30
+trampoline,8526c86bfffffff,8426c87ffffffff,1,36
+valvoline oil change,85441a87fffffff,84441a9ffffffff,1,25
+view,852a3067fffffff,842a307ffffffff,2,20
+aquarium,85268cdbfffffff,84268cdffffffff,1,38
+botox,8526c86bfffffff,8426c87ffffffff,1,93
+couples massage,85266697fffffff,8426669ffffffff,1,20
+dark harbor,8529a563fffffff,8429a57ffffffff,1,143
+fyre hibachi,852a1007fffffff,842a101ffffffff,0,30
+golf,85441a03fffffff,84441a1ffffffff,0,23
+lana hair,85283473fffffff,8428347ffffffff,1,22
+laser hair removal,8528d543fffffff,8428d55ffffffff,0,51
+massage,852832abfffffff,842832bffffffff,1,20
+massage,8528d553fffffff,8428d55ffffffff,0,20
+oil change,8526c807fffffff,8426c81ffffffff,1,49
+six flags,852a13c7fffffff,842a13dffffffff,1,153
+smoky mountain alpine coaster,8544ca07fffffff,8444ca1ffffffff,2,103
+swan,8544a907fffffff,8444a91ffffffff,1,55
+uptown jungle,8548e96ffffffff,8448e97ffffffff,0,116
+valvoline,8544c137fffffff,8444c13ffffffff,1,41
+valvoline oil change,852ab2d3fffffff,842ab2dffffffff,1,32
+whale watching,85291a6ffffffff,84291a7ffffffff,2,23
+botox,85268ccffffffff,84268cdffffffff,0,47
+brazilian wax,8529a41bfffffff,8429a41ffffffff,0,27
+chimis,85264677fffffff,8426467ffffffff,2,33
+couples massage,852a14abfffffff,842a14bffffffff,2,33
+couples massage,85446caffffffff,84446cbffffffff,0,70
+deep tissue massage,85446caffffffff,84446cbffffffff,1,27
+escape room,8529a0b7fffffff,8429a0bffffffff,0,29
+fairmont princess,8529b6dbfffffff,8429b6dffffffff,1,73
+go city pass,852664c3fffffff,842664dffffffff,2,27
+jumping world,852659b7fffffff,842659bffffffff,2,34
+massage,85275d3bfffffff,84275d3ffffffff,0,20
+momentum,85446cabfffffff,84446cbffffffff,1,31
+oil change,85268cd7fffffff,84268cdffffffff,0,22
+oil change,8544ca37fffffff,8444ca3ffffffff,2,42
+prp microneedling,852a100ffffffff,842a101ffffffff,0,24
+sea world,85489c17fffffff,84489c1ffffffff,2,114
+sky zone,852a1343fffffff,842a135ffffffff,0,91
+smog test,8528309bfffffff,8428309ffffffff,0,20
+trampoline park,85489c03fffffff,84489c1ffffffff,1,23
+valvoline,852b9927fffffff,842b993ffffffff,1,22
+valvoline,85441a87fffffff,84441a9ffffffff,2,29
+american dream mall,852a100bfffffff,842a101ffffffff,2,43
+botox,8529a1c7fffffff,8429a1dffffffff,0,21
+christmas princess,8529b6dbfffffff,8429b6dffffffff,0,43
+couples massage spa package,8544a903fffffff,8444a91ffffffff,0,20
+funtastic depot,8544a903fffffff,8444a91ffffffff,1,53
+gaylord,852aa87bfffffff,842aa87ffffffff,1,42
+head spa,852986bbfffffff,842986bffffffff,2,51
+houston aquarium,85446c23fffffff,84446c3ffffffff,1,45
+john’s incredible pizza,8529a563fffffff,8429a57ffffffff,0,23
+massage,85275933fffffff,8427593ffffffff,0,30
+massage,8529b6d7fffffff,8429b6dffffffff,0,27
+massage,85446d5bfffffff,84446d5ffffffff,1,33
+oil change,8529a403fffffff,8429a41ffffffff,1,145
+six flags,852759bbfffffff,842759bffffffff,1,242
+smog,8529a477fffffff,8429a47ffffffff,1,24
+smog test,8528308bfffffff,8428309ffffffff,0,20
+stone mountain,8544c107fffffff,8444c11ffffffff,2,302
+airport parking,85264d17fffffff,84264d1ffffffff,2,28
+botox,8529a1d3fffffff,8429a1dffffffff,0,58
+bounce empire,852681b7fffffff,842681bffffffff,0,23
+climbzone,852aa857fffffff,842aa85ffffffff,0,40
+couples massage,852a1347fffffff,842a135ffffffff,0,24
+couples massage,85446cabfffffff,84446cbffffffff,2,58
+facials,8529a0a7fffffff,8429a0bffffffff,0,23
+marijuana doctor,8544ae83fffffff,8444ae9ffffffff,2,24
+massage,8544f057fffffff,8444f05ffffffff,1,45
+massage,8548eba3fffffff,8448ebbffffffff,0,152
+maze quest,852aac7bfffffff,842aac7ffffffff,1,39
+oil change,8528d5cbfffffff,8428d5dffffffff,0,39
+oil change,852a8457fffffff,842a845ffffffff,0,30
+parking,85264637fffffff,8426463ffffffff,1,36
+skyzone,8526ea97fffffff,8426ea9ffffffff,2,22
+the edge,8544f00bfffffff,8444f01ffffffff,0,21
+astro fun world,85266697fffffff,8426669ffffffff,1,83
+bayville,852a1017fffffff,842a101ffffffff,0,33
+botox,852a1047fffffff,842a105ffffffff,0,23
+fun factory,852661a3fffffff,842661bffffffff,1,34
+gun range,8544c13bfffffff,8444c13ffffffff,0,21
+head spa,8526c867fffffff,8426c87ffffffff,1,117
+kawaii claws,8529127bfffffff,8429127ffffffff,1,20
+massage,852661b3fffffff,842661bffffffff,2,38
+massage,8526c19bfffffff,8426c19ffffffff,2,21
+massage,852986abfffffff,842986bffffffff,0,20
+massage,852b8a23fffffff,842b8a3ffffffff,2,22
+massage,85441a83fffffff,84441a9ffffffff,2,52
+oil change,85268c63fffffff,84268c7ffffffff,1,38
+oil change,8529a09bfffffff,8429a09ffffffff,1,63
+oil change,852a1013fffffff,842a101ffffffff,1,65
+oil change,852ab2cbfffffff,842ab2dffffffff,0,66
+oil change,852ab31bfffffff,842ab31ffffffff,1,74
+stone mountain park,8544c107fffffff,8444c11ffffffff,1,158
+valvoline oil change,852a1007fffffff,842a101ffffffff,1,27
+airpark,8528f003fffffff,8428f01ffffffff,1,26
+big air trampoline park,852a896ffffffff,842a897ffffffff,2,39
+circus,8526641bfffffff,8426641ffffffff,0,26
+claw,852986a3fffffff,842986bffffffff,2,28
+couples massage,8526c877fffffff,8426c87ffffffff,1,48
+couples massage,8529b6d3fffffff,8429b6dffffffff,1,21
+facial,8526c86bfffffff,8426c87ffffffff,0,25
+foot massage,852664c3fffffff,842664dffffffff,0,22
+haircut,85268cdbfffffff,84268cdffffffff,0,23
+horror nights,8529a1d7fffffff,8429a1dffffffff,1,69
+hydrafacial,852a100ffffffff,842a101ffffffff,0,109
+jiffy lube,85266d37fffffff,84266d3ffffffff,2,34
+laser,852a100ffffffff,842a101ffffffff,0,65
+massage,852aa5affffffff,842aa5bffffffff,2,24
+massage,85489e37fffffff,84489e3ffffffff,1,109
+oil change,8529a0b7fffffff,8429a0bffffffff,0,98
+oil change,852a134ffffffff,842a135ffffffff,0,36
+oil change,852aaab7fffffff,842aaabffffffff,0,222
+oil change,85446cabfffffff,84446cbffffffff,0,62
+parking spot,8529a19bfffffff,8429a19ffffffff,1,27
+renaissance fair,85264673fffffff,8426467ffffffff,1,53
+smog check,8528309bfffffff,8428309ffffffff,0,70
+the parking spot,8529a19bfffffff,8429a19ffffffff,1,22
+7d,8544ca07fffffff,8444ca1ffffffff,2,34
+altitude trampoline park,85446dd3fffffff,84446ddffffffff,1,55
+belmont park,8529a403fffffff,8429a41ffffffff,2,25
+botox,8527593bfffffff,8427593ffffffff,1,28
+breakfast,85298687fffffff,8429869ffffffff,0,24
+escape room,85275933fffffff,8427593ffffffff,0,38
+facial,852ab2c3fffffff,842ab2dffffffff,0,20
+funquest,852a88c3fffffff,842a88dffffffff,2,21
+funspot,8544a98ffffffff,8444a99ffffffff,2,25
+haircut,852a10bbfffffff,842a10bffffffff,1,39
+headspa,852a100ffffffff,842a101ffffffff,0,22
+laser hair removal,8529a41bfffffff,8429a41ffffffff,1,20
+massage,85446c13fffffff,84446c1ffffffff,2,36
+massage,8544c1abfffffff,8444c1bffffffff,2,43
+mini golf,85268cdbfffffff,84268cdffffffff,0,25
+oil change,852a16b3fffffff,842a16bffffffff,1,73
+oil change,85441a87fffffff,84441a9ffffffff,1,173
+oil change,8544a183fffffff,8444a19ffffffff,1,74
+relache spa,8526c863fffffff,8426c87ffffffff,1,35
+teeth whitening,8529a403fffffff,8429a41ffffffff,0,20
+the spa club,852a100ffffffff,842a101ffffffff,0,29
+valvoline,8548ebb7fffffff,8448ebbffffffff,0,38
+airport parking,8528309bfffffff,8428309ffffffff,0,20
+aquarium,85489c17fffffff,84489c1ffffffff,2,89
+big air trampoline park,8548ebb7fffffff,8448ebbffffffff,0,44
+botox,852a1007fffffff,842a101ffffffff,0,20
+botox,852aac87fffffff,842aac9ffffffff,1,53
+botox,8544a123fffffff,8444a13ffffffff,0,23
+bowling,852a100ffffffff,842a101ffffffff,0,105
+chimis,85264623fffffff,8426463ffffffff,2,37
+dave and busters,852a142ffffffff,842a143ffffffff,1,25
+full synthetic oil change,8529a54ffffffff,8429a55ffffffff,1,29
+great america,852759bbfffffff,842759bffffffff,1,51
+ipl,8529a54ffffffff,8429a55ffffffff,1,27
+massage,852830d7fffffff,842830dffffffff,0,32
+michigan renaissance festival,85274dabfffffff,84274dbffffffff,1,23
+oil change,852a103bfffffff,842a103ffffffff,0,39
+oil change,852ab253fffffff,842ab25ffffffff,2,49
+oil change,852b9b37fffffff,842b9b3ffffffff,1,24
+oil change,8544de97fffffff,8444de9ffffffff,2,26
+six flags fiesta,85489c03fffffff,84489c1ffffffff,2,41
+sky zone,8527580ffffffff,8427581ffffffff,2,32
+spa,852a106bfffffff,842a107ffffffff,1,57
+trampoline,852a10b3fffffff,842a10bffffffff,1,24
+urban air,8526c83bfffffff,8426c83ffffffff,1,95
+valvoline oil change,8544d847fffffff,8444d85ffffffff,2,29
+airsoft,8529a0abfffffff,8429a0bffffffff,1,20
+carpet cleaning,85283083fffffff,8428309ffffffff,1,26
+couples massage,8529a1c3fffffff,8429a1dffffffff,0,22
+facials,852a1073fffffff,842a107ffffffff,0,20
+kusshi,852aa843fffffff,842aa85ffffffff,1,22
+massage,85268c6ffffffff,84268c7ffffffff,1,21
+massage,852832bbfffffff,842832bffffffff,1,48
+massage,852ab317fffffff,842ab31ffffffff,1,34
+rock climbing,8529a413fffffff,8429a41ffffffff,2,21
+sev laser,8529a0b3fffffff,8429a0bffffffff,1,27
+six flags,8526c86ffffffff,8426c87ffffffff,1,136
+skyzone,8526405bfffffff,8426405ffffffff,0,40
+skyzone,852a1343fffffff,842a135ffffffff,0,47
+valvoline,85275963fffffff,8427597ffffffff,1,55
+valvoline,852a16b3fffffff,842a16bffffffff,1,41
+brazilian wax,85283083fffffff,8428309ffffffff,1,31
+claw machine,8529a033fffffff,8429a03ffffffff,1,22
+floridarama,85441a93fffffff,84441a9ffffffff,2,43
+gateway,852aadbbfffffff,842aadbffffffff,2,20
+great wolf lodge,852758dbfffffff,842758dffffffff,2,37
+iplay america,852a138bfffffff,842a139ffffffff,1,77
+kawaii claws,8529a1dbfffffff,8429a1dffffffff,0,30
+massage,85264627fffffff,8426463ffffffff,1,123
+massage,85268c63fffffff,84268c7ffffffff,1,40
+massage,8544133bfffffff,8444133ffffffff,2,32
+massage,8544a107fffffff,8444a11ffffffff,0,63
+monster mini golf,852a1057fffffff,842a105ffffffff,0,21
+oil change,8528f00ffffffff,8428f01ffffffff,1,58
+oil change,852a1383fffffff,842a139ffffffff,2,23
+oil change,852aa8c7fffffff,842aa8dffffffff,1,51
+q sauna,8528d54ffffffff,8428d55ffffffff,0,35
+safari run,85283473fffffff,8428347ffffffff,0,20
+scalp massage,852a1007fffffff,842a101ffffffff,0,20
+scooters,85446cabfffffff,84446cbffffffff,0,22
+smog,85283083fffffff,8428309ffffffff,0,43
+sushi boss,852a134ffffffff,842a135ffffffff,1,21
+teeth whitening,852a100ffffffff,842a101ffffffff,0,66
+wheel alignment,8526c877fffffff,8426c87ffffffff,0,32
+wheel alignment,852a137bfffffff,842a137ffffffff,1,21
+atv,8544a187fffffff,8444a19ffffffff,2,31
+big air,85262cd7fffffff,84262cdffffffff,0,59
+carpet cleaning,8544c13bfffffff,8444c13ffffffff,1,39
+flight,852a10b3fffffff,842a10bffffffff,1,60
+flight,8544f057fffffff,8444f05ffffffff,1,38
+full body massage,8544c133fffffff,8444c13ffffffff,0,25
+great wolf lodge,85265647fffffff,8426565ffffffff,2,98
+kawaii claws,8529a1d3fffffff,8429a1dffffffff,0,26
+massage,8528342bfffffff,8428343ffffffff,1,60
+massage,8529a40bfffffff,8429a41ffffffff,0,59
+massage,85489853fffffff,8448985ffffffff,0,43
+medieval times,8529a0b7fffffff,8429a0bffffffff,1,20
+microneedling,8529b6dbfffffff,8429b6dffffffff,0,22
+oil change,8529a57bfffffff,8429a57ffffffff,0,67
+oil change,852a33d7fffffff,842a33dffffffff,0,30
+oil change,8544a107fffffff,8444a11ffffffff,1,216
+rennaisance,85262ccbfffffff,84262cdffffffff,1,31
+satori laser,852a100bfffffff,842a101ffffffff,0,54
+valvoline,8528f003fffffff,8428f01ffffffff,2,37
+valvoline oil change,8529a567fffffff,8429a57ffffffff,0,92
+wheel alignment,85283463fffffff,8428347ffffffff,1,23
+altitude,85489e27fffffff,84489e3ffffffff,1,72
+altitude trampoline park,85489e27fffffff,84489e3ffffffff,1,114
+big air trampoline,8529a0bbfffffff,8429a0bffffffff,0,39
+big air trampoline park,8544dab7fffffff,8444dabffffffff,1,188
+bowling,852a8b73fffffff,842a8b7ffffffff,1,35
+claw,852986bbfffffff,842986bffffffff,2,21
+coin castle,852a13bbfffffff,842a13bffffffff,1,36
+couples massage,852a1073fffffff,842a107ffffffff,0,56
+escape room,85275927fffffff,8427593ffffffff,0,35
+great wolf lodge,854413cffffffff,844413dffffffff,2,25
+head spa,8528d54bfffffff,8428d55ffffffff,0,20
+island water park,852a132ffffffff,842a133ffffffff,2,73
+king richards faire,852a314ffffffff,842a315ffffffff,1,21
+kingpin,8528f01bfffffff,8428f01ffffffff,0,23
+maize quest,852aac7bfffffff,842aac7ffffffff,1,101
+massage,852a840ffffffff,842a841ffffffff,0,45
+massage,852a9563fffffff,842a957ffffffff,2,33
+massage,8544c13bfffffff,8444c13ffffffff,0,36
+momentum,85269633fffffff,8426963ffffffff,0,28
+oil change,85266d37fffffff,84266d3ffffffff,2,164
+oil change,8527484bfffffff,8427485ffffffff,2,58
+oil change,852a8097fffffff,842a809ffffffff,1,98
+oil change,85446c27fffffff,84446c3ffffffff,0,43
+paintball,85298687fffffff,8429869ffffffff,0,24
+puttshack,85446cabfffffff,84446cbffffffff,1,21
+safari,85275267fffffff,8427527ffffffff,1,21
+sky zone,852aa5d7fffffff,842aa5dffffffff,2,27
+skyzone,85275d2bfffffff,84275d3ffffffff,2,87
+slick city,85446dd3fffffff,84446ddffffffff,1,167
+smog,85283217fffffff,8428321ffffffff,0,20
+urban air trampoline park,8526c83bfffffff,8426c83ffffffff,1,25
+valvoline oil change,85446ddbfffffff,84446ddffffffff,1,40
+alley cats,8526cbd7fffffff,8426cbdffffffff,1,21
+altitude trampoline park,8526c82bfffffff,8426c83ffffffff,0,33
+bowling,852a1033fffffff,842a103ffffffff,0,52
+couples massage,852ab317fffffff,842ab31ffffffff,2,21
+couples massage,85441a13fffffff,84441a1ffffffff,1,73
+escape room,8528347bfffffff,8428347ffffffff,1,26
+facial,852a106bfffffff,842a107ffffffff,1,42
+full synthetic oil change,852a896bfffffff,842a897ffffffff,2,28
+lip filler,8529a017fffffff,8429a01ffffffff,1,20
+massage,85446c33fffffff,84446c3ffffffff,0,37
+mini golf,8544a9bbfffffff,8444a9bffffffff,1,63
+russian manicure,852a100ffffffff,842a101ffffffff,0,34
+shahnawaz,852a106bfffffff,842a107ffffffff,1,29
+terry bison ranch,852685a7fffffff,842685bffffffff,2,29
+valvoline,852ab2d3fffffff,842ab2dffffffff,1,37
+airport parking,852ab313fffffff,842ab31ffffffff,1,32
+big cat,85441e73fffffff,84441e7ffffffff,1,20
+bowling,85446d5bfffffff,84446d5ffffffff,1,25
+cedar point,852ab35bfffffff,842ab35ffffffff,2,222
+couples massage,8544a1abfffffff,8444a1bffffffff,0,23
+douglas j,85274d7bfffffff,84274d7ffffffff,2,24
+dysport,8544a12bfffffff,8444a13ffffffff,1,21
+facial,8529a1d3fffffff,8429a1dffffffff,1,30
+facial,85446cabfffffff,84446cbffffffff,0,20
+jiffy lube,85441acffffffff,84441adffffffff,1,30
+kingspa,852a100bfffffff,842a101ffffffff,0,28
+massage,85264623fffffff,8426463ffffffff,0,44
+massage,8526c82bfffffff,8426c83ffffffff,1,34
+massage,8527522bfffffff,8427523ffffffff,1,21
+massage,852a1007fffffff,842a101ffffffff,0,89
+massage,852a931bfffffff,842a931ffffffff,1,35
+massage,85441a8bfffffff,84441a9ffffffff,1,48
+massage,8544a90ffffffff,8444a91ffffffff,1,171
+off the wall,8544a133fffffff,8444a13ffffffff,0,46
+oil change,852832abfffffff,842832bffffffff,0,37
+peachy airport parking,8544c1abfffffff,8444c1bffffffff,1,68
+six flags,85283003fffffff,8428301ffffffff,1,24
+smog check,8529a56bfffffff,8429a57ffffffff,0,35
+smog test,85283473fffffff,8428347ffffffff,1,38
+trampoline park,8544dab7fffffff,8444dabffffffff,1,35
+bounce syosset,852a1017fffffff,842a101ffffffff,1,24
+car wash,8526cab7fffffff,8426cabffffffff,2,120
+couples massage,852696abfffffff,842696bffffffff,1,51
+couples massage,8529a41bfffffff,8429a41ffffffff,1,62
+facial,85283473fffffff,8428347ffffffff,0,20
+fishing,8529a54ffffffff,8429a55ffffffff,1,52
+ifly,85269693fffffff,8426969ffffffff,1,38
+jumping world,8544cccbfffffff,8444ccdffffffff,1,80
+king spa,852a100bfffffff,842a101ffffffff,1,319
+lagoon,85441ad3fffffff,84441adffffffff,1,32
+massage,85275923fffffff,8427593ffffffff,1,57
+massage,8528d54ffffffff,8428d55ffffffff,0,52
+massage,8529a017fffffff,8429a01ffffffff,0,65
+massage,8529a1c3fffffff,8429a1dffffffff,0,47
+massage,852a142ffffffff,842a143ffffffff,1,24
+massage,8544d84bfffffff,8444d85ffffffff,2,34
+oil change,852a8c57fffffff,842a8c5ffffffff,2,37
+pirates dinner,8529a0b7fffffff,8429a0bffffffff,1,59
+sky zone,8529a1dbfffffff,8429a1dffffffff,1,149
+skyzone,852aa8d3fffffff,842aa8dffffffff,1,103
+spyscape,852a100ffffffff,842a101ffffffff,1,42
+valley golf center,8548e96ffffffff,8448e97ffffffff,0,24
+botox,8526c877fffffff,8426c87ffffffff,1,83
+botox,85489853fffffff,8448985ffffffff,1,42
+central park zoo,852a100ffffffff,842a101ffffffff,2,53
+christmas at princess,8529b6dbfffffff,8429b6dffffffff,1,168
+duffy boat,8529a54ffffffff,8429a55ffffffff,1,53
+fhyre hibachi,852a1007fffffff,842a101ffffffff,0,20
+gaylord,8526c863fffffff,8426c87ffffffff,1,81
+great wolf lodge,852836abfffffff,842836bffffffff,1,149
+head spa,8544a973fffffff,8444a97ffffffff,0,34
+kawaii claws,8529a033fffffff,8429a03ffffffff,0,21
+lakepoint station,8544ccc3fffffff,8444ccdffffffff,1,40
+massage,8526644bfffffff,8426645ffffffff,1,26
+massage,8529a1d7fffffff,8429a1dffffffff,1,162
+massage,852a10b3fffffff,842a10bffffffff,1,74
+massage,852a120ffffffff,842a121ffffffff,1,22
+massage,852aa84bfffffff,842aa85ffffffff,0,49
+massage,8544a18ffffffff,8444a19ffffffff,2,112
+massage,8548ebb7fffffff,8448ebbffffffff,0,25
+oil change,8528308ffffffff,8428309ffffffff,0,72
+oil change,8544c107fffffff,8444c11ffffffff,0,171
+skating,8544da87fffffff,8444da9ffffffff,1,38
+sky zone,8544a13bfffffff,8444a13ffffffff,1,61
+valvoline oil change,852aaab7fffffff,842aaabffffffff,1,54
+airport parking,8526aa6ffffffff,8426aa7ffffffff,1,75
+beyond the lens,8544ca07fffffff,8444ca1ffffffff,2,33
+bounce,852a1017fffffff,842a101ffffffff,1,79
+car wash,8529a627fffffff,8429a63ffffffff,2,37
+catalina island,8529a51bfffffff,8429a51ffffffff,1,33
+couples massage,8544a13bfffffff,8444a13ffffffff,1,97
+jungle queen,8544a10ffffffff,8444a11ffffffff,2,24
+kartrite,852a160ffffffff,842a161ffffffff,2,48
+kings dominion,852aab73fffffff,842aab7ffffffff,2,114
+launch,8544a90bfffffff,8444a91ffffffff,0,58
+lucky snake,852a132ffffffff,842a133ffffffff,2,32
+massage,85264d13fffffff,84264d1ffffffff,2,73
+massage,85489c17fffffff,84489c1ffffffff,1,27
+museum of the bible,852aa847fffffff,842aa85ffffffff,2,259
+oil change,852749a7fffffff,842749bffffffff,2,24
+oil change,852986bbfffffff,842986bffffffff,0,259
+oil change,85441e5bfffffff,84441e5ffffffff,2,129
+sky zone,852aae7bfffffff,842aae7ffffffff,1,77
+sky zone,852ab2d3fffffff,842ab2dffffffff,0,90
+smog,852832b3fffffff,842832bffffffff,1,50
+smog,8529a41bfffffff,8429a41ffffffff,0,38
+spray tan,8526c807fffffff,8426c81ffffffff,1,21
+trampoline,852664dbfffffff,842664dffffffff,0,20
+whale watch,852a3007fffffff,842a301ffffffff,2,30
+altitude,852a9313fffffff,842a931ffffffff,0,33
+blueberry hill,85266453fffffff,8426645ffffffff,0,40
+couples massage,8544a103fffffff,8444a11ffffffff,0,26
+crayola experience,8526c877fffffff,8426c87ffffffff,1,34
+deep tissue massage,8544a13bfffffff,8444a13ffffffff,1,22
+elevate,8528364bfffffff,8428365ffffffff,1,26
+escape room,85268cdbfffffff,84268cdffffffff,0,56
+facial,852664c3fffffff,842664dffffffff,0,44
+facial,85268cc3fffffff,84268cdffffffff,0,31
+full synthetic oil change,8526caa7fffffff,8426cabffffffff,1,34
+gaylord spa,8526c863fffffff,8426c87ffffffff,1,32
+get air,852a939bfffffff,842a939ffffffff,1,53
+laser hair removal,8529a567fffffff,8429a57ffffffff,0,35
+laser hair removal,852aaaa7fffffff,842aaabffffffff,1,25
+lymphatic massage,8529a19bfffffff,8429a19ffffffff,0,29
+massage,85266453fffffff,8426645ffffffff,0,55
+massage,85268cc7fffffff,84268cdffffffff,0,21
+massage,8529a0a7fffffff,8429a0bffffffff,0,41
+massage,8529a41bfffffff,8429a41ffffffff,1,157
+massage,852a122ffffffff,842a123ffffffff,0,27
+massage,8544c177fffffff,8444c17ffffffff,1,20
+oil change,852a1093fffffff,842a109ffffffff,1,238
+oil change,852a896bfffffff,842a897ffffffff,2,169
+oil change,8544a913fffffff,8444a91ffffffff,1,125
+phl parking,852aacb3fffffff,842aacbffffffff,1,77
+valvoline,852aab53fffffff,842aab5ffffffff,1,23
+visarts,852aa843fffffff,842aa85ffffffff,0,33
+wine tasting temecula,8529a0d7fffffff,8429a0dffffffff,1,48
+airport parking,85283093fffffff,8428309ffffffff,1,23
+altitude trampoline park,852b9923fffffff,842b993ffffffff,1,23
+couples massage,85283473fffffff,8428347ffffffff,1,27
+deep tissue massage,8529a403fffffff,8429a41ffffffff,1,24
+hobby airport parking,85446c17fffffff,84446c1ffffffff,1,66
+houston museum of natural science,85446cabfffffff,84446cbffffffff,1,63
+island spa and sauna,852a106bfffffff,842a107ffffffff,1,29
+kawaii klaws,8529a1dbfffffff,8429a1dffffffff,0,36
+liquivida,8544a123fffffff,8444a13ffffffff,1,23
+massage,8528d557fffffff,8428d55ffffffff,1,26
+massage,852ab253fffffff,842ab25ffffffff,0,46
+massage,852ad6d7fffffff,842ad6dffffffff,2,98
+massage,8544f427fffffff,8444f43ffffffff,2,43
+naples grande,8544131bfffffff,8444131ffffffff,2,47
+nelly,852ad69bfffffff,842ad69ffffffff,2,49
+oil change,8527522bfffffff,8427523ffffffff,2,79
+oil change,85489853fffffff,8448985ffffffff,2,35
+oil change,8548ebb7fffffff,8448ebbffffffff,1,80
+play city,8529a477fffffff,8429a47ffffffff,1,70
+pottery,85283473fffffff,8428347ffffffff,1,31
+sky zone,85275d0ffffffff,84275d1ffffffff,1,47
+smog check,85283083fffffff,8428309ffffffff,0,56
+the web,852a9313fffffff,842a931ffffffff,1,24
+valvoline oil change,8528f003fffffff,8428f01ffffffff,2,29
+zoo,8529a9a7fffffff,8429a9bffffffff,1,27
+b52s,8529a1d7fffffff,8429a1dffffffff,0,23
+car wash,8528346ffffffff,8428347ffffffff,1,22
+couples massage,8526c86bfffffff,8426c87ffffffff,1,38
+facial,852a1077fffffff,842a107ffffffff,0,31
+glass blowing,85441a93fffffff,84441a9ffffffff,1,26
+jet ski,8529a413fffffff,8429a41ffffffff,2,39
+laser hair removal,852aa843fffffff,842aa85ffffffff,1,28
+nickelodeon universe,852a100bfffffff,842a101ffffffff,1,83
+pumpkin patch,8529b6dbfffffff,8429b6dffffffff,1,111
+spa,85446ca7fffffff,84446cbffffffff,1,73
+statue of liberty tour,852a1073fffffff,842a107ffffffff,2,49
+valvoline,852a120ffffffff,842a121ffffffff,1,41
+airport parking,8529a413fffffff,8429a41ffffffff,2,65
+alpine,8544ca07fffffff,8444ca1ffffffff,2,23
+american dream,852a100bfffffff,842a101ffffffff,1,188
+axe throwing,852a100ffffffff,842a101ffffffff,1,27
+brazilian wax,852a1003fffffff,842a101ffffffff,0,25
+facial,8529a0a7fffffff,8429a0bffffffff,0,41
+full synthetic oil change,8529a18bfffffff,8429a19ffffffff,0,21
+fun spot,8544a98ffffffff,8444a99ffffffff,1,96
+head spa,852664cffffffff,842664dffffffff,0,45
+head spa,8529a56bfffffff,8429a57ffffffff,0,31
+jeju,8544c13bfffffff,8444c13ffffffff,1,111
+king spa,852aaaa3fffffff,842aaabffffffff,1,52
+massage,8528f00bfffffff,8428f01ffffffff,0,50
+massage,8529a00bfffffff,8429a01ffffffff,1,25
+massage,8529b6dbfffffff,8429b6dffffffff,2,113
+massage,852a107bfffffff,842a107ffffffff,0,103
+oil change,85275927fffffff,8427593ffffffff,0,77
+oil change,852a8d8bfffffff,842a8d9ffffffff,2,228
+oil change,852aa8cbfffffff,842aa8dffffffff,0,36
+oil change,8544dab3fffffff,8444dabffffffff,1,39
+oktoberfest,8529a0affffffff,8429a0bffffffff,1,236
+pines ice arena,8544a1abfffffff,8444a1bffffffff,0,61
+six flags,8544c1a3fffffff,8444c1bffffffff,1,76
+sky zone,8526405bfffffff,8426405ffffffff,2,101
+tours,852aa847fffffff,842aa85ffffffff,2,34
+trampoline,8544cccbfffffff,8444ccdffffffff,1,22
+valvoline,8526560ffffffff,8426561ffffffff,0,39
+valvoline,8529a033fffffff,8429a03ffffffff,1,20
+botox,8526c867fffffff,8426c87ffffffff,1,78
+bowling,8529b6d3fffffff,8429b6dffffffff,0,57
+bowling,8544f623fffffff,8444f63ffffffff,1,20
+brazilian wax,85446c13fffffff,84446c1ffffffff,2,73
+couples massage,8527526ffffffff,8427527ffffffff,0,21
+escape room,85269623fffffff,8426963ffffffff,1,33
+facial,852a101bfffffff,842a101ffffffff,1,23
+haircut,8526645bfffffff,8426645ffffffff,0,20
+jumping world,85489557fffffff,8448955ffffffff,2,50
+laser hair removal,85464b97fffffff,84464b9ffffffff,0,22
+massage,8526c18bfffffff,8426c19ffffffff,2,39
+massage,852a300ffffffff,842a301ffffffff,0,24
+massage,852a9373fffffff,842a937ffffffff,1,30
+nickelodeon,852a100bfffffff,842a101ffffffff,2,38
+oil change,852748b7fffffff,842748bffffffff,1,54
+old time photo,85265e4bfffffff,84265e5ffffffff,2,20
+planetarium,8544c1abfffffff,8444c1bffffffff,0,22
+six flags,852a1483fffffff,842a149ffffffff,1,40
+smog check,8529a41bfffffff,8429a41ffffffff,0,53
+smog check,8529a563fffffff,8429a57ffffffff,0,32
+the princess,8529b6dbfffffff,8429b6dffffffff,1,22
+trampoline,8526cbd3fffffff,8426cbdffffffff,1,43
+arena 23,8548eba3fffffff,8448ebbffffffff,0,27
+blink,852a1003fffffff,842a101ffffffff,0,27
+bowling,85262cd3fffffff,84262cdffffffff,0,74
+bowling,852aaca7fffffff,842aacbffffffff,0,20
+chicago boat tour,852664c3fffffff,842664dffffffff,2,85
+ewr airport parking,852a107bfffffff,842a107ffffffff,1,20
+green meadows,8527599bfffffff,8427599ffffffff,1,75
+halloween horror nights,8544a917fffffff,8444a91ffffffff,2,230
+head spa,85283473fffffff,8428347ffffffff,0,22
+laser hair removal,852b9bc7fffffff,842b9bdffffffff,0,22
+laser hair removal,85489e37fffffff,84489e3ffffffff,1,52
+massage,8528f017fffffff,8428f01ffffffff,0,33
+massage,8529b6cbfffffff,8429b6dffffffff,0,31
+massage,852a1317fffffff,842a131ffffffff,1,21
+massage,852aab6ffffffff,842aab7ffffffff,2,31
+massage,8544ac4bfffffff,8444ac5ffffffff,2,20
+momentum indoor climbing,85446cabfffffff,84446cbffffffff,0,34
+oil change,85269683fffffff,8426969ffffffff,1,65
+oil change,8526c82bfffffff,8426c83ffffffff,0,142
+park and jet,852aacb3fffffff,842aacbffffffff,1,28
+parking,8544c1abfffffff,8444c1bffffffff,1,42
+putters pride,85268cdbfffffff,84268cdffffffff,0,27
+scottsdale princess,8529b6dbfffffff,8429b6dffffffff,0,54
+sky zone trampoline park,852aa5d7fffffff,842aa5dffffffff,2,21
+smog check,8529a09bfffffff,8429a09ffffffff,1,38
+trampoline park,8544c1affffffff,8444c1bffffffff,0,23
+valvoline,8544d847fffffff,8444d85ffffffff,2,27
+valvoline oil change,8526560ffffffff,8426561ffffffff,0,42
+valvoline oil change,852a8097fffffff,842a809ffffffff,1,39
+valvoline oil change,852a9067fffffff,842a907ffffffff,1,27
+acupuncture,852a100ffffffff,842a101ffffffff,0,27
+airport parking,852a1073fffffff,842a107ffffffff,1,24
+concealed carry class,85266453fffffff,8426645ffffffff,0,41
+deep tissue massage,852664c3fffffff,842664dffffffff,0,30
+emissions,852696abfffffff,842696bffffffff,0,68
+halloveen,852986bbfffffff,842986bffffffff,0,110
+halloween,852986bbfffffff,842986bffffffff,0,49
+massage,852a108bfffffff,842a109ffffffff,1,54
+massage,852a3077fffffff,842a307ffffffff,0,23
+nails,852a1073fffffff,842a107ffffffff,2,24
+oil change,8544dab7fffffff,8444dabffffffff,2,23
+oil change,85489e37fffffff,84489e3ffffffff,1,99
+paul mitchell,85266d37fffffff,84266d3ffffffff,2,49
+sev laser,852a1073fffffff,842a107ffffffff,0,39
+six flags great america,852759bbfffffff,842759bffffffff,1,28
+sky zone,852af60ffffffff,842af61ffffffff,0,31
+smileys,852a924ffffffff,842a925ffffffff,2,91
+smog,8528309bfffffff,8428309ffffffff,0,56
+spa world centreville,852aaaa3fffffff,842aaabffffffff,1,24
+trampoline park,8529b6d7fffffff,8429b6dffffffff,0,25
+adventure landing,8526c877fffffff,8426c87ffffffff,0,114
+bowling,852759bbfffffff,842759bffffffff,1,37
+chiropractor,85446c13fffffff,84446c1ffffffff,1,25
+couples massage,85265673fffffff,8426567ffffffff,0,22
+couples massage,8529a18bfffffff,8429a19ffffffff,0,41
+edge,852a1073fffffff,842a107ffffffff,2,63
+emissions,85269607fffffff,8426961ffffffff,2,33
+epperson lagoon,85441a0bfffffff,84441a1ffffffff,1,33
+full synthetic oil change,852a106bfffffff,842a107ffffffff,1,33
+full synthetic oil change,8544a13bfffffff,8444a13ffffffff,0,21
+gel manicure,852a100ffffffff,842a101ffffffff,1,21
+great wolf lodge,852a938ffffffff,842a939ffffffff,2,110
+hall of flame,8548eba7fffffff,8448ebbffffffff,0,20
+jiffy lube,852a3267fffffff,842a327ffffffff,1,24
+massage,852a1017fffffff,842a101ffffffff,1,25
+museum of sex,8544a117fffffff,8444a11ffffffff,1,87
+niagara falls,852b9b33fffffff,842b9b3ffffffff,2,111
+oil change,852ab397fffffff,842ab39ffffffff,2,92
+sky zone,852aa8d3fffffff,842aa8dffffffff,1,123
+skyzone,8526463bfffffff,8426463ffffffff,0,26
+uptown jungle,8529b6dbfffffff,8429b6dffffffff,0,73
+wildlife safari,8528187bfffffff,8428187ffffffff,2,262
+aerozone,8529ab9bfffffff,8429ab9ffffffff,2,29
+air duct cleaning,852aa843fffffff,842aa85ffffffff,1,53
+altitude,8526c86bfffffff,8426c87ffffffff,1,39
+altitude,85446dd3fffffff,84446ddffffffff,0,54
+emperor leisure day spa,8529a1d3fffffff,8429a1dffffffff,0,23
+facial,8529a19bfffffff,8429a19ffffffff,0,36
+facial,8544a107fffffff,8444a11ffffffff,0,20
+ferris wheel,8544c1abfffffff,8444c1bffffffff,0,35
+full synthetic oil change,85275963fffffff,8427597ffffffff,1,40
+golf,8548e96ffffffff,8448e97ffffffff,0,32
+great wolf lodge,8529b6dbfffffff,8429b6dffffffff,1,125
+great wolf lodge,852ab35bfffffff,842ab35ffffffff,2,102
+king spa and sauna,852a100bfffffff,842a101ffffffff,0,32
+massage,852a1073fffffff,842a107ffffffff,0,88
+mb2,8529aeb3fffffff,8429aebffffffff,2,75
+mirror maze,85262cd7fffffff,84262cdffffffff,1,23
+ninja factory,8529a4cffffffff,8429a4dffffffff,1,30
+oil change,852a33abfffffff,842a33bffffffff,1,27
+perfume making,852664cbfffffff,842664dffffffff,1,48
+seaworld san antonio,85489c17fffffff,84489c1ffffffff,2,36
+sky harbor parking,8548eba7fffffff,8448ebbffffffff,1,46
+smileys,85274b0bfffffff,84274b1ffffffff,2,90
+valvoline,8527484bfffffff,8427485ffffffff,2,21
+zoo,8526c80bfffffff,8426c81ffffffff,1,27
+bared monkey,852a100ffffffff,842a101ffffffff,0,131
+big air,852a896ffffffff,842a897ffffffff,2,72
+botox,8527526ffffffff,8427527ffffffff,0,20
+botox,8529a183fffffff,8429a19ffffffff,0,42
+botox,8529a403fffffff,8429a41ffffffff,1,55
+clifton hill,852b9b33fffffff,842b9b3ffffffff,1,24
+couples massage,8529a017fffffff,8429a01ffffffff,1,40
+denver aquarium,85268cdbfffffff,84268cdffffffff,2,31
+dinosaur,852a100bfffffff,842a101ffffffff,0,27
+food,8544a903fffffff,8444a91ffffffff,2,21
+head spa,8528d543fffffff,8428d55ffffffff,0,49
+king richards,852a314ffffffff,842a315ffffffff,1,51
+massage,852664cffffffff,842664dffffffff,0,58
+massage,8529a54bfffffff,8429a55ffffffff,1,103
+massage,852a1043fffffff,842a105ffffffff,0,96
+microneedling,852aa84ffffffff,842aa85ffffffff,0,36
+museum of illusions,8544a917fffffff,8444a91ffffffff,2,34
+oil change,8544a123fffffff,8444a13ffffffff,1,31
+prp hair,852a100ffffffff,842a101ffffffff,1,22
+renew body spa,852a100ffffffff,842a101ffffffff,1,69
+spa,852664c3fffffff,842664dffffffff,0,42
+trampoline,8529a0bbfffffff,8429a0bffffffff,1,27
+valvoline,8526caa7fffffff,8426cabffffffff,1,42
+valvoline,852a106bfffffff,842a107ffffffff,1,55
+valvoline,852a8d8bfffffff,842a8d9ffffffff,1,54
+altitude trampoline park,852a9313fffffff,842a931ffffffff,1,39
+car wash,8544ae97fffffff,8444ae9ffffffff,1,48
+couples massage,852986a3fffffff,842986bffffffff,0,29
+flyover,85275927fffffff,8427593ffffffff,2,23
+foot massage,8544a107fffffff,8444a11ffffffff,0,20
+launch,852a100bfffffff,842a101ffffffff,0,28
+massage,8529a473fffffff,8429a47ffffffff,1,20
+massage,852a8967fffffff,842a897ffffffff,2,24
+massage,852aa843fffffff,842aa85ffffffff,0,146
+massage,852b8a27fffffff,842b8a3ffffffff,2,23
+mini golf,852a1007fffffff,842a101ffffffff,0,30
+monterey zoo,8529a9a7fffffff,8429a9bffffffff,1,52
+oil change,85274b0bfffffff,84274b1ffffffff,2,25
+oil change,852aab53fffffff,842aab5ffffffff,1,47
+oil change,85441ac7fffffff,84441adffffffff,0,30
+oil change,8544ae87fffffff,8444ae9ffffffff,1,56
+r1,852a3313fffffff,842a331ffffffff,1,23
+skydiving,8526cbbbfffffff,8426cbbffffffff,1,31
+sojo spa,852a100bfffffff,842a101ffffffff,1,21
+st augustine,8544f627fffffff,8444f63ffffffff,2,23
+stone mountain christmas,8544c107fffffff,8444c11ffffffff,2,35
+zoo,852a1003fffffff,842a101ffffffff,1,34
+arcade,8544a133fffffff,8444a13ffffffff,0,21
+big air,8544d84bfffffff,8444d85ffffffff,0,237
+bowling,8528f017fffffff,8428f01ffffffff,0,20
+escape room,852681a7fffffff,842681bffffffff,0,36
+escape room,8529b6d7fffffff,8429b6dffffffff,1,41
+facials,852a100ffffffff,842a101ffffffff,0,54
+full synthetic oil change,8544a107fffffff,8444a11ffffffff,1,33
+head spa,8527592ffffffff,8427593ffffffff,1,25
+laser hair removal,85283093fffffff,8428309ffffffff,1,58
+laser hair removal,852aa84ffffffff,842aa85ffffffff,0,28
+massage,8544c107fffffff,8444c11ffffffff,0,26
+museum,85446cabfffffff,84446cbffffffff,1,30
+peppa pig,8526c86bfffffff,8426c87ffffffff,1,21
+scalp massage,8529a033fffffff,8429a03ffffffff,1,23
+sfo parking,85283093fffffff,8428309ffffffff,1,31
+skyzone,852aae7bfffffff,842aae7ffffffff,1,63
+smiley,852a924ffffffff,842a925ffffffff,2,39
+water lounge spa,8528342bfffffff,8428343ffffffff,1,44
+wndr,852664cbfffffff,842664dffffffff,1,29
+african safari,852ab22ffffffff,842ab23ffffffff,2,61
+altitude,8526cb8bfffffff,8426cb9ffffffff,0,27
+belcher bingo,85441abbfffffff,84441abffffffff,1,78
+classic skating,85269627fffffff,8426963ffffffff,1,27
+glass blowing,852a339bfffffff,842a339ffffffff,1,38
+johns incredible pizza,8529a033fffffff,8429a03ffffffff,1,23
+kawaii klaws,8529a0b7fffffff,8429a0bffffffff,1,41
+laser bounce,852a10abfffffff,842a10bffffffff,0,45
+launch,852a100ffffffff,842a101ffffffff,0,183
+launch trampoline,852a100ffffffff,842a101ffffffff,0,172
+massage,85283473fffffff,8428347ffffffff,0,153
+massage,8529b6d3fffffff,8429b6dffffffff,0,69
+massage,852a847bfffffff,842a847ffffffff,0,30
+massage,85446cabfffffff,84446cbffffffff,0,55
+mellow mushroom,8529b6cbfffffff,8429b6dffffffff,0,58
+oil change,85283473fffffff,8428347ffffffff,0,40
+oil change,8529a18ffffffff,8429a19ffffffff,0,54
+oil change,8544ea4bfffffff,8444ea5ffffffff,1,42
+parking spot,852a107bfffffff,842a107ffffffff,1,23
+rock climbing,852a1433fffffff,842a143ffffffff,2,23
+sky zone,8529a0b3fffffff,8429a0bffffffff,1,55
+skyzone,852986bbfffffff,842986bffffffff,0,51
+swan boat,8544a907fffffff,8444a91ffffffff,2,219
+tipsy putt,852832b3fffffff,842832bffffffff,0,26
+urban air,8526ea97fffffff,8426ea9ffffffff,2,38
+valvoline,852a1407fffffff,842a141ffffffff,1,67
+weight loss,8544a18ffffffff,8444a19ffffffff,2,25
+worlds of fun,85265603fffffff,8426561ffffffff,2,37
+airport parking,8544a903fffffff,8444a91ffffffff,2,59
+candle land,8544ae93fffffff,8444ae9ffffffff,1,20
+carowinds,8544d843fffffff,8444d85ffffffff,2,152
+climb zone,85262cd7fffffff,84262cdffffffff,1,21
+couples massage,8529a403fffffff,8429a41ffffffff,1,96
+couples massage,852af60ffffffff,842af61ffffffff,1,20
+full synthetic oil change,8526c867fffffff,8426c87ffffffff,0,29
+full synthetic oil change,8529a403fffffff,8429a41ffffffff,0,33
+gator golf,8544a917fffffff,8444a91ffffffff,2,95
+head spa,8529a1d3fffffff,8429a1dffffffff,0,35
+indoor water park,852a132ffffffff,842a133ffffffff,2,23
+laser bounce,852a100ffffffff,842a101ffffffff,0,74
+laser hair removal,852a100ffffffff,842a101ffffffff,0,396
+laser hair removal,85489c03fffffff,84489c1ffffffff,0,33
+massage,8529a1b3fffffff,8429a1bffffffff,1,55
+mini golf,8544a917fffffff,8444a91ffffffff,1,205
+mini grand prix,852986a3fffffff,842986bffffffff,0,21
+off the wall,8544a187fffffff,8444a19ffffffff,0,33
+oil change,8526cbd7fffffff,8426cbdffffffff,0,44
+oil change,85283093fffffff,8428309ffffffff,1,29
+oil change,852a8b4ffffffff,842a8b5ffffffff,1,22
+oil change,852aa8d7fffffff,842aa8dffffffff,1,95
+sky zone,8544dab7fffffff,8444dabffffffff,2,52
+smog,8529a0a3fffffff,8429a0bffffffff,0,28
+smog check,8529a0a3fffffff,8429a0bffffffff,0,47
+urban air,8544a133fffffff,8444a13ffffffff,0,162
+balance massage,8529a54bfffffff,8429a55ffffffff,1,20
+blue zoo,8512db0ffffffff,8412db1ffffffff,2,52
+botox,85489e37fffffff,84489e3ffffffff,2,27
+brazilian wax,8548eba7fffffff,8448ebbffffffff,0,25
+clearwater aquarium,85441a87fffffff,84441a9ffffffff,1,127
+couples massage,852a10b3fffffff,842a10bffffffff,1,30
+couples massage,852a3067fffffff,842a307ffffffff,1,28
+family fun center,8528d553fffffff,8428d55ffffffff,0,118
+gel pedicure,852a1073fffffff,842a107ffffffff,2,20
+golf,8544d50bfffffff,8444d51ffffffff,2,21
+its it ice cream,85283093fffffff,8428309ffffffff,1,25
+jiffy lube,8526c113fffffff,8426c11ffffffff,2,25
+jw,8544eeb7fffffff,8444eebffffffff,2,27
+laser hair removal,852664cbfffffff,842664dffffffff,0,46
+laser hair removal,8529a19bfffffff,8429a19ffffffff,0,64
+lax parking,8529a19bfffffff,8429a19ffffffff,1,146
+massage,85265673fffffff,8426567ffffffff,0,80
+massage,852759affffffff,842759bffffffff,0,77
+massage,8529a623fffffff,8429a63ffffffff,2,46
+massage,8529a627fffffff,8429a63ffffffff,2,25
+oil change,8512ccd7fffffff,8412ccdffffffff,0,20
+oil change,852832b3fffffff,842832bffffffff,0,109
+oil change,85445c2bfffffff,84445c3ffffffff,2,54
+san antonio zoo,85489c03fffffff,84489c1ffffffff,2,293
+skyview,8544c1abfffffff,8444c1bffffffff,1,37
+skyzone,852640cffffffff,842640dffffffff,0,21
+spa,8526c863fffffff,8426c87ffffffff,1,22
+adventure island,85441a13fffffff,84441a1ffffffff,1,34
+airport parking,8544c1bbfffffff,8444c1bffffffff,1,263
+botox,8544131bfffffff,8444131ffffffff,1,25
+botox,85489c1bfffffff,84489c1ffffffff,1,26
+car wash,85446c17fffffff,84446c1ffffffff,0,27
+christmas connection,852ab313fffffff,842ab31ffffffff,1,69
+couples massage,85266453fffffff,8426645ffffffff,0,22
+couples massage,852759affffffff,842759bffffffff,0,36
+daytona lagoon,8544f6c7fffffff,8444f6dffffffff,1,25
+facial,8529a563fffffff,8429a57ffffffff,0,22
+glass blowing,8528d5c3fffffff,8428d5dffffffff,1,27
+jiffy lube,852aa8c3fffffff,842aa8dffffffff,1,40
+massage,85275263fffffff,8427527ffffffff,0,29
+massage,8529a09bfffffff,8429a09ffffffff,1,22
+massage,8529a57bfffffff,8429a57ffffffff,0,21
+massage,852a9313fffffff,842a931ffffffff,1,72
+parking,8548eba7fffffff,8448ebbffffffff,2,33
+philadelphia airport parking,852aacb3fffffff,842aacbffffffff,1,185
+pottery,852a100bfffffff,842a101ffffffff,0,25
+six flags fiesta texas,85489c03fffffff,84489c1ffffffff,2,27
+sky zone,852aac57fffffff,842aac5ffffffff,1,109
+tattoo removal,852a100ffffffff,842a101ffffffff,0,23
+tipsy putt,85283083fffffff,8428309ffffffff,0,37
+urban air,8526c867fffffff,8426c87ffffffff,0,40
+valvoline oil change,85262ddbfffffff,84262ddffffffff,1,107
+vertical hold,8529a413fffffff,8429a41ffffffff,1,32
+adventure landing,852a8967fffffff,842a897ffffffff,2,65
+big snow american dream,852a100bfffffff,842a101ffffffff,1,132
+concealed carry,85262cdbfffffff,84262cdffffffff,1,20
+escape room,8548eba3fffffff,8448ebbffffffff,0,44
+full synthetic oil change,85283013fffffff,8428301ffffffff,1,52
+full synthetic oil change,8544c107fffffff,8444c11ffffffff,0,34
+golf,854898cffffffff,844898dffffffff,2,26
+great wolf,852aac77fffffff,842aac7ffffffff,1,20
+head spa,8529a0b7fffffff,8429a0bffffffff,1,44
+laser hair removal,8529b6d3fffffff,8429b6dffffffff,0,26
+laser tag,852aa8d7fffffff,842aa8dffffffff,1,27
+massage,852a14bbfffffff,842a14bffffffff,1,20
+massage,85489c13fffffff,84489c1ffffffff,2,30
+oil change,8526e38bfffffff,8426e39ffffffff,2,33
+oil change,852a32a3fffffff,842a32bffffffff,1,44
+pogo pass,8548eba3fffffff,8448ebbffffffff,2,31
+pottery,852aa843fffffff,842aa85ffffffff,0,42
+spa,852664dbfffffff,842664dffffffff,2,73
+atlanta airport parking,8544c1bbfffffff,8444c1bffffffff,1,42
+big air trampoline park,85446c23fffffff,84446c3ffffffff,1,22
+car wash,8528342bfffffff,8428343ffffffff,0,59
+christmas,8529b6dbfffffff,8429b6dffffffff,1,44
+couples massage,85489e27fffffff,84489e3ffffffff,1,32
+couples massage,8548eba7fffffff,8448ebbffffffff,1,50
+escape room,852aac87fffffff,842aac9ffffffff,1,21
+fine parking,85446c23fffffff,84446c3ffffffff,1,31
+head spa,8548936bfffffff,8448937ffffffff,1,53
+kingspa,852664dbfffffff,842664dffffffff,0,45
+laser hair removal,852af637fffffff,842af63ffffffff,2,20
+massage,85262cd3fffffff,84262cdffffffff,0,64
+massage,85262cd7fffffff,84262cdffffffff,1,21
+massage,852a13c3fffffff,842a13dffffffff,1,22
+massage,852aa857fffffff,842aa85ffffffff,1,21
+mini golf,85268cc3fffffff,84268cdffffffff,0,28
+oil change,852a3077fffffff,842a307ffffffff,1,27
+oil change,8544a13bfffffff,8444a13ffffffff,0,64
+party kingdom,8529a0affffffff,8429a0bffffffff,1,43
+sky zone,852b8d6ffffffff,842b8d7ffffffff,2,26
+skyzone,85275d0ffffffff,84275d1ffffffff,1,24
+smog,8529a18bfffffff,8429a19ffffffff,0,31
+spa,8528d54ffffffff,8428d55ffffffff,1,22
+spray tan,852a1073fffffff,842a107ffffffff,0,36
+valvoline,8529a54ffffffff,8429a55ffffffff,1,52
+area53,852a100ffffffff,842a101ffffffff,0,31
+botox,8529a54bfffffff,8429a55ffffffff,1,27
+denver airport parking,8526aa6ffffffff,8426aa7ffffffff,1,39
+dysport,852664cbfffffff,842664dffffffff,0,25
+facial,8529a41bfffffff,8429a41ffffffff,2,31
+facial,852a896ffffffff,842a897ffffffff,2,22
+facial,8548eba3fffffff,8448ebbffffffff,0,38
+flyover chicago,85275927fffffff,8427593ffffffff,0,67
+full synthetic oil change,852681a3fffffff,842681bffffffff,1,23
+get air,852ab317fffffff,842ab31ffffffff,0,99
+great wolf lodge,852759bbfffffff,842759bffffffff,2,223
+haircut,852a100ffffffff,842a101ffffffff,0,52
+laser hair removal,852a10b3fffffff,842a10bffffffff,0,21
+oil change,852681a3fffffff,842681bffffffff,1,109
+oil change,8529a0abfffffff,8429a0bffffffff,0,27
+skyzone,852aa5d7fffffff,842aa5dffffffff,2,25
+trampoline,8548eba3fffffff,8448ebbffffffff,0,37
+valvoline oil change,8529a0a7fffffff,8429a0bffffffff,0,33
+zoo,85489c03fffffff,84489c1ffffffff,2,397
+andretti thrill park,8544a82bfffffff,8444a83ffffffff,2,54
+aquarium,85489e27fffffff,84489e3ffffffff,2,63
+botox,852aa84ffffffff,842aa85ffffffff,1,108
+couples massage,85489e37fffffff,84489e3ffffffff,2,33
+couples massage,8548eba3fffffff,8448ebbffffffff,1,37
+holocaust museum,8526cb9bfffffff,8426cb9ffffffff,1,22
+ice skating,8544a1abfffffff,8444a1bffffffff,2,47
+iplay,852a138bfffffff,842a139ffffffff,1,34
+jump zone,852664dbfffffff,842664dffffffff,0,29
+jumping world,85446c17fffffff,84446c1ffffffff,0,46
+lash lift,852a1073fffffff,842a107ffffffff,0,35
+massage,852661a3fffffff,842661bffffffff,2,52
+massage,852a10bbfffffff,842a10bffffffff,1,41
+newark airport parking,852a1073fffffff,842a107ffffffff,1,38
+oil change,85489c03fffffff,84489c1ffffffff,1,136
+phoenix zoo,8548eba7fffffff,8448ebbffffffff,0,46
+skyzone,852a120ffffffff,842a121ffffffff,1,72
+uptown jungle,8529a08bfffffff,8429a09ffffffff,1,101
+valvoline,852986bbfffffff,842986bffffffff,2,55
+valvoline,852b8a2bfffffff,842b8a3ffffffff,2,20
+aquarium,8529a563fffffff,8429a57ffffffff,1,263
+bwi parking,852aa8cffffffff,842aa8dffffffff,1,21
+catalina island,8529a54ffffffff,8429a55ffffffff,1,294
+coaster,8544ca07fffffff,8444ca1ffffffff,2,64
+couples massage,8529a1d7fffffff,8429a1dffffffff,0,59
+curry club,852a10b3fffffff,842a10bffffffff,1,52
+full synthetic oil change,8529a00ffffffff,8429a01ffffffff,1,27
+lash lift,852a100ffffffff,842a101ffffffff,0,34
+massage,85266443fffffff,8426645ffffffff,1,42
+massage,8529a117fffffff,8429a11ffffffff,1,22
+massage,8529a40ffffffff,8429a41ffffffff,0,40
+massage,852a1063fffffff,842a107ffffffff,0,25
+massage,852a3067fffffff,842a307ffffffff,0,190
+massage,852aa8cffffffff,842aa8dffffffff,0,34
+massage palace,852a108bfffffff,842a109ffffffff,1,43
+oil change,8526cbdbfffffff,8426cbdffffffff,1,41
+oil change,852a9313fffffff,842a931ffffffff,1,259
+ra yoga,8529a54ffffffff,8429a55ffffffff,1,21
+rage room,8526cbd3fffffff,8426cbdffffffff,1,26
+spa,852a100ffffffff,842a101ffffffff,0,200
+spavia,85489e37fffffff,84489e3ffffffff,1,26
+uptown jungle,852986abfffffff,842986bffffffff,2,103
+valleyfair,85262cc3fffffff,84262cdffffffff,1,52
+valvoline oil change,852a1687fffffff,842a169ffffffff,2,21
+boat ride,852a1073fffffff,842a107ffffffff,0,20
+botox,85264627fffffff,8426463ffffffff,1,20
+botox,85268cc3fffffff,84268cdffffffff,0,22
+botox,8529a18bfffffff,8429a19ffffffff,0,37
+canters,8529a1d7fffffff,8429a1dffffffff,0,56
+castaway bay,852ab35bfffffff,842ab35ffffffff,2,72
+couples massage,85446ddbfffffff,84446ddffffffff,0,38
+house of air,8526cbcbfffffff,8426cbdffffffff,1,21
+jiffy lube oil change,8544aebbfffffff,8444aebffffffff,1,145
+jumping world,85446c37fffffff,84446c3ffffffff,0,43
+lash extensions,852a100ffffffff,842a101ffffffff,0,62
+massage,8529a567fffffff,8429a57ffffffff,0,78
+massage,852aab53fffffff,842aab5ffffffff,1,22
+massage,8548e96ffffffff,8448e97ffffffff,1,62
+oil change,8529a567fffffff,8429a57ffffffff,0,665
+sky zone,852aae93fffffff,842aae9ffffffff,2,80
+skyzone,85264627fffffff,8426463ffffffff,0,33
+skyzone,852aac57fffffff,842aac5ffffffff,1,79
+skyzone,8544c1affffffff,8444c1bffffffff,0,57
+sunken gardens,85441a83fffffff,84441a9ffffffff,1,74
+sunset cruise,8529a54ffffffff,8429a55ffffffff,1,20
+valley golf,8548e96ffffffff,8448e97ffffffff,0,30
+valvoline oil change,852a957bfffffff,842a957ffffffff,2,56
+clawcade,852a1007fffffff,842a101ffffffff,0,34
+dental cleaning,852a100ffffffff,842a101ffffffff,0,48
+facial,852a134ffffffff,842a135ffffffff,2,34
+great wolf,8529a0b7fffffff,8429a0bffffffff,1,23
+head spa,85441a8bfffffff,84441a9ffffffff,1,20
+massage,8544130bfffffff,8444131ffffffff,2,30
+massage,85446ddbfffffff,84446ddffffffff,1,88
+oil change,8528f003fffffff,8428f01ffffffff,0,119
+oil change,852a10cffffffff,842a10dffffffff,1,213
+oil change,852aac53fffffff,842aac5ffffffff,1,93
+sky zone,8526463bfffffff,8426463ffffffff,2,74
+smog,85283473fffffff,8428347ffffffff,1,91
+sustainable safari,85275267fffffff,8427527ffffffff,1,134
+valvoline,852a1007fffffff,842a101ffffffff,0,29
+woodbury,852a1073fffffff,842a107ffffffff,0,44
+woodland park zoo,8528d547fffffff,8428d55ffffffff,2,53
+aquarium pacific,8529a563fffffff,8429a57ffffffff,1,61
+brazilian wax,852a100ffffffff,842a101ffffffff,0,149
+chimis,85264637fffffff,8426463ffffffff,0,52
+chiropractor,8529a563fffffff,8429a57ffffffff,0,26
+couples massage,8529a54bfffffff,8429a55ffffffff,1,22
+couples massage,8544a113fffffff,8444a11ffffffff,2,47
+drunk shakespeare,852aa847fffffff,842aa85ffffffff,0,23
+escape room,8526cbdbfffffff,8426cbdffffffff,1,21
+ga aquarium,8544c1abfffffff,8444c1bffffffff,1,32
+jennifer day spa,852a106bfffffff,842a107ffffffff,0,24
+jiffy lube,8544aebbfffffff,8444aebffffffff,1,254
+laser hair removal,852a1057fffffff,842a105ffffffff,0,21
+massage,8526aa43fffffff,8426aa5ffffffff,1,28
+massage,8529868ffffffff,8429869ffffffff,2,81
+massage,852a10a3fffffff,842a10bffffffff,1,30
+massage,852a306ffffffff,842a307ffffffff,0,41
+oil change,852aa8d3fffffff,842aa8dffffffff,1,41
+oil change,852ad48ffffffff,842ad49ffffffff,2,78
+sky zone,852a8bb7fffffff,842a8bbffffffff,2,60
+spa,85283083fffffff,8428309ffffffff,0,32
+uptown jungle,8529868ffffffff,8429869ffffffff,0,53
+valvoline,852a1013fffffff,842a101ffffffff,1,39
+wildflower,852a100ffffffff,842a101ffffffff,1,28
+aquarium,85446c23fffffff,84446c3ffffffff,1,59
+blue zoo,854440cbfffffff,844440dffffffff,2,57
+botox,8529a097fffffff,8429a09ffffffff,1,28
+brazilian wax,852a134bfffffff,842a135ffffffff,0,29
+couples massage,852a1077fffffff,842a107ffffffff,0,27
+eyelash extensions,852a100ffffffff,842a101ffffffff,0,129
+ferris wheel,85283097fffffff,8428309ffffffff,1,24
+food,8529a1d7fffffff,8429a1dffffffff,0,31
+full synthetic oil change,8529a567fffffff,8429a57ffffffff,0,34
+head spa,8548eba7fffffff,8448ebbffffffff,0,97
+jiffy lube oil change,852aa8d7fffffff,842aa8dffffffff,1,21
+kingpins,8528f01bfffffff,8428f01ffffffff,0,72
+kings spa,852a100bfffffff,842a101ffffffff,0,29
+lax parking,8529a56ffffffff,8429a57ffffffff,1,57
+massage,8528f00ffffffff,8428f01ffffffff,2,22
+perch putt,852aa84ffffffff,842aa85ffffffff,0,36
+renaissance festival,85274dabfffffff,84274dbffffffff,1,20
+versailles massage,852664c3fffffff,842664dffffffff,0,31
+wax,852a100ffffffff,842a101ffffffff,1,29
+bible museum,852aa847fffffff,842aa85ffffffff,2,206
+botox,8528d553fffffff,8428d55ffffffff,1,22
+botox,8529a19bfffffff,8429a19ffffffff,0,73
+botox,852a101bfffffff,842a101ffffffff,0,36
+botox,8548eba3fffffff,8448ebbffffffff,0,45
+couples massage,852832b3fffffff,842832bffffffff,1,41
+head spa,852a101bfffffff,842a101ffffffff,0,67
+massage,8529a1dbfffffff,8429a1dffffffff,0,44
+massage,8529b6c3fffffff,8429b6dffffffff,0,35
+massage,852a106bfffffff,842a107ffffffff,0,134
+massage,852af623fffffff,842af63ffffffff,2,46
+oil change,8526c863fffffff,8426c87ffffffff,0,68
+oil change,852836affffffff,842836bffffffff,1,59
+oil change,852aaa87fffffff,842aaa9ffffffff,0,22
+oil change,8544a1bbfffffff,8444a1bffffffff,1,31
+sky deck,852664c3fffffff,842664dffffffff,2,25
+sky zone,852aa8d7fffffff,842aa8dffffffff,1,201
+valvoline,852a9313fffffff,842a931ffffffff,1,48
+bus,852a100ffffffff,842a101ffffffff,2,20
+catalina flyer,8529a54ffffffff,8429a55ffffffff,1,89
+childrens museum,85260e27fffffff,84260e3ffffffff,2,20
+complete playground,852a1073fffffff,842a107ffffffff,0,44
+discovery flight washington international flight academy,852aa85bfffffff,842aa85ffffffff,1,89
+escape room,852986bbfffffff,842986bffffffff,0,85
+everglades airboat,8544124ffffffff,8444125ffffffff,2,25
+facial,8544a123fffffff,8444a13ffffffff,1,22
+full synthetic oil change,8544aebbfffffff,8444aebffffffff,1,123
+island waterpark,852a132ffffffff,842a133ffffffff,2,33
+j,8544eeb7fffffff,8444eebffffffff,2,30
+jumping world,85446d3bfffffff,84446d3ffffffff,1,20
+marineland,8544f633fffffff,8444f63ffffffff,2,21
+massage,85275927fffffff,8427593ffffffff,0,60
+massage,8544a133fffffff,8444a13ffffffff,0,36
+oil change,8526cb93fffffff,8426cb9ffffffff,0,39
+ragazzi,852a10b3fffffff,842a10bffffffff,1,56
+smog check,8528308bfffffff,8428309ffffffff,0,76
+urban air,8544ac4bfffffff,8444ac5ffffffff,1,59
+zoo,8529b69bfffffff,8429b69ffffffff,1,179
+arte museum,852a1073fffffff,842a107ffffffff,0,27
+botox,85283093fffffff,8428309ffffffff,1,47
+botox,852a100ffffffff,842a101ffffffff,0,265
+bowling,85275933fffffff,8427593ffffffff,1,32
+chiropractor,852a100ffffffff,842a101ffffffff,0,35
+claw it,852664cffffffff,842664dffffffff,0,30
+escape room,852a100ffffffff,842a101ffffffff,0,35
+facial,852a10b3fffffff,842a10bffffffff,0,20
+facial,85489e27fffffff,84489e3ffffffff,2,28
+flow,8527594ffffffff,8427595ffffffff,1,25
+hang time,85269627fffffff,8426963ffffffff,1,31
+johns incredible pizza,8529a563fffffff,8429a57ffffffff,0,37
+laser hair removal,8529a1d7fffffff,8429a1dffffffff,1,87
+laser hair removal,852aa87bfffffff,842aa87ffffffff,1,20
+laser hair removal,8544a907fffffff,8444a91ffffffff,1,34
+legoland,85275933fffffff,8427593ffffffff,1,20
+magic mountain,852a9563fffffff,842a957ffffffff,2,36
+massage,852ad6d3fffffff,842ad6dffffffff,1,46
+mini golf,852ad37bfffffff,842ad37ffffffff,2,24
+momentum,85446dd3fffffff,84446ddffffffff,0,29
+mulligans,8529a09bfffffff,8429a09ffffffff,1,46
+oil change,8548e96ffffffff,8448e97ffffffff,1,24
+san gennaro,85298687fffffff,8429869ffffffff,2,92
+sev laser,8528340bfffffff,8428341ffffffff,1,34
+trampoline,852a100ffffffff,842a101ffffffff,0,58
+valvoline,85266d33fffffff,84266d3ffffffff,2,23
+airport parking,85264637fffffff,8426463ffffffff,1,103
+airport parking,8526c86ffffffff,8426c87ffffffff,0,23
+couples massage,8528342bfffffff,8428343ffffffff,1,41
+deep tissue massage,8529a1d7fffffff,8429a1dffffffff,0,22
+facial,852aa843fffffff,842aa85ffffffff,0,25
+fiesta texas,85489c03fffffff,84489c1ffffffff,2,20
+full synthetic oil change,85283463fffffff,8428347ffffffff,1,23
+gaylord texan,8526c863fffffff,8426c87ffffffff,2,20
+golf,8527526bfffffff,8427527ffffffff,0,20
+kangas,85446c27fffffff,84446c3ffffffff,1,32
+laser hair removal,852a10c7fffffff,842a10dffffffff,1,25
+little beakers,85446dcbfffffff,84446ddffffffff,0,41
+massage,8528d5cbfffffff,8428d5dffffffff,0,34
+massage,852aacb3fffffff,842aacbffffffff,0,38
+massage,852ab387fffffff,842ab39ffffffff,1,70
+massage,8544f00bfffffff,8444f01ffffffff,2,26
+mountain creek,852a162ffffffff,842a163ffffffff,1,48
+oil change,8529a1dbfffffff,8429a1dffffffff,0,72
+oil change,852a3267fffffff,842a327ffffffff,1,42
+oil change,8544daa3fffffff,8444dabffffffff,1,36
+pottery,852664cffffffff,842664dffffffff,0,28
+sky zone,85275927fffffff,8427593ffffffff,0,22
+skyzone,85275d63fffffff,84275d7ffffffff,1,44
+valvoline,852a9067fffffff,842a907ffffffff,1,25
+valvoline oil change,852a16b3fffffff,842a16bffffffff,1,53
+waterpark,852a12c7fffffff,842a12dffffffff,1,22
+zoo,8528949bfffffff,8428949ffffffff,2,23
+awe spa,8529a1d7fffffff,8429a1dffffffff,0,33
+big snow,852a100bfffffff,842a101ffffffff,1,654
+botox,852830d7fffffff,842830dffffffff,1,35
+botox,852986b3fffffff,842986bffffffff,0,35
+botox,8529b6d3fffffff,8429b6dffffffff,0,30
+couples massage,8529a0b7fffffff,8429a0bffffffff,1,146
+full synthetic oil change,8529b6d7fffffff,8429b6dffffffff,0,20
+great wolf lodge,852af657fffffff,842af65ffffffff,2,73
+gun range,8544c1bbfffffff,8444c1bffffffff,0,31
+haunted house,85266457fffffff,8426645ffffffff,0,88
+kenneths,852a957bfffffff,842a957ffffffff,0,36
+liquivida,8544a13bfffffff,8444a13ffffffff,0,23
+oil change,852a840bfffffff,842a841ffffffff,0,71
+pirate dinner,8529a0b7fffffff,8429a0bffffffff,2,21
+pirates,8529a0b7fffffff,8429a0bffffffff,1,65
+pumpkin,8529b6dbfffffff,8429b6dffffffff,1,46
+sky zone,85275d2bfffffff,84275d3ffffffff,1,127
+spa,852a100bfffffff,842a101ffffffff,1,127
+wilderness at the smokies,8544ca3bfffffff,8444ca3ffffffff,2,67
+zelene,8526c867fffffff,8426c87ffffffff,1,36
+architecture tour,852664c3fffffff,842664dffffffff,2,91
+boat tour,852a1073fffffff,842a107ffffffff,2,25
+color cocktail factory,852664cffffffff,842664dffffffff,2,37
+dia parking,8526aa6ffffffff,8426aa7ffffffff,1,52
+full synthetic oil change,8526c863fffffff,8426c87ffffffff,1,22
+full synthetic oil change,8544a9a3fffffff,8444a9bffffffff,1,67
+georgia aquarium,8544c1abfffffff,8444c1bffffffff,2,392
+head spa,852a10abfffffff,842a10bffffffff,1,27
+jeju sauna,8544c13bfffffff,8444c13ffffffff,2,20
+massage,8526cbd3fffffff,8426cbdffffffff,0,28
+massage,852aaaa7fffffff,842aaabffffffff,1,28
+massage,852af637fffffff,842af63ffffffff,1,53
+massage,8544a917fffffff,8444a91ffffffff,1,69
+massage,8544dab7fffffff,8444dabffffffff,0,50
+monster mini golf,85446ca7fffffff,84446cbffffffff,1,28
+sea world san antonio,85489c17fffffff,84489c1ffffffff,2,23
+sunseekers,85275d3bfffffff,84275d3ffffffff,2,20
+trampoline park,852a100ffffffff,842a101ffffffff,0,25
+bigsnow,852a100bfffffff,842a101ffffffff,2,25
+botox,85264d03fffffff,84264d1ffffffff,2,24
+couples massage,852a1043fffffff,842a105ffffffff,0,30
+escape room,85446cabfffffff,84446cbffffffff,2,30
+facial,8529a1d7fffffff,8429a1dffffffff,1,80
+harbor cruise,8529a41bfffffff,8429a41ffffffff,2,27
+head spa,852a1007fffffff,842a101ffffffff,0,47
+honey kettle,8529a19bfffffff,8429a19ffffffff,0,72
+lymphatic massage,8526c877fffffff,8426c87ffffffff,0,28
+massage,852696abfffffff,842696bffffffff,1,82
+massage,85275d67fffffff,84275d7ffffffff,1,39
+massage,8529a56bfffffff,8429a57ffffffff,0,47
+massage,852aaaa3fffffff,842aaabffffffff,1,24
+massage,852b8917fffffff,842b891ffffffff,2,24
+miss belmar,852a1383fffffff,842a139ffffffff,1,43
+oil change,85441e73fffffff,84441e7ffffffff,1,23
+oil change,8544cd5bfffffff,8444cd5ffffffff,2,23
+park n jet,852aacb3fffffff,842aacbffffffff,1,37
+sky zone,852640cffffffff,842640dffffffff,2,27
+sky zone,852986bbfffffff,842986bffffffff,0,102
+stars and strikes,8544ccd3fffffff,8444ccdffffffff,1,23
+total med spa,8526c867fffffff,8426c87ffffffff,1,25
+bowling,8528f01bfffffff,8428f01ffffffff,0,27
+couples massage,8526c863fffffff,8426c87ffffffff,1,29
+dysport,852a100ffffffff,842a101ffffffff,0,22
+dysport,8544f057fffffff,8444f05ffffffff,2,22
+escape room,852a1007fffffff,842a101ffffffff,0,26
+facial,8529a56bfffffff,8429a57ffffffff,1,20
+game time,85446c37fffffff,84446c3ffffffff,1,32
+head spa,8528d54ffffffff,8428d55ffffffff,0,32
+massage,85275937fffffff,8427593ffffffff,0,67
+massage,852a13c7fffffff,842a13dffffffff,1,24
+massage,852ad677fffffff,842ad67ffffffff,1,26
+oil change,85262ddbfffffff,84262ddffffffff,1,202
+oil change,85444c33fffffff,84444c3ffffffff,2,39
+parking spot,852aacb3fffffff,842aacbffffffff,1,34
+planet playskool,852a1057fffffff,842a105ffffffff,0,31
+pure serenity spa,852664c3fffffff,842664dffffffff,0,20
+san antonio aquarium,85489c17fffffff,84489c1ffffffff,2,88
+scalp massage,852a100ffffffff,842a101ffffffff,0,20
+sky high,852664dbfffffff,842664dffffffff,0,30
+trampoline,8529b6d7fffffff,8429b6dffffffff,0,21
+uptown jungle,8548e96bfffffff,8448e97ffffffff,0,99
+uptown jungle,8548ebaffffffff,8448ebbffffffff,0,85
+vada spa,852a1073fffffff,842a107ffffffff,0,39
+valvoline,85264623fffffff,8426463ffffffff,1,69
+airport parking,85446c17fffffff,84446c1ffffffff,2,55
+airport parking,8544c1abfffffff,8444c1bffffffff,1,342
+couples massage,852ab3a3fffffff,842ab3bffffffff,1,21
+crayola,8526c877fffffff,8426c87ffffffff,2,22
+escape room,8544a13bfffffff,8444a13ffffffff,0,22
+head spa,852a138bfffffff,842a139ffffffff,1,28
+hotels,852a132ffffffff,842a133ffffffff,2,23
+laser hair removal,852830c7fffffff,842830dffffffff,1,58
+laser hair removal,85283217fffffff,8428321ffffffff,2,21
+laser hair removal,85298687fffffff,8429869ffffffff,1,23
+lymphatic drainage,852a100ffffffff,842a101ffffffff,0,91
+massage,85283097fffffff,8428309ffffffff,1,41
+massage,8544a187fffffff,8444a19ffffffff,0,48
+salsa heat,8544a977fffffff,8444a97ffffffff,1,21
+scottsdale sculpt,8529b6dbfffffff,8429b6dffffffff,0,31
+skydiving,852aaa33fffffff,842aaa3ffffffff,1,26
+spa,8544c13bfffffff,8444c13ffffffff,1,40
+botox,8529a567fffffff,8429a57ffffffff,0,36
+brazilian wax,8529a0b7fffffff,8429a0bffffffff,1,27
+drunk dracula,852aa847fffffff,842aa85ffffffff,2,24
+duffy boat rental,8529a54ffffffff,8429a55ffffffff,1,34
+facial,852a1007fffffff,842a101ffffffff,0,30
+haircut,852a100bfffffff,842a101ffffffff,0,27
+johns incredible pizza,8529a0b7fffffff,8429a0bffffffff,0,27
+massage,8526c86bfffffff,8426c87ffffffff,1,69
+massage,852a1077fffffff,842a107ffffffff,0,136
+off the wall,8544a123fffffff,8444a13ffffffff,1,29
+oil change,852a9307fffffff,842a931ffffffff,2,47
+oil change,852aa85bfffffff,842aa85ffffffff,1,77
+oil change,852b9927fffffff,842b993ffffffff,2,41
+pirates,8544a917fffffff,8444a91ffffffff,2,37
+trampoline park,8548ebb7fffffff,8448ebbffffffff,2,29
+wine tasting,852ab2c3fffffff,842ab2dffffffff,2,42
+adventure park,852a10abfffffff,842a10bffffffff,1,52
+arcade,85275933fffffff,8427593ffffffff,1,34
+big air,8548ebb7fffffff,8448ebbffffffff,1,58
+botox,8544c133fffffff,8444c13ffffffff,0,37
+elaine sterling,8544c133fffffff,8444c13ffffffff,0,51
+escape room,85489c03fffffff,84489c1ffffffff,2,89
+field station,852a100bfffffff,842a101ffffffff,1,26
+funzy,852a100ffffffff,842a101ffffffff,0,21
+gaylord ice,8526c863fffffff,8426c87ffffffff,1,256
+great wolf lodge,85268c73fffffff,84268c7ffffffff,1,85
+kennywood,852a8473fffffff,842a847ffffffff,1,133
+massage,85275d77fffffff,84275d7ffffffff,0,46
+massage,8528309bfffffff,8428309ffffffff,0,26
+massage,85291267fffffff,8429127ffffffff,2,20
+massage,8529a0b7fffffff,8429a0bffffffff,1,195
+massage,8529a18ffffffff,8429a19ffffffff,0,32
+massage,8544a1abfffffff,8444a1bffffffff,2,33
+massage,85489c0bfffffff,84489c1ffffffff,2,44
+masterpark,8528d553fffffff,8428d55ffffffff,1,101
+miniature golf,8544a917fffffff,8444a91ffffffff,0,25
+oil change,852888c3fffffff,842888dffffffff,2,28
+oil change,852a120ffffffff,842a121ffffffff,1,131
+oil change,852ab12bfffffff,842ab13ffffffff,1,21
+oil change,85446c37fffffff,84446c3ffffffff,0,34
+sesame place,852a1353fffffff,842a135ffffffff,2,275
+sky zone,85264daffffffff,84264dbffffffff,2,55
+slick city,85268cdbfffffff,84268cdffffffff,0,121
+spa,8526c877fffffff,8426c87ffffffff,0,23
+valvoline oil change,852a1013fffffff,842a101ffffffff,1,45
+window cleaning,85489e37fffffff,84489e3ffffffff,1,25
+big air trampoline park,8544d84bfffffff,8444d85ffffffff,1,127
+christmas at the princess,8529b6dbfffffff,8429b6dffffffff,1,256
+couples massage,8544c107fffffff,8444c11ffffffff,2,25
+couples massage,8544c133fffffff,8444c13ffffffff,1,74
+emsculpt neo,852a100ffffffff,842a101ffffffff,2,42
+escape room,8544c133fffffff,8444c13ffffffff,2,27
+jumptime,85288423fffffff,8428843ffffffff,2,21
+launch,852aacb7fffffff,842aacbffffffff,1,64
+massage,852aac8ffffffff,842aac9ffffffff,1,27
+northlandz,852a12affffffff,842a12bffffffff,1,42
+oil change,852666b3fffffff,842666bffffffff,1,86
+oil change,8526cbd3fffffff,8426cbdffffffff,0,123
+oil change,8544d853fffffff,8444d85ffffffff,0,22
+phl airport parking,852aacb3fffffff,842aacbffffffff,1,35
+seatac parking,8528d553fffffff,8428d55ffffffff,1,73
+sky zone,852b8913fffffff,842b891ffffffff,2,29
+wine tasting,8529a0d7fffffff,8429a0dffffffff,1,193
+zoo lights,8548eba7fffffff,8448ebbffffffff,2,26
+chelsea wellness,852a100ffffffff,842a101ffffffff,0,32
+couples massage,85275d67fffffff,84275d7ffffffff,1,20
+cruise,852a1073fffffff,842a107ffffffff,2,60
+facial,852a1073fffffff,842a107ffffffff,0,79
+full synthetic oil change,8526cbd7fffffff,8426cbdffffffff,0,32
+ignite,852664dbfffffff,842664dffffffff,0,46
+jeju spa,8544c13bfffffff,8444c13ffffffff,1,21
+kawaii claws,8529a57bfffffff,8429a57ffffffff,1,31
+laser hair removal,852a306bfffffff,842a307ffffffff,1,44
+laser hair removal,8544a12bfffffff,8444a13ffffffff,1,41
+lip filler,852a101bfffffff,842a101ffffffff,1,44
+massage,852ab2cffffffff,842ab2dffffffff,2,39
+massage,852ab2d3fffffff,842ab2dffffffff,0,54
+oil change,85264623fffffff,8426463ffffffff,1,146
+oil change,85283463fffffff,8428347ffffffff,1,59
+oil change,852a9067fffffff,842a907ffffffff,1,85
+parking,8544c1bbfffffff,8444c1bffffffff,1,21
+rock climbing,852a12b3fffffff,842a12bffffffff,1,30
+trampoline,852a8b73fffffff,842a8b7ffffffff,1,38
+uptown jungle,8529b6d7fffffff,8429b6dffffffff,0,110
+boat tours,852664c3fffffff,842664dffffffff,2,40
+bronx zoo,852a1003fffffff,842a101ffffffff,1,131
+carillon,8544a103fffffff,8444a11ffffffff,2,49
+couples massage,8544a903fffffff,8444a91ffffffff,2,27
+full synthetic oil change,852a1007fffffff,842a101ffffffff,0,44
+gaylord ice,852aa87bfffffff,842aa87ffffffff,1,131
+great wolf lodge,85446c13fffffff,84446c1ffffffff,2,107
+indiana beach,85266547fffffff,8426655ffffffff,1,172
+oil change,85266d33fffffff,84266d3ffffffff,2,42
+oil change,8526c877fffffff,8426c87ffffffff,1,118
+oil change,8529a0a7fffffff,8429a0bffffffff,0,225
+oil change,8529b6d7fffffff,8429b6dffffffff,0,82
+oil change,852a1407fffffff,842a141ffffffff,1,186
+oil change,8544a133fffffff,8444a13ffffffff,0,81
+parking spot,8544c1bbfffffff,8444c1bffffffff,1,28
+play that goes wrong,852a100ffffffff,842a101ffffffff,2,27
+pumpkin fest at the princess,8529b6dbfffffff,8429b6dffffffff,1,32
+uptown jungle,85269633fffffff,8426963ffffffff,0,65
+arcade,8544a9bbfffffff,8444a9bffffffff,1,26
+architecture boat tour,852664c3fffffff,842664dffffffff,2,551
+botox,852664cbfffffff,842664dffffffff,1,117
+botox,85441a13fffffff,84441a1ffffffff,1,28
+botox,8544a12bfffffff,8444a13ffffffff,1,38
+brazilian wax,8548eba3fffffff,8448ebbffffffff,0,23
+camelback resort,852a12c7fffffff,842a12dffffffff,1,28
+climbzone,852664cbfffffff,842664dffffffff,0,34
+dexa scan,8544c133fffffff,8444c13ffffffff,0,24
+electrolysis,852a100ffffffff,842a101ffffffff,0,47
+escape room,8529a19bfffffff,8429a19ffffffff,0,43
+escape room,8544a90ffffffff,8444a91ffffffff,1,103
+great wolf,852a12c7fffffff,842a12dffffffff,2,26
+oil change,85274997fffffff,8427499ffffffff,2,35
+oil change,8529124ffffffff,8429125ffffffff,1,97
+pedicure,8544aebbfffffff,8444aebffffffff,2,29
+smog,8528308bfffffff,8428309ffffffff,0,40
+trampoline,8544d84bfffffff,8444d85ffffffff,0,20
+valvoline oil change,852a9313fffffff,842a931ffffffff,1,56
+valvoline oil change,852aac53fffffff,842aac5ffffffff,1,35
+whale watching,8529a54ffffffff,8429a55ffffffff,1,304
+alley cats,8526cbd3fffffff,8426cbdffffffff,0,44
+big air,8529a0bbfffffff,8429a0bffffffff,0,92
+car wash,85266697fffffff,8426669ffffffff,2,27
+couples massage,85269633fffffff,8426963ffffffff,1,26
+couples massage,85275937fffffff,8427593ffffffff,1,47
+couples massage,8528f00bfffffff,8428f01ffffffff,2,23
+head spa,852aa86bfffffff,842aa87ffffffff,1,25
+jiffy lube oil change,8529a567fffffff,8429a57ffffffff,0,23
+laser hair removal,8529a403fffffff,8429a41ffffffff,0,41
+massage,8526645bfffffff,8426645ffffffff,0,25
+oil change,85268cc3fffffff,84268cdffffffff,0,20
+oil change,852ab2d3fffffff,842ab2dffffffff,1,121
+pumpkin fest,8529b6dbfffffff,8429b6dffffffff,0,229
+valvoline,852661b7fffffff,842661bffffffff,2,38
+wine,8529a0d7fffffff,8429a0dffffffff,2,30
+bike rental,8529a403fffffff,8429a41ffffffff,1,22
+bowling,852a148ffffffff,842a149ffffffff,1,35
+brazilian wax,852a100bfffffff,842a101ffffffff,0,42
+clementon park,852a137bfffffff,842a137ffffffff,1,39
+dreamhack,8544c1abfffffff,8444c1bffffffff,1,49
+escape room,8544a917fffffff,8444a91ffffffff,1,117
+fujiyama,852a957bfffffff,842a957ffffffff,2,48
+great wolf lodge,8544eac3fffffff,8444eadffffffff,2,136
+haunted house,85266407fffffff,8426641ffffffff,1,43
+its it,85283093fffffff,8428309ffffffff,1,21
+king crab,8544a913fffffff,8444a91ffffffff,0,45
+king spa,852664dbfffffff,842664dffffffff,1,779
+lashes,852a100ffffffff,842a101ffffffff,0,95
+massage,852ab2c3fffffff,842ab2dffffffff,0,81
+massage,852b9bc3fffffff,842b9bdffffffff,0,36
+massage,85446c3bfffffff,84446c3ffffffff,0,20
+mini golf,8544133bfffffff,8444133ffffffff,2,30
+mini golf,8544ca07fffffff,8444ca1ffffffff,2,20
+newark airport parking,852a107bfffffff,842a107ffffffff,1,146
+nyc bus tour,852a100ffffffff,842a101ffffffff,2,24
+oil change,8526caa7fffffff,8426cabffffffff,1,169
+oil change,8529ab9bfffffff,8429ab9ffffffff,2,121
+oil change,85444657fffffff,8444465ffffffff,1,35
+showcase citrus,8544a9bbfffffff,8444a9bffffffff,1,22
+spa,85446ddbfffffff,84446ddffffffff,2,98
+valvoline,85262ddbfffffff,84262ddffffffff,1,99
+valvoline oil change,852a106bfffffff,842a107ffffffff,1,57
+botox,8528340bfffffff,8428341ffffffff,1,44
+daveys locker,8529a54ffffffff,8429a55ffffffff,1,56
+facial,85283083fffffff,8428309ffffffff,0,30
+facial,852a1057fffffff,842a105ffffffff,1,30
+ice skating,8526c83bfffffff,8426c83ffffffff,0,36
+ice skating,8529a017fffffff,8429a01ffffffff,1,28
+laser hair removal,8544a13bfffffff,8444a13ffffffff,1,22
+massage,85268cdbfffffff,84268cdffffffff,0,119
+massage,852a100bfffffff,842a101ffffffff,0,91
+massage,852a1057fffffff,842a105ffffffff,0,42
+momentum,85269623fffffff,8426963ffffffff,0,30
+momentum indoor climbing,85446dd3fffffff,84446ddffffffff,1,31
+oil change,85446c23fffffff,84446c3ffffffff,0,96
+oil change,8544f6a7fffffff,8444f6bffffffff,1,36
+rush fun park,85489c03fffffff,84489c1ffffffff,1,139
+seadog,852664c3fffffff,842664dffffffff,1,31
+spray tan,8526c867fffffff,8426c87ffffffff,1,21
+teeth whitening,8529a19bfffffff,8429a19ffffffff,1,28
+botox,8529a1d7fffffff,8429a1dffffffff,0,61
+botox,852a100bfffffff,842a101ffffffff,0,44
+dave and busters,852a1003fffffff,842a101ffffffff,0,65
+enchanted castle,85275927fffffff,8427593ffffffff,0,41
+lake eola,8544a907fffffff,8444a91ffffffff,1,62
+mary,8529a563fffffff,8429a57ffffffff,1,25
+massage,852681a3fffffff,842681bffffffff,0,31
+massage,8527592ffffffff,8427593ffffffff,1,59
+massage,8544daaffffffff,8444dabffffffff,1,22
+massage,8548e857fffffff,8448e85ffffffff,2,26
+microneedling,8529a41bfffffff,8429a41ffffffff,1,26
+oil change,85265333fffffff,8426533ffffffff,2,37
+oil change,85266d4bfffffff,84266d5ffffffff,2,119
+peachy parking,8544c1abfffffff,8444c1bffffffff,1,113
+rockin jump,852830c7fffffff,842830dffffffff,0,42
+sev laser,852a100ffffffff,842a101ffffffff,0,51
+tipsy putt,85283473fffffff,8428347ffffffff,1,30
+uss midway,8529a413fffffff,8429a41ffffffff,2,20
+wildlife zoo,8529b69bfffffff,8429b69ffffffff,1,60
+altitude,852b9923fffffff,842b993ffffffff,1,37
+deep tissue massage,852a106bfffffff,842a107ffffffff,0,23
+haunted trails,85266453fffffff,8426645ffffffff,0,34
+hot air balloon,8529a0d7fffffff,8429a0dffffffff,2,36
+hotel,8544a917fffffff,8444a91ffffffff,2,25
+japanese head spa,85268ccffffffff,84268cdffffffff,0,22
+massage,852aa803fffffff,842aa81ffffffff,1,27
+massage,8544a913fffffff,8444a91ffffffff,1,44
+massage,8544aebbfffffff,8444aebffffffff,1,64
+massage heights,8529868ffffffff,8429869ffffffff,2,39
+monster mini golf,852a1347fffffff,842a135ffffffff,1,49
+oil change,85283013fffffff,8428301ffffffff,1,264
+oil change,8529a033fffffff,8429a03ffffffff,1,152
+oil change,852a1687fffffff,842a169ffffffff,2,51
+oil change,852aab6ffffffff,842aab7ffffffff,1,65
+pirate dinner adventure,8529a0b7fffffff,8429a0bffffffff,1,164
+shedd aquarium,852664c3fffffff,842664dffffffff,2,20
+skating,8526c863fffffff,8426c87ffffffff,1,20
+skyzone,8548eba3fffffff,8448ebbffffffff,0,35
+spa world,852aaaa3fffffff,842aaabffffffff,1,802
+valvoline,8544a183fffffff,8444a19ffffffff,0,25
+airport parking,852aacb3fffffff,842aacbffffffff,1,620
+airport parking,85446c23fffffff,84446c3ffffffff,1,129
+aquarium,85441a87fffffff,84441a9ffffffff,2,41
+botox,8529a0b3fffffff,8429a0bffffffff,0,22
+full synthetic oil change,8526cbd3fffffff,8426cbdffffffff,0,36
+great wolf lodge,852aac77fffffff,842aac7ffffffff,1,178
+gun range,8526c80ffffffff,8426c81ffffffff,1,23
+it’s it,85283093fffffff,8428309ffffffff,1,32
+massage,85265603fffffff,8426561ffffffff,1,20
+massage,852664cbfffffff,842664dffffffff,0,55
+massage,8528d543fffffff,8428d55ffffffff,2,24
+massage,852a134ffffffff,842a135ffffffff,0,193
+massage,852a1637fffffff,842a163ffffffff,1,22
+massage,852aa84ffffffff,842aa85ffffffff,0,147
+massage,8544131bfffffff,8444131ffffffff,2,59
+oil change,8512db3bfffffff,8412db3ffffffff,2,38
+peachy,8544c1abfffffff,8444c1bffffffff,1,22
+rock climbing,8544a187fffffff,8444a19ffffffff,2,20
+satori,852a100bfffffff,842a101ffffffff,0,28
+six flags,85489c03fffffff,84489c1ffffffff,2,97
+sky zone,852a10a3fffffff,842a10bffffffff,1,24
+teeth cleaning,852a100ffffffff,842a101ffffffff,1,26
+teeth whitening,8529a18bfffffff,8429a19ffffffff,0,30
+the edge,852a1073fffffff,842a107ffffffff,1,67
+valvoline,852a957bfffffff,842a957ffffffff,2,52
+valvoline oil change,852b8a2bfffffff,842b8a3ffffffff,2,24
+whale watching,852834c3fffffff,842834dffffffff,2,102
+aquatopia,852a12c7fffffff,842a12dffffffff,1,21
+area 51,852a100ffffffff,842a101ffffffff,0,29
+atv,8544a103fffffff,8444a11ffffffff,1,25
+botox,852a106bfffffff,842a107ffffffff,0,26
+botox,8544a903fffffff,8444a91ffffffff,1,26
+botox,8544f01bfffffff,8444f01ffffffff,1,32
+by brothers,8544a187fffffff,8444a19ffffffff,1,29
+catalina,8529a51bfffffff,8429a51ffffffff,1,28
+couples massage,852a100bfffffff,842a101ffffffff,0,36
+couples massage,852ad6d7fffffff,842ad6dffffffff,2,31
+duffy,8529a54ffffffff,8429a55ffffffff,0,25
+eggworks,85298687fffffff,8429869ffffffff,0,30
+ewr parking,852a107bfffffff,842a107ffffffff,1,86
+hotel,8529b6dbfffffff,8429b6dffffffff,0,20
+launch trampoline park,852a100ffffffff,842a101ffffffff,0,121
+lucky puppy,852986a3fffffff,842986bffffffff,0,45
+mountain coaster,8544ca07fffffff,8444ca1ffffffff,2,194
+oil change,85274d7bfffffff,84274d7ffffffff,1,41
+oil change,852a1343fffffff,842a135ffffffff,0,269
+oil change,852aa84ffffffff,842aa85ffffffff,0,101
+pedicure,8544a90ffffffff,8444a91ffffffff,1,38
+sky zone,852ab253fffffff,842ab25ffffffff,1,94
+skyzone,8529a1dbfffffff,8429a1dffffffff,1,70
+skyzone,8544c18ffffffff,8444c19ffffffff,1,37
+valvoline oil change,852a120ffffffff,842a121ffffffff,1,59
+whale watching,8529a55bfffffff,8429a55ffffffff,2,27
+zenbar,852b9b57fffffff,842b9b5ffffffff,0,29
+altitude trampoline park,852a847bfffffff,842a847ffffffff,0,24
+botox,8544a103fffffff,8444a11ffffffff,0,22
+computer history museum,85283477fffffff,8428347ffffffff,1,21
+escape room,85283083fffffff,8428309ffffffff,0,23
+facial,852a100bfffffff,842a101ffffffff,0,22
+great wolf lodge,8527418ffffffff,8427419ffffffff,2,44
+king spa and sauna,852664dbfffffff,842664dffffffff,0,101
+laser hair removal,85269633fffffff,8426963ffffffff,1,39
+laser hair removal,852a1073fffffff,842a107ffffffff,0,101
+launch,852a8d8bfffffff,842a8d9ffffffff,2,33
+massage,85260d83fffffff,84260d9ffffffff,2,50
+massage,852664abfffffff,842664bffffffff,1,23
+massage,85283083fffffff,8428309ffffffff,0,169
+massage,852a10abfffffff,842a10bffffffff,1,79
+massage,85446caffffffff,84446cbffffffff,0,161
+massage,8544c123fffffff,8444c13ffffffff,1,33
+massage,85489eaffffffff,84489ebffffffff,1,28
+oil change,8529a147fffffff,8429a15ffffffff,1,27
+oil change,852b8a2bfffffff,842b8a3ffffffff,2,37
+one world observatory,852a1073fffffff,842a107ffffffff,2,294
+park tavern,85262cd3fffffff,84262cdffffffff,0,39
+pottery class,852aa843fffffff,842aa85ffffffff,1,26
+rush,8529b6d7fffffff,8429b6dffffffff,0,40
+sky zone,8527481bfffffff,8427481ffffffff,2,44
+smog check,8529a007fffffff,8429a01ffffffff,1,50
+spray tan,8529a403fffffff,8429a41ffffffff,0,22
+valley of fear,852a1353fffffff,842a135ffffffff,1,24
+valvoline,85266d4bfffffff,84266d5ffffffff,2,53
+wild rivers,8529a0b3fffffff,8429a0bffffffff,1,31
+women perfumes,852a1063fffffff,842a107ffffffff,0,20
+altitude trampoline park,8526cb8bfffffff,8426cb9ffffffff,0,75
+aquarium,8544c1abfffffff,8444c1bffffffff,2,215
+bike rental central park,852a100ffffffff,842a101ffffffff,2,48
+carillon spa,8544a103fffffff,8444a11ffffffff,0,25
+couples massage,8526c80ffffffff,8426c81ffffffff,1,23
+couples massage,8528d54ffffffff,8428d55ffffffff,0,25
+extra car,8528d553fffffff,8428d55ffffffff,0,32
+facial,8529a54bfffffff,8429a55ffffffff,0,28
+flight adventure,8544f057fffffff,8444f05ffffffff,2,23
+full synthetic oil change,8529a033fffffff,8429a03ffffffff,1,32
+maryland small arms,852aa873fffffff,842aa87ffffffff,1,26
+massage,852a1047fffffff,842a105ffffffff,0,31
+massage,852a14abfffffff,842a14bffffffff,1,74
+newport beach,8529a54ffffffff,8429a55ffffffff,1,23
+oil change,8528843bfffffff,8428843ffffffff,2,24
+oil change,852a3063fffffff,842a307ffffffff,1,27
+parking,852a107bfffffff,842a107ffffffff,2,35
+valvoline oil change,852a1343fffffff,842a135ffffffff,0,74
+big cat habitat,85441e73fffffff,84441e7ffffffff,1,20
+couples massage,852a957bfffffff,842a957ffffffff,2,21
+emissions test,852696abfffffff,842696bffffffff,0,58
+facial,8526c877fffffff,8426c87ffffffff,0,30
+full synthetic oil change,8526c877fffffff,8426c87ffffffff,0,42
+full synthetic oil change,852aa8c3fffffff,842aa8dffffffff,1,29
+funville,852af637fffffff,842af63ffffffff,1,73
+gangnam,85446ddbfffffff,84446ddffffffff,2,39
+laser hair removal,852664c3fffffff,842664dffffffff,0,94
+laser hair removal,852a1047fffffff,842a105ffffffff,0,44
+laser hair removal,852a134ffffffff,842a135ffffffff,1,76
+massage,852a8dd7fffffff,842a8ddffffffff,2,45
+mini golf,852a1347fffffff,842a135ffffffff,0,26
+oil change,852a957bfffffff,842a957ffffffff,2,136
+oil change,8548eba7fffffff,8448ebbffffffff,0,96
+botox,85446cabfffffff,84446cbffffffff,1,45
+botox,85489c03fffffff,84489c1ffffffff,1,21
+bowling,8544d84bfffffff,8444d85ffffffff,0,39
+busch gardens williamsburg,852af657fffffff,842af65ffffffff,2,50
+facials,8548eba3fffffff,8448ebbffffffff,0,28
+ferox,852a100ffffffff,842a101ffffffff,0,180
+gilroy gardens,85283453fffffff,8428345ffffffff,2,186
+hydrofacial,852a100ffffffff,842a101ffffffff,0,22
+iah parking,85446c23fffffff,84446c3ffffffff,1,87
+ice,85489c0bfffffff,84489c1ffffffff,1,31
+laser hair removal,8526c86bfffffff,8426c87ffffffff,0,21
+laser hair removal,8548eba7fffffff,8448ebbffffffff,0,21
+massage,852830c7fffffff,842830dffffffff,1,62
+monster mini golf,852a137bfffffff,842a137ffffffff,0,41
+oil change,852a3317fffffff,842a331ffffffff,1,72
+pocket change,8544a81bfffffff,8444a81ffffffff,2,31
+six flags,8529a117fffffff,8429a11ffffffff,2,20
+sky zone waukesha,85275d63fffffff,84275d7ffffffff,1,45
+valvoline,85283013fffffff,8428301ffffffff,1,33
+valvoline,852aac53fffffff,842aac5ffffffff,1,45
+valvoline oil change,8528d5c3fffffff,8428d5dffffffff,0,42
+airport parking,852a148ffffffff,842a149ffffffff,1,34
+botox,8529a033fffffff,8429a03ffffffff,1,26
+couple massage,852664c3fffffff,842664dffffffff,0,22
+couples massage,852664c3fffffff,842664dffffffff,1,234
+couples massage,8527592ffffffff,8427593ffffffff,0,36
+dexa scan,852a3067fffffff,842a307ffffffff,0,21
+drunk dracula,85446cabfffffff,84446cbffffffff,2,23
+dysport,8526c867fffffff,8426c87ffffffff,0,32
+great wolf lodge,8529a0b7fffffff,8429a0bffffffff,1,253
+kids activities,852664dbfffffff,842664dffffffff,2,20
+massage,8526cbdbfffffff,8426cbdffffffff,1,29
+massage,8529a18bfffffff,8429a19ffffffff,0,90
+massage,85489e27fffffff,84489e3ffffffff,1,100
+oil change,85283007fffffff,8428301ffffffff,1,86
+oil change,852a3067fffffff,842a307ffffffff,0,77
+oil change,85446ddbfffffff,84446ddffffffff,0,235
+skyzone,852ab397fffffff,842ab39ffffffff,2,50
+st julian,852ab2c3fffffff,842ab2dffffffff,2,24
+teeth whitening,8529a54ffffffff,8429a55ffffffff,1,21
+twisted trails,852a1063fffffff,842a107ffffffff,0,22
+urban putt,85283447fffffff,8428345ffffffff,1,23
+valvoline,852a32a3fffffff,842a32bffffffff,1,22
+valvoline oil change,8548ebb7fffffff,8448ebbffffffff,0,37

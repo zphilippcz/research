@@ -9994,3 +9994,4 @@ dealsdb/deals_data/saved_deals/deal_18656750-d9da-418e-9895-42f4a64cb944.json
 dealsdb/deals_data/saved_deals/deal_18664154-ee35-44b7-bc99-960b6c7c0455.json
 locality_detection/US.txt
 locality_detection/US.zip
+query-to-radius/*.joblib
