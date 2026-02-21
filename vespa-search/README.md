@@ -23,10 +23,17 @@ A hybrid search application for deals/options with text, semantic, and geographi
 2. Set Vespa to target cloud: `vespa config set target cloud`
 
 ### Manual Deployment
+### Staging 
+```bash
+vespa auth login
+vespa config set application groupon.hybridsearch.default-staging
+vespa prod deploy
+```
+### Prod
 ```bash
 vespa auth login
 vespa config set application groupon.hybridsearch.default
-vespa deploy
+vespa prod deploy
 ```
 
 ## CI/CD Pipeline
@@ -160,7 +167,34 @@ The application is configured for: `groupon.hybridsearch.default`
 - **Custom Searcher**: `NearestLocationSearcher` for location-based ranking
 - **Embedding Model**: E5-small-v2 for semantic search
 - **Schema**: `option.sd` with 384-dimensional embeddings
-- **Ranking**: Complex multi-factor scoring function
+- **Ranking**: Intent-aware multi-factor scoring (see below)
+
+### Ranking (intent-aware profile)
+
+Search uses the **intent_aware** rank profile: we infer whether the user is searching by **product/title**, **category**, or **merchant**, then adjust text weighting, penalties, and boosts accordingly.
+
+**Intents**
+
+- **General** — Product/deal search. Title and deal fields drive the score; we apply coverage penalty and semantic penalty (demote when embedding similarity is below threshold).
+- **Category** — Browsing by category. Category signal is boosted, coverage penalty is off, semantic penalty is off, and local options get a small boost (`cat_local_boost`).
+- **Merchant** — Searching by merchant name. Merchant signal is boosted, semantic penalty is off, and strong merchant matches get an extra boost (`merch_exact_boost`).
+
+Intent is derived from text signals: `raw_title_signal` (max of option/deal title scores), `raw_merch_signal`, and `raw_cat_signal`, with thresholds `thr_merch_intent` (0.22) and `thr_cat_intent` (0.15).
+
+**Score**
+
+`score_raw` is the sum of:
+
+- **contrib_text** — BM25 + fieldMatch over title, deal, category, merchant, place, tags (intent-modulated), plus matches_boost, phrase_bonus, coverage_penalty.
+- **contrib_promo** — Discount and rating (saturated); weights 0.2 and 0.1.
+- **contrib_embed** — Semantic similarity (linearized cosine above cutoff); weight 0.15.
+- **contrib_business** — Option/deal performance coefficients; for local + geo, plus distance-bucket prior.
+- **contrib_distance** — Proximity when user has location and option is local (boost ≤5 km, penalty &gt;20 km); weight 0.55.
+- **contrib_penalty** — Minus 10 when general intent and embedding below threshold; 0 for category/merchant.
+- **merch_exact_boost** — +0.35 for strong merchant match when merchant intent.
+- **cat_local_boost** — +0.10 × is_local when category intent.
+
+More detail and all tunables: [schemas/option/README.md](schemas/option/README.md).
 
 ## Monitoring
 
